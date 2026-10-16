@@ -1,0 +1,41 @@
+name: Tarefa
+description: Tarefa do projeto, com estimativa e horas reais (medições PSM/CID)
+title: "[Tarefa] "
+body:
+  - type: textarea
+    id: descricao
+    attributes:
+      label: O que precisa ser feito
+    validations:
+      required: true
+  - type: dropdown
+    id: dupla
+    attributes:
+      label: Dupla responsável
+      options:
+        - Dupla 1 (Segurança e gestão)
+        - Dupla 2 (Eficiência, Fase 1 e GitPage)
+        - Dupla 3 (Manutenibilidade e relatório)
+        - Todas as duplas
+    validations:
+      required: true
+  - type: textarea
+    id: pronto
+    attributes:
+      label: Critério de pronto
+      description: Como a equipe sabe que a tarefa terminou (ex.: revisada pela outra pessoa da dupla e publicada na GitPage).
+    validations:
+      required: true
+  - type: input
+    id: estimativa
+    attributes:
+      label: Estimativa (horas)
+      placeholder: "ex.: 3"
+    validations:
+      required: true
+  - type: textarea
+    id: horas
+    attributes:
+      label: Horas reais
+      description: Uma linha por sessão de trabalho. Também registrar em dados/gestao/.
+      placeholder: "dd/mm - nome - X h"
