@@ -60,6 +60,9 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.snippets:
+      base_path: ["."]
+      check_paths: true
 
 nav:
   - Início: index.md
@@ -83,6 +86,7 @@ nav:
   - Fase 4: fase-4/index.md
   - Gestão do projeto:
       - gestao/index.md
+      - Planejamento das sprints: gestao/planejamento.md
       - Plano de medição: gestao/plano-de-medicao.md
       - Registro de medições: gestao/registro-de-medicoes.md
       - Decisões de gestão: gestao/decisoes.md
