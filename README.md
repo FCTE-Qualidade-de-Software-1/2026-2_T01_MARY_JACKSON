@@ -18,7 +18,7 @@ https://fcte-qualidade-de-software-1.github.io/2026-2_T01_MARY_JACKSON/
     <tr>
         <td align="center">
             <a href="https://github.com/H3yttt0r10">
-                <img style="border-radius: 50%; width: 100px; heigth: 100px" src="https://github.com/H3yttt0r10.png" />
+                <img style="border-radius: 50%; width: 100px; heigth: 100px" src="https://github.com/H3ytt0r10.png" />
                 <h5 class="text-center">Heyttor Augusto de Assis Silva </h5>
                 <h5 class="text-center">232002996</h5>
                 <h5 class="text-center">Dupla 3</h5>
@@ -49,8 +49,8 @@ https://fcte-qualidade-de-software-1.github.io/2026-2_T01_MARY_JACKSON/
             </a>
         </td>
         <td align="center">
-            <a href="https://github.com/USUARIO5">
-                <img style="border-radius: 50%; width: 100px; heigth: 100px" src="https://github.com/USUARIO5.png" />
+            <a href="https://github.com/thgomxs">
+                <img style="border-radius: 50%; width: 100px; heigth: 100px" src="https://github.com/thgomxs.png" />
                 <h5 class="text-center">Thiago Gomes Pereira de Abreu</h5>
                 <h5 class="text-center">232014333</h5>
                 <h5 class="text-center">Dupla 2</h5>
