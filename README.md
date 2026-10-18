@@ -6,7 +6,7 @@
 ![Docs](https://img.shields.io/badge/docs-MkDocs%20Material-blue)
 
 ## :scroll: Sobre o projeto
-   Avaliação da qualidade de componentes do draw.io (a definir pelo grupo), ferramenta de diagramação usada pela equipe ao longo do curso. A avaliação segue o processo de avaliação de produto da SQuaRE (ISO/IEC 25040), considera as características Segurança, Eficiência de desempenho e Manutenibilidade (ISO/IEC 25010:2023) e define as métricas com o método GQM. A gestão do projeto usa métricas PSM/CID.
+   Avaliação da qualidade de componentes do draw.io , ferramenta de diagramação usada pela equipe ao longo do curso. A avaliação segue o processo de avaliação de produto da SQuaRE (ISO/IEC 25040), considera as características Segurança, Eficiência de desempenho e Manutenibilidade (ISO/IEC 25010:2023) e define as métricas com o método GQM. A gestão do projeto usa métricas PSM/CID.
 
 ## :paperclip: Link da página de documentação
 https://fcte-qualidade-de-software-1.github.io/2026-2_T01_MARY_JACKSON/
