@@ -75,7 +75,7 @@ https://fcte-qualidade-de-software-1.github.io/2026-2_T01_MARY_JACKSON/
 - [Fase 1: Estabelecer os requisitos da avaliação](https://fcte-qualidade-de-software-1.github.io/2026-2_T01_MARY_JACKSON/fase-1/)
 - [Fase 2: Especificar a avaliação](https://fcte-qualidade-de-software-1.github.io/2026-2_T01_MARY_JACKSON/fase-2/)
 - [Gestão do projeto (PSM/CID)](https://fcte-qualidade-de-software-1.github.io/2026-2_T01_MARY_JACKSON/gestao/)
-- [Planejamento das sprints](PLANEJAMENTO.md)
+- [Planejamento das sprints](docs/gestao/planejamento.md)
 - [Atas das reuniões](atas/)
 - [Dados](dados/)
 
