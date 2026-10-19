@@ -37,27 +37,44 @@ Fonte: documento "Expectativas de horas trabalhadas para cada sprint (Dupla 1)",
 
 | Sprint | Tarefa | Responsável | Horas estimadas |
 |---|---|---|---|
-| 1 | Propósito, stakeholders e escopo | Pedro Ian | 3 |
-| 1 | Modelo de qualidade e priorização | Pedro Ian | 2 |
-| 1 | Justificativa da característica Eficiência de desempenho | Pedro Ian | 1 |
-| 2 | Questões e hipóteses de Eficiência de desempenho | Pedro Ian | 2 |
+| 1 | Propósito, requisitante, stakeholders e escopo da avaliação | Pedro Ian | 3 |
+| 1 | Integração e revisão da Fase 1 | Pedro Ian | 2 |
+| 1 | Justificativa e priorização de Eficiência | Pedro Ian | 1 |
+| 1 | Modelo de qualidade adaptado e matriz de priorização | Thiago | 3 |
+| 1 | Justificativa de Eficiência e contribuição para a Fase 1 | Thiago | 1 |
+| 1 | Script de geração de diagramas e teste de viabilidade no DevTools | Thiago | 3 |
+| 2 | Objetivo, questões e hipóteses de Eficiência (GQM) | Pedro Ian | 2 |
+| 2 | Objetivo, questões e hipóteses de Eficiência (GQM) | Thiago | 2 |
 | 2 | Fichas das métricas (metade) | Pedro Ian | 2 |
-| 2 | Tabela de rastreabilidade | Pedro Ian | 1 |
-| 2 | Revisão cruzada | Pedro Ian | 1 |
-| 3 | GitPage com as Fases 1 e 2 | Pedro Ian | 3 |
-| 3 | Revisão final | Pedro Ian | 2 |
-| | **Total (Pedro Ian)** | | **17** |
-| | Thiago | | __ |
+| 2 | Fichas das métricas (metade) | Thiago | 3 |
+| 2 | Tabela de rastreabilidade Fase 1 → Fase 2 | Thiago | 2 |
+| 2 | Revisão da rastreabilidade | Pedro Ian | 1 |
+| 2 | Revisão cruzada do GQM | Pedro Ian | 1 |
+| 2 | Revisão cruzada do GQM | Thiago | 1 |
+| 3 | Estruturação e publicação da GitPage das Fases 1 e 2 | Pedro Ian | 3 |
+| 3 | Integração e ajustes dos arquivos LaTeX | Thiago | 2 |
+| 3 | Revisão final e correções | Pedro Ian | 2 |
+| 3 | Revisão final e correções | Thiago | 2 |
+| | **Total** (Pedro Ian 17 h, Thiago 19 h) | | **36** |
+ 
+Fonte: estimativas enviadas por Pedro Ian e Thiago no grupo.
 
-Fonte: estimativa enviada por Pedro Ian no grupo em 17/10.
 
 ## Estimativa de horas (Dupla 3)
-
+ 
 | Sprint | Tarefa | Responsável | Horas estimadas |
 |---|---|---|---|
-| | __ | | __ |
-
-Fonte: aguardando a estimativa de Heyttor e Lucas.
+| 1 | Descrição estruturada do draw.io e diagrama de contexto | Heyttor | 2.5 |
+| 1 | Template SBC do relatório | Lucas | 1 |
+| 2 | Objetivo, questões e hipóteses de Manutenibilidade (GQM) | Heyttor | 2.5 |
+| 2 | Piloto do SonarCloud | Heyttor | 2 |
+| 2 | Diagrama GQM e controle do limite de páginas | Lucas | 3 |
+| 3 | Referencial teórico | Lucas | 3 |
+| | **Total** (Heyttor 7 h, Lucas 7 h) | | **14** |
+ 
+Fonte: estimativas enviadas por Heyttor e Lucas no grupo.
+ 
+**Total estimado da equipe para a E1:** 70,5 h (Dupla 1: 20,5 h; Dupla 2: 36 h; Dupla 3: 14 h).
 
 ---
 
@@ -81,7 +98,6 @@ Fonte: aguardando a estimativa de Heyttor e Lucas.
   - Linha de base do PSM e Atas 01 e 02
 
 - **Informações extras**
-  - Horas estimadas: Dupla 1: 7 h; Dupla 2: 6 h (Pedro Ian) + __ h (Thiago); Dupla 3: __ h · Horas reais: __ h
   - O projeto começou em 07/10 sem estimativa por tarefa. O planejamento foi feito em 13/10 e o repositório configurado em 16/10, após o previsto. As horas anteriores foram registradas retroativamente.
   - O grupo passou a se organizar por duplas e por conversas assíncronas no WhatsApp; as decisões foram registradas nas atas.
   - O relatório foi iniciado no Overleaf em modelo ABNT e precisa migrar para SBC, ACM ou IEEE (premissa 7 da especificação).
@@ -139,3 +155,4 @@ Fonte: aguardando a estimativa de Heyttor e Lucas.
 | 0.3 | 16/10/2026 | Duplas passam a dividir integralmente suas responsabilidades; planejamento adaptado ao template da disciplina | Yasmin |
 | 0.4 | 18/10/2026 | Registro do que foi realizado na Sprint 1, do atraso na configuração do repositório e reorganização das datas das Sprints 2 e 3 | Yasmin |
 | 0.5 | 18/10/2026 | Inclusão da estimativa de horas por tarefa da Dupla 1 e da estimativa de Pedro Ian (linha de base do PSM) | Yasmin |
+| 0.6 | 18/10/2026 | Inclusão da estimativa de horas por tarefa de Dupla 2 e 3 atualizadas | Yasmin
