@@ -23,7 +23,7 @@ body:
     id: pronto
     attributes:
       label: Critério de pronto
-      description: Como a equipe sabe que a tarefa terminou (ex.: revisada pela outra pessoa da dupla e publicada na GitPage).
+        description: "Como a equipe sabe que a tarefa terminou (ex.: revisada pela outra pessoa da dupla e publicada na GitPage)."
     validations:
       required: true
   - type: input
