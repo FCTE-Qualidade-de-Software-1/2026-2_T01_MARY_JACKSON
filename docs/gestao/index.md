@@ -7,4 +7,4 @@ _Em elaboração._
 - [Planejamento das sprints](planejamento.md)
 - [Milestones](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/milestones)
 - [Issues](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues)
-- [Registro de horas e estimativa de custos](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/tree/main/dados/gestao)
+- [Registro de horas e estimativa de custos](horas.md)

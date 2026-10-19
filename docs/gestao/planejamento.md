@@ -11,6 +11,54 @@
   - Dupla 2 (Pedro Ian e Thiago): Eficiência de desempenho; Fase 1 (propósito, stakeholders, escopo); modelo de qualidade e priorização; GitPage.
   - Dupla 3 (Heyttor e Lucas): Manutenibilidade; descrição do draw.io e diagrama de contexto; relatório no Overleaf.
 
+## Estimativa de horas (Dupla 1)
+
+| Sprint | Tarefa | Responsável | Horas estimadas |
+|---|---|---|---|
+| 1 | Configuração do repositório e milestones | Yasmin | 2.5 |
+| 1 | Pesquisa e redação de ODS, metas e indicadores | a definir | 2 |
+| 1 | Justificativa da característica Segurança | Miquéias | 1 |
+| 1 | Reunião de início + Ata 01 | Yasmin e Miquéias | 1 |
+| 1 | Revisão da Fase 1 + Ata 02 | Yasmin | 0.5 |
+| 2 | Objetivo, questões e hipóteses de Segurança (GQM) | a definir | 2 |
+| 2 | Fichas das métricas de Segurança | a definir | 2.5 |
+| 2 | Redação da metodologia do artigo | a definir | 1.5 |
+| 2 | Revisão cruzada do GQM das outras duplas + Ata 03 | a definir | 1 |
+| 3 | Introdução do artigo | a definir | 2 |
+| 3 | Consolidação do PSM (planejado vs. realizado da E1) | Yasmin | 1.5 |
+| 3 | Tabela de contribuição e declaração de uso de IA | Yasmin | 1 |
+| 3 | Revisão cruzada final (formatação, links, referências) | a definir | 1 |
+| 3 | Release E1 e submissão no Moodle | Yasmin | 1 |
+| | **Total** | | **20.5** |
+
+Fonte: documento "Expectativas de horas trabalhadas para cada sprint (Dupla 1)", ajustado em 18/10.
+
+## Estimativa de horas (Dupla 2)
+
+| Sprint | Tarefa | Responsável | Horas estimadas |
+|---|---|---|---|
+| 1 | Propósito, stakeholders e escopo | Pedro Ian | 3 |
+| 1 | Modelo de qualidade e priorização | Pedro Ian | 2 |
+| 1 | Justificativa da característica Eficiência de desempenho | Pedro Ian | 1 |
+| 2 | Questões e hipóteses de Eficiência de desempenho | Pedro Ian | 2 |
+| 2 | Fichas das métricas (metade) | Pedro Ian | 2 |
+| 2 | Tabela de rastreabilidade | Pedro Ian | 1 |
+| 2 | Revisão cruzada | Pedro Ian | 1 |
+| 3 | GitPage com as Fases 1 e 2 | Pedro Ian | 3 |
+| 3 | Revisão final | Pedro Ian | 2 |
+| | **Total (Pedro Ian)** | | **17** |
+| | Thiago | | __ |
+
+Fonte: estimativa enviada por Pedro Ian no grupo em 17/10.
+
+## Estimativa de horas (Dupla 3)
+
+| Sprint | Tarefa | Responsável | Horas estimadas |
+|---|---|---|---|
+| | __ | | __ |
+
+Fonte: aguardando a estimativa de Heyttor e Lucas.
+
 ---
 
 ## Sprint 1 - Fase 1: Estabelecer os requisitos da avaliação
@@ -33,7 +81,7 @@
   - Linha de base do PSM e Atas 01 e 02
 
 - **Informações extras**
-  - Horas estimadas: __ h · Horas reais: __ h
+  - Horas estimadas: Dupla 1: 7 h; Dupla 2: 6 h (Pedro Ian) + __ h (Thiago); Dupla 3: __ h · Horas reais: __ h
   - O projeto começou em 07/10 sem estimativa por tarefa. O planejamento foi feito em 13/10 e o repositório configurado em 16/10, após o previsto. As horas anteriores foram registradas retroativamente.
   - O grupo passou a se organizar por duplas e por conversas assíncronas no WhatsApp; as decisões foram registradas nas atas.
   - O relatório foi iniciado no Overleaf em modelo ABNT e precisa migrar para SBC, ACM ou IEEE (premissa 7 da especificação).
@@ -56,7 +104,7 @@
   - Diagrama GQM e tabela de rastreabilidade
 
 - **Informações extras**
-  - Horas estimadas: __ h · Horas reais: __ h
+  - Horas estimadas: Dupla 1: 7 h; Dupla 2: 6 h (Pedro Ian) + __ h (Thiago); Dupla 3: __ h · Horas reais: __ h
 
 ---
 
@@ -79,7 +127,7 @@
   - Release E1
 
 - **Informações extras**
-  - Horas estimadas: __ h · Horas reais: __ h
+  - Horas estimadas: Dupla 1: 6,5 h; Dupla 2: 5 h (Pedro Ian) + __ h (Thiago); Dupla 3: __ h · Horas reais: __ h
   - Apresentação da E1 prevista para quarta-feira, conforme preferência do grupo [confirmar no cronograma do Moodle].
 
 ---
@@ -90,3 +138,4 @@
 | 0.2 | 14/10/2026 | Grupo incluiu as medições de PSM no cronograma e trocou a divisão por membros por três duplas | Equipe |
 | 0.3 | 16/10/2026 | Duplas passam a dividir integralmente suas responsabilidades; planejamento adaptado ao template da disciplina | Yasmin |
 | 0.4 | 18/10/2026 | Registro do que foi realizado na Sprint 1, do atraso na configuração do repositório e reorganização das datas das Sprints 2 e 3 | Yasmin |
+| 0.5 | 18/10/2026 | Inclusão da estimativa de horas por tarefa da Dupla 1 e da estimativa de Pedro Ian (linha de base do PSM) | Yasmin |

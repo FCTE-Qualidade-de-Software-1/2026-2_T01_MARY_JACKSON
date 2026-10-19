@@ -31,6 +31,11 @@ theme:
 
 extra:
   generator: false
+  # Custo da hora: R$ 1.950 (salário + 30%) ÷ 132 h/mês. Fontes: Glassdoor, DevMedia, Lei 11.788/2008.
+  custo_hora: 14.77
+
+hooks:
+  - hooks/horas.py
 
 extra_css:
   - stylesheets/extra.css
