@@ -1,10 +1,5 @@
 # Qualidade de software - 2026.2 - T01 - Mary Jackson
 
-![Release](https://img.shields.io/github/v/release/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON?label=release)
-![Último commit](https://img.shields.io/github/last-commit/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON?label=%C3%BAltimo%20commit)
-![GitPage](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/actions/workflows/deploy.yml/badge.svg)
-![Docs](https://img.shields.io/badge/docs-MkDocs%20Material-blue)
-
 ## :scroll: Sobre o projeto
    Avaliação da qualidade de componentes do draw.io , ferramenta de diagramação usada pela equipe ao longo do curso. A avaliação segue o processo de avaliação de produto da SQuaRE (ISO/IEC 25040), considera as características Segurança, Eficiência de desempenho e Manutenibilidade (ISO/IEC 25010:2023) e define as métricas com o método GQM. A gestão do projeto usa métricas PSM/CID.
 
@@ -59,7 +54,7 @@ https://fcte-qualidade-de-software-1.github.io/2026-2_T01_MARY_JACKSON/
         <td align="center">
             <a href="https://github.com/yaabdon">
                 <img style="border-radius: 50%; width: 100px; heigth: 100px" src="https://github.com/yaabdon.png" />
-                <h5 class="text-center">Yasmin Souza Abdon </h5>
+                <h5 class="text-center">Yasmin Sousa Abdon </h5>
                 <h5 class="text-center">232014271</h5>
                 <h5 class="text-center">Dupla 1</h5>
             </a>
