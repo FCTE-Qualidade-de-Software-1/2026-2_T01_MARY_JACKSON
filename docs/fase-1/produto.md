@@ -3,7 +3,7 @@
 
 # Descrição do draw.io
 
-O **draw.io**, também conhecido como **diagrams.net**, é um software de criação e edição de diagramas, criado por Gaudenz Alder, engenheiro de software suíço. Escrito principalmente em JavaScript, o programa permite criar e exportar diferentes tipos de diagramas, como infográficos, mapas mentais, diagramas de circuitos e diagramas UML. É uma ferramenta de código aberto que pode ser utilizada diretamente pelo navegador ou instalada para uso local, ataulmente sua versão de desktop é 32.4.1 na qual será usada para o estudo.
+O **draw.io**, também conhecido como **diagrams.net**, é um software de criação e edição de diagramas, criado por Gaudenz Alder, engenheiro de software suíço. Escrito principalmente em JavaScript, o programa permite criar e exportar diferentes tipos de diagramas, como infográficos, mapas mentais, diagramas de circuitos e diagramas UML. É uma ferramenta de código aberto que pode ser utilizada diretamente pelo navegador ou instalada para uso local; atualmente, sua versão de desktop é 32.2.0, que será usada para o estudo.
 
 ## Funcionalidades
 
@@ -32,9 +32,7 @@ O público-alvo do draw.io inclui profissionais e estudantes que utilizam diagra
 As tecnologias associadas ao desenvolvimento do draw.io incluem:
 
 - **JavaScript:** linguagem utilizada no desenvolvimento de funcionalidades da aplicação.
-- **TypeScript:** sua utilização deve ser verificada no código-fonte da versão analisada.
 - **HTML5 e CSS3:** tecnologias utilizadas na estruturação e apresentação de interfaces web.
-- **React:** a utilização deve ser confirmada no repositório e na versão específica analisada.
 - **mxGraph:** biblioteca JavaScript historicamente utilizada na implementação de funcionalidades de criação e edição de diagramas.
 
 
@@ -54,10 +52,3 @@ Autor: Heyttor Augusto
 - Importação de arquivos
 - Edição e tratamento de rótulos
 - Exportação de arquivos
-
-
-
-
-<!-- O que entra aqui: nome, versão, domínio, tipo de produto (Pressman e IEEE 1062), descrição geral, componentes escolhidos pelo grupo e diagrama de contexto. Aula 07, págs. 8 a 13. Rubrica Fase 1, critério 3. -->
-
-_Em elaboração._
