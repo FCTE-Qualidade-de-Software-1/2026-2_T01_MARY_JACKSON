@@ -44,10 +44,17 @@ Segue abaixo o diagrama de contexto demonstrando a interação do software com e
 
 Imagem 1: Diagrama de contexto
 
+![Diagrama de contexto](../imagens/Diagrama%20de%20contexto.png)
+
 
 Autor: Heyttor Augusto
 
 ## Componentes escolhidos para avaliação do grupo
+
+- Importação de arquivos
+- Edição e tratamento de rótulos
+- Exportação de arquivos
+
 
 
 
