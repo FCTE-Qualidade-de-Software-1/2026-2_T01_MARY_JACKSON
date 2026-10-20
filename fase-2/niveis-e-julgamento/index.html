@@ -915,6 +915,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#eficiencia-de-desempenho-dupla-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eficiência de desempenho (dupla 2)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#manutenibilidade-dupla-3" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1466,6 +1477,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#eficiencia-de-desempenho-dupla-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eficiência de desempenho (dupla 2)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#manutenibilidade-dupla-3" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1504,6 +1526,156 @@
 <h1 id="niveis-de-pontuacao-e-julgamento">Níveis de pontuação e julgamento<a class="headerlink" href="#niveis-de-pontuacao-e-julgamento" title="Permanent link">&para;</a></h1>
 <!-- O que entra aqui: faixas de pontuação de cada métrica e a regra que leva do valor medido ao julgamento, por questão e por objetivo. Rubrica F2-C5. -->
 
+<h2 id="eficiencia-de-desempenho-dupla-2">Eficiência de desempenho (dupla 2)<a class="headerlink" href="#eficiencia-de-desempenho-dupla-2" title="Permanent link">&para;</a></h2>
+<p>Os valores de M2.1 a M2.5 são comparados a um limite L, definido por métrica, porte e formato, e julgados pela razão <code>r = x / L</code>, em que <code>x</code> é a mediana observada. Os limites abaixo são candidatos, ainda não aprovados; a tolerância crescente por porte e a distinção por formato serão avaliadas no piloto e aprovadas pelo requisitante antes da coleta.</p>
+<table>
+<thead>
+<tr>
+<th>Métrica/unidade</th>
+<th>50</th>
+<th>300</th>
+<th>1.000</th>
+<th>2.000</th>
+<th>5.000</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M2.1 abrir (ms)</td>
+<td>2.000</td>
+<td>3.500</td>
+<td>6.500</td>
+<td>11.000</td>
+<td>24.000</td>
+</tr>
+<tr>
+<td>M2.2 heap após abrir (MiB)</td>
+<td>120</td>
+<td>170</td>
+<td>280</td>
+<td>440</td>
+<td>800</td>
+</tr>
+<tr>
+<td>M2.3 rótulo (ms)</td>
+<td>300</td>
+<td>450</td>
+<td>700</td>
+<td>1.100</td>
+<td>1.800</td>
+</tr>
+<tr>
+<td>M2.4 PNG (ms)</td>
+<td>4.000</td>
+<td>6.000</td>
+<td>11.000</td>
+<td>20.000</td>
+<td>45.000</td>
+</tr>
+<tr>
+<td>M2.4 PDF (ms)</td>
+<td>7.000</td>
+<td>10.000</td>
+<td>20.000</td>
+<td>35.000</td>
+<td>75.000</td>
+</tr>
+<tr>
+<td>M2.4 SVG (ms)</td>
+<td>3.000</td>
+<td>5.000</td>
+<td>9.000</td>
+<td>17.000</td>
+<td>40.000</td>
+</tr>
+<tr>
+<td>M2.5 PNG (MiB)</td>
+<td>180</td>
+<td>240</td>
+<td>400</td>
+<td>650</td>
+<td>1.100</td>
+</tr>
+<tr>
+<td>M2.5 PDF (MiB)</td>
+<td>180</td>
+<td>240</td>
+<td>400</td>
+<td>650</td>
+<td>1.100</td>
+</tr>
+<tr>
+<td>M2.5 SVG (MiB)</td>
+<td>170</td>
+<td>230</td>
+<td>380</td>
+<td>620</td>
+<td>1.050</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Nota 5</th>
+<th>Nota 4</th>
+<th>Nota 3</th>
+<th>Nota 2</th>
+<th>Nota 1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M2.1 a M2.5 (r)</td>
+<td>0 &lt;= r &lt;= 0,5</td>
+<td>0,5 &lt; r &lt;= 1</td>
+<td>1 &lt; r &lt;= 1,5</td>
+<td>1,5 &lt; r &lt;= 2</td>
+<td>r &gt; 2</td>
+</tr>
+<tr>
+<td>M2.6 (porte)</td>
+<td>5.000 formas</td>
+<td>2.000 formas</td>
+<td>1.000 formas</td>
+<td>300 formas</td>
+<td>50 formas ou nenhum porte aprovado</td>
+</tr>
+</tbody>
+</table>
+<p>A nota de cada métrica de M2.1 a M2.5 é a menor entre seus cenários, com medianas e notas de cada cenário preservadas no registro. Para M2.6, todos os cinco portes devem ser ensaiados, e os casos "50 formas" e "nenhum porte aprovado" são relatados separadamente. Amostras incompletas não demonstram limite de capacidade.</p>
+<table>
+<thead>
+<tr>
+<th>Questão ou objetivo</th>
+<th>Regra de julgamento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q2.1</td>
+<td>mínimo(M2.1, M2.2)</td>
+</tr>
+<tr>
+<td>Q2.2</td>
+<td>M2.3</td>
+</tr>
+<tr>
+<td>Q2.3</td>
+<td>mínimo(M2.4, M2.5)</td>
+</tr>
+<tr>
+<td>Q2.4</td>
+<td>M2.6</td>
+</tr>
+<tr>
+<td>G2</td>
+<td>mínimo(Q2.1, Q2.2, Q2.3, Q2.4)</td>
+</tr>
+</tbody>
+</table>
+<p>Dados ausentes, instrumentos inviáveis ou critérios não aprovados impedem a nota global; informa-se avaliação parcial. Os limites e níveis apresentados são decisões da equipe, não critérios normativos da ISO/IEC 25010.</p>
 <h2 id="manutenibilidade-dupla-3">Manutenibilidade (Dupla 3)<a class="headerlink" href="#manutenibilidade-dupla-3" title="Permanent link">&para;</a></h2>
 <p>Os valores de cada métrica são classificados conforme as faixas abaixo e julgados por questão. M3.1 é medida separadamente para importação de arquivos (Q3.1) e edição de rótulos (Q3.2); portanto, cada componente recebe seu próprio julgamento. M3.2 responde à Q3.3.</p>
 <table>
@@ -1557,7 +1729,7 @@
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="20 de outubro de 2026 13:47:01 UTC">20 de outubro de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="20 de outubro de 2026 17:42:38 UTC">20 de outubro de 2026</span>
   </span>
 
     
