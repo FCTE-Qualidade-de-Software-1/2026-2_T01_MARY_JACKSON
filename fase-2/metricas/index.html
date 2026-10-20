@@ -906,6 +906,78 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Eficiência de desempenho (Dupla 2)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#m21-tempo-de-abertura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        M2.1: Tempo de abertura
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#m22-heap-apos-a-abertura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        M2.2: Heap após a abertura
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#m23-latencia-do-rotulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        M2.3: Latência do rótulo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#m24-tempo-de-exportacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        M2.4: Tempo de exportação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#m25-pico-de-heap-na-exportacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        M2.5: Pico de heap na exportação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#m26-maior-porte-aprovado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        M2.6: Maior porte aprovado
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1535,6 +1607,78 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Eficiência de desempenho (Dupla 2)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#m21-tempo-de-abertura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        M2.1: Tempo de abertura
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#m22-heap-apos-a-abertura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        M2.2: Heap após a abertura
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#m23-latencia-do-rotulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        M2.3: Latência do rótulo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#m24-tempo-de-exportacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        M2.4: Tempo de exportação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#m25-pico-de-heap-na-exportacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        M2.5: Pico de heap na exportação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#m26-maior-porte-aprovado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        M2.6: Maior porte aprovado
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1606,6 +1750,242 @@
 
 <h2 id="seguranca-dupla-1">Segurança (Dupla 1)<a class="headerlink" href="#seguranca-dupla-1" title="Permanent link">&para;</a></h2>
 <h2 id="eficiencia-de-desempenho-dupla-2">Eficiência de desempenho (Dupla 2)<a class="headerlink" href="#eficiencia-de-desempenho-dupla-2" title="Permanent link">&para;</a></h2>
+<p>Foram selecionadas seis métricas para responder às quatro questões estabelecidas. Para cada porte e operação/formato, serão realizadas cinco tentativas válidas; interrupções externas serão registradas e repostas. Para M2.1 a M2.5, calcula-se a mediana das quatro ou cinco tentativas bem-sucedidas com dados completos; menos de quatro sucessos tornam o cenário não conclusivo. Falhas não recebem valores artificiais de tempo ou memória.</p>
+<h3 id="m21-tempo-de-abertura">M2.1: Tempo de abertura<a class="headerlink" href="#m21-tempo-de-abertura" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Subcaracterística</td>
+<td>Comportamento temporal.</td>
+</tr>
+<tr>
+<td>Questão associada</td>
+<td>Q2.1.</td>
+</tr>
+<tr>
+<td>Componente</td>
+<td>Importação (abertura de arquivo).</td>
+</tr>
+<tr>
+<td>Definição</td>
+<td>Tempo da confirmação de abertura até o diagrama estável e interativo.</td>
+</tr>
+<tr>
+<td>Cálculo</td>
+<td><code>M2.1 = mediana(tf - ti)</code>, por porte.</td>
+</tr>
+<tr>
+<td>Fonte</td>
+<td>Vídeo/trace; ms.</td>
+</tr>
+<tr>
+<td>Coleta</td>
+<td>Abrir o arquivo de cada porte por Abrir de/Dispositivo, substituindo o documento atual, sem incluir digitação ou navegação humana nos seletores.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="m22-heap-apos-a-abertura">M2.2: Heap após a abertura<a class="headerlink" href="#m22-heap-apos-a-abertura" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Subcaracterística</td>
+<td>Utilização de recursos.</td>
+</tr>
+<tr>
+<td>Questão associada</td>
+<td>Q2.1.</td>
+</tr>
+<tr>
+<td>Componente</td>
+<td>Importação (abertura de arquivo).</td>
+</tr>
+<tr>
+<td>Definição</td>
+<td>Heap JS usado 2 s após a estabilização da abertura.</td>
+</tr>
+<tr>
+<td>Cálculo</td>
+<td><code>M2.2 = mediana(heap 2 s após a abertura)</code>, por porte.</td>
+</tr>
+<tr>
+<td>Fonte</td>
+<td>DevTools; MiB.</td>
+</tr>
+<tr>
+<td>Coleta</td>
+<td>Registrar o heap JS na mesma tentativa de M2.1; valores em bytes são convertidos por <code>MiB = bytes / 2^20</code>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="m23-latencia-do-rotulo">M2.3: Latência do rótulo<a class="headerlink" href="#m23-latencia-do-rotulo" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Subcaracterística</td>
+<td>Comportamento temporal.</td>
+</tr>
+<tr>
+<td>Questão associada</td>
+<td>Q2.2.</td>
+</tr>
+<tr>
+<td>Componente</td>
+<td>Rótulos.</td>
+</tr>
+<tr>
+<td>Definição</td>
+<td>Latência da confirmação do novo rótulo até sua renderização estável.</td>
+</tr>
+<tr>
+<td>Cálculo</td>
+<td><code>M2.3 = mediana(tf - ti)</code>, por porte.</td>
+</tr>
+<tr>
+<td>Fonte</td>
+<td>Vídeo/trace; ms.</td>
+</tr>
+<tr>
+<td>Coleta</td>
+<td>Na forma v0001, alterar o rótulo de Rotulo 0001 para Rotulo A001.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="m24-tempo-de-exportacao">M2.4: Tempo de exportação<a class="headerlink" href="#m24-tempo-de-exportacao" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Subcaracterística</td>
+<td>Comportamento temporal.</td>
+</tr>
+<tr>
+<td>Questão associada</td>
+<td>Q2.3.</td>
+</tr>
+<tr>
+<td>Componente</td>
+<td>Exportação PNG, PDF e SVG.</td>
+</tr>
+<tr>
+<td>Definição</td>
+<td>Tempo da confirmação final da exportação até o arquivo íntegro disponível.</td>
+</tr>
+<tr>
+<td>Cálculo</td>
+<td><code>M2.4 = mediana(tf - ti)</code>, por porte e formato.</td>
+</tr>
+<tr>
+<td>Fonte</td>
+<td>Vídeo/arquivo; ms.</td>
+</tr>
+<tr>
+<td>Coleta</td>
+<td>Exportar cada formato separadamente e validar o arquivo gerado no formato solicitado.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="m25-pico-de-heap-na-exportacao">M2.5: Pico de heap na exportação<a class="headerlink" href="#m25-pico-de-heap-na-exportacao" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Subcaracterística</td>
+<td>Utilização de recursos.</td>
+</tr>
+<tr>
+<td>Questão associada</td>
+<td>Q2.3.</td>
+</tr>
+<tr>
+<td>Componente</td>
+<td>Exportação PNG, PDF e SVG.</td>
+</tr>
+<tr>
+<td>Definição</td>
+<td>Máximo do heap JS na janela de M2.4.</td>
+</tr>
+<tr>
+<td>Cálculo</td>
+<td><code>M2.5 = mediana(picos de heap)</code>, por porte e formato.</td>
+</tr>
+<tr>
+<td>Fonte</td>
+<td>DevTools; MiB.</td>
+</tr>
+<tr>
+<td>Coleta</td>
+<td>Registrar o maior valor do heap JS durante cada exportação de M2.4; valores em bytes são convertidos por <code>MiB = bytes / 2^20</code>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="m26-maior-porte-aprovado">M2.6: Maior porte aprovado<a class="headerlink" href="#m26-maior-porte-aprovado" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Subcaracterística</td>
+<td>Capacidade.</td>
+</tr>
+<tr>
+<td>Questão associada</td>
+<td>Q2.4.</td>
+</tr>
+<tr>
+<td>Componente</td>
+<td>Fluxo completo (abrir, rótulo e exportar PNG, PDF e SVG).</td>
+</tr>
+<tr>
+<td>Definição</td>
+<td>Maior porte com ao menos 4/5 sucessos em cada operação.</td>
+</tr>
+<tr>
+<td>Cálculo</td>
+<td><code>M2.6 = maior porte com &gt;= 4/5 sucessos em cada operação</code>.</td>
+</tr>
+<tr>
+<td>Fonte</td>
+<td>CSV/arquivos; formas.</td>
+</tr>
+<tr>
+<td>Coleta</td>
+<td>Ensaiar os cinco portes e consolidar os sucessos e falhas registrados nas tentativas de M2.1 a M2.5.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Nota:</strong> <code>tf</code> e <code>ti</code> representam os instantes final e inicial de cada operação; a mediana é calculada sobre as tentativas bem-sucedidas de cada cenário. Os cinco arquivos sintéticos serão identificados por hash, e versão/build, navegador, hardware, cache e opções de exportação serão registrados.</p>
 <h2 id="manutenibilidade-dupla-3">Manutenibilidade (Dupla 3)<a class="headerlink" href="#manutenibilidade-dupla-3" title="Permanent link">&para;</a></h2>
 <p>Foram selecionadas duas métricas para responder às três questões estabelecidas. A primeira será aplicada separadamente aos componentes de importação de arquivos e edição de rótulos; a segunda, ao código responsável pela exportação de arquivos. A coleta será realizada por análise estática utilizando o SonarCloud.</p>
 <h3 id="m31-complexidade-cognitiva-media-por-funcao">M3.1 — Complexidade cognitiva média por função<a class="headerlink" href="#m31-complexidade-cognitiva-media-por-funcao" title="Permanent link">&para;</a></h3>
@@ -1707,7 +2087,7 @@
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="20 de outubro de 2026 13:47:01 UTC">20 de outubro de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="20 de outubro de 2026 17:27:47 UTC">20 de outubro de 2026</span>
   </span>
 
     
