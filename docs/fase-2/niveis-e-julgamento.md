@@ -2,6 +2,39 @@
 
 <!-- O que entra aqui: faixas de pontuação de cada métrica e a regra que leva do valor medido ao julgamento, por questão e por objetivo. Rubrica F2-C5. -->
 
+## Eficiência de desempenho (dupla 2)
+
+Os valores de M2.1 a M2.5 são comparados a um limite L, definido por métrica, porte e formato, e julgados pela razão `r = x / L`, em que `x` é a mediana observada. Os limites abaixo são candidatos, ainda não aprovados; a tolerância crescente por porte e a distinção por formato serão avaliadas no piloto e aprovadas pelo requisitante antes da coleta.
+
+| Métrica/unidade            | 50    | 300    | 1.000  | 2.000  | 5.000  |
+| -------------------------- | ----- | ------ | ------ | ------ | ------ |
+| M2.1 abrir (ms)            | 2.000 | 3.500  | 6.500  | 11.000 | 24.000 |
+| M2.2 heap após abrir (MiB) | 120   | 170    | 280    | 440    | 800    |
+| M2.3 rótulo (ms)           | 300   | 450    | 700    | 1.100  | 1.800  |
+| M2.4 PNG (ms)              | 4.000 | 6.000  | 11.000 | 20.000 | 45.000 |
+| M2.4 PDF (ms)              | 7.000 | 10.000 | 20.000 | 35.000 | 75.000 |
+| M2.4 SVG (ms)              | 3.000 | 5.000  | 9.000  | 17.000 | 40.000 |
+| M2.5 PNG (MiB)             | 180   | 240    | 400    | 650    | 1.100  |
+| M2.5 PDF (MiB)             | 180   | 240    | 400    | 650    | 1.100  |
+| M2.5 SVG (MiB)             | 170   | 230    | 380    | 620    | 1.050  |
+
+| Métrica         | Nota 5        | Nota 4          | Nota 3          | Nota 2          | Nota 1  |
+| --------------- | ------------- | --------------- | --------------- | --------------- | ------- |
+| M2.1 a M2.5 (r) | 0 <= r <= 0,5 | 0,5 < r <= 1    | 1 < r <= 1,5    | 1,5 < r <= 2    | r > 2   |
+| M2.6 (porte)    | 5.000 formas  | 2.000 formas    | 1.000 formas    | 300 formas      | 50 formas ou nenhum porte aprovado |
+
+A nota de cada métrica de M2.1 a M2.5 é a menor entre seus cenários, com medianas e notas de cada cenário preservadas no registro. Para M2.6, todos os cinco portes devem ser ensaiados, e os casos "50 formas" e "nenhum porte aprovado" são relatados separadamente. Amostras incompletas não demonstram limite de capacidade.
+
+| Questão ou objetivo | Regra de julgamento         |
+| ------------------- | --------------------------- |
+| Q2.1                | mínimo(M2.1, M2.2)          |
+| Q2.2                | M2.3                        |
+| Q2.3                | mínimo(M2.4, M2.5)          |
+| Q2.4                | M2.6                        |
+| G2                  | mínimo(Q2.1, Q2.2, Q2.3, Q2.4) |
+
+Dados ausentes, instrumentos inviáveis ou critérios não aprovados impedem a nota global; informa-se avaliação parcial. Os limites e níveis apresentados são decisões da equipe, não critérios normativos da ISO/IEC 25010.
+
 
 ## Manutenibilidade (Dupla 3)
 
