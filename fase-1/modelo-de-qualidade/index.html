@@ -612,6 +612,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modelo de qualidade
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -628,6 +646,69 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#base-e-adaptacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Base e adaptação
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subcaracteristicas-selecionadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subcaracterísticas selecionadas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#priorizacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Priorização
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caracteristicas-nao-selecionadas-e-compromissos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Características não selecionadas e compromissos
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1411,6 +1492,58 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#base-e-adaptacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Base e adaptação
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subcaracteristicas-selecionadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subcaracterísticas selecionadas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#priorizacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Priorização
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caracteristicas-nao-selecionadas-e-compromissos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Características não selecionadas e compromissos
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1435,9 +1568,140 @@
 
 
 <h1 id="modelo-de-qualidade">Modelo de qualidade<a class="headerlink" href="#modelo-de-qualidade" title="Permanent link">&para;</a></h1>
-<!-- O que entra aqui: adaptação da ISO/IEC 25010 ao draw.io, com justificativa e diagrama ligando características e subcaracterísticas. Aula 07, pág. 14; Aula 02-3. Rubrica Fase 1, critério 4. -->
-
-<p><em>Em elaboração.</em></p>
+<h2 id="base-e-adaptacao">Base e adaptação<a class="headerlink" href="#base-e-adaptacao" title="Permanent link">&para;</a></h2>
+<p>A base é o <strong>modelo de qualidade de produto da ISO/IEC 25010:2023</strong>, que organiza a qualidade em nove características. A equipe seleciona três delas para o <a href="../proposito/">propósito de adoção</a>: <strong>Segurança, Eficiência de desempenho e Manutenibilidade</strong>. O recorte e as prioridades são decisões do projeto, sem representar uma classificação completa do produto. A única referência normativa adotada nesta adaptação é a <a href="https://www.iso.org/standard/78176.html">ISO/IEC 25010:2023</a>.</p>
+<p>O diagrama mostra as características, suas subcaracterísticas selecionadas e as partes interessadas que motivam a seleção. Ele representa o modelo da Fase 1; os objetivos, as questões e as métricas serão detalhados na Fase 2.</p>
+<pre class="mermaid"><code>flowchart TB
+    ISO["ISO/IEC 25010:2023&lt;br/&gt;Modelo de qualidade de produto"]
+    ISO --&gt; SEG["Segurança"]
+    ISO --&gt; EFI["Eficiência de desempenho"]
+    ISO --&gt; MAN["Manutenibilidade"]
+    SEG --&gt; SEG1["Confidencialidade"]
+    SEG --&gt; SEG2["Integridade"]
+    EFI --&gt; EFI1["Comportamento temporal"]
+    EFI --&gt; EFI2["Utilização de recursos"]
+    EFI --&gt; EFI3["Capacidade"]
+    MAN --&gt; MAN1["Analisabilidade"]
+    MAN --&gt; MAN2["Modificabilidade"]
+    TI(["Infraestrutura e clientes"]) -.-&gt; SEG
+    US(["Usuários finais"]) -.-&gt; EFI
+    DEV(["Mantenedores"]) -.-&gt; MAN</code></pre>
+<p><em>Figura 1. Modelo de qualidade adaptado ao fluxo abrir–editar rótulos–exportar. Linhas contínuas indicam a decomposição do modelo; linhas tracejadas indicam as partes interessadas que motivam a seleção. Fonte: elaboração da equipe, com base na ISO/IEC 25010:2023.</em></p>
+<h2 id="subcaracteristicas-selecionadas">Subcaracterísticas selecionadas<a class="headerlink" href="#subcaracteristicas-selecionadas" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Característica</th>
+<th>Subcaracterística</th>
+<th>Aplicação no escopo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Segurança</td>
+<td>Confidencialidade</td>
+<td>Examinar a proteção das informações dos diagramas durante a abertura e a exportação.</td>
+</tr>
+<tr>
+<td>Segurança</td>
+<td>Integridade</td>
+<td>Examinar a proteção contra alterações indevidas nos fluxos de arquivos e rótulos.</td>
+</tr>
+<tr>
+<td>Eficiência de desempenho</td>
+<td>Comportamento temporal</td>
+<td>Avaliar o tempo para abrir, atualizar o texto de um rótulo e exportar em cada formato.</td>
+</tr>
+<tr>
+<td>Eficiência de desempenho</td>
+<td>Utilização de recursos</td>
+<td>Avaliar a memória JavaScript do editor nas operações selecionadas, sem equipará-la à memória total do ambiente.</td>
+</tr>
+<tr>
+<td>Eficiência de desempenho</td>
+<td>Capacidade</td>
+<td>Identificar o maior porte aprovado entre as cargas de 50, 300, 1.000, 2.000 e 5.000 formas, considerando o fluxo completo e os critérios que serão definidos na Fase 2.</td>
+</tr>
+<tr>
+<td>Manutenibilidade</td>
+<td>Analisabilidade</td>
+<td>Examinar a facilidade de compreender o código de importação e edição de rótulos, apoiando a identificação de pontos de alteração.</td>
+</tr>
+<tr>
+<td>Manutenibilidade</td>
+<td>Modificabilidade</td>
+<td>Examinar aspectos do código de exportação que influenciam o esforço e os impactos de mudanças.</td>
+</tr>
+</tbody>
+</table>
+<p>Para Eficiência, mantêm-se as três subcaracterísticas porque rapidez, consumo de recursos e porte suportado respondem a necessidades distintas dos <a href="../partes-interessadas/#necessidades-de-eficiencia">usuários finais</a>. A observação de recursos é parcial: o projeto delimita a coleta à memória JavaScript, sem cobrir todos os recursos computacionais.</p>
+<p>O recorte de Segurança em confidencialidade e integridade acompanha o objetivo já fornecido pela Dupla 1 no Overleaf. O de Manutenibilidade em analisabilidade e modificabilidade acompanha o planejamento da Dupla 3 para os componentes selecionados. As demais subcaracterísticas dessas duas características não receberão julgamento próprio; as duplas responsáveis deverão explicitar a cobertura e as limitações dos seus instrumentos na Fase 2.</p>
+<h2 id="priorizacao">Priorização<a class="headerlink" href="#priorizacao" title="Permanent link">&para;</a></h2>
+<p>A <strong>nota de ênfase, de 1 a 5</strong>, expressa a prioridade relativa da característica para o esforço de avaliação: quanto maior a nota, maior a atenção proposta. Não é uma nota de qualidade do draw.io, uma probabilidade de falha nem um limiar de aprovação. Os valores deverão ser validados para o cenário do requisitante.</p>
+<table>
+<thead>
+<tr>
+<th>Característica</th>
+<th>Ênfase</th>
+<th>Justificativa para a decisão do requisitante</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Segurança</strong></td>
+<td><strong>5/5</strong></td>
+<td>O cenário envolve arquivos de clientes e hospedagem própria; a proteção da confidencialidade e da integridade condiciona a adoção. A nota segue a proposta da Dupla 1 no ponto de controle.</td>
+</tr>
+<tr>
+<td><strong>Eficiência de desempenho</strong></td>
+<td><strong>4/5</strong></td>
+<td>Atrasos e consumo excessivo de memória podem interromper as três operações centrais, sobretudo em diagramas maiores. Tem prioridade alta; limites de porte podem ser considerados como ressalva de adoção, mantendo Segurança como prioridade máxima neste cenário.</td>
+</tr>
+<tr>
+<td><strong>Manutenibilidade</strong></td>
+<td><strong>4/5</strong></td>
+<td>Compreender e alterar os três componentes importa para corrigir e adaptar uma instalação própria. O recorte não cobre a manutenção de todo o produto; a nota preserva a contribuição da Dupla 3.</td>
+</tr>
+</tbody>
+</table>
+<p>As justificativas detalhadas estão em <a href="../caracteristicas/">características e priorização</a>.</p>
+<h2 id="caracteristicas-nao-selecionadas-e-compromissos">Características não selecionadas e compromissos<a class="headerlink" href="#caracteristicas-nao-selecionadas-e-compromissos" title="Permanent link">&para;</a></h2>
+<p>A edição de 2023 utiliza <strong>capacidade de interação</strong> e <strong>flexibilidade</strong>, em substituição às denominações usabilidade e portabilidade da edição anterior, e inclui <strong>Safety</strong>. O projeto mantém a terminologia da edição de 2023; abaixo, <em>Safety</em> designa a proteção contra danos a pessoas, patrimônio ou ambiente, distinguindo-a de <em>Security</em> (Segurança).</p>
+<table>
+<thead>
+<tr>
+<th>Característica não selecionada</th>
+<th>Motivo do recorte e consequência</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Adequação funcional</td>
+<td>O estudo fixa três operações e concentra o julgamento nas características escolhidas. Não avalia a completude ou a correção de todas as funções; conferir o funcionamento dos arquivos durante os ensaios não cobre essa característica inteira.</td>
+</tr>
+<tr>
+<td>Compatibilidade</td>
+<td>Integrações, coexistência e intercâmbio amplo com outros sistemas estão fora do ambiente escolhido. A abertura e a exportação dos arquivos selecionados não demonstram interoperabilidade geral.</td>
+</tr>
+<tr>
+<td>Capacidade de interação</td>
+<td>Não estão previstas sessões com usuários nem avaliação sistemática da interação. O tempo de resposta observado não permite concluir sobre facilidade de aprendizagem, operação ou acessibilidade.</td>
+</tr>
+<tr>
+<td>Confiabilidade</td>
+<td>Não haverá estudo próprio de disponibilidade, tolerância a falhas e recuperação. Registrar falhas nos ensaios não permite generalizar a confiabilidade do serviço.</td>
+</tr>
+<tr>
+<td>Flexibilidade</td>
+<td>Não serão comparadas plataformas, configurações ou estratégias de adaptação e escalabilidade da implantação. Variar o porte dos diagramas atende ao recorte de capacidade, sem cobrir a flexibilidade do produto.</td>
+</tr>
+<tr>
+<td>Safety</td>
+<td>O cenário não inclui operação crítica com análise específica de danos a pessoas, patrimônio ou ambiente. Esses riscos não receberão avaliação própria.</td>
+</tr>
+</tbody>
+</table>
+<p>O compromisso é concentrar o esforço nas decisões de adoção priorizadas, aceitando que as dimensões excluídas permaneçam sem julgamento. Isso não pressupõe que elas sejam atendidas por o draw.io ser um produto já existente.</p>
 
 
 
@@ -1458,7 +1722,7 @@
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="16 de outubro de 2026 20:56:18 UTC">16 de outubro de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="20 de outubro de 2026 02:24:02 UTC">20 de outubro de 2026</span>
   </span>
 
     

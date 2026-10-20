@@ -528,6 +528,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Propósito da avaliação
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -544,6 +562,58 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cenario-e-requisitante" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cenário e requisitante
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proposito-e-decisoes-apoiadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Propósito e decisões apoiadas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uso-pretendido-dos-resultados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Uso pretendido dos resultados
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1411,6 +1481,47 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cenario-e-requisitante" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cenário e requisitante
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proposito-e-decisoes-apoiadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Propósito e decisões apoiadas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uso-pretendido-dos-resultados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Uso pretendido dos resultados
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1435,9 +1546,42 @@
 
 
 <h1 id="proposito-da-avaliacao">Propósito da avaliação<a class="headerlink" href="#proposito-da-avaliacao" title="Permanent link">&para;</a></h1>
-<!-- O que entra aqui: por que avaliar, para quem e quais decisões serão tomadas com o resultado. Aula 07, pág. 8 (opções de objetivo). Rubrica Fase 1, critério 1. -->
-
-<p><em>Em elaboração.</em></p>
+<h2 id="cenario-e-requisitante">Cenário e requisitante<a class="headerlink" href="#cenario-e-requisitante" title="Permanent link">&para;</a></h2>
+<p>A <strong>diretoria de TI de uma empresa júnior de software da universidade</strong>, em cenário hipotético, considera hospedar o draw.io em infraestrutura própria para produzir diagramas de arquitetura, UML e bancos de dados nos projetos com clientes. A intenção é manter o controle sobre os arquivos e sobre a configuração do serviço.</p>
+<p>O objeto proposto é o <strong>draw.io web, versão 32.2.0, hospedado em Docker, em ambiente local de testes</strong>, com os limites e as pendências de identificação descritos no <a href="../escopo/">escopo</a>. O cenário representa uma necessidade de avaliação; não constitui registro de entrevista, aprovação do requisitante ou implantação já realizada.</p>
+<h2 id="proposito-e-decisoes-apoiadas">Propósito e decisões apoiadas<a class="headerlink" href="#proposito-e-decisoes-apoiadas" title="Permanent link">&para;</a></h2>
+<p>O propósito é apoiar a decisão de adoção do draw.io, avaliando <strong>Segurança, Eficiência de desempenho e Manutenibilidade</strong> no fluxo <strong>abrir diagramas, editar rótulos e exportar arquivos</strong>. A equipe Mary Jackson atua como avaliadora externa ao desenvolvimento de um produto de terceiros e de código aberto.</p>
+<table>
+<thead>
+<tr>
+<th>Característica</th>
+<th>Decisão que os resultados devem apoiar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Segurança</td>
+<td>Definir as condições para abrir diagramas recebidos de terceiros e utilizar os mecanismos de exportação configurados na instalação própria.</td>
+</tr>
+<tr>
+<td>Eficiência de desempenho</td>
+<td>Determinar quais portes de diagrama permitem executar o fluxo central e se será necessário recomendar limites de tamanho.</td>
+</tr>
+<tr>
+<td>Manutenibilidade</td>
+<td>Avaliar a viabilidade de analisar, corrigir e adaptar o código dos componentes selecionados, caso a empresa mantenha uma versão própria.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="uso-pretendido-dos-resultados">Uso pretendido dos resultados<a class="headerlink" href="#uso-pretendido-dos-resultados" title="Permanent link">&para;</a></h2>
+<p>A diretoria de TI poderá decidir entre:</p>
+<ol>
+<li><strong>Adotar</strong>, quando as evidências atenderem aos critérios acordados para o cenário.</li>
+<li><strong>Adotar com ressalvas</strong>, com restrições justificadas, como limites de porte, cuidados com arquivos externos ou uma política de atualização.</li>
+<li><strong>Não adotar</strong>, quando os riscos ou as limitações identificados inviabilizarem o uso pretendido.</li>
+</ol>
+<p>O relatório final deverá apresentar evidências, limites de validade e recomendações que permitam distinguir essas alternativas. As notas de ênfase expressam a <a href="../modelo-de-qualidade/#priorizacao">prioridade das características</a>, sem antecipar a decisão de adoção. Os critérios quantitativos e a forma de julgamento serão especificados na Fase 2.</p>
+<p>As expectativas de cada participante estão em <a href="../partes-interessadas/">requisitante e partes interessadas</a>.</p>
 
 
 
@@ -1458,7 +1602,7 @@
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="16 de outubro de 2026 20:56:18 UTC">16 de outubro de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="20 de outubro de 2026 02:02:24 UTC">20 de outubro de 2026</span>
   </span>
 
     

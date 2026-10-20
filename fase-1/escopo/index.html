@@ -668,6 +668,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Escopo e profundidade
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -684,6 +702,80 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#produto-versao-e-ambiente-alvo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Produto, versão e ambiente alvo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#componentes-incluidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Componentes incluídos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exclusoes-e-motivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exclusões e motivos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#profundidade-da-avaliacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Profundidade da avaliação
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limites-de-validade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limites de validade
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1411,6 +1503,69 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#produto-versao-e-ambiente-alvo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Produto, versão e ambiente alvo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#componentes-incluidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Componentes incluídos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exclusoes-e-motivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exclusões e motivos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#profundidade-da-avaliacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Profundidade da avaliação
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limites-de-validade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limites de validade
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1435,9 +1590,120 @@
 
 
 <h1 id="escopo-e-profundidade">Escopo e profundidade<a class="headerlink" href="#escopo-e-profundidade" title="Permanent link">&para;</a></h1>
-<!-- O que entra aqui: o que entra e o que fica fora da avaliação, o porquê de cada corte e os limites de validade dos resultados. Rubrica Fase 1, critério 6. -->
-
-<p><em>Em elaboração.</em></p>
+<h2 id="produto-versao-e-ambiente-alvo">Produto, versão e ambiente alvo<a class="headerlink" href="#produto-versao-e-ambiente-alvo" title="Permanent link">&para;</a></h2>
+<p>O recorte proposto é o <strong>draw.io web, versão 32.2.0, hospedado em Docker, em ambiente local de testes</strong>, para apoiar o <a href="../proposito/">cenário de adoção em infraestrutura própria</a>. Essa identificação é o alvo do planejamento, sem pressupor que a instalação ou a coleta já tenham ocorrido.</p>
+<table>
+<thead>
+<tr>
+<th>Elemento</th>
+<th>Delimitação e situação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Distribuição e versão alvo</td>
+<td>Editor web draw.io 32.2.0. A disponibilidade da imagem correspondente e a versão/build executada precisam ser verificadas.</td>
+</tr>
+<tr>
+<td>Implantação</td>
+<td>Docker, em ambiente local de testes; registrar imagem, tag, digest, configuração e versões dos serviços utilizados antes da coleta.</td>
+</tr>
+<tr>
+<td>Código-fonte</td>
+<td>Fixar a tag ou o commit correspondente à versão avaliada e os arquivos de cada componente antes da análise de Manutenibilidade.</td>
+</tr>
+<tr>
+<td>Navegador e máquina cliente</td>
+<td>Pendentes: navegador e versão, sistema operacional, CPU e RAM. Manter as condições documentadas e comparáveis entre as medições.</td>
+</tr>
+<tr>
+<td>Máquina servidora e exportação</td>
+<td>Pendentes: recursos do host e do contêiner, limites configurados e caminho de exportação de cada formato, incluindo eventual serviço de exportação próprio.</td>
+</tr>
+<tr>
+<td>Diagramas de referência</td>
+<td>Cargas sintéticas planejadas de <strong>50, 300, 1.000, 2.000 e 5.000 formas</strong>; registrar geração, estrutura e identificação dos arquivos.</td>
+</tr>
+</tbody>
+</table>
+<p>A <a href="../produto/">descrição do produto</a> ainda cita a versão desktop 32.2.0. A conciliação dessa página com o ambiente web proposto cabe à Dupla 3 e à decisão do grupo. Nenhuma conclusão deve misturar evidências de distribuições ou versões diferentes.</p>
+<h2 id="componentes-incluidos">Componentes incluídos<a class="headerlink" href="#componentes-incluidos" title="Permanent link">&para;</a></h2>
+<p>O fluxo central é <strong>abrir um diagrama, editar um rótulo e exportar</strong>. A abertura corresponde à operação <strong>Abrir de/Dispositivo</strong>, substituindo o documento atual; o comando deve ser confirmado na instalação de referência. Não se inclui neste recorte a inserção de conteúdo em um diagrama já aberto por colagem ou importação adicional.</p>
+<table>
+<thead>
+<tr>
+<th>Componente e operação</th>
+<th>Segurança</th>
+<th>Eficiência de desempenho</th>
+<th>Manutenibilidade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Importação:</strong> abrir arquivo local <code>.drawio</code>/<code>.xml</code>.</td>
+<td>Tratamento de arquivos recebidos de terceiros e proteção dos dados na abertura.</td>
+<td>Tempo de abertura e memória JavaScript do editor após abrir.</td>
+<td>Analisabilidade do código de leitura e conversão.</td>
+</tr>
+<tr>
+<td><strong>Rótulos:</strong> alterar o texto de uma forma e observar sua atualização; considerar o tratamento de conteúdo HTML quando aplicável à análise de Segurança.</td>
+<td>Tratamento do conteúdo apresentado nos rótulos.</td>
+<td>Tempo de resposta da atualização do texto.</td>
+<td>Analisabilidade do código de edição e tratamento dos rótulos.</td>
+</tr>
+<tr>
+<td><strong>Exportação:</strong> gerar arquivos <strong>PNG, PDF e SVG</strong>, distinguindo os formatos.</td>
+<td>Confidencialidade e integridade na geração e nos serviços efetivamente utilizados.</td>
+<td>Tempo de geração e memória JavaScript durante a operação.</td>
+<td>Modificabilidade do código relacionado às exportações.</td>
+</tr>
+</tbody>
+</table>
+<p>Os mecanismos de exportação podem envolver dependências além do editor. Deve-se identificar o caminho utilizado por cada formato na versão e na configuração fixadas; não se presume que toda a execução ocorra no navegador. A referência para identificar a implantação é o <a href="https://github.com/jgraph/docker-drawio">repositório oficial Docker do draw.io</a>, conferido na revisão correspondente à imagem utilizada.</p>
+<h2 id="exclusoes-e-motivos">Exclusões e motivos<a class="headerlink" href="#exclusoes-e-motivos" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Item fora do escopo</th>
+<th>Motivo e limite do corte</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Login e integrações com armazenamento em nuvem</td>
+<td>Exigem contas e serviços de terceiros e não fazem parte do fluxo com arquivos locais definido para o cenário.</td>
+</tr>
+<tr>
+<td>Edição colaborativa em tempo real</td>
+<td>Acrescenta usuários simultâneos e dependências que não serão examinados neste recorte.</td>
+</tr>
+<tr>
+<td>Aplicativo desktop e instância pública <code>app.diagrams.net</code></td>
+<td>São ambientes diferentes da instalação web própria proposta.</td>
+</tr>
+<tr>
+<td>Plugins e extensões opcionais</td>
+<td>Introduzem comportamentos e configurações além dos componentes selecionados. As formas usadas nas cargas devem permanecer fixas e documentadas.</td>
+</tr>
+<tr>
+<td>Incorporação em outros sites e proxy de imagens como recursos independentes</td>
+<td>Não serão avaliados isoladamente. Se uma dependência participar da exportação escolhida, seu uso deve ser registrado e considerado dentro desse fluxo.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="profundidade-da-avaliacao">Profundidade da avaliação<a class="headerlink" href="#profundidade-da-avaliacao" title="Permanent link">&para;</a></h2>
+<p>A avaliação examinará os três componentes, sem pretender certificar o produto inteiro. Para Eficiência, prevê-se observar o comportamento do fluxo em condições controladas; para Manutenibilidade, analisar o código dos componentes; para Segurança, examinar evidências públicas e os mecanismos pertinentes à versão selecionada, sob responsabilidade da Dupla 1. O detalhamento dos procedimentos pertence às fases seguintes.</p>
+<p>Não estão previstas busca de vulnerabilidades inéditas, avaliação de todas as funções ou sessões de testes com usuários. A seleção dessas abordagens não pressupõe que a ferramenta seja segura, rápida ou fácil de manter.</p>
+<h2 id="limites-de-validade">Limites de validade<a class="headerlink" href="#limites-de-validade" title="Permanent link">&para;</a></h2>
+<ul>
+<li>As conclusões ficarão vinculadas à versão, ao código, às configurações, às máquinas, ao navegador e às cargas documentados. Fixar apenas a imagem Docker não controla os recursos da máquina cliente.</li>
+<li>O recorte de memória de Eficiência corresponde ao <strong>heap JavaScript do editor</strong>; ele não representa a RAM total do navegador, da máquina ou de um eventual servidor de exportação.</li>
+<li>A capacidade será limitada ao maior porte aprovado <strong>entre os cinco ensaiados</strong>, conforme os critérios posteriores. Não representará um máximo absoluto do produto nem será inferida apenas pelo número de formas.</li>
+<li>As cargas sintéticas não abrangem todas as combinações de conteúdo, conectores, estilos e imagens dos diagramas reais.</li>
+<li>Evidências de Segurança precisam identificar fonte, data, componente e aplicabilidade à versão; números de CVE não verificados não fundamentam conclusões.</li>
+<li>A análise de Manutenibilidade ficará restrita ao código selecionado, sem generalizar seus resultados para todo o repositório.</li>
+</ul>
+<p>O <a href="../modelo-de-qualidade/">modelo de qualidade</a> explica as características selecionadas e os compromissos assumidos por esse recorte.</p>
 
 
 
@@ -1458,7 +1724,7 @@
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="16 de outubro de 2026 20:56:18 UTC">16 de outubro de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="20 de outubro de 2026 02:02:24 UTC">20 de outubro de 2026</span>
   </span>
 
     
