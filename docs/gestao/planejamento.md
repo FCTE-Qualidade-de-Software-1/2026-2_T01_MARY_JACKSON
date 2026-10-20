@@ -121,7 +121,7 @@ Fonte: estimativas enviadas por Heyttor e Lucas no grupo.
 
 - **Informações extras**
   - Horas estimadas: Dupla 1: 7 h; Dupla 2: 6 h (Pedro Ian) + __ h (Thiago); Dupla 3: __ h · Horas reais: __ h
-
+  - Em 19/10 a professora pediu o GQM no ponto de controle de 21/10. Objetivo, questões e hipóteses das três características foram antecipados para 21/10; fichas, diagrama GQM e rastreabilidade mantidos em 22/10.
 ---
 
 ## Sprint 3 - Entrega 1
