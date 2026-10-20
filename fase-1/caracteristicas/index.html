@@ -712,6 +712,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#seguranca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Segurança
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1498,6 +1509,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#seguranca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Segurança
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1533,6 +1555,16 @@
 <p><strong>Nota de ênfase: 4/5.</strong> A nota representa a prioridade desta característica na avaliação, não um resultado medido da qualidade do produto.</p>
 <p><strong>Por que é alta:</strong> os componentes avaliados envolvem importação e exportação de arquivos e edição de rótulos. Alterações nesses fluxos podem afetar a compatibilidade dos diagramas e o trabalho dos usuários. Avaliar a manutenibilidade ajuda a identificar o esforço para analisar, corrigir e evoluir esses componentes.</p>
 <p><strong>Por que não é mais alta:</strong> a avaliação está delimitada a três componentes do draw.io, não à manutenção do produto inteiro. Além disso, mudanças em formatos de arquivo e na representação dos diagramas podem gerar regressões em outras operações; por isso, a análise precisa considerar testes e compatibilidade, mas sua prioridade permanece abaixo da máxima neste escopo.</p>
+<h2 id="seguranca">Segurança<a class="headerlink" href="#seguranca" title="Permanent link">&para;</a></h2>
+<p><strong>Nota de ênfase: 5/5 (Crítica)</strong>
+Do ponto de vista da diretoria de TI da empresa júnior, a classificação é crítica porque a ferramenta é central no mapeamento da infraestrutura técnica. Sua fragilidade expõe diretamente os dados estratégicos, as topologias de rede e os acessos em nuvem da própria empresa e de seus clientes.</p>
+<p><strong>Por que é alta:</strong> os componentes avaliados (importação, tratamento de rótulos e exportação/proxy) processam entradas de dados externas e atuam como ponte direta entre o ambiente local, o navegador e repositórios corporativos em nuvem (como Google Drive, OneDrive e Confluence). Falhas de segurança nesses pontos — como Stored XSS e Path Traversal — possuem impacto severo, pois a abertura de um único arquivo malicioso pode permitir o roubo de tokens de sessão, o vazamento da arquitetura de rede e a movimentação lateral do atacante na infraestrutura da empresa.</p>
+<p><strong>Por que a avaliação se delimita a esses componentes:</strong> embora receba a classificação máxima de importância devido ao alto risco do vetor de ataque, a avaliação foca estritamente nos mecanismos de entrada, sanitização e saída da aplicação draw.io (ambiente web/Docker). A análise não se estende à segurança dos provedores de nuvem terceirizados nem às políticas globais de rede da organização, concentrando o escopo no impacto direto que o comprometimento dessas três frentes causa à confidencialidade e integridade dos dados da empresa júnior.</p>
+<p><strong>Evidências de Riscos (Base NVD):</strong>
+A criticidade e a necessidade de avaliações rigorosas são evidenciadas pelas recentes vulnerabilidades documentadas e corrigidas nos componentes da ferramenta:
+* <strong>CVE-2026-46642:</strong> Vulnerabilidade de <em>Stored XSS</em> na importação de arquivos, permitindo a execução automática de <em>scripts</em> maliciosos no momento da carga inicial do diagrama.
+* <strong>CVE-2026-58504:</strong> Vulnerabilidade de <em>Stored XSS</em> devido a falhas na sanitização de rótulos e formatação de texto das formas.
+* <strong>CVE-2026-63416:</strong> Vulnerabilidade de <em>Path Traversal</em> no servidor <em>proxy</em> de exportação, permitindo requisições de acesso não autorizado a diretórios locais.</p>
 
 
 
@@ -1553,7 +1585,7 @@
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="20 de outubro de 2026 02:02:24 UTC">20 de outubro de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="20 de outubro de 2026 16:20:29 UTC">20 de outubro de 2026</span>
   </span>
 
     
