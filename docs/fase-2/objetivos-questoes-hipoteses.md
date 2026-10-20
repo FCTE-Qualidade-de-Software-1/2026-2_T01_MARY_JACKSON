@@ -8,6 +8,28 @@ _Em elaboração._
 
 ## Eficiência de desempenho (Dupla 2)
 
+### Objetivo de medição
+
+| Elemento | Descrição |
+| --- | --- |
+| Identificador | G2 |
+| Objeto | Fluxo de abrir diagramas, editar rótulos e exportar (PNG, PDF e SVG) do _draw.io_ 32.2.0. |
+| Propósito | Avaliar tempo, memória e capacidade. |
+| Foco | Comportamento temporal, utilização de recursos e capacidade. |
+| Ponto de vista | Usuários que produzem diagramas e avaliadores. |
+| Contexto | Editor web em ambiente documentado e cinco cargas sintéticas definidas (50, 300, 1.000, 2.000 e 5.000 formas). |
+
+### Questões e hipóteses
+
+As questões e hipóteses derivam das necessidades R-ED-01 a R-ED-04 da [Fase 1](../fase-1/partes-interessadas.md). As hipóteses serão verificadas na E2.
+
+| Questão | Hipótese |
+| --- | --- |
+| **Q2.1**<br>Como a abertura se comporta em tempo e memória quando o porte aumenta? | **H2.1**<br>Ambos crescem com a carga, respeitando os limites aprovados. |
+| **Q2.2**<br>A edição de rótulos permanece responsiva com mais formas? | **H2.2**<br>A latência cresce, mas atende ao limite de cada carga. |
+| **Q2.3**<br>Como PNG, PDF e SVG diferem em tempo e pico de memória? | **H2.3**<br>Os custos variam por formato e atendem aos limites por carga. |
+| **Q2.4**<br>Qual o maior porte com fluxo completo repetível? | **H2.4**<br>Com 5.000 formas, cada uma das cinco operações terá pelo menos quatro sucessos em cinco tentativas válidas. |
+
 ## Manutenibilidade (Dupla 3)
 
 ### Objetivo de medição
