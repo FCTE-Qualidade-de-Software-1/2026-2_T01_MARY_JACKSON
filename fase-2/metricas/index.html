@@ -917,6 +917,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Manutenibilidade (Dupla 3)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#m31-complexidade-cognitiva-media-por-funcao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        M3.1 — Complexidade cognitiva média por função
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#m32-percentual-de-codigo-duplicado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        M3.2 — Percentual de código duplicado
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1518,6 +1546,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Manutenibilidade (Dupla 3)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#m31-complexidade-cognitiva-media-por-funcao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        M3.1 — Complexidade cognitiva média por função
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#m32-percentual-de-codigo-duplicado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        M3.2 — Percentual de código duplicado
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1548,10 +1604,89 @@
 <h1 id="metricas">Métricas<a class="headerlink" href="#metricas" title="Permanent link">&para;</a></h1>
 <!-- O que entra aqui: para cada métrica: definição, fórmula, fonte, procedimento de coleta e escala. Partir das medidas da ISO/IEC 25023. Rubrica F2-C4. -->
 
-<p><em>Em elaboração.</em></p>
 <h2 id="seguranca-dupla-1">Segurança (Dupla 1)<a class="headerlink" href="#seguranca-dupla-1" title="Permanent link">&para;</a></h2>
 <h2 id="eficiencia-de-desempenho-dupla-2">Eficiência de desempenho (Dupla 2)<a class="headerlink" href="#eficiencia-de-desempenho-dupla-2" title="Permanent link">&para;</a></h2>
 <h2 id="manutenibilidade-dupla-3">Manutenibilidade (Dupla 3)<a class="headerlink" href="#manutenibilidade-dupla-3" title="Permanent link">&para;</a></h2>
+<p>Foram selecionadas duas métricas para responder às três questões estabelecidas. A primeira será aplicada separadamente aos componentes de importação de arquivos e edição de rótulos; a segunda, ao código responsável pela exportação de arquivos. A coleta será realizada por análise estática utilizando o SonarCloud.</p>
+<h3 id="m31-complexidade-cognitiva-media-por-funcao">M3.1 — Complexidade cognitiva média por função<a class="headerlink" href="#m31-complexidade-cognitiva-media-por-funcao" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Subcaracterística</td>
+<td>Analisabilidade.</td>
+</tr>
+<tr>
+<td>Questões associadas</td>
+<td>Q3.1 e Q3.2.</td>
+</tr>
+<tr>
+<td>Componentes</td>
+<td>Importação de arquivos e edição de rótulos, analisados separadamente.</td>
+</tr>
+<tr>
+<td>Definição</td>
+<td>Média da complexidade cognitiva das funções pertencentes ao componente analisado.</td>
+</tr>
+<tr>
+<td>Cálculo</td>
+<td><code>M3.1 = C / F</code></td>
+</tr>
+<tr>
+<td>Fonte</td>
+<td>SonarCloud.</td>
+</tr>
+<tr>
+<td>Coleta</td>
+<td>Identificar as funções pertencentes a cada componente e registrar a complexidade cognitiva total e a quantidade de funções, separadamente para importação e edição de rótulos.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="m32-percentual-de-codigo-duplicado">M3.2 — Percentual de código duplicado<a class="headerlink" href="#m32-percentual-de-codigo-duplicado" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Subcaracterística</td>
+<td>Modificabilidade.</td>
+</tr>
+<tr>
+<td>Questão associada</td>
+<td>Q3.3.</td>
+</tr>
+<tr>
+<td>Componente</td>
+<td>Código de exportação PNG, PDF e SVG.</td>
+</tr>
+<tr>
+<td>Definição</td>
+<td>Percentual de linhas duplicadas em relação ao total de linhas analisadas no código de exportação.</td>
+</tr>
+<tr>
+<td>Cálculo</td>
+<td><code>M3.2 = (Ld / Lt) x 100</code></td>
+</tr>
+<tr>
+<td>Fonte</td>
+<td>SonarCloud.</td>
+</tr>
+<tr>
+<td>Coleta</td>
+<td>Analisar conjuntamente os arquivos de exportação e registrar a quantidade de linhas duplicadas e o total de linhas analisadas.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Nota:</strong> <code>C</code> representa a complexidade cognitiva total das funções analisadas; <code>F</code>, a quantidade de funções; <code>Ld</code>, as linhas duplicadas; e <code>Lt</code>, o total de linhas analisadas no escopo de exportação.</p>
 
 
 
@@ -1572,7 +1707,7 @@
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="16 de outubro de 2026 20:56:18 UTC">16 de outubro de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="20 de outubro de 2026 13:47:01 UTC">20 de outubro de 2026</span>
   </span>
 
     

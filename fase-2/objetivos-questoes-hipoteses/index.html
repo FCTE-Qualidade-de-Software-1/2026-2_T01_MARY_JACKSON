@@ -889,6 +889,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Manutenibilidade (Dupla 3)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo-de-medicao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo de medição
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#questoes-e-hipoteses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Questões e hipóteses
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1518,6 +1546,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Manutenibilidade (Dupla 3)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo-de-medicao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo de medição
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#questoes-e-hipoteses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Questões e hipóteses
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1552,6 +1608,65 @@
 <h2 id="seguranca-dupla-1">Segurança (Dupla 1)<a class="headerlink" href="#seguranca-dupla-1" title="Permanent link">&para;</a></h2>
 <h2 id="eficiencia-de-desempenho-dupla-2">Eficiência de desempenho (Dupla 2)<a class="headerlink" href="#eficiencia-de-desempenho-dupla-2" title="Permanent link">&para;</a></h2>
 <h2 id="manutenibilidade-dupla-3">Manutenibilidade (Dupla 3)<a class="headerlink" href="#manutenibilidade-dupla-3" title="Permanent link">&para;</a></h2>
+<h3 id="objetivo-de-medicao">Objetivo de medição<a class="headerlink" href="#objetivo-de-medicao" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Elemento</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Identificador</td>
+<td>G3</td>
+</tr>
+<tr>
+<td>Objeto</td>
+<td>Código-fonte dos componentes de importação de arquivos, edição de rótulos e exportação PNG/PDF/SVG do <em>draw.io</em>.</td>
+</tr>
+<tr>
+<td>Propósito</td>
+<td>Avaliar a manutenibilidade dos componentes selecionados.</td>
+</tr>
+<tr>
+<td>Foco</td>
+<td>Analisabilidade e modificabilidade.</td>
+</tr>
+<tr>
+<td>Ponto de vista</td>
+<td>Desenvolvedores responsáveis pela manutenção do software.</td>
+</tr>
+<tr>
+<td>Contexto</td>
+<td>Manutenção e evolução dos componentes selecionados do <em>draw.io</em>, versão 32.2.0.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="questoes-e-hipoteses">Questões e hipóteses<a class="headerlink" href="#questoes-e-hipoteses" title="Permanent link">&para;</a></h3>
+<p>As questões e hipóteses foram definidas para orientar a avaliação da manutenibilidade dos três componentes selecionados.</p>
+<table>
+<thead>
+<tr>
+<th>Questão</th>
+<th>Hipótese</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Q3.1</strong><br>Em que medida a complexidade do código responsável pela leitura e conversão de arquivos pode dificultar sua compreensão e manutenção?</td>
+<td><strong>H3.1</strong><br>O código de importação apresenta complexidade cognitiva média inferior ou igual a 10 por função.</td>
+</tr>
+<tr>
+<td><strong>Q3.2</strong><br>Em que medida a complexidade do código responsável pela edição e formatação de rótulos pode dificultar sua compreensão e manutenção?</td>
+<td><strong>H3.2</strong><br>O código de edição de rótulos apresenta complexidade cognitiva média inferior ou igual a 10 por função.</td>
+</tr>
+<tr>
+<td><strong>Q3.3</strong><br>Em que medida a duplicação de código entre as implementações de exportação PNG, PDF e SVG pode dificultar futuras modificações?</td>
+<td><strong>H3.3</strong><br>O percentual de código duplicado no escopo de exportação é inferior ou igual a 5%.</td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -1572,7 +1687,7 @@
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="16 de outubro de 2026 20:56:18 UTC">16 de outubro de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="20 de outubro de 2026 13:43:06 UTC">20 de outubro de 2026</span>
   </span>
 
     
