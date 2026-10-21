@@ -33,6 +33,8 @@ extra:
   generator: false
   # Custo da hora: R$ 1.950 (salário + 30%) ÷ 132 h/mês. Fontes: Glassdoor, DevMedia, Lei 11.788/2008.
   custo_hora: 14.77
+    # Soma das estimativas das três duplas para a E1 (docs/gestao/planejamento.md).
+  horas_estimadas: 70.5
 
 hooks:
   - hooks/horas.py
