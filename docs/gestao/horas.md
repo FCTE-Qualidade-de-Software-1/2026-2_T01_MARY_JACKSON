@@ -1,15 +1,9 @@
 # Horas e custos
 
-As tabelas abaixo são geradas automaticamente a partir de `dados/gestao/horas.csv`. Para registrar horas, acrescente uma linha nesse arquivo.
+As tabelas abaixo são geradas automaticamente a partir de `dados/gestao/horas.csv`. Para registrar horas, acrescente uma linha nesse arquivo com a data, o seu nome, o número da issue, a atividade e as horas (ponto decimal, sem vírgula na atividade).
 
 [[TABELA_HORAS]]
 
-## Como o custo da hora foi calculado
-
-O custo considera a remuneração de um estagiário de desenvolvimento, já que a equipe é formada por estudantes.
-
-| Item | Valor | Fonte |
-|---|---|---|
 ## Como o custo da hora foi calculado
 
 O custo considera a remuneração de um estagiário de desenvolvimento, já que a equipe é formada por estudantes.
@@ -22,6 +16,4 @@ O custo considera a remuneração de um estagiário de desenvolvimento, já que 
 | Horas por mês | 132 h | 6 h por dia × 22 dias úteis, limite da [Lei 11.788/2008, art. 10](https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/lei/l11788.htm) |
 | **Custo da hora** | **R$ 14,77** | R$ 1.950,00 ÷ 132 h |
 
-| | Horas | Custo |
-|---|---|---|
-| Estimado para a E1 (linha de base) | 70,5 h | R$ 1.041,29 |
+A estimativa de 70,5 h vem da soma das estimativas das três duplas, registradas no [planejamento](planejamento.md).
