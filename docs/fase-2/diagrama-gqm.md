@@ -29,3 +29,35 @@ Os diagramas abaixo mostram, para cada subcaracterística da eficiência de dese
 *Figura: capacidade, avaliada pelo maior porte aprovado (M2.6). Fonte: elaboração da equipe.*
 
 As definições estão em [Objetivos, questões e hipóteses](objetivos-questoes-hipoteses.md) e em [Métricas](metricas.md).
+
+## Segurança
+
+O objetivo G1 se desdobra em cinco questões (Q1.1 a Q1.5), cobrindo a verificação de vulnerabilidades conhecidas, a cobertura de sanitização e a resistência a variações de ataques, e cada questão é respondida por uma das três métricas (M1.1 a M1.3).
+
+![Diagrama GQM da segurança: o objetivo G1 liga-se às questões Q1.1 a Q1.5, que se ligam às métricas M1.1 a M1.3](../imagens/gqm-seguranca-g1.png)
+
+*Figura: hierarquia GQM da segurança. O objetivo G1 (nível conceitual) liga-se às questões Q1.1 a Q1.5 (nível operacional), e cada questão às suas métricas (nível quantitativo): Q1.1, Q1.2 e Q1.3 a M1.1; Q1.4 a M1.2; e Q1.5 a M1.3. Fonte: elaboração da equipe.*
+
+### Recorte por subcaracterística
+
+Os diagramas abaixo mostram, para cada foco da segurança (confidencialidade, integridade e resistência), quais questões e métricas a avaliam.
+
+#### Confidencialidade e integridade (Vulnerabilidades conhecidas)
+
+![Recorte do GQM da segurança para vulnerabilidades conhecidas: Q1.1, Q1.2 e Q1.3 com M1.1](../imagens/gqm-seguranca-cves.png)
+
+*Figura: vulnerabilidades conhecidas e verificadas, avaliadas pelo bloqueio de scripts na importação (Q1.1), pela sanitização de rótulos (Q1.2) e pelo controle de acesso a caminhos no proxy (Q1.3) através da métrica de correções verificadas (M1.1). Fonte: elaboração da equipe.*
+
+#### Integridade (Cobertura da sanitização)
+
+![Recorte do GQM da segurança para cobertura da proteção: Q1.4 com M1.2](../imagens/gqm-seguranca-sanitizacao.png)
+
+*Figura: integridade e sanitização dos rótulos, avaliada pela verificação dos trechos com sanitização (Q1.4) através da métrica de cobertura da proteção dos rótulos (M1.2). Fonte: elaboração da equipe.*
+
+#### Resistência (Variações de ataques)
+
+![Recorte do GQM da segurança para resistência: Q1.5 com M1.3](../imagens/gqm-seguranca-resistencia.png)
+
+*Figura: resistência contra ataques, avaliada pela resistência a variações dos ataques conhecidos (Q1.5) através da taxa de bloqueio de variações dos ataques (M1.3). Fonte: elaboração da equipe.*
+
+As definições estão em [Objetivos, questões e hipóteses](objetivos-questoes-hipoteses.md) e em [Métricas](metricas.md).
