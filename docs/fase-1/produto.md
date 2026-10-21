@@ -1,6 +1,5 @@
 # Produto e componentes avaliados
 
-
 # Descrição do draw.io
 
 O **draw.io**, também conhecido como **diagrams.net**, é um software de criação e edição de diagramas, criado por Gaudenz Alder, engenheiro de software suíço. Escrito principalmente em JavaScript, o programa permite criar e exportar diferentes tipos de diagramas, como infográficos, mapas mentais, diagramas de circuitos e diagramas UML. É uma ferramenta de código aberto que pode ser utilizada diretamente pelo navegador ou instalada para uso local; A avaliação usa a versão **32.2.0**: o código-fonte dessa versão para a manutenibilidade e o editor web para a eficiência de desempenho e a segurança
