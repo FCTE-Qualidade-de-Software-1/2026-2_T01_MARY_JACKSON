@@ -121,7 +121,7 @@ Fonte: estimativas enviadas por Heyttor e Lucas no grupo.
 
 - **Informações extras**
   - Horas estimadas: Dupla 1: 7 h; Dupla 2: 6 h (Pedro Ian) + __ h (Thiago); Dupla 3: __ h · Horas reais: __ h
-  - Em 19/10 a professora pediu o GQM no ponto de controle de 21/10. Objetivo, questões e hipóteses das três características foram antecipados para 21/10; fichas, diagrama GQM e rastreabilidade mantidos em 22/10.
+    - Em 19/10 a professora pediu o GQM no ponto de controle de 21/10. O GQM completo das três características (objetivo, questões, hipóteses, fichas, diagrama GQM e rastreabilidade) foi antecipado para 21/10; metodologia, piloto do SonarCloud e Medição 2 mantidos em 22/10.
 ---
 
 ## Sprint 3 - Entrega 1
@@ -156,3 +156,4 @@ Fonte: estimativas enviadas por Heyttor e Lucas no grupo.
 | 0.4 | 18/10/2026 | Registro do que foi realizado na Sprint 1, do atraso na configuração do repositório e reorganização das datas das Sprints 2 e 3 | Yasmin |
 | 0.5 | 18/10/2026 | Inclusão da estimativa de horas por tarefa da Dupla 1 e da estimativa de Pedro Ian (linha de base do PSM) | Yasmin |
 | 0.6 | 18/10/2026 | Inclusão da estimativa de horas por tarefa de Dupla 2 e 3 atualizadas | Yasmin
+| 0.7 | 20/10/2026 | Antecipação do GQM completo (objetivo, questões, hipóteses, fichas, diagrama GQM e rastreabilidade) para o ponto de controle de 21/10, a pedido da professora | Yasmin |
