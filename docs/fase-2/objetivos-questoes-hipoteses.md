@@ -6,6 +6,29 @@ _Em elaboração._
 
 ## Segurança (Dupla 1)
 
+### Objetivo de medição
+ 
+| Elemento | Descrição |
+| --- | --- |
+| Identificador | G1 |
+| Objeto | Componentes de importação de arquivos, tratamento de rótulos e _proxy_ de exportação do _draw.io_. |
+| Propósito | Avaliar a segurança dos componentes selecionados. |
+| Foco | Confidencialidade, integridade e resistência. |
+| Ponto de vista | Diretoria de TI da empresa júnior. |
+| Contexto | _Draw.io_ web, versão 32.2.0, hospedado em Docker, em ambiente local de testes. |
+
+### Questões e hipóteses
+ 
+As questões e hipóteses foram definidas para orientar a avaliação da segurança dos três componentes selecionados. As questões Q1.1 a Q1.3 verificam as correções das vulnerabilidades conhecidas, uma por componente; Q1.4 e Q1.5 avaliam a qualidade da proteção dos rótulos. A resistência entra porque a correção da CVE-2026-46642 foi contornada por uma variação do ataque ([GHSA-c76x-r78m-phwx](https://github.com/jgraph/drawio/security/advisories/GHSA-c76x-r78m-phwx)). As hipóteses serão verificadas na E2.
+ 
+| Questão | Hipótese |
+| --- | --- |
+| **Q1.1**<br>O componente de importação de arquivos bloqueia a execução de _scripts_ maliciosos embutidos na abertura de diagramas? | **H1.1**<br>O sistema de importação impede a execução automática de _scripts_ no momento da carga inicial do arquivo (M1.1 = 100%). |
+| **Q1.2**<br>O tratamento de rótulos das formas sanitiza adequadamente o texto dos rótulos, inclusive o de diagramas recebidos de terceiros? | **H1.2**<br>A camada de apresentação limpa os caracteres especiais e _tags_ HTML nos rótulos e metadados, impedindo a persistência de injeções de código (M1.1 = 100%). |
+| **Q1.3**<br>O servidor _proxy_ de exportação restringe solicitações de acesso não autorizado a caminhos de diretórios? | **H1.3**<br>O _proxy_ valida e restringe as rotas nas requisições de saída, impedindo ataques de _Path Traversal_ (M1.1 = 100%). |
+| **Q1.4**<br>Nos componentes avaliados, todos os trechos do código que exibem o rótulo de uma forma como HTML aplicam sanitização ou escape antes? | **H1.4**<br>Todos esses trechos aplicam proteção na versão 32.2.0, ao contrário do trecho que originou a CVE-2026-46642 (M1.2 = 100%). |
+| **Q1.5**<br>A proteção dos rótulos resiste a variações dos ataques conhecidos, incluindo combinações de formas com estilos diferentes, como no contorno registrado na CVE-2026-58504? | **H1.5**<br>Nenhuma das variações testadas executa código na abertura do arquivo (M1.3 = 100%). |
+
 ## Eficiência de desempenho (Dupla 2)
 
 ### Objetivo de medição
