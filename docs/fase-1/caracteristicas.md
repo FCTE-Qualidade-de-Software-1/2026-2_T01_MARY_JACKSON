@@ -22,14 +22,19 @@ O recorte mantém as três subcaracterísticas da **ISO/IEC 25010:2023**: **comp
 
 
 **Nota de ênfase: 5/5 (Crítica)**
+A nota representa a prioridade desta característica na avaliação, não um resultado medido da qualidade do produto.
 Do ponto de vista da diretoria de TI da empresa júnior, a classificação é crítica porque a ferramenta é central no mapeamento da infraestrutura técnica. Sua fragilidade expõe diretamente os dados estratégicos, as topologias de rede e os acessos em nuvem da própria empresa e de seus clientes.
 
-**Por que é alta:** os componentes avaliados (importação, tratamento de rótulos e exportação/proxy) processam entradas de dados externas e atuam como ponte direta entre o ambiente local, o navegador e repositórios corporativos em nuvem (como Google Drive, OneDrive e Confluence). Falhas de segurança nesses pontos — como Stored XSS e Path Traversal — possuem impacto severo, pois a abertura de um único arquivo malicioso pode permitir o roubo de tokens de sessão, o vazamento da arquitetura de rede e a movimentação lateral do atacante na infraestrutura da empresa.
+**Por que é alta:** os componentes avaliados (importação, tratamento de rótulos e exportação/proxy) processam entradas de dados externas e atuam como ponte direta entre o ambiente local, o navegador e repositórios corporativos em nuvem (como Google Drive, OneDrive e Confluence). Falhas nesses pontos já viabilizaram ataques do tipo _Stored Cross-Site Scripting_ (XSS) e _Path Traversal_. No XSS, a simples abertura de um diagrama recebido de terceiros executa código no navegador da vítima e pode expor o diagrama aberto, _cookies_ e _tokens_ de sessão ([GHSA-fqhg-287p-c6vf](https://github.com/jgraph/drawio/security/advisories/GHSA-fqhg-287p-c6vf); [GHSA-c76x-r78m-phwx](https://github.com/jgraph/drawio/security/advisories/GHSA-c76x-r78m-phwx)). No _Path Traversal_, requisições manipuladas ao _proxy_ de exportação podiam alcançar recursos internos do servidor ([CVE-2026-63416](https://nvd.nist.gov/vuln/detail/CVE-2026-63416)).
+
+**Por que o risco é maior neste cenário:** os avisos de segurança do draw.io registram que as falhas de XSS nos rótulos afetavam instalações próprias sem uma política de segurança de conteúdo (CSP) restritiva, como a imagem Docker oficial, enquanto o serviço público _app.diagrams.net_ não era explorável por usar essa política ([GHSA-fqhg-287p-c6vf](https://github.com/jgraph/drawio/security/advisories/GHSA-fqhg-287p-c6vf)). Uma empresa júnior que hospede a ferramenta em seus próprios servidores se enquadra no primeiro caso.
 
 **Por que a avaliação se delimita a esses componentes:** embora receba a classificação máxima de importância devido ao alto risco do vetor de ataque, a avaliação foca estritamente nos mecanismos de entrada, sanitização e saída da aplicação draw.io (ambiente web/Docker). A análise não se estende à segurança dos provedores de nuvem terceirizados nem às políticas globais de rede da organização, concentrando o escopo no impacto direto que o comprometimento dessas três frentes causa à confidencialidade e integridade dos dados da empresa júnior.
 
-**Evidências de Riscos (Base NVD):**
-A criticidade e a necessidade de avaliações rigorosas são evidenciadas pelas recentes vulnerabilidades documentadas e corrigidas nos componentes da ferramenta:
-* **CVE-2026-46642:** Vulnerabilidade de *Stored XSS* na importação de arquivos, permitindo a execução automática de *scripts* maliciosos no momento da carga inicial do diagrama.
-* **CVE-2026-58504:** Vulnerabilidade de *Stored XSS* devido a falhas na sanitização de rótulos e formatação de texto das formas.
-* **CVE-2026-63416:** Vulnerabilidade de *Path Traversal* no servidor *proxy* de exportação, permitindo requisições de acesso não autorizado a diretórios locais.
+**Histórico de vulnerabilidades (NVD):** todas foram corrigidas antes da versão 32.2.0, avaliada neste trabalho.
+
+| CVE | Componente | Falha | Corrigida em |
+|---|---|---|---|
+| [CVE-2026-46642](https://nvd.nist.gov/vuln/detail/CVE-2026-46642) | Rótulos, disparada na importação | _Stored XSS_: uma rotina do painel de formatação de texto usava o rótulo sem sanitização. A falha era disparada ao abrir o arquivo, porque a importação seleciona automaticamente as formas do diagrama. | 29.7.12 |
+| [CVE-2026-58504](https://nvd.nist.gov/vuln/detail/CVE-2026-58504) | Rótulos, disparada na importação | _Stored XSS_: contorno da correção anterior, combinando formas com estilos diferentes para alcançar o mesmo ponto do código. | 30.2.5 |
+| [CVE-2026-63416](https://nvd.nist.gov/vuln/detail/CVE-2026-63416) | _Proxy_ de exportação | _Path Traversal_: requisições manipuladas podiam alcançar recursos internos do servidor. | 30.2.7 |
