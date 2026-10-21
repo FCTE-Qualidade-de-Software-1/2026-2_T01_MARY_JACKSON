@@ -2,7 +2,34 @@
 
 <!-- O que entra aqui: faixas de pontuação de cada métrica e a regra que leva do valor medido ao julgamento, por questão e por objetivo. Rubrica F2-C5. -->
 
-## Eficiência de desempenho (dupla 2)
+## Segurança (Dupla 1)
+
+As métricas de segurança são percentuais e recebem nota 5, 3 ou 1. As notas correspondem às três decisões previstas para o requisitante no [Propósito](../fase-1/proposito.md): adotar, adotar com ressalvas e não adotar.
+
+| Métrica | Nota 5 | Nota 3 | Nota 1 |
+| --- | --- | --- | --- |
+| M1.1 (%) | 100 | — | < 100 |
+| M1.2 (%) | 100 | < 100, sem trecho alcançável por arquivo aberto | < 100, com trecho alcançável por arquivo aberto |
+| M1.3 (%) | 100 | — | < 100 |
+
+M1.1 e M1.3 não têm nota intermediária: uma correção ausente ou uma variação que executa código já é uma vulnerabilidade comprovada. Na M1.2, um trecho sem proteção só é crítico se o conteúdo de um arquivo aberto puder chegar até ele.
+
+| Questão ou objetivo | Regra de julgamento |
+| --- | --- |
+| Q1.1 | M1.1 (importação) |
+| Q1.2 | M1.1 (rótulos) |
+| Q1.3 | M1.1 (_proxy_ de exportação) |
+| Q1.4 | M1.2 |
+| Q1.5 | M1.3 |
+| G1 | mínimo(Q1.1, Q1.2, Q1.3, Q1.4, Q1.5) |
+
+| Nota de G1 | 5 | 3 | 1 |
+| --- | --- | --- | --- |
+| Decisão apoiada | Adotar | Adotar com ressalvas | Não adotar sem atualização |
+
+Os limites e níveis apresentados são decisões da equipe, não critérios normativos da ISO/IEC 25010.
+
+## Eficiência de desempenho (Dupla 2)
 
 Os valores de M2.1 a M2.5 são comparados a um limite L, definido por métrica, porte e formato, e julgados pela razão `r = x / L`, em que `x` é a mediana observada. Os limites abaixo são candidatos, ainda não aprovados; a tolerância crescente por porte e a distinção por formato serão avaliadas no piloto e aprovadas pelo requisitante antes da coleta.
 
