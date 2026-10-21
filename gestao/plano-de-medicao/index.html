@@ -1197,6 +1197,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#calendario-das-medicoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Calendário das medições
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1520,6 +1531,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#calendario-das-medicoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Calendário das medições
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1546,11 +1568,7 @@
 
 
 <h1 id="plano-de-medicao">Plano de medição<a class="headerlink" href="#plano-de-medicao" title="Permanent link">&para;</a></h1>
-<!-- O que entra aqui: para cada indicador, a necessidade de informação, a fórmula, a fonte e o critério de decisão (Aula 09, modelo de informação).
-Indicadores sugeridos pela tabela ICM do CID (Parte 1, Tabela 5): Burndown e Committed vs. Completed (linha 1, pág. 19); Cost/Effort e Estimate vs. Actual (linhas 7 e 8, pág. 20); Cycle Time / Lead Time e Cumulative Flow (linhas 32 e 37, págs. 27 e 28).
-Critérios de decisão: definir com o grupo e dizer de onde vem cada limite. -->
-
-<p><em>Em elaboração.</em></p>
+<p>A gestão do projeto usa uma métrica por categoria pedida na especificação (Seção 2), escolhidas na Tabela 5 do CID Measurement Framework, Parte 1. Cada métrica responde a uma necessidade de informação, como no modelo de informação do PSM (Aula 09). Os resultados ficam no <a href="../registro-de-medicoes/">Registro de medições</a> e as decisões nas <a href="../atas/">Atas</a>.</p>
 <h2 id="calendario-e-progresso">Calendário e Progresso<a class="headerlink" href="#calendario-e-progresso" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1564,11 +1582,11 @@ Critérios de decisão: definir com o grupo e dizer de onde vem cada limite. -->
 </thead>
 <tbody>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>Planejado vs. concluído (<em>Committed vs. Completed</em>, CID Parte 1, Tabela 5, linha 1, p. 19)</td>
+<td>Vamos cumprir o marco da sprint?</td>
+<td>Tarefas concluídas ÷ tarefas planejadas na sprint × 100</td>
+<td><a href="../planejamento/">Planejamento</a>, milestones e GitHub Project</td>
+<td>Menos de 50% concluído na metade da sprint: redistribuir tarefas ou remarcar o marco</td>
 </tr>
 </tbody>
 </table>
@@ -1585,11 +1603,11 @@ Critérios de decisão: definir com o grupo e dizer de onde vem cada limite. -->
 </thead>
 <tbody>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>Estimado vs. realizado (<em>Estimate vs. Actual Effort</em>, CID Parte 1, Tabela 5, linha 8, p. 20)</td>
+<td>As estimativas de esforço e custo estão certas?</td>
+<td>Horas realizadas ÷ horas estimadas; custo = horas × R$ 14,77</td>
+<td><code>dados/gestao/horas.csv</code> e estimativas do <a href="../planejamento/">Planejamento</a></td>
+<td>Razão acima de 1,5: revisar as estimativas das tarefas restantes</td>
 </tr>
 </tbody>
 </table>
@@ -1606,11 +1624,39 @@ Critérios de decisão: definir com o grupo e dizer de onde vem cada limite. -->
 </thead>
 <tbody>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>Tempo de ciclo (<em>Cycle Time</em>, CID Parte 1, Tabela 5, linha 32, p. 24)</td>
+<td>As tarefas andam ou ficam paradas?</td>
+<td>Data de fechamento − data de abertura da issue, em dias</td>
+<td>Datas registradas pelo GitHub em cada issue</td>
+<td>Issue aberta há mais de 3 dias sem andamento: cobrar o responsável ou dividir a tarefa</td>
+</tr>
+</tbody>
+</table>
+<p>Os limites dos critérios de decisão foram definidos pela equipe para o prazo curto da E1 e podem ser revistos nas próximas medições.</p>
+<h2 id="calendario-das-medicoes">Calendário das medições<a class="headerlink" href="#calendario-das-medicoes" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Medição</th>
+<th>Data</th>
+<th>Momento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>18/10/2026</td>
+<td>Fim da Sprint 1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>22/10/2026</td>
+<td>Fim da Sprint 2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>26/10/2026</td>
+<td>Entrega 1</td>
 </tr>
 </tbody>
 </table>
@@ -1634,7 +1680,7 @@ Critérios de decisão: definir com o grupo e dizer de onde vem cada limite. -->
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="16 de outubro de 2026 20:56:18 UTC">16 de outubro de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="21 de outubro de 2026 00:32:06 UTC">21 de outubro de 2026</span>
   </span>
 
     
