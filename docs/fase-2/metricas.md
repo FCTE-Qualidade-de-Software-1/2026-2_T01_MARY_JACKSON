@@ -4,6 +4,47 @@
 
 ## Segurança (Dupla 1)
 
+Foram selecionadas três métricas para responder às cinco questões estabelecidas. A primeira é aplicada separadamente aos componentes de importação, rótulos e _proxy_ de exportação; a segunda, ao código que exibe os rótulos; e a terceira, às variações dos ataques conhecidos. M1.1 e M1.2 são coletadas por inspeção do código-fonte, e M1.3, por testes em ambiente local. As métricas seguem a forma de proporção (`X = A / B`) adotada pela ISO/IEC 25023 para as medidas de segurança, como a de prevenção de corrupção de dados (seção 8.6, p. 26–27, versão de trabalho de 2011 disponibilizada na disciplina).
+
+### M1.1 — Correções verificadas das vulnerabilidades conhecidas
+
+| Campo | Descrição |
+| --- | --- |
+| Subcaracterística | Confidencialidade e integridade. |
+| Questões associadas | Q1.1, Q1.2 e Q1.3. |
+| Componentes | Importação, rótulos e _proxy_ de exportação, analisados separadamente. |
+| Definição | Percentual das correções das CVE-2026-46642, CVE-2026-58504 e CVE-2026-63416, relativas ao componente, presentes no código da versão 32.2.0. |
+| Cálculo | `M1.1 = (Cv / Ct) x 100` |
+| Fonte | Código-fonte da tag v32.2.0, ChangeLog e avisos de segurança do GitHub ([GHSA-fqhg-287p-c6vf](https://github.com/jgraph/drawio/security/advisories/GHSA-fqhg-287p-c6vf), [GHSA-c76x-r78m-phwx](https://github.com/jgraph/drawio/security/advisories/GHSA-c76x-r78m-phwx), [CVE-2026-63416](https://nvd.nist.gov/vuln/detail/CVE-2026-63416)). |
+| Coleta | Localizar no código da tag v32.2.0 cada correção descrita nos avisos de segurança e registrar arquivo e linha. |
+
+### M1.2 — Cobertura da proteção dos rótulos
+ 
+| Campo | Descrição |
+| --- | --- |
+| Subcaracterística | Integridade. |
+| Questão associada | Q1.4. |
+| Componente | Rótulos. |
+| Definição | Percentual de trechos que aplicam sanitização ou escape antes de exibir o rótulo como HTML. |
+| Cálculo | `M1.2 = (Pp / Pt) x 100` |
+| Fonte | Código-fonte da tag v32.2.0. |
+| Coleta | Localizar as chamadas `getLabelValue` em `Format.js`, `Graph.js` e `Editor.js` e verificar se o valor passa por `Graph.sanitizeHtml` ou `mxUtils.htmlEntities`; registrar arquivo e linha de cada trecho. |
+
+### M1.3 — Taxa de bloqueio de variações dos ataques conhecidos
+ 
+| Campo | Descrição |
+| --- | --- |
+| Subcaracterística | Resistência. |
+| Questão associada | Q1.5. |
+| Componentes | Importação e rótulos. |
+| Definição | Percentual de variações dos ataques das CVE-2026-46642 e CVE-2026-58504 bloqueadas. |
+| Cálculo | `M1.3 = (Wb / Wt) x 100` |
+| Fonte | Registro dos testes e console do navegador. |
+| Coleta | No draw.io web 32.2.0 em Docker local, sem acesso à rede externa, executar variações do conteúdo do rótulo e da combinação de estilos das formas (HTML ou texto simples, editável ou não), cada uma em sessão limpa do navegador. O repositório registra a descrição de cada variação e o resultado, sem publicar os arquivos de ataque. |
+ 
+**Nota:** `Cv` representa as correções encontradas no código e `Ct` o total de correções relativas ao componente; `Pp`, os trechos protegidos e `Pt`, o total de trechos que exibem o rótulo como HTML; `Wb`, as variações bloqueadas e `Wt`, o total de variações testadas.
+ 
+
 ## Eficiência de desempenho (Dupla 2)
 
 Foram selecionadas seis métricas para responder às quatro questões estabelecidas. Para cada porte e operação/formato, serão realizadas cinco tentativas válidas; interrupções externas serão registradas e repostas. Para M2.1 a M2.5, calcula-se a mediana das quatro ou cinco tentativas bem-sucedidas com dados completos; menos de quatro sucessos tornam o cenário não conclusivo. Falhas não recebem valores artificiais de tempo ou memória.
