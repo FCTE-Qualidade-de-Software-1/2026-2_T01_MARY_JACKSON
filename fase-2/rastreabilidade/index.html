@@ -1647,10 +1647,10 @@
 <td style="text-align: center;">5/5</td>
 <td>Liberar ou não a abertura de diagramas de terceiros e o servidor de exportação próprio</td>
 <td>Diretoria de TI da empresa júnior</td>
-<td>Confidencialidade e integridade</td>
+<td>Confidencialidade, integridade e resistência</td>
 <td style="text-align: center;">G1</td>
-<td>Q1.1 a Q1.3</td>
-<td>M1.1</td>
+<td>Q1.1 a Q1.5</td>
+<td>M1.1 a M1.3</td>
 </tr>
 <tr>
 <td>Eficiência de desempenho</td>
@@ -1694,7 +1694,7 @@
 </tr>
 <tr>
 <td>Rótulos (texto das formas)</td>
-<td>Q1.2</td>
+<td>Q1.2, Q1.4 e Q1.5</td>
 <td>Q2.2</td>
 <td>Q3.2</td>
 </tr>
@@ -1728,10 +1728,10 @@
 <td>Q1.1 A importação bloqueia scripts maliciosos embutidos na abertura de diagramas?</td>
 <td>Importação</td>
 <td>Confidencialidade e integridade</td>
-<td>M1.1 Taxa de bloqueio de vetores de ataque conhecidos (CVE-2026-46642 e CVE-2026-58504)</td>
+<td>M1.1 (CVE-2026-46642 e CVE-2026-58504)</td>
 </tr>
 <tr>
-<td>Q1.2 O tratamento de rótulos sanitiza adequadamente as entradas de texto?</td>
+<td>Q1.2 O tratamento de rótulos sanitiza o texto dos rótulos, inclusive o de diagramas recebidos de terceiros?</td>
 <td>Rótulos</td>
 <td>Confidencialidade e integridade</td>
 <td>M1.1 (CVE-2026-46642 e CVE-2026-58504)</td>
@@ -1741,6 +1741,18 @@
 <td>Exportação</td>
 <td>Confidencialidade e integridade</td>
 <td>M1.1 (CVE-2026-63416)</td>
+</tr>
+<tr>
+<td>Q1.4 Todos os trechos que exibem o rótulo como HTML aplicam sanitização ou escape antes?</td>
+<td>Rótulos</td>
+<td>Confidencialidade e integridade</td>
+<td>M1.2</td>
+</tr>
+<tr>
+<td>Q1.5 A proteção dos rótulos resiste a variações dos ataques conhecidos?</td>
+<td>Rótulos</td>
+<td>Resistência</td>
+<td>M1.3</td>
 </tr>
 </tbody>
 </table>
@@ -1834,7 +1846,7 @@
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="20 de outubro de 2026 18:02:06 UTC">20 de outubro de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="21 de outubro de 2026 01:57:49 UTC">21 de outubro de 2026</span>
   </span>
 
     
