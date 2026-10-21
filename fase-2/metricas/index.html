@@ -895,6 +895,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Segurança (Dupla 1)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#m11-correcoes-verificadas-das-vulnerabilidades-conhecidas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        M1.1 — Correções verificadas das vulnerabilidades conhecidas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#m12-cobertura-da-protecao-dos-rotulos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        M1.2 — Cobertura da proteção dos rótulos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#m13-taxa-de-bloqueio-de-variacoes-dos-ataques-conhecidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        M1.3 — Taxa de bloqueio de variações dos ataques conhecidos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1596,6 +1635,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Segurança (Dupla 1)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#m11-correcoes-verificadas-das-vulnerabilidades-conhecidas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        M1.1 — Correções verificadas das vulnerabilidades conhecidas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#m12-cobertura-da-protecao-dos-rotulos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        M1.2 — Cobertura da proteção dos rótulos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#m13-taxa-de-bloqueio-de-variacoes-dos-ataques-conhecidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        M1.3 — Taxa de bloqueio de variações dos ataques conhecidos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1749,6 +1827,125 @@
 <!-- O que entra aqui: para cada métrica: definição, fórmula, fonte, procedimento de coleta e escala. Partir das medidas da ISO/IEC 25023. Rubrica F2-C4. -->
 
 <h2 id="seguranca-dupla-1">Segurança (Dupla 1)<a class="headerlink" href="#seguranca-dupla-1" title="Permanent link">&para;</a></h2>
+<p>Foram selecionadas três métricas para responder às cinco questões estabelecidas. A primeira é aplicada separadamente aos componentes de importação, rótulos e <em>proxy</em> de exportação; a segunda, ao código que exibe os rótulos; e a terceira, às variações dos ataques conhecidos. M1.1 e M1.2 são coletadas por inspeção do código-fonte, e M1.3, por testes em ambiente local. As métricas seguem a forma de proporção (<code>X = A / B</code>) adotada pela ISO/IEC 25023 para as medidas de segurança, como a de prevenção de corrupção de dados (seção 8.6, p. 26–27, versão de trabalho de 2011 disponibilizada na disciplina).</p>
+<h3 id="m11-correcoes-verificadas-das-vulnerabilidades-conhecidas">M1.1 — Correções verificadas das vulnerabilidades conhecidas<a class="headerlink" href="#m11-correcoes-verificadas-das-vulnerabilidades-conhecidas" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Subcaracterística</td>
+<td>Confidencialidade e integridade.</td>
+</tr>
+<tr>
+<td>Questões associadas</td>
+<td>Q1.1, Q1.2 e Q1.3.</td>
+</tr>
+<tr>
+<td>Componentes</td>
+<td>Importação, rótulos e <em>proxy</em> de exportação, analisados separadamente.</td>
+</tr>
+<tr>
+<td>Definição</td>
+<td>Percentual das correções das CVE-2026-46642, CVE-2026-58504 e CVE-2026-63416, relativas ao componente, presentes no código da versão 32.2.0.</td>
+</tr>
+<tr>
+<td>Cálculo</td>
+<td><code>M1.1 = (Cv / Ct) x 100</code></td>
+</tr>
+<tr>
+<td>Fonte</td>
+<td>Código-fonte da tag v32.2.0, ChangeLog e avisos de segurança do GitHub (<a href="https://github.com/jgraph/drawio/security/advisories/GHSA-fqhg-287p-c6vf">GHSA-fqhg-287p-c6vf</a>, <a href="https://github.com/jgraph/drawio/security/advisories/GHSA-c76x-r78m-phwx">GHSA-c76x-r78m-phwx</a>, <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-63416">CVE-2026-63416</a>).</td>
+</tr>
+<tr>
+<td>Coleta</td>
+<td>Localizar no código da tag v32.2.0 cada correção descrita nos avisos de segurança e registrar arquivo e linha.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="m12-cobertura-da-protecao-dos-rotulos">M1.2 — Cobertura da proteção dos rótulos<a class="headerlink" href="#m12-cobertura-da-protecao-dos-rotulos" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Subcaracterística</td>
+<td>Integridade.</td>
+</tr>
+<tr>
+<td>Questão associada</td>
+<td>Q1.4.</td>
+</tr>
+<tr>
+<td>Componente</td>
+<td>Rótulos.</td>
+</tr>
+<tr>
+<td>Definição</td>
+<td>Percentual de trechos que aplicam sanitização ou escape antes de exibir o rótulo como HTML.</td>
+</tr>
+<tr>
+<td>Cálculo</td>
+<td><code>M1.2 = (Pp / Pt) x 100</code></td>
+</tr>
+<tr>
+<td>Fonte</td>
+<td>Código-fonte da tag v32.2.0.</td>
+</tr>
+<tr>
+<td>Coleta</td>
+<td>Localizar as chamadas <code>getLabelValue</code> em <code>Format.js</code>, <code>Graph.js</code> e <code>Editor.js</code> e verificar se o valor passa por <code>Graph.sanitizeHtml</code> ou <code>mxUtils.htmlEntities</code>; registrar arquivo e linha de cada trecho.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="m13-taxa-de-bloqueio-de-variacoes-dos-ataques-conhecidos">M1.3 — Taxa de bloqueio de variações dos ataques conhecidos<a class="headerlink" href="#m13-taxa-de-bloqueio-de-variacoes-dos-ataques-conhecidos" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Subcaracterística</td>
+<td>Resistência.</td>
+</tr>
+<tr>
+<td>Questão associada</td>
+<td>Q1.5.</td>
+</tr>
+<tr>
+<td>Componentes</td>
+<td>Importação e rótulos.</td>
+</tr>
+<tr>
+<td>Definição</td>
+<td>Percentual de variações dos ataques das CVE-2026-46642 e CVE-2026-58504 bloqueadas.</td>
+</tr>
+<tr>
+<td>Cálculo</td>
+<td><code>M1.3 = (Wb / Wt) x 100</code></td>
+</tr>
+<tr>
+<td>Fonte</td>
+<td>Registro dos testes e console do navegador.</td>
+</tr>
+<tr>
+<td>Coleta</td>
+<td>No draw.io web 32.2.0 em Docker local, sem acesso à rede externa, executar variações do conteúdo do rótulo e da combinação de estilos das formas (HTML ou texto simples, editável ou não), cada uma em sessão limpa do navegador. O repositório registra a descrição de cada variação e o resultado, sem publicar os arquivos de ataque.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Nota:</strong> <code>Cv</code> representa as correções encontradas no código e <code>Ct</code> o total de correções relativas ao componente; <code>Pp</code>, os trechos protegidos e <code>Pt</code>, o total de trechos que exibem o rótulo como HTML; <code>Wb</code>, as variações bloqueadas e <code>Wt</code>, o total de variações testadas.</p>
 <h2 id="eficiencia-de-desempenho-dupla-2">Eficiência de desempenho (Dupla 2)<a class="headerlink" href="#eficiencia-de-desempenho-dupla-2" title="Permanent link">&para;</a></h2>
 <p>Foram selecionadas seis métricas para responder às quatro questões estabelecidas. Para cada porte e operação/formato, serão realizadas cinco tentativas válidas; interrupções externas serão registradas e repostas. Para M2.1 a M2.5, calcula-se a mediana das quatro ou cinco tentativas bem-sucedidas com dados completos; menos de quatro sucessos tornam o cenário não conclusivo. Falhas não recebem valores artificiais de tempo ou memória.</p>
 <h3 id="m21-tempo-de-abertura">M2.1: Tempo de abertura<a class="headerlink" href="#m21-tempo-de-abertura" title="Permanent link">&para;</a></h3>
@@ -2087,7 +2284,7 @@
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="20 de outubro de 2026 17:27:47 UTC">20 de outubro de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="21 de outubro de 2026 03:15:47 UTC">21 de outubro de 2026</span>
   </span>
 
     
