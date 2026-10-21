@@ -120,7 +120,7 @@ Fonte: estimativas enviadas por Heyttor e Lucas no grupo.
   - Diagrama GQM e tabela de rastreabilidade
 
 - **Informações extras**
-  - Horas estimadas: Dupla 1: 7 h; Dupla 2: 6 h (Pedro Ian) + __ h (Thiago); Dupla 3: __ h · Horas reais: __ h
+  - Horas estimadas: Dupla 1: 7 h; Dupla 2: 6 h; Dupla 3: __ h · Horas reais: __ h
     - Em 19/10 a professora pediu o GQM no ponto de controle de 21/10. O GQM completo das três características (objetivo, questões, hipóteses, fichas, diagrama GQM e rastreabilidade) foi antecipado para 21/10; metodologia, piloto do SonarCloud e Medição 2 mantidos em 22/10.
 ---
 
@@ -143,7 +143,7 @@ Fonte: estimativas enviadas por Heyttor e Lucas no grupo.
   - Release E1
 
 - **Informações extras**
-  - Horas estimadas: Dupla 1: 6,5 h; Dupla 2: 5 h (Pedro Ian) + __ h (Thiago); Dupla 3: __ h · Horas reais: __ h
+  - Horas estimadas: Dupla 1: 6,5 h; Dupla 2: 5 h; Dupla 3: __ h · Horas reais: __ h
   - Apresentação da E1 prevista para quarta-feira, conforme preferência do grupo [confirmar no cronograma do Moodle].
 
 ---
