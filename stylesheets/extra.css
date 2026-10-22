@@ -1,3 +1,24 @@
+/* Tamanho geral do site: cerca de 5% menor que o padrão do tema.
+   Para ajustar, mude os três valores juntos (padrão do tema: 125%, 137.5% e 150%). */
+html {
+  font-size: 118.75%;
+}
+@media screen and (min-width: 100em) {
+  html {
+    font-size: 131.25%;
+  }
+}
+@media screen and (min-width: 125em) {
+  html {
+    font-size: 143.75%;
+  }
+}
+
+/* Largura do site: o tema limita a 61rem e deixa muito espaço em branco nas laterais */
+.md-grid {
+  max-width: 80rem;
+}
+
 /* Cabeçalho e abas: degradê escuro com letra branca */
 .md-header,
 .md-tabs {
@@ -30,7 +51,153 @@
   font-size: 0.85rem;
 }
 
-/* Links sublinhados: não dependem só da cor */
+/* Links sublinhados (não dependem só da cor), com traço fino e afastado do texto */
 .md-typeset a {
   text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+/* Títulos: escuros e firmes (o tema deixa o título da página cinza e fino) */
+.md-typeset h1 {
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: -0.01em;
+  margin-bottom: 1rem;
+}
+.md-typeset h2 {
+  font-weight: 700;
+  color: #111827;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+.md-typeset h3 {
+  font-weight: 700;
+  color: #1f2937;
+}
+
+/* Tabelas: cabeçalho cinza, linhas compactas e listras leves */
+.md-typeset table:not([class]) {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.4rem;
+  box-shadow: none;
+}
+.md-typeset table:not([class]) th {
+  background: #f3f4f6;
+  color: #111827;
+  font-weight: 700;
+  padding: 0.7em 1em;
+}
+.md-typeset table:not([class]) td {
+  padding: 0.6em 1em;
+  vertical-align: top;
+  border-top: 1px solid #e5e7eb;
+}
+.md-typeset table:not([class]) tbody tr:nth-child(even) {
+  background: #fafafa;
+}
+.md-typeset table:not([class]) tbody tr:hover {
+  background: #f5f7ff;
+}
+.md-typeset table:not([class]) td a {
+  font-weight: 600;
+}
+/* Página inicial: apresentação, números e links em colunas */
+.mj-hero {
+  padding: 2.5rem 0 1.5rem;
+  max-width: 48rem;
+}
+.mj-sobretitulo {
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: #4b5563;
+  margin-bottom: 0.5rem;
+}
+.md-typeset .mj-hero h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #111827;
+  margin: 0 0 1rem;
+}
+.mj-chamada {
+  font-size: 1.15rem;
+  color: #374151;
+  margin-bottom: 1.5rem;
+}
+.mj-hero > p:not([class]) {
+  color: #374151;
+}
+.md-typeset .mj-hero .md-button {
+  text-decoration: none;
+  margin: 0 0.5rem 0.5rem 0;
+}
+.mj-colunas {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+.md-typeset p.mj-secao {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 1rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #333333;
+}
+.mj-secao::before,
+.mj-secao::after {
+  content: "";
+  flex: 1;
+  border-top: 1px solid #d0d0d0;
+}
+.mj-coluna {
+  display: flex;
+  flex-direction: column;
+}
+.mj-painel {
+  flex: 1;
+  background: #f8f8f8;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12);
+  padding: 0.5rem 1.5rem;
+}
+.md-typeset a.mj-item {
+  display: block;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid #d9d9d9;
+  color: var(--md-typeset-a-color);
+  font-weight: 600;
+  text-decoration: none;
+  line-height: 1.35;
+}
+.md-typeset a.mj-item:last-child {
+  border-bottom: none;
+}
+.md-typeset a.mj-item:hover span,
+.md-typeset a.mj-item:focus span {
+  text-decoration: underline;
+}
+.mj-item small {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #555555;
+  margin-bottom: 0.2rem;
+}
+.md-typeset .mj-hero .headerlink {
+  display: none;
+}
+@media (max-width: 45em) {
+  .mj-colunas {
+    grid-template-columns: 1fr;
+  }
+  .md-typeset .mj-hero h1 {
+    font-size: 2rem;
+  }
 }
