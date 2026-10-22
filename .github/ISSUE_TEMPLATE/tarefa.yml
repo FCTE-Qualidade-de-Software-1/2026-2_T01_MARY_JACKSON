@@ -37,5 +37,5 @@ body:
     id: horas
     attributes:
       label: Horas reais
-      description: Uma linha por sessão de trabalho: dd/mm - Nome - X h. Use sempre o mesmo nome.
+      description: "Uma linha por sessão de trabalho, no formato dd/mm - Nome - X h (ex.: 21/10 - Yasmin - 2 h). Use sempre o mesmo nome."
       placeholder: "dd/mm - nome - X h"
