@@ -21,18 +21,18 @@ As estimativas de horas foram definidas por cada integrante para as próprias ta
 | Sprint | Tarefa | Responsável | Horas estimadas |
 |---|---|---|---|
 | 1 | Configuração do repositório e milestones | Yasmin | 2.5 |
-| 1 | Pesquisa e redação de ODS, metas e indicadores | a definir | 2 |
+| 1 | Pesquisa e redação de ODS, metas e indicadores | Miquéias | 2 |
 | 1 | Justificativa da característica Segurança | Miquéias | 1 |
-| 1 | Reunião de início + Ata 01 | Yasmin e Miquéias | 1 |
+| 1 | Reunião de início + Ata 01 | Yasmin | 1 |
 | 1 | Revisão da Fase 1 + Ata 02 | Yasmin | 0.5 |
-| 2 | Objetivo, questões e hipóteses de Segurança (GQM) | a definir | 2 |
-| 2 | Fichas das métricas de Segurança | a definir | 2.5 |
-| 2 | Redação da metodologia do artigo | a definir | 1.5 |
-| 2 | Revisão cruzada do GQM das outras duplas + Ata 03 | a definir | 1 |
-| 3 | Introdução do artigo | a definir | 2 |
+| 2 | Objetivo, questões e hipóteses de Segurança (GQM) | Miquéias | 2 |
+| 2 | Fichas das métricas de Segurança | Yasmin | 2.5 |
+| 2 | Redação da metodologia do artigo | Miquéias | 1.5 |
+| 2 | Revisão cruzada do GQM das outras duplas + Ata 03 | Yasmin | 1 |
+| 3 | Introdução do artigo |  Miquéias | 2 |
 | 3 | Consolidação do PSM (planejado vs. realizado da E1) | Yasmin | 1.5 |
 | 3 | Tabela de contribuição e declaração de uso de IA | Yasmin | 1 |
-| 3 | Revisão cruzada final (formatação, links, referências) | a definir | 1 |
+| 3 | Revisão cruzada final (formatação, links, referências) | Yasmin | 1 |
 | 3 | Release E1 e submissão no Moodle | Yasmin | 1 |
 | | **Total** | | **20.5** |
 
@@ -163,3 +163,4 @@ Fonte: estimativas definidas pelos integrantes da Dupla 3 (Heyttor e Lucas).
 | 0.6 | 18/10/2026 | Inclusão da estimativa de horas por tarefa de Dupla 2 e 3 atualizadas | Yasmin
 | 0.7 | 20/10/2026 | Antecipação do GQM completo (objetivo, questões, hipóteses, fichas, diagrama GQM e rastreabilidade) para o ponto de controle de 21/10, a pedido da professora | Yasmin |
 | 0.8 | 21/10/2026 | Correção das horas estimadas por sprint das Duplas 2 e 3 e da origem das estimativas | Yasmin |
+| 0.9 | 22/10/2026 | Registro dos responsáveis das tarefas da Dupla 1 marcadas como "a definir", conforme a divisão combinada entre Yasmin e Miquéias | Yasmin |
