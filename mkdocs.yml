@@ -33,7 +33,7 @@ extra:
   generator: false
   # Custo da hora: R$ 1.950 (salário + 30%) ÷ 132 h/mês. Fontes: Glassdoor, DevMedia, Lei 11.788/2008.
   custo_hora: 14.77
-    # Soma das estimativas das três duplas para a E1 (docs/gestao/planejamento.md).
+  # Soma das estimativas das três duplas para a E1 (docs/gestao/planejamento.md).
   horas_estimadas: 70.5
 
 hooks:
@@ -93,11 +93,15 @@ nav:
   - Fase 4: fase-4/index.md
   - Gestão do projeto:
       - gestao/index.md
-      - Planejamento das sprints: gestao/planejamento.md
-      - Plano de medição: gestao/plano-de-medicao.md
-      - Registro de medições: gestao/registro-de-medicoes.md
-      - Decisões de gestão: gestao/decisoes.md
-      - Atas de reunião: gestao/atas.md
+      - Planejar:
+          - Planejamento das sprints: gestao/planejamento.md
+          - Plano de medição: gestao/plano-de-medicao.md
+      - Medir:
+          - Painel do PSM: gestao/painel-psm.md
+          - Horas e custos: gestao/horas.md
+      - Avaliar e decidir:
+          - Registro de medições: gestao/registro-de-medicoes.md
+          - Atas de reunião: gestao/atas.md
   - Sobre:
       - sobre/index.md
       - Equipe: sobre/equipe.md
