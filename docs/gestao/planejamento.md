@@ -1,6 +1,7 @@
 # Planejamento de Sprints - Projeto Avaliação da Qualidade do draw.io
 
 ## Visão Geral do Projeto
+> Este documento registra o **planejado**. O que foi realizado (responsáveis, horas reais e datas de conclusão) está nas [issues por sprint](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/milestones) e a comparação entre os dois está no [Registro de medições](registro-de-medicoes.md).
 
 - **Nome do Projeto:** Avaliação da Qualidade de Componentes do draw.io
 - **Data de Início:** 07/10/2026
@@ -11,7 +12,11 @@
   - Dupla 2 (Pedro Ian e Thiago): Eficiência de desempenho; Fase 1 (propósito, stakeholders, escopo); modelo de qualidade e priorização; GitPage.
   - Dupla 3 (Heyttor e Lucas): Manutenibilidade; descrição do draw.io e diagrama de contexto; relatório no Overleaf.
 
-## Estimativa de horas (Dupla 1)
+## Estimativa de horas 
+
+As estimativas de horas foram definidas por cada integrante para as próprias tarefas, dentro da sua dupla, e formam a linha de base do PSM.
+
+### Dupla 1
 
 | Sprint | Tarefa | Responsável | Horas estimadas |
 |---|---|---|---|
@@ -31,9 +36,9 @@
 | 3 | Release E1 e submissão no Moodle | Yasmin | 1 |
 | | **Total** | | **20.5** |
 
-Fonte: documento "Expectativas de horas trabalhadas para cada sprint (Dupla 1)", ajustado em 18/10.
+Fonte: estimativas definidas pelos integrantes da Dupla 1, ajustadas em 18/10.
 
-## Estimativa de horas (Dupla 2)
+### Dupla 2
 
 | Sprint | Tarefa | Responsável | Horas estimadas |
 |---|---|---|---|
@@ -57,10 +62,10 @@ Fonte: documento "Expectativas de horas trabalhadas para cada sprint (Dupla 1)",
 | 3 | Revisão final e correções | Thiago | 2 |
 | | **Total** (Pedro Ian 17 h, Thiago 19 h) | | **36** |
  
-Fonte: estimativas enviadas por Pedro Ian e Thiago no grupo.
+Fonte: estimativas definidas pelos integrantes da Dupla 2 (Pedro Ian e Thiago).
 
 
-## Estimativa de horas (Dupla 3)
+### Dupla 3
  
 | Sprint | Tarefa | Responsável | Horas estimadas |
 |---|---|---|---|
@@ -72,7 +77,7 @@ Fonte: estimativas enviadas por Pedro Ian e Thiago no grupo.
 | 3 | Referencial teórico | Lucas | 3 |
 | | **Total** (Heyttor 7 h, Lucas 7 h) | | **14** |
  
-Fonte: estimativas enviadas por Heyttor e Lucas no grupo.
+Fonte: estimativas definidas pelos integrantes da Dupla 3 (Heyttor e Lucas).
  
 **Total estimado da equipe para a E1:** 70,5 h (Dupla 1: 20,5 h; Dupla 2: 36 h; Dupla 3: 14 h).
 
@@ -120,7 +125,7 @@ Fonte: estimativas enviadas por Heyttor e Lucas no grupo.
   - Diagrama GQM e tabela de rastreabilidade
 
 - **Informações extras**
-  - Horas estimadas: Dupla 1: 7 h; Dupla 2: 6 h; Dupla 3: __ h · Horas reais: __ h
+  - Horas estimadas: Dupla 1: 7 h; Dupla 2: 14 h; Dupla 3: 7,5 h · Horas reais: ver [Registro de medições](registro-de-medicoes.md)
     - Em 19/10 a professora pediu o GQM no ponto de controle de 21/10. O GQM completo das três características (objetivo, questões, hipóteses, fichas, diagrama GQM e rastreabilidade) foi antecipado para 21/10; metodologia, piloto do SonarCloud e Medição 2 mantidos em 22/10.
 ---
 
@@ -143,7 +148,7 @@ Fonte: estimativas enviadas por Heyttor e Lucas no grupo.
   - Release E1
 
 - **Informações extras**
-  - Horas estimadas: Dupla 1: 6,5 h; Dupla 2: 5 h; Dupla 3: __ h · Horas reais: __ h
+  - Horas estimadas: Dupla 1: 6,5 h; Dupla 2: 5 h; Dupla 3: 3 h · Horas reais: __ h
   - Apresentação da E1 prevista para quarta-feira, conforme preferência do grupo [confirmar no cronograma do Moodle].
 
 ---
@@ -157,3 +162,4 @@ Fonte: estimativas enviadas por Heyttor e Lucas no grupo.
 | 0.5 | 18/10/2026 | Inclusão da estimativa de horas por tarefa da Dupla 1 e da estimativa de Pedro Ian (linha de base do PSM) | Yasmin |
 | 0.6 | 18/10/2026 | Inclusão da estimativa de horas por tarefa de Dupla 2 e 3 atualizadas | Yasmin
 | 0.7 | 20/10/2026 | Antecipação do GQM completo (objetivo, questões, hipóteses, fichas, diagrama GQM e rastreabilidade) para o ponto de controle de 21/10, a pedido da professora | Yasmin |
+| 0.8 | 21/10/2026 | Correção das horas estimadas por sprint das Duplas 2 e 3 e da origem das estimativas | Yasmin |
