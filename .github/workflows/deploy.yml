@@ -1,14 +1,23 @@
-# Publica a GitPage a cada push na main.
-# Depois do primeiro deploy: Settings -> Pages -> Deploy from a branch -> gh-pages / (root).
+# Publica a GitPage a cada push na main, quando uma issue muda e uma vez por dia.
+# O painel do PSM (docs/gestao/painel-psm.md) é recalculado a cada publicação.
 name: Publicar GitPage
 
 on:
   push:
     branches: [main]
+  issues:
+    types: [opened, edited, closed, reopened, milestoned, demilestoned]
+  schedule:
+    - cron: "0 11 * * *"
   workflow_dispatch:
 
 permissions:
   contents: write
+  issues: read
+
+concurrency:
+  group: gitpage
+  cancel-in-progress: true
 
 jobs:
   deploy:
@@ -16,9 +25,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: main
           fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - run: pip install -r requirements.txt
       - run: mkdocs gh-deploy --force
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
