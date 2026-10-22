@@ -8,13 +8,30 @@ A equipe acompanha o projeto com o PSM, usando o modelo de medição para desenv
 | Recursos e Custos | Estimado vs. realizado (*Estimate vs. Actual Effort*) | Linha 8, *Resources and Cost*, p. 20 | As estimativas de esforço e custo estão certas? |
 | Desempenho dos Processos | Tempo de ciclo (*Cycle Time*) | Linha 32, *Process Performance*, p. 24 | As tarefas andam ou ficam paradas? |
 
-Os dados vêm das issues e milestones do GitHub e do registro de horas, que gera as tabelas de custo automaticamente. A fórmula, a fonte e o critério de decisão de cada métrica estão no [Plano de medição](plano-de-medicao.md); os valores medidos e as decisões tomadas, no [Registro de medições](registro-de-medicoes.md).
+As páginas seguem as etapas do processo de medição do PSM: planejar o que medir, medir durante as sprints e avaliar os resultados para tomar decisões.
 
-## Páginas de gestão
+<div class="mj-colunas">
+<div class="mj-coluna">
+<p class="mj-secao"><span>Planejar</span></p>
+<div class="mj-painel">
+<a class="mj-item" href="planejamento/"><small>Tarefas, responsáveis e estimativas (linha de base)</small><span>Planejamento das sprints</span></a>
+<a class="mj-item" href="plano-de-medicao/"><small>Fórmula, fonte e critério de decisão de cada métrica</small><span>Plano de medição</span></a>
+</div>
+</div>
+<div class="mj-coluna">
+<p class="mj-secao"><span>Medir</span></p>
+<div class="mj-painel">
+<a class="mj-item" href="painel-psm/"><small>Atualizado automaticamente a partir das issues</small><span>Painel do PSM</span></a>
+<a class="mj-item" href="horas/"><small>Horas e custo por integrante</small><span>Horas e custos</span></a>
+</div>
+</div>
+<div class="mj-coluna">
+<p class="mj-secao"><span>Avaliar e decidir</span></p>
+<div class="mj-painel">
+<a class="mj-item" href="registro-de-medicoes/"><small>Valor, interpretação e decisão de cada medição</small><span>Registro de medições</span></a>
+<a class="mj-item" href="atas/"><small>Reuniões e decisões da equipe</small><span>Atas de reunião</span></a>
+</div>
+</div>
+</div>
 
-- [Planejamento das sprints](planejamento.md): tarefas, responsáveis e estimativas (linha de base)
-- [Plano de medição](plano-de-medicao.md)
-- [Registro de medições](registro-de-medicoes.md)
-- [Registro de horas e custos](horas.md)
-- [Atas de reunião](atas.md)
-- [Milestones](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/milestones) e [issues](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues) no GitHub
+Tarefas e sprints no GitHub: [milestones](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/milestones) e [issues](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues).
