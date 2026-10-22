@@ -1,23 +1,48 @@
+---
+hide:
+  - navigation
+  - toc
+---
+
+<div class="mj-hero" markdown>
+
+<p class="mj-sobretitulo">FGA0315 · Qualidade de Software 1 · 2026/2 · Turma 01 · Grupo Mary Jackson</p>
+
 # Avaliação da qualidade do draw.io
 
-Este site documenta a avaliação de qualidade do **draw.io web, versão 32.2.0**, feita pela equipe Mary Jackson na disciplina Qualidade de Software 1 (FGA0315, UnB, 2026/2).
+<p class="mj-chamada">Avaliação da segurança, da eficiência de desempenho e da manutenibilidade do draw.io, feita pela equipe Mary Jackson na disciplina Qualidade de Software 1 (FGA0315, UnB, 2026/2).</p>
 
-No cenário hipotético da avaliação, a diretoria de TI de uma empresa júnior de software considera hospedar o draw.io em infraestrutura própria. A avaliação apoia essa decisão examinando **Segurança, Eficiência de desempenho e Manutenibilidade** em três componentes: importação de arquivos, rótulos das formas e exportação. O processo segue a ISO/IEC 25040, o método GQM para especificar as métricas e o PSM para acompanhar o projeto. Detalhes em [Propósito](fase-1/proposito.md) e [Escopo](fase-1/escopo.md).
+[Ver documentação](fase-1/index.md){ .md-button .md-button--primary }
+[Artigo (PDF)](artigo/artigo-e1.pdf){ .md-button target="_blank" rel="noopener" }
+[Repositório](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON){ .md-button }
 
-## Andamento
+</div>
 
-| Fase | Entrega | Situação |
-|---|---|---|
-| [Fase 1: Estabelecer os requisitos da avaliação](fase-1/index.md) | E1 · 26/10/2026 | Em revisão |
-| [Fase 2: Especificar a avaliação](fase-2/index.md) | E1 · 26/10/2026 | Em andamento |
-| [Fase 3: Projetar a avaliação](fase-3/index.md) | E2 | Não iniciada |
-| [Fase 4: Executar a avaliação](fase-4/index.md) | E2 | Não iniciada |
-
-O acompanhamento do projeto (planejamento, métricas do PSM, horas e atas) está em [Gestão do projeto](gestao/index.md).
-
-## Links
-
-- [Repositório](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON)
-- [Releases](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/releases)
-- [Dados](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/tree/main/dados)
-- [Planejamento das sprints](gestao/planejamento.md)
+<div class="mj-colunas">
+<div class="mj-coluna">
+<p class="mj-secao"><span>Avaliação</span></p>
+<div class="mj-painel">
+<a class="mj-item" href="fase-1/"><small>E1 · 26/10/2026 · Em revisão</small><span>Fase 1: Estabelecer os requisitos</span></a>
+<a class="mj-item" href="fase-2/"><small>E1 · 26/10/2026 · Em andamento</small><span>Fase 2: Especificar a avaliação</span></a>
+<a class="mj-item" href="fase-3/"><small>E2 · Não iniciada</small><span>Fase 3: Projetar a avaliação</span></a>
+<a class="mj-item" href="fase-4/"><small>E2 · Não iniciada</small><span>Fase 4: Executar a avaliação</span></a>
+</div>
+</div>
+<div class="mj-coluna">
+<p class="mj-secao"><span>Projeto</span></p>
+<div class="mj-painel">
+<a class="mj-item" href="gestao/"><small>PSM/CID</small><span>Gestão do projeto</span></a>
+<a class="mj-item" href="gestao/planejamento/"><small>Sprints e horas estimadas</small><span>Planejamento</span></a>
+<a class="mj-item" href="gestao/atas/"><small>Reuniões e decisões</small><span>Atas</span></a>
+<a class="mj-item" href="sobre/uso-de-ia/"><small>Ferramentas e conferência</small><span>Declaração de uso de IA</span></a>
+</div>
+</div>
+<div class="mj-coluna">
+<p class="mj-secao"><span>Repositório</span></p>
+<div class="mj-painel">
+<a class="mj-item" href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON" target="_blank" rel="noopener"><small>Código e documentos</small><span>GitHub</span></a>
+<a class="mj-item" href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/releases" target="_blank" rel="noopener"><small>Versões entregues</small><span>Releases</span></a>
+<a class="mj-item" href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/tree/main/dados" target="_blank" rel="noopener"><small>Coleta e consolidação</small><span>Dados da avaliação</span></a>
+</div>
+</div>
+</div>
