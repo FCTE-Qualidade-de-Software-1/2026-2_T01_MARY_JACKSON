@@ -16,6 +16,7 @@ import json
 import os
 import re
 import statistics
+import unicodedata
 import urllib.request
 from datetime import datetime, timezone
 from collections import OrderedDict
@@ -178,18 +179,25 @@ def _rotulo(nome):
     return '"' + curto.replace('"', "'") + '"'
 
 
-def _grafico(titulo, rotulos, barras, eixo_y, linha=None, maximo=None):
-    """Gráfico de barras (e linha opcional) em Mermaid, desenhado pelo próprio tema do site."""
+def _grafico(rotulos, barras, eixo_y, linha=None, maximo=None, legenda=""):
+    """Gráfico de barras (e linha opcional) em Mermaid, seguido da legenda da figura.
+
+    Barras em lilás e linha em azul; o tema não desenha legenda, por isso ela vai no texto da figura.
+    """
     numeros = lambda valores: "[" + ", ".join(f"{v:.1f}" for v in valores) + "]"
     if maximo is None:
         maximo = max(list(barras) + list(linha or []) + [1]) * 1.15
-    partes = ["```mermaid", "xychart-beta", f'    title "{titulo}"',
+    partes = ["```mermaid",
+              '%%{init: {"themeVariables": {"xyChart": {"plotColorPalette": "#c5cae9, #3f51b5"}}}}%%',
+              "xychart-beta",
               f"    x-axis [{', '.join(rotulos)}]",
               f'    y-axis "{eixo_y}" 0 --> {maximo:.0f}',
               f"    bar {numeros(barras)}"]
     if linha is not None:
         partes.append(f"    line {numeros(linha)}")
     partes += ["```", ""]
+    if legenda:
+        partes += [f"_{legenda}_", ""]
     return partes
 
 
@@ -199,6 +207,103 @@ def _data(iso):
 
 def _fmt(valor, casas=1):
     return f"{valor:.{casas}f}".replace(".", ",")
+
+
+def _pessoa(nome):
+    """Chave para comparar nomes: primeiro nome, minúsculo e sem acento ("Miquéias Ezequiel" vira "miqueias")."""
+    primeiro = (nome or "").strip().split(" ")[0]
+    sem_acento = unicodedata.normalize("NFKD", primeiro).encode("ascii", "ignore").decode()
+    return sem_acento.lower()
+
+
+def _linhas_csv(config):
+    """Linhas válidas de dados/gestao/horas.csv (as mesmas que a página de horas usa)."""
+    arquivo = Path(config["config_file_path"]).parent / "dados" / "gestao" / "horas.csv"
+    if not arquivo.exists():
+        return []
+    linhas = []
+    with arquivo.open(encoding="utf-8") as f:
+        for l in csv.DictReader(f):
+            if not (l.get("membro") or "").strip() or None in l:
+                continue
+            try:
+                l["_horas"] = _num(l["horas"])
+            except (ValueError, TypeError):
+                continue
+            linhas.append(l)
+    return linhas
+
+
+def _horas_combinadas(issues, sprints, config):
+    """Junta as horas do horas.csv e do campo "Horas reais" das issues.
+
+    - Linha do CSV com número de issue: entra na sprint (milestone) dessa issue.
+    - Linha do CSV sem issue: entra na sprint pela data, comparada com o prazo de cada milestone.
+    - Linha "dd/mm - Nome - X h" de uma issue: entra, exceto quando a mesma pessoa já registrou
+      a mesma issue no CSV (para não contar duas vezes; nesse caso vale o CSV).
+
+    Devolve as horas por sprint, a conferência por pessoa e a lista de linhas ignoradas.
+    """
+    por_numero = {i["number"]: i for i in issues}
+    prazos = []
+    for nome, lista in sprints.items():
+        prazo = (lista[0].get("milestone") or {}).get("due_on")
+        if prazo:
+            prazos.append((prazo[:10], nome))
+    prazos.sort()
+
+    def sprint_da_data(data):
+        for prazo, nome in prazos:
+            if data <= prazo:
+                return nome
+        return prazos[-1][1] if prazos else "Sem sprint"
+
+    por_sprint, nomes, conferencia, ignoradas = {}, {}, {}, []
+    ja_no_csv = set()
+
+    def pessoa(nome):
+        chave = _pessoa(nome) or "sem nome"
+        nomes.setdefault(chave, (nome or "Sem nome").strip().split(" ")[0])
+        return conferencia.setdefault(chave, {"csv": 0.0, "issues": 0.0, "ignoradas": 0.0})
+
+    for l in _linhas_csv(config):
+        texto = str(l.get("issue") or "").strip().lstrip("#")
+        numero = int(texto) if texto.isdigit() else None
+        issue = por_numero.get(numero) if numero else None
+        sprint = ((issue or {}).get("milestone") or {}).get("title")
+        if sprint is None:
+            sprint = sprint_da_data(str(l.get("data") or "").strip())
+        if numero:
+            ja_no_csv.add((numero, _pessoa(l["membro"])))
+        pessoa(l["membro"])["csv"] += l["_horas"]
+        por_sprint[sprint] = por_sprint.get(sprint, 0) + l["_horas"]
+
+    for i in issues:
+        sprint = (i.get("milestone") or {}).get("title") or "Sem sprint"
+        por_nome = _horas_por_pessoa(i.get("body"))
+        for nome, horas in por_nome.items():
+            if (i["number"], _pessoa(nome)) in ja_no_csv:
+                pessoa(nome)["ignoradas"] += horas
+                ignoradas.append((i["number"], nomes[_pessoa(nome) or "sem nome"], horas))
+            else:
+                pessoa(nome)["issues"] += horas
+                por_sprint[sprint] = por_sprint.get(sprint, 0) + horas
+        sem_nome = _horas_reais(i.get("body")) - sum(por_nome.values())
+        if sem_nome > 0.001:
+            pessoa("")["issues"] += sem_nome
+            por_sprint[sprint] = por_sprint.get(sprint, 0) + sem_nome
+
+    conferencia = {nomes[k]: v for k, v in conferencia.items()}
+    return por_sprint, conferencia, ignoradas
+
+
+def _ficha(o_que_mede, formula, fonte, limite, referencia):
+    """Lista curta que explica a métrica antes dos números."""
+    return [f"- **O que mede:** {o_que_mede}",
+            f"- **Como é calculada:** {formula}",
+            f"- **De onde vêm os dados:** {fonte}",
+            f"- **Quando exige decisão:** {limite}",
+            f"- **Referência:** {referencia}", ""]
 
 
 def _painel_psm(markdown, config):
@@ -224,79 +329,140 @@ def _painel_psm(markdown, config):
     for i in sorted(issues, key=lambda x: ((x.get("milestone") or {}).get("due_on") or "9999", x["number"])):
         nome = (i.get("milestone") or {}).get("title") or "Sem sprint"
         sprints.setdefault(nome, []).append(i)
+    rotulos = [_rotulo(n) for n in sprints]
+    horas_sprint, conferencia, ignoradas = _horas_combinadas(issues, sprints, config)
+    link = lambda n: f"[#{n}]({repo_url}/issues/{n})"
 
-    saida = [f"_Atualizado automaticamente em {agora.astimezone().strftime('%d/%m/%Y %H:%M')} "
-             f"a partir de {len(issues)} issues._", ""]
+    data_hoje = agora.astimezone().strftime("%d/%m/%Y")
+    saida = [f"_Atualizado automaticamente em {agora.astimezone().strftime('%d/%m/%Y %H:%M')}, "
+             f"a partir de {len(issues)} issues e do registro de horas._", ""]
 
-    # Calendário e Progresso: planejado vs. concluído
-    saida += ["## Planejado vs. concluído", "",
-              "| Sprint | Planejadas | Concluídas | Concluído | Situação |", "|---|---|---|---|---|"]
+    # Como o painel é montado
+    saida += ["## Como este painel é montado", "",
+              "A cada publicação do site, o script `hooks/horas.py` lê as issues do GitHub e o registro de horas, "
+              "calcula as três métricas do [Plano de medição](plano-de-medicao.md) e compara cada resultado com o limite "
+              "de decisão. A interpretação e as decisões de cada medição ficam no [Registro de medições](registro-de-medicoes.md).",
+              "",
+              "```mermaid",
+              "flowchart LR",
+              '    I["Issues do GitHub"] --> S["Script horas.py"]',
+              '    C["Registro de horas<br/>(horas.csv)"] --> S',
+              '    S --> M1["Planejado vs. concluído"]',
+              '    S --> M2["Estimado vs. realizado"]',
+              '    S --> M3["Tempo de ciclo"]',
+              '    M1 --> L["Comparação com os limites"]',
+              "    M2 --> L",
+              "    M3 --> L",
+              '    L --> R["Registro de medições"]',
+              "```", "",
+              "_Figura 1. Fluxo de cálculo do painel. Fonte: elaboração da equipe._", ""]
+
+    # 1. Calendário e Progresso
+    saida += ["## 1. Planejado vs. concluído (Calendário e Progresso)", ""]
+    saida += _ficha("Quanto do que a equipe planejou para a sprint já foi entregue.",
+                    "Issues fechadas da sprint ÷ issues da sprint × 100.",
+                    "Milestone (sprint) e situação (aberta ou fechada) de cada issue.",
+                    f"Menos de {_fmt(lim_concluido, 0)}% concluído na metade da sprint: redistribuir tarefas.",
+                    "PSM/CID, Parte 1, Tabela 5, linha 1; Parte 2, seção 8.3.")
+    saida += ["| Sprint | Planejadas | Concluídas | Concluído | Situação |", "|---|---|---|---|---|"]
+    pcts = []
     for nome, lista in sprints.items():
         feitas = sum(1 for i in lista if i["state"] == "closed")
         pct = feitas / len(lista) * 100
-        alerta = "abaixo do limite" if pct < lim_concluido else "ok"
+        pcts.append(pct)
+        alerta = "abaixo do limite" if pct < lim_concluido else "dentro do limite"
         saida.append(f"| {nome} | {len(lista)} | {feitas} | {_fmt(pct)}% | {alerta} |")
-    saida += ["", f"Limite: menos de {_fmt(lim_concluido, 0)}% concluído na metade da sprint indica redistribuir tarefas.", ""]
-    rotulos = [_rotulo(n) for n in sprints]
-    pcts = [sum(1 for i in l if i["state"] == "closed") / len(l) * 100 for l in sprints.values()]
-    saida += _grafico("Concluído por sprint (%); linha: limite", rotulos, pcts, "%",
-                      [lim_concluido] * len(pcts), maximo=100)
+    saida += [""] + _grafico(rotulos, pcts, "% concluído", [lim_concluido] * len(pcts), maximo=100,
+                             legenda=f"Figura 2. Percentual de issues concluídas por sprint. Barras lilás: "
+                                     f"percentual concluído; linha azul: limite de decisão ({_fmt(lim_concluido, 0)}%). "
+                                     f"Fonte: issues e milestones do GitHub, em {data_hoje}.")
 
-    # Recursos e Custos: estimado vs. realizado
-    saida += ["## Estimado vs. realizado", "",
-              "| Sprint | Horas estimadas | Horas reais | Razão | Custo real | Issues sem estimativa numérica |",
+    # 2. Recursos e Custos
+    saida += ["## 2. Estimado vs. realizado (Recursos e Custos)", ""]
+    saida += _ficha("Se o esforço gasto está de acordo com o que foi estimado.",
+                    f"Horas reais ÷ horas estimadas. Custo = horas reais × R$ {_fmt(custo_hora, 2)}.",
+                    "Estimativa: campo \"Estimativa (horas)\" das issues. Horas reais: registro de horas e campo "
+                    "\"Horas reais\" das issues (ver a conferência abaixo).",
+                    f"Razão acima de {_fmt(lim_razao)}: revisar as estimativas das tarefas restantes.",
+                    "PSM/CID, Parte 1, Tabela 5, linha 8.")
+    saida += ["| Sprint | Horas estimadas | Horas reais | Razão | Custo real | Issues sem estimativa numérica |",
               "|---|---|---|---|---|---|"]
+    est_sprint, real_sprint = [], []
     for nome, lista in sprints.items():
         est = [_estimativa(i.get("body")) for i in lista]
         h_est = sum(e for e in est if e is not None)
-        h_real = sum(_horas_reais(i.get("body")) for i in lista)
+        h_real = horas_sprint.get(nome, 0)
+        est_sprint.append(h_est)
+        real_sprint.append(h_real)
         razao = (h_real / h_est) if h_est else 0
-        sem = ", ".join(f"#{i['number']}" for i, e in zip(lista, est) if e is None) or "—"
+        sem = ", ".join(link(i["number"]) for i, e in zip(lista, est) if e is None) or "—"
         saida.append(f"| {nome} | {_fmt(h_est)} h | {_fmt(h_real)} h | {_fmt(razao, 2)} | "
                      f"R$ {_fmt(h_real * custo_hora, 2)} | {sem} |")
-    saida += ["", f"Limite: razão acima de {_fmt(lim_razao)} indica revisar as estimativas. "
-              "As horas reais vêm do campo \"Horas reais\" de cada issue.", ""]
-    est_sprint = [sum(e for e in (_estimativa(i.get("body")) for i in l) if e is not None) for l in sprints.values()]
-    real_sprint = [sum(_horas_reais(i.get("body")) for i in l) for l in sprints.values()]
-    saida += _grafico("Horas por sprint: barras estimadas, linha reais", rotulos, est_sprint, "horas",
-                      real_sprint)
+    saida += ["", "Issues sem estimativa numérica não entram na soma das horas estimadas; "
+              "por isso, a razão dessas sprints pode estar acima do valor real.", ""]
+    saida += _grafico(rotulos, est_sprint, "horas", real_sprint,
+                      legenda=f"Figura 3. Horas estimadas e realizadas por sprint. Barras lilás: horas estimadas; "
+                              f"linha azul: horas reais. Fonte: issues do GitHub e registro de horas, em {data_hoje}.")
 
-    # Horas por pessoa (para a tabela de contribuição)
-    pessoas = {}
-    for i in issues:
-        for nome, h in _horas_por_pessoa(i.get("body")).items():
-            pessoas[nome] = pessoas.get(nome, 0) + h
-    if pessoas:
-        total = sum(pessoas.values())
-        saida += ["### Horas por integrante", "", "| Integrante | Horas | % do total |", "|---|---|---|"]
-        for nome, h in sorted(pessoas.items(), key=lambda x: -x[1]):
-            saida.append(f"| {nome} | {_fmt(h)} h | {_fmt(h / total * 100, 0)}% |")
-        saida.append("")
+    # Conferência das horas
+    saida += ["### Conferência das horas", "",
+              "As horas reais vêm de dois lugares: o registro de horas (`dados/gestao/horas.csv`), usado desde o início "
+              "do projeto, e o campo \"Horas reais\" das issues, adotado a partir de 21/10 (Ata 04). As regras são:", "",
+              "1. Linha do registro **com** número de issue: entra na sprint dessa issue.",
+              "2. Linha do registro **sem** número de issue: entra na sprint pela data.",
+              "3. Horas escritas na issue: entram, **exceto** quando a mesma pessoa já registrou a mesma issue no "
+              "registro de horas. Nesse caso vale o registro, para não contar o mesmo trabalho duas vezes.", "",
+              "| Integrante | Registradas no horas.csv | Registradas nas issues | Repetidas (já estavam no horas.csv) | Total contado | % do total |",
+              "|---|---|---|---|---|---|"]
+    h = lambda v: f"{_fmt(v)} h" if v > 0.001 else "—"
+    total = sum(v["csv"] + v["issues"] for v in conferencia.values())
+    for nome, v in sorted(conferencia.items(), key=lambda x: -(x[1]["csv"] + x[1]["issues"])):
+        contadas = v["csv"] + v["issues"]
+        pct = contadas / total * 100 if total else 0
+        saida.append(f"| {nome} | {h(v['csv'])} | {h(v['issues'] + v['ignoradas'])} | "
+                     f"{h(v['ignoradas'])} | **{_fmt(contadas)} h** | {_fmt(pct, 0)}% |")
+    saida.append(f"| **Total** | | | | **{_fmt(total)} h** | 100% |")
+    saida += ["", "Como ler: **Total contado** = horas no horas.csv + horas nas issues − horas repetidas. "
+              "Um traço (—) indica que a pessoa não registrou horas naquele lugar.", ""]
+    if ignoradas:
+        saida.append("**Horas repetidas, contadas uma vez só:** " + "; ".join(
+            f"{link(n)} ({nome}, {_fmt(hh)} h)" for n, nome, hh in ignoradas) + ".")
+    else:
+        saida.append("**Horas repetidas:** nenhuma.")
+    saida += ["", "A página [Horas e custos](horas.md) mostra só o registro de horas; a coluna \"Contadas\" "
+              "acima soma também as horas das issues.", ""]
 
-    # Desempenho dos Processos: tempo de ciclo
-    saida += ["## Tempo de ciclo", "",
-              "| Sprint | Issues concluídas | Média (dias) | Mediana (dias) |", "|---|---|---|---|"]
+    # 3. Desempenho dos Processos
+    saida += ["## 3. Tempo de ciclo (Desempenho dos Processos)", ""]
+    saida += _ficha("Quanto tempo uma tarefa leva entre ser aberta e ser concluída.",
+                    "Data de fechamento da issue − data de abertura, em dias (média e mediana por sprint).",
+                    "Datas registradas pelo GitHub em cada issue.",
+                    f"Issue aberta há mais de {_fmt(lim_dias, 0)} dias sem atualização: cobrar o responsável ou dividir a tarefa.",
+                    "PSM/CID, Parte 1, Tabela 5, linha 32; Parte 2, seção 8.5.")
+    saida += ["| Sprint | Issues concluídas | Média (dias) | Mediana (dias) |", "|---|---|---|---|"]
+    medias = []
     for nome, lista in sprints.items():
         dias = [(_data(i["closed_at"]) - _data(i["created_at"])).total_seconds() / 86400
                 for i in lista if i["state"] == "closed" and i.get("closed_at")]
+        medias.append(statistics.mean(dias) if dias else 0)
         if dias:
             saida.append(f"| {nome} | {len(dias)} | {_fmt(statistics.mean(dias))} | {_fmt(statistics.median(dias))} |")
         else:
             saida.append(f"| {nome} | 0 | — | — |")
-    medias = []
-    for lista in sprints.values():
-        d = [(_data(i["closed_at"]) - _data(i["created_at"])).total_seconds() / 86400
-             for i in lista if i["state"] == "closed" and i.get("closed_at")]
-        medias.append(statistics.mean(d) if d else 0)
-    saida += [""] + _grafico("Tempo de ciclo médio por sprint (dias)", rotulos, medias, "dias")
+    saida += ["", "O tempo é contado até o **fechamento** da issue. Uma tarefa concluída e fechada depois aparece com "
+              "tempo maior que o real; esses casos são explicados no Registro de medições.", ""]
+    saida += _grafico(rotulos, medias, "dias",
+                      legenda=f"Figura 4. Tempo de ciclo médio por sprint. Barras lilás: média de dias entre abrir e "
+                              f"fechar a issue. Fonte: datas das issues no GitHub, em {data_hoje}.")
     paradas = [i for i in issues if i["state"] == "open"
                and (agora - _data(i.get("updated_at") or i["created_at"])).total_seconds() / 86400 > lim_dias]
-    saida += ["", f"Limite: issue sem atualização há mais de {_fmt(lim_dias, 0)} dias indica cobrar ou dividir a tarefa.", ""]
+    saida += [f"### Issues paradas", "",
+              f"Issues ainda abertas e sem nenhuma atualização há mais de {_fmt(lim_dias, 0)} dias "
+              "(limite de decisão desta métrica):", ""]
     if paradas:
-        saida.append("Issues abertas acima do limite: " + ", ".join(
-            f"[#{i['number']}]({repo_url}/issues/{i['number']})" for i in paradas) + ".")
+        saida.append(", ".join(link(i["number"]) for i in paradas) + ".")
     else:
-        saida.append("Nenhuma issue aberta acima do limite.")
+        saida.append("Nenhuma no momento.")
 
     return markdown.replace(MARCADOR_PSM, "\n".join(saida))
 
