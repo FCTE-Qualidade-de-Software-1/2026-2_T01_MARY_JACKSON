@@ -60,11 +60,11 @@ As questões e hipóteses derivam das necessidades R-ED-01 a R-ED-04 da [Fase 1]
 | Elemento | Descrição |
 | --- | --- |
 | Identificador | G3 |
-| Objeto | Código-fonte dos componentes de importação de arquivos, edição de rótulos e exportação PNG/PDF/SVG do _draw.io_. |
-| Propósito | Avaliar a manutenibilidade dos componentes selecionados. |
-| Foco | Analisabilidade e modificabilidade. |
+| Analisar |  _draw.io_. |
+| Para o propósito de | Entender |
+| Com respeito a | Manutenabilidade: Analisabilidade e modificabilidade. |
 | Ponto de vista | Desenvolvedores responsáveis pela manutenção do software. |
-| Contexto | Manutenção e evolução dos componentes selecionados do _draw.io_, versão 32.2.0. |
+| Contexto |Disciplina Qualidade de Software 1 , em cenário hipotético de adoção do _draw.io_ por uma empresa júnior de software. |
 
 ### Questões e hipóteses
 
