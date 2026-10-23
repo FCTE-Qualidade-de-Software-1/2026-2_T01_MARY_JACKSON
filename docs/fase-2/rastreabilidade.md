@@ -9,7 +9,7 @@ Esta página mostra como cada objetivo GQM da Fase 2 deriva da Fase 1: da caract
 | Característica (Fase 1) | Importância | Decisão do requisitante | Stakeholder / ponto de vista | Foco de qualidade | Objetivo | Questões | Métricas |
 |---|:-:|---|---|---|:-:|---|---|
 | Segurança | 5/5 | Liberar ou não a abertura de diagramas de terceiros e o servidor de exportação próprio | Diretoria de TI da empresa júnior | Confidencialidade, integridade e resistência | G1 | Q1.1 a Q1.5 | M1.1 a M1.3 |
-| Eficiência de desempenho | 4/5 | Se a ferramenta aguenta os diagramas grandes dos projetos ou se é preciso limitar o tamanho | Usuários que produzem diagramas e avaliadores | Comportamento temporal, utilização de recursos e capacidade | G2 | Q2.1 a Q2.4 | M2.1 a M2.6 |
+| Eficiência de desempenho | 4/5 | Se a ferramenta aguenta os diagramas grandes dos projetos ou se é preciso limitar o tamanho | Usuários finais da empresa júnior | Comportamento temporal, utilização de recursos e capacidade | G2 | Q2.1 a Q2.4 | M2.1 a M2.6 |
 | Manutenibilidade | 4/5 | Se é viável manter uma versão própria e aplicar correções | Desenvolvedores responsáveis pela manutenção | Analisabilidade e modificabilidade | G3 | Q3.1 a Q3.3 | M3.1 e M3.2 |
 
 ## Componentes do escopo → questões
@@ -39,10 +39,10 @@ Cada componente definido no [escopo](../fase-1/escopo.md) é coberto por uma que
 
 | Questão | Componente | Subcaracterística | Métrica |
 |---|---|---|---|
-| Q2.1 (R-ED-01) Como a abertura se comporta em tempo e memória quando o porte aumenta? | Importação | Comportamento temporal e utilização de recursos | M2.1 Tempo de abertura e M2.2 Heap após a abertura |
-| Q2.2 (R-ED-02) A edição de rótulos permanece responsiva com mais formas? | Rótulos | Comportamento temporal | M2.3 Latência do rótulo |
-| Q2.3 (R-ED-03) Como PNG, PDF e SVG diferem em tempo e pico de memória? | Exportação | Comportamento temporal e utilização de recursos | M2.4 Tempo de exportação e M2.5 Pico de heap na exportação |
-| Q2.4 (R-ED-04) Qual o maior porte com fluxo completo repetível? | Fluxo completo | Capacidade | M2.6 Maior porte aprovado |
+| Q2.1 (R-ED-01) Como o tempo de abertura e o consumo de memória variam à medida que o porte do diagrama aumenta? | Importação | Comportamento temporal e utilização de recursos | M2.1 Tempo de abertura e M2.2 Heap após a abertura |
+| Q2.2 (R-ED-02) Em que medida a edição de rótulos permanece responsiva à medida que o número de formas aumenta? | Rótulos | Comportamento temporal | M2.3 Latência do rótulo |
+| Q2.3 (R-ED-03) Como os formatos PNG, PDF e SVG diferem em tempo de exportação e pico de memória? | Exportação | Comportamento temporal e utilização de recursos | M2.4 Tempo de exportação e M2.5 Pico de heap na exportação |
+| Q2.4 (R-ED-04) Qual o maior porte de diagrama em que o fluxo abrir, editar e exportar é concluído de forma repetível? | Fluxo completo | Capacidade | M2.6 Maior porte aprovado |
 
 Os códigos R-ED indicam a necessidade da Fase 1 que originou cada questão.
 

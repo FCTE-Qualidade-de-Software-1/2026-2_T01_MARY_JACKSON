@@ -1,7 +1,7 @@
 # Objetivos, questões e hipóteses
 
 <!-- O que entra aqui: um objetivo por característica no template GQM (Aula 08, pág. 24), as questões de cada objetivo e uma hipótese por questão. As abstraction sheets das duplas podem entrar aqui (Aula 08, pág. 29). Rubrica F2-C1 a C3. -->
-
+Cada característica priorizada na [Fase 1](../fase-1/caracteristicas.md) gera um objetivo de medição, escrito no template do GQM: **Analisar** o objeto, **para o propósito de** entender, melhorar ou controlar, **com respeito a** um foco de qualidade, **do ponto de vista de** uma parte interessada, **no contexto de** um ambiente. O objeto dos três objetivos é o _draw.io_; os componentes avaliados aparecem nas questões. O propósito é **entender** o nível de qualidade do produto, porque os resultados apoiam a decisão de adoção descrita no [Propósito da avaliação](../fase-1/proposito.md). O ponto de vista de cada objetivo vem das [partes interessadas](../fase-1/partes-interessadas.md) da Fase 1. Versão, instalação e ambiente de execução fazem parte do plano de avaliação (Fase 3).
 
 ## Segurança (Dupla 1)
 
@@ -32,25 +32,26 @@ As questões e hipóteses foram definidas para orientar a avaliação da seguran
 
 ### Objetivo de medição
 
-| Elemento | Descrição |
+| Template GQM | G2 |
 | --- | --- |
-| Identificador | G2 |
-| Objeto | Fluxo de abrir diagramas, editar rótulos e exportar (PNG, PDF e SVG) do _draw.io_ 32.2.0. |
-| Propósito | Avaliar tempo, memória e capacidade. |
-| Foco | Comportamento temporal, utilização de recursos e capacidade. |
-| Ponto de vista | Usuários que produzem diagramas e avaliadores. |
-| Contexto | Editor web em ambiente documentado e cinco cargas sintéticas definidas (50, 300, 1.000, 2.000 e 5.000 formas). |
+| Analisar | O _draw.io_. |
+| Para o propósito de | Entender. |
+| Com respeito a | Eficiência de desempenho: comportamento temporal, utilização de recursos e capacidade. |
+| Do ponto de vista de | Usuários finais da empresa júnior (desenvolvedores, analistas e gerentes de projeto). |
+| No contexto de | Disciplina Qualidade de Software 1 , em cenário hipotético de adoção do _draw.io_ por uma empresa júnior de software. |
+
+**G2:** Analisar o _draw.io_ para o propósito de entender, com respeito à eficiência de desempenho (comportamento temporal, utilização de recursos e capacidade), do ponto de vista dos usuários finais da empresa júnior, no contexto da disciplina Qualidade de Software 1.
 
 ### Questões e hipóteses
 
-As questões e hipóteses derivam das necessidades R-ED-01 a R-ED-04 da [Fase 1](../fase-1/partes-interessadas.md). As hipóteses serão verificadas na E2.
+As questões e hipóteses derivam das necessidades R-ED-01 a R-ED-04 da [Fase 1](../fase-1/partes-interessadas.md#necessidades-de-eficiencia). As hipóteses serão verificadas na E2.
 
 | Questão | Hipótese |
 | --- | --- |
-| **Q2.1**<br>Como a abertura se comporta em tempo e memória quando o porte aumenta? | **H2.1**<br>Ambos crescem com a carga, respeitando os limites aprovados. |
-| **Q2.2**<br>A edição de rótulos permanece responsiva com mais formas? | **H2.2**<br>A latência cresce, mas atende ao limite de cada carga. |
-| **Q2.3**<br>Como PNG, PDF e SVG diferem em tempo e pico de memória? | **H2.3**<br>Os custos variam por formato e atendem aos limites por carga. |
-| **Q2.4**<br>Qual o maior porte com fluxo completo repetível? | **H2.4**<br>Com 5.000 formas, cada uma das cinco operações terá pelo menos quatro sucessos em cinco tentativas válidas. |
+| **Q2.1**<br>Como o tempo de abertura e o consumo de memória variam à medida que o porte do diagrama aumenta? | **H2.1**<br>Ambos crescem com o porte, mas permanecem dentro dos limites de cada carga (nota 4 ou 5 em M2.1 e M2.2). |
+| **Q2.2**<br>Em que medida a edição de rótulos permanece responsiva à medida que o número de formas aumenta? | **H2.2**<br>A latência cresce com o porte, mas atende ao limite de cada carga (nota 4 ou 5 em M2.3). |
+| **Q2.3**<br>Como os formatos PNG, PDF e SVG diferem em tempo de exportação e pico de memória? | **H2.3**<br>Os custos variam por formato, e todos atendem aos limites de cada carga (nota 4 ou 5 em M2.4 e M2.5). |
+| **Q2.4**<br>Qual o maior porte de diagrama em que o fluxo abrir, editar e exportar é concluído de forma repetível? | **H2.4**<br>Com 5.000 formas, cada uma das cinco operações terá pelo menos quatro sucessos em cinco tentativas válidas (M2.6 = 5.000 formas). |
 
 ## Manutenibilidade (Dupla 3)
 
