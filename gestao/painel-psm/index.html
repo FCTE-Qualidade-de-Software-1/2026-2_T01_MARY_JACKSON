@@ -1870,7 +1870,7 @@
 
 <h1 id="painel-do-psm">Painel do PSM<a class="headerlink" href="#painel-do-psm" title="Permanent link">&para;</a></h1>
 <p>Esta página é gerada automaticamente a cada publicação do site e sempre que uma issue é aberta, fechada ou editada. Os dados vêm das issues do GitHub: a sprint (milestone), as datas de abertura e fechamento e os campos "Estimativa (horas)" e "Horas reais" do formulário de tarefa. As definições de cada métrica estão no <a href="../plano-de-medicao/">Plano de medição</a>.</p>
-<p><em>Atualizado automaticamente em 24/10/2026 00:46, a partir de 34 issues e do registro de horas.</em></p>
+<p><em>Atualizado automaticamente em 24/10/2026 00:48, a partir de 35 issues e do registro de horas.</em></p>
 <h2 id="como-este-painel-e-montado">Como este painel é montado<a class="headerlink" href="#como-este-painel-e-montado" title="Permanent link">&para;</a></h2>
 <p>A cada publicação do site, o script <code>hooks/horas.py</code> lê as issues do GitHub e o registro de horas, calcula as três métricas do <a href="../plano-de-medicao/">Plano de medição</a> e compara cada resultado com o limite de decisão. A interpretação e as decisões de cada medição ficam no <a href="../registro-de-medicoes/">Registro de medições</a>.</p>
 <pre class="mermaid"><code>flowchart LR
@@ -1924,14 +1924,21 @@
 <td>0,0%</td>
 <td>abaixo do limite</td>
 </tr>
+<tr>
+<td>Sem sprint</td>
+<td>1</td>
+<td>0</td>
+<td>0,0%</td>
+<td>abaixo do limite</td>
+</tr>
 </tbody>
 </table>
 <pre class="mermaid"><code>%%{init: {"themeVariables": {"xyChart": {"plotColorPalette": "#c5cae9, #3f51b5"}}}}%%
 xychart-beta
-    x-axis ["Sprint 1", "Sprint 2", "Sprint 3"]
+    x-axis ["Sprint 1", "Sprint 2", "Sprint 3", "Sem sprint"]
     y-axis "% concluído" 0 --&gt; 100
-    bar [100.0, 58.3, 0.0]
-    line [50.0, 50.0, 50.0]</code></pre>
+    bar [100.0, 58.3, 0.0, 0.0]
+    line [50.0, 50.0, 50.0, 50.0]</code></pre>
 <p><em>Figura 2. Percentual de issues concluídas por sprint. Barras lilás: percentual concluído; linha azul: limite de decisão (50%). Fonte: issues e milestones do GitHub, em 24/10/2026.</em></p>
 <h2 id="2-estimado-vs-realizado-recursos-e-custos">2. Estimado vs. realizado (Recursos e Custos)<a class="headerlink" href="#2-estimado-vs-realizado-recursos-e-custos" title="Permanent link">&para;</a></h2>
 <ul>
@@ -1977,15 +1984,23 @@ xychart-beta
 <td>R$ 77,54</td>
 <td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/30">#30</a>, <a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/35">#35</a></td>
 </tr>
+<tr>
+<td>Sem sprint</td>
+<td>0,0 h</td>
+<td>0,0 h</td>
+<td>0,00</td>
+<td>R$ 0,00</td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/36">#36</a></td>
+</tr>
 </tbody>
 </table>
 <p>Issues sem estimativa numérica não entram na soma das horas estimadas; por isso, a razão dessas sprints pode estar acima do valor real.</p>
 <pre class="mermaid"><code>%%{init: {"themeVariables": {"xyChart": {"plotColorPalette": "#c5cae9, #3f51b5"}}}}%%
 xychart-beta
-    x-axis ["Sprint 1", "Sprint 2", "Sprint 3"]
+    x-axis ["Sprint 1", "Sprint 2", "Sprint 3", "Sem sprint"]
     y-axis "horas" 0 --&gt; 41
-    bar [12.0, 26.0, 17.0]
-    line [27.8, 35.4, 5.2]</code></pre>
+    bar [12.0, 26.0, 17.0, 0.0]
+    line [27.8, 35.4, 5.2, 0.0]</code></pre>
 <p><em>Figura 3. Horas estimadas e realizadas por sprint. Barras lilás: horas estimadas; linha azul: horas reais. Fonte: issues do GitHub e registro de horas, em 24/10/2026.</em></p>
 <h3 id="conferencia-das-horas">Conferência das horas<a class="headerlink" href="#conferencia-das-horas" title="Permanent link">&para;</a></h3>
 <p>As horas reais vêm de dois lugares: o registro de horas (<code>dados/gestao/horas.csv</code>), usado desde o início do projeto, e o campo "Horas reais" das issues, adotado a partir de 21/10 (Ata 04). As regras são:</p>
@@ -2103,14 +2118,20 @@ xychart-beta
 <td>—</td>
 <td>—</td>
 </tr>
+<tr>
+<td>Sem sprint</td>
+<td>0</td>
+<td>—</td>
+<td>—</td>
+</tr>
 </tbody>
 </table>
 <p>O tempo é contado até o <strong>fechamento</strong> da issue. Uma tarefa concluída e fechada depois aparece com tempo maior que o real; esses casos são explicados no Registro de medições.</p>
 <pre class="mermaid"><code>%%{init: {"themeVariables": {"xyChart": {"plotColorPalette": "#c5cae9, #3f51b5"}}}}%%
 xychart-beta
-    x-axis ["Sprint 1", "Sprint 2", "Sprint 3"]
+    x-axis ["Sprint 1", "Sprint 2", "Sprint 3", "Sem sprint"]
     y-axis "dias" 0 --&gt; 2
-    bar [1.9, 1.1, 0.0]</code></pre>
+    bar [1.9, 1.1, 0.0, 0.0]</code></pre>
 <p><em>Figura 4. Tempo de ciclo médio por sprint. Barras lilás: média de dias entre abrir e fechar a issue. Fonte: datas das issues no GitHub, em 24/10/2026.</em></p>
 <h3 id="issues-paradas">Issues paradas<a class="headerlink" href="#issues-paradas" title="Permanent link">&para;</a></h3>
 <p>Issues ainda abertas e sem nenhuma atualização há mais de 3 dias (limite de decisão desta métrica):</p>
