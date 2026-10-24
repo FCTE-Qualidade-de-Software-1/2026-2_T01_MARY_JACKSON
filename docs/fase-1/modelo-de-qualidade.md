@@ -14,6 +14,7 @@ flowchart TB
     ISO --> MAN["Manutenibilidade"]
     SEG --> SEG1["Confidencialidade"]
     SEG --> SEG2["Integridade"]
+    SEG --> SEG3["Resistência"]
     EFI --> EFI1["Comportamento temporal"]
     EFI --> EFI2["Utilização de recursos"]
     EFI --> EFI3["Capacidade"]
@@ -32,6 +33,7 @@ _Figura 1. Modelo de qualidade adaptado ao fluxo abrir–editar rótulos–expor
 | ------------------------ | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Segurança                | Confidencialidade      | Examinar a proteção das informações dos diagramas durante a abertura e a exportação.                                                                                    |
 | Segurança                | Integridade            | Examinar a proteção contra alterações indevidas nos fluxos de arquivos e rótulos.                                                                                       |
+| Segurança                | Resistência            | Examinar se a proteção dos rótulos bloqueia variações dos ataques conhecidos durante a abertura de diagramas, no recorte de Q1.5 e M1.3. |
 | Eficiência de desempenho | Comportamento temporal | Avaliar o tempo para abrir, atualizar o texto de um rótulo e exportar em cada formato.                                                                                  |
 | Eficiência de desempenho | Utilização de recursos | Avaliar a memória JavaScript do editor nas operações selecionadas, sem equipará-la à memória total do ambiente.                                                         |
 | Eficiência de desempenho | Capacidade             | Identificar o maior porte aprovado entre as cargas de 50, 300, 1.000, 2.000 e 5.000 formas, considerando o fluxo completo e os critérios que serão definidos na Fase 2. |
@@ -40,7 +42,9 @@ _Figura 1. Modelo de qualidade adaptado ao fluxo abrir–editar rótulos–expor
 
 Para Eficiência, mantêm-se as três subcaracterísticas porque rapidez, consumo de recursos e porte suportado respondem a necessidades distintas dos [usuários finais](partes-interessadas.md#necessidades-de-eficiencia). A observação de recursos é parcial: o projeto delimita a coleta à memória JavaScript, sem cobrir todos os recursos computacionais.
 
-O recorte de Segurança em confidencialidade e integridade acompanha o objetivo já fornecido pela Dupla 1 no Overleaf. O de Manutenibilidade em analisabilidade e modificabilidade acompanha o planejamento da Dupla 3 para os componentes selecionados. As demais subcaracterísticas dessas duas características não receberão julgamento próprio; as duplas responsáveis deverão explicitar a cobertura e as limitações dos seus instrumentos na Fase 2.
+Para Segurança, selecionam-se **confidencialidade, integridade e resistência**. A resistência foi incorporada ao modelo de Segurança na edição de 2023 da ISO/IEC 25010. Neste projeto, seu recorte é a proteção dos rótulos contra variações dos ataques conhecidos: a questão **Q1.5** e a hipótese **H1.5**, em [Objetivos, questões e hipóteses](../fase-2/objetivos-questoes-hipoteses.md), são verificadas pela **M1.3 — Taxa de bloqueio de variações dos ataques conhecidos**, descrita em [Métricas](../fase-2/metricas.md). Essa medida oferece uma observação parcial da resistência, limitada às variações e às condições definidas para os testes; não representa uma avaliação completa da subcaracterística.
+
+Para Manutenibilidade, selecionam-se **analisabilidade e modificabilidade**, aplicadas ao código dos componentes escolhidos. As demais subcaracterísticas de Segurança e Manutenibilidade não receberão julgamento próprio neste recorte.
 
 ## Priorização
 
@@ -48,9 +52,9 @@ A **nota de ênfase, de 1 a 5**, expressa a prioridade relativa da característi
 
 | Característica               | Ênfase  | Justificativa para a decisão do requisitante                                                                                                                                                                                                                        |
 | ---------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Segurança**                | **5/5** | O cenário envolve arquivos de clientes e hospedagem própria; a proteção da confidencialidade e da integridade condiciona a adoção. A nota segue a proposta da Dupla 1 no ponto de controle.                                                                         |
+| **Segurança**                | **5/5** | O cenário envolve arquivos de clientes e hospedagem própria; a proteção da confidencialidade e da integridade condiciona a adoção.                                                                         |
 | **Eficiência de desempenho** | **4/5** | Atrasos e consumo excessivo de memória podem interromper as três operações centrais, sobretudo em diagramas maiores. Tem prioridade alta; limites de porte podem ser considerados como ressalva de adoção, mantendo Segurança como prioridade máxima neste cenário. |
-| **Manutenibilidade**         | **4/5** | Compreender e alterar os três componentes importa para corrigir e adaptar uma instalação própria. O recorte não cobre a manutenção de todo o produto; a nota preserva a contribuição da Dupla 3.                                                                    |
+| **Manutenibilidade**         | **4/5** | Compreender e alterar os três componentes importa para corrigir e adaptar uma instalação própria. O recorte não cobre a manutenção de todo o produto.                                                                    |
 
 As justificativas detalhadas estão em [características e priorização](caracteristicas.md).
 
