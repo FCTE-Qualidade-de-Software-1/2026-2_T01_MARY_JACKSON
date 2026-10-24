@@ -76,9 +76,51 @@ Data em que cada tarefa planejada ficou completa (12 tarefas com evidência):
 | Estimado vs. realizado | 12,0 h registradas de 70,5 h estimadas para a E1 (17,0%); R$ 177,24 de R$ 1.041,29. | Três dos seis membros ainda não registraram horas. | Cobrar o registro de todos até a Medição 2. |
 | Tempo de ciclo | Não medido | As issues foram criadas depois da execução das tarefas. | Medir na Medição 2, com as tarefas abertas a partir de 20/10. |
 
-## Medição 2 (22/10/2026, fim da Sprint 2)
+## Medição 2 (fim da Sprint 2, 22/10/2026)
 
-_A realizar._
+**Fonte:** [Painel do PSM](painel-psm.md) na última publicação do fim da Sprint 2, em 22/10/2026 às 22h07 (versão `51b6cff` da branch `gh-pages`, que guarda cada publicação do site). As figuras abaixo são recortes dessa publicação; o painel mostra 23/10, 01h07, porque o GitHub gera o site no horário UTC.
+
+![Linha do painel: atualizado automaticamente em 23/10/2026 01:07, a partir de 32 issues e do registro de horas](../imagens/medicao2/medicao2-atualizacao.png){ width="520" }
+
+_Figura 1. Topo do Painel do PSM na publicação usada nesta medição. O horário aparece em UTC: 23/10, 01h07, corresponde a 22/10, 22h07, em Brasília. Fonte: Painel do PSM, versão `51b6cff`._
+
+**Mudança de método desde a Medição 1:** as três métricas passaram a ser calculadas automaticamente pelo painel. Até 22/10, as horas foram registradas em `dados/gestao/horas.csv` com o número da issue; a partir da Sprint 3, passam a ser registradas no campo "Horas reais" das issues (Ata 04). O painel soma as duas fontes sem contar a mesma hora duas vezes.
+
+### Calendário e Progresso: planejado vs. concluído
+
+![Gráfico de barras do percentual concluído por sprint, com a linha do limite em 50%](../imagens/medicao2/medicao2-planejado-concluido-grafico.png){ width="420" }
+
+_Figura 2. Planejado vs. concluído no fim da Sprint 2. Barras lilás: percentual de issues concluídas por sprint; linha azul: limite de decisão (50%). Fonte: Painel do PSM, versão `51b6cff`._
+
+- **Valor:** Sprint 1, 10 de 10 tarefas concluídas (100%); Sprint 2, 6 de 12 (50%).
+- **Interpretação:** a Sprint 1 fechou com todas as tarefas concluídas, e a Sprint 2, com metade. O GQM foi antecipado para o Ponto de Controle de 21/10, e o feedback da professora gerou correções que não couberam no prazo de 22/10. A #8 (estimativas) foi concluída em 18/10, mas fechada só em 22/10.
+- **Decisão:** replanejar para a Sprint 3 as issues abertas da Sprint 2, incluindo as correções do GQM das três características (Ata 04); fechar a issue no próprio commit que conclui a tarefa (`Fixes #n`).
+
+### Recursos e Custos: estimado vs. realizado
+
+![Gráfico de horas estimadas (barras) e horas reais (linha) por sprint](../imagens/medicao2/medicao2-estimado-realizado-grafico.png){ width="420" }
+
+_Figura 3. Estimado vs. realizado no fim da Sprint 2. Barras lilás: horas estimadas por sprint; linha azul: horas reais. Fonte: Painel do PSM, versão `51b6cff`._
+
+- **Valor:** Sprint 1, 27,8 h de 12,0 h estimadas (razão 2,31); Sprint 2, 35,4 h de 26,0 h (razão 1,36). Total até 22/10: 68,4 h de 70,5 h estimadas para a E1 (97%), R$ 1.010,27. A conferência por integrante está no [Painel do PSM](painel-psm.md#conferencia-das-horas).
+- **Interpretação:** a Sprint 1 passou do limite de 1,5 porque a gestão e o planejamento não tinham estimativa na linha de base, e porque as issues #3 e #6 não têm estimativa numérica. Com a Sprint 3 ainda por fazer, o total da E1 vai ultrapassar a estimativa. As horas estão concentradas: uma integrante tem 42% do total registrado.
+- **Decisão:** incluir na estimativa da Sprint 3 as tarefas de gestão e de correção do feedback; cada responsável troca por um número a estimativa das issues #3, #6, #12, #19, #23 e #30.
+
+### Desempenho dos Processos: tempo de ciclo
+
+![Gráfico de barras do tempo de ciclo médio por sprint, em dias](../imagens/medicao2/medicao2-tempo-de-ciclo-grafico.png){ width="420" }
+
+_Figura 4. Tempo de ciclo no fim da Sprint 2. Barras lilás: média de dias entre abrir e fechar a issue, por sprint. Fonte: Painel do PSM, versão `51b6cff`._
+
+![Seção de issues paradas: nenhuma no momento](../imagens/medicao2/medicao2-issues-paradas.png){ width="520" }
+
+_Figura 5. Issues paradas no fim da Sprint 2: nenhuma issue aberta estava sem atualização acima do limite de 3 dias vigente na época. Fonte: Painel do PSM, versão `51b6cff`._
+
+- **Valor:** média de 1,9 dia na Sprint 1 (mediana 1,6) e de 0,6 dia na Sprint 2 (mediana 0,5); nenhuma issue parada.
+- **Interpretação:** as tarefas da Sprint 2 foram abertas e fechadas no mesmo dia ou no seguinte, porque foram concentradas antes do Ponto de Controle. Na Sprint 1, o tempo inclui o fechamento atrasado da #8. Nenhuma issue estava parada no fim da sprint.
+- **Decisão:** reduzir o limite de 3 dias para 1 dia sem atualização, contado a partir do início da sprint: na Sprint 3, de 4 dias (23 a 26/10), o limite de 3 dias só dispararia depois do fim da sprint, e as issues criadas antes da sprint apareciam como paradas no primeiro dia. Consultar o painel de novo em 24/10 (metade da Sprint 3) para decidir se é preciso redistribuir tarefas.
+
+**Aprovação das decisões:** propostas pela gestão em 23/10/2026 e submetidas à equipe em enquete no grupo de WhatsApp até 24/10/2026, às 12h. Resultado: _a registrar_.
 
 ## Medição 3 (26/10/2026, Entrega 1)
 
