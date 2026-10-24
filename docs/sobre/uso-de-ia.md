@@ -13,6 +13,7 @@
 | 23/10/2026 | ChatGPT / Codex | Revisão do modelo de qualidade e do escopo e atualização do rodapé e da referência ao diagrama GQM. | Inclusão de Resistência conferida no prefácio da ISO/IEC 25010:2023 e relacionada a Q1.5 e H1.5 e M1.3; geração local da GitPage e conferência dos links e do rodapé. Revisão final pelos integrantes pendente. | Thiago (Dupla 2) |
 | 24/10/2026 | Claude | Geração do diagrama da seção de Metodologia. | Conferência da hierarquia e das ligações do diagrama gerado, ajuste de termos técnicos para o escopo do projeto e inserção no documento (Overleaf/GitPage). | Miquéias Ezequiel (Dupla 1) |
 | 24/10/2026 | ChatGPT / Codex e imagegen (OpenAI) | Personalização visual da GitPage; geração de uma ilustração em pixel art de Mary Jackson, preparação da logo e do favicon e inclusão dos créditos e do aviso de uso de IA. | Inspeção visual da arte, verificação de ausência de emblemas institucionais, conferência das diretrizes públicas da NASA e do draw.io e verificações locais de compilação, imagens e links. Revisão final pelo grupo pendente. | Thiago (Dupla 2) |
+| 17 a 24/10/2026 | Claude | Revisão e refinamento dos textos da Dupla 2 (Fase 1, GQM de Eficiência e GitPage), incluindo a adequação do objetivo G2 e das questões ao feedback do PC1. | Textos conferidos com o enunciado, os slides da disciplina e a ISO/IEC 25010:2023, e ajustados pelo Pedro antes de cada commit. | Pedro Ian (Dupla 2) |
 
 ## Identidade visual e créditos
 

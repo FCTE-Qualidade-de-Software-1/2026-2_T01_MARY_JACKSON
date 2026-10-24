@@ -9,8 +9,8 @@ O recorte proposto é o **draw.io web, versão 32.2.0, hospedado em Docker, em a
 | Distribuição e versão alvo | Editor web draw.io 32.2.0. A disponibilidade da imagem correspondente e a versão/build executada precisam ser verificadas. |
 | Implantação | Docker, em ambiente local de testes; registrar imagem, tag, digest, configuração e versões dos serviços utilizados antes da coleta. |
 | Código-fonte | Fixar a tag ou o commit correspondente à versão avaliada e os arquivos de cada componente antes da análise de Manutenibilidade. |
-| Navegador e máquina cliente | Pendentes: navegador e versão, sistema operacional, CPU e RAM. Manter as condições documentadas e comparáveis entre as medições. |
-| Máquina servidora e exportação | Pendentes: recursos do host e do contêiner, limites configurados e caminho de exportação de cada formato, incluindo eventual serviço de exportação próprio. |
+| Navegador e máquina cliente | Definidos no plano de avaliação (Fase 3, Entrega 2). As condições serão mantidas documentadas e comparáveis entre as medições. |
+| Máquina servidora e exportação | Definidas no plano de avaliação (Fase 3, Entrega 2). A configuração inicial do contêiner está em [Ambiente Docker do draw.io](../fase-3/ambiente-drawio.md). |
 | Diagramas de referência | Cargas sintéticas planejadas de **50, 300, 1.000, 2.000 e 5.000 formas**; registrar geração, estrutura e identificação dos arquivos. |
 
 Conforme a [descrição do produto](produto.md), a Manutenibilidade será avaliada no código-fonte da versão 32.2.0; a Eficiência de desempenho e a Segurança, no editor web dessa versão. A identificação exata do código e da instalação será registrada antes da coleta.
