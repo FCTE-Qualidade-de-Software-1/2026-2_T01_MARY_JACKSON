@@ -65,7 +65,7 @@ As questões e hipóteses derivam das necessidades R-ED-01 a R-ED-04 da [Fase 1]
 | Do ponto de vista do/a | Equipe Mary Jackson, responsável por realizar a avaliação. |
 | No contexto de | Disciplina Qualidade de Software 1, no cenário hipotético de adoção do _draw.io_ por uma empresa júnior de software. |
 
-**G3:** Analisar o _draw.io_ para o propósito de entender, com respeito à manutenibilidade (analisabilidade e modificabilidade), do ponto de vista da equipe Mary Jackson, responsável pela avaliação, no contexto da disciplina Qualidade de Software 1 e do cenário hipotético de adoção por uma empresa júnior de software.
+**G3:** Analisar o _draw.io_, versão 32.2.0, para o propósito de entender, com respeito à manutenibilidade (analisabilidade e modificabilidade), do ponto de vista da equipe Mary Jackson, responsável pela avaliação, no contexto da disciplina Qualidade de Software 1 e do cenário hipotético de adoção por uma empresa júnior de software.
 
 ### Questões e hipóteses
 
