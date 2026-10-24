@@ -273,7 +273,9 @@ label[tabindex]:focus-visible {
 }
 .md-typeset p:has(> img),
 .md-typeset p:has(> a > img) { text-align: center; }
-.md-typeset p:has(> img) + p:has(> em:only-child) {
+.md-typeset p:has(> img) + p:has(> em:only-child),
+.md-typeset table + p:has(> em:only-child),
+.md-typeset .md-typeset__scrollwrap + p:has(> em:only-child) {
   color: var(--md-default-fg-color--light);
   font-size: 0.65rem;
   text-align: center;
