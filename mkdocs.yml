@@ -12,21 +12,35 @@ copyright: "FGA0315 Qualidade de Software 1 - 2026.2 - T01 - Grupo Mary Jackson 
 theme:
   name: material
   language: pt-BR
+  logo: assets/images/drawio.svg
+  favicon: assets/images/drawio.svg
   font:
-    text: Source Sans 3
+    text: Inter
     code: JetBrains Mono
   palette:
     - scheme: default
       primary: custom
       accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Ativar tema escuro
+    - scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Ativar tema claro
   features:
     - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.tracking
     - navigation.sections
     - navigation.indexes
     - navigation.top
     - navigation.footer
     - toc.follow
     - search.highlight
+    - search.suggest
     - content.action.edit
 
 extra:

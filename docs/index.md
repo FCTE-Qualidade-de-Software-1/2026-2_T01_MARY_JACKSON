@@ -5,10 +5,11 @@ hide:
 ---
 
 <div class="mj-hero" markdown>
+<div class="mj-hero__texto" markdown>
 
 <p class="mj-sobretitulo">FGA0315 · Qualidade de Software 1 · 2026/2 · Turma 01 · Grupo Mary Jackson</p>
 
-# Avaliação da qualidade do draw.io
+# Avaliação da qualidade do <span>draw.io</span>
 
 <p class="mj-chamada">Avaliação da segurança, da eficiência de desempenho e da manutenibilidade do draw.io, feita pela equipe Mary Jackson na disciplina Qualidade de Software 1 (FGA0315, UnB, 2026/2).</p>
 
@@ -16,6 +17,11 @@ hide:
 [Artigo (PDF)](artigo/artigo-e1.pdf){ .md-button target="_blank" rel="noopener" }
 [Repositório](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON){ .md-button }
 
+</div>
+<figure class="mj-retrato">
+  <img src="assets/images/mary-jackson.jpg" alt="Mary Jackson trabalhando na NASA, com caderno e lápis diante de equipamentos." width="985" height="1260" fetchpriority="high">
+  <figcaption><strong>Mary Jackson</strong><a href="https://commons.wikimedia.org/wiki/File:Mary_Jackson.jpg" target="_blank" rel="noopener">Foto: NASA · domínio público</a></figcaption>
+</figure>
 </div>
 
 <div class="mj-colunas">
