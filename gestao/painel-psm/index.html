@@ -1870,7 +1870,7 @@
 
 <h1 id="painel-do-psm">Painel do PSM<a class="headerlink" href="#painel-do-psm" title="Permanent link">&para;</a></h1>
 <p>Esta página é gerada automaticamente a cada publicação do site e sempre que uma issue é aberta, fechada ou editada. Os dados vêm das issues do GitHub: a sprint (milestone), as datas de abertura e fechamento e os campos "Estimativa (horas)" e "Horas reais" do formulário de tarefa. As definições de cada métrica estão no <a href="../plano-de-medicao/">Plano de medição</a>.</p>
-<p><em>Atualizado automaticamente em 24/10/2026 03:13, a partir de 36 issues e do registro de horas.</em></p>
+<p><em>Atualizado automaticamente em 24/10/2026 03:16, a partir de 36 issues e do registro de horas.</em></p>
 <h2 id="como-este-painel-e-montado">Como este painel é montado<a class="headerlink" href="#como-este-painel-e-montado" title="Permanent link">&para;</a></h2>
 <p>A cada publicação do site, o script <code>hooks/horas.py</code> lê as issues do GitHub e o registro de horas, calcula as três métricas do <a href="../plano-de-medicao/">Plano de medição</a> e compara cada resultado com o limite de decisão. A interpretação e as decisões de cada medição ficam no <a href="../registro-de-medicoes/">Registro de medições</a>.</p>
 <pre class="mermaid"><code>flowchart LR
@@ -1986,11 +1986,11 @@ xychart-beta
 </tr>
 <tr>
 <td>Sem sprint</td>
-<td>0,0 h</td>
-<td>0,0 h</td>
-<td>0,00</td>
-<td>R$ 0,00</td>
-<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/36">#36</a></td>
+<td>3,0 h</td>
+<td>7,0 h</td>
+<td>2,33</td>
+<td>R$ 103,39</td>
+<td>—</td>
 </tr>
 </tbody>
 </table>
@@ -1999,8 +1999,8 @@ xychart-beta
 xychart-beta
     x-axis ["Sprint 1", "Sprint 2", "Sprint 3", "Sem sprint"]
     y-axis "horas" 0 --&gt; 41
-    bar [12.0, 26.0, 20.0, 0.0]
-    line [27.8, 35.4, 7.8, 0.0]</code></pre>
+    bar [12.0, 26.0, 20.0, 3.0]
+    line [27.8, 35.4, 7.8, 7.0]</code></pre>
 <p><em>Figura 3. Horas estimadas e realizadas por sprint. Barras lilás: horas estimadas; linha azul: horas reais. Fonte: issues do GitHub e registro de horas, em 24/10/2026.</em></p>
 <h3 id="conferencia-das-horas">Conferência das horas<a class="headerlink" href="#conferencia-das-horas" title="Permanent link">&para;</a></h3>
 <p>As horas reais vêm de dois lugares: o registro de horas (<code>dados/gestao/horas.csv</code>), usado desde o início do projeto, e o campo "Horas reais" das issues, adotado a partir de 21/10 (Ata 04). As regras são:</p>
@@ -2028,22 +2028,22 @@ xychart-beta
 <td>2,0 h</td>
 <td>2,0 h</td>
 <td><strong>28,7 h</strong></td>
-<td>41%</td>
+<td>37%</td>
 </tr>
 <tr>
 <td>Heyttor</td>
 <td>9,3 h</td>
-<td>5,5 h</td>
+<td>11,5 h</td>
 <td>2,5 h</td>
-<td><strong>12,3 h</strong></td>
-<td>17%</td>
+<td><strong>18,3 h</strong></td>
+<td>24%</td>
 </tr>
 <tr>
 <td>Lucas</td>
 <td>7,0 h</td>
-<td>9,3 h</td>
+<td>10,3 h</td>
 <td>5,5 h</td>
-<td><strong>10,8 h</strong></td>
+<td><strong>11,8 h</strong></td>
 <td>15%</td>
 </tr>
 <tr>
@@ -2052,7 +2052,7 @@ xychart-beta
 <td>—</td>
 <td>—</td>
 <td><strong>10,0 h</strong></td>
-<td>14%</td>
+<td>13%</td>
 </tr>
 <tr>
 <td>Thiago</td>
@@ -2060,7 +2060,7 @@ xychart-beta
 <td>—</td>
 <td>—</td>
 <td><strong>6,5 h</strong></td>
-<td>9%</td>
+<td>8%</td>
 </tr>
 <tr>
 <td>Miquéias</td>
@@ -2068,14 +2068,14 @@ xychart-beta
 <td>—</td>
 <td>—</td>
 <td><strong>2,5 h</strong></td>
-<td>4%</td>
+<td>3%</td>
 </tr>
 <tr>
 <td><strong>Total</strong></td>
 <td></td>
 <td></td>
 <td></td>
-<td><strong>70,9 h</strong></td>
+<td><strong>77,9 h</strong></td>
 <td>100%</td>
 </tr>
 </tbody>
