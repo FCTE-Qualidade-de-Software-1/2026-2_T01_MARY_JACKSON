@@ -1,4 +1,4 @@
-site_name: Avaliação da Qualidade do draw.io
+site_name: Mary Jackson · Qualidade de Software
 site_description: FGA0315 Qualidade de Software 1 - 2026.2 - T01 - Grupo Mary Jackson
 site_author: Grupo Mary Jackson
 site_url: https://fcte-qualidade-de-software-1.github.io/2026-2_T01_MARY_JACKSON/
@@ -7,13 +7,13 @@ repo_name: 2026-2_T01_MARY_JACKSON
 edit_uri: edit/main/docs/
 
 # Versão da GitPage, independente do histórico de versões do planejamento. Atualizar a cada mudança relevante.
-copyright: "FGA0315 Qualidade de Software 1 - 2026.2 - T01 - Grupo Mary Jackson | E1 | Versão 0.2 - 23/10/2026"
+copyright: "FGA0315 Qualidade de Software 1 - 2026.2 - T01 - Grupo Mary Jackson | E1 | Versão 0.2 - 23/10/2026 | Logo gerada por IA (OpenAI)"
 
 theme:
   name: material
   language: pt-BR
-  logo: assets/images/drawio.svg
-  favicon: assets/images/drawio.svg
+  logo: assets/images/mary-jackson-logo.png
+  favicon: assets/images/mary-jackson-favicon.png
   font:
     text: Inter
     code: JetBrains Mono

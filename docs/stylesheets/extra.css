@@ -64,7 +64,8 @@ body { background: var(--mj-canvas); }
 }
 .md-header__inner { min-height: 3.5rem; padding-block: 0.25rem; }
 .md-header__button.md-logo { padding: 0; margin-right: 0.65rem; }
-.md-header__button.md-logo img { width: 2rem; height: 2rem; border-radius: 0.45rem; }
+.md-logo img { image-rendering: pixelated; object-fit: contain; }
+.md-header__button.md-logo img { width: 2rem; height: 2rem; padding: 0.1rem; border-radius: 0.45rem; background: #fff3e6; }
 .md-header__title { min-width: 0; margin-left: 0; font-size: 0.9rem; font-weight: 650; }
 .md-header__title > .md-header__ellipsis {
   position: static;
@@ -366,6 +367,19 @@ label[tabindex]:focus-visible {
 .md-typeset .mj-hero .md-button--primary { border-color: var(--mj-orange); background: var(--mj-orange); color: #172332; }
 .md-typeset .mj-hero .md-button:hover { border-color: #ffb35c; background: #29394d; color: #fff; transform: translateY(-2px); }
 .md-typeset .mj-hero .md-button--primary:hover { background: #ffa331; color: #172332; }
+.md-typeset .mj-transparencia {
+  max-width: 30rem;
+  margin: 0.8rem 0 0;
+  padding-top: 0.8rem;
+  border-top: 1px solid rgb(255 255 255 / 16%);
+  color: #c6d0dd;
+  font-size: 0.63rem;
+  line-height: 1.8;
+}
+.md-typeset .mj-transparencia a { color: #ffc381; font-weight: 600; }
+.md-typeset .mj-transparencia a:hover { color: #fff; }
+.md-typeset .mj-identidade-nota { margin: 1rem 0.2rem 0; color: var(--md-default-fg-color--light); font-size: 0.63rem; line-height: 1.8; }
+.md-typeset .mj-logo-preview { width: 12rem; margin-left: 0; padding: 0.75rem; background: #fff3e6; image-rendering: pixelated; }
 .md-typeset .mj-retrato {
   position: relative;
   z-index: 1;
@@ -465,7 +479,7 @@ label[tabindex]:focus-visible {
 }
 @media screen and (max-width: 76.234375em) {
   .md-nav--primary .md-nav__title[for="__drawer"] { background: var(--mj-header); color: #fff; }
-  .md-nav--primary .md-nav__title .md-logo img { padding: 0; border: 0; border-radius: 0.4rem; background: transparent; }
+  .md-nav--primary .md-nav__title .md-logo img { padding: 0.1rem; border: 0; border-radius: 0.4rem; background: #fff3e6; }
   .md-nav--primary .md-nav__source { background: #222e3d; }
   .md-nav--primary .md-nav__source .md-source { color: #fff; }
   .md-nav--primary .md-nav__title { box-shadow: none; }
