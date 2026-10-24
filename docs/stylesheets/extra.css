@@ -369,15 +369,16 @@ label[tabindex]:focus-visible {
 .md-typeset .mj-hero .md-button--primary:hover { background: #ffa331; color: #172332; }
 .md-typeset .mj-transparencia {
   max-width: 30rem;
-  margin: 0.8rem 0 0;
-  padding-top: 0.8rem;
+  margin: 0.5rem 0 0;
+  padding-top: 0.6rem;
   border-top: 1px solid rgb(255 255 255 / 16%);
-  color: #c6d0dd;
-  font-size: 0.63rem;
-  line-height: 1.8;
+  color: #aeb9c8;
+  font-size: 0.6rem;
+  line-height: 1.6;
 }
-.md-typeset .mj-transparencia a { color: #ffc381; font-weight: 600; }
-.md-typeset .mj-transparencia a:hover { color: #fff; }
+.md-typeset .mj-transparencia a { color: #ffc381; font-weight: 400; text-decoration-color: currentColor; }
+.md-typeset .mj-transparencia a:hover,
+.md-typeset .mj-transparencia a:focus-visible { color: #fff; }
 .md-typeset .mj-identidade-nota { margin: 1rem 0.2rem 0; color: var(--md-default-fg-color--light); font-size: 0.63rem; line-height: 1.8; }
 .md-typeset .mj-logo-preview { width: 12rem; margin-left: 0; padding: 0.75rem; background: #fff3e6; image-rendering: pixelated; }
 .md-typeset .mj-retrato {

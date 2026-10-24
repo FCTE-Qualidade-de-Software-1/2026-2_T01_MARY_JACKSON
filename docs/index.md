@@ -14,10 +14,10 @@ hide:
 <p class="mj-chamada">Avaliação da segurança, da eficiência de desempenho e da manutenibilidade do draw.io, feita pela equipe Mary Jackson na disciplina Qualidade de Software 1 (FGA0315, UnB, 2026/2).</p>
 
 [Ver documentação](fase-1/index.md){ .md-button .md-button--primary }
-[Artigo (PDF)](artigo/artigo-e1.pdf){ .md-button target="_blank" rel="noopener" }
+[Artigo (PDF)](artigo/artigo-e1.pdf){ .md-button target="\_blank" rel="noopener" }
 [Repositório](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON){ .md-button }
 
-Este trabalho contou com apoio de ferramentas de IA; a ilustração da logo foi gerada por IA. [Consulte a declaração de uso de IA](sobre/uso-de-ia.md).
+Este projeto usou ferramentas de IA (Claude, Gemini e ChatGPT/Codex) como apoio na redação, na organização e nos scripts da GitPage. A logo foi gerada por IA. As ferramentas, tarefas e revisões da equipe estão na [Declaração de uso de IA](sobre/uso-de-ia.md).
 { .mj-transparencia }
 
 </div>
