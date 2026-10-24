@@ -1800,7 +1800,6 @@
     ISO --&gt; MAN["Manutenibilidade"]
     SEG --&gt; SEG1["Confidencialidade"]
     SEG --&gt; SEG2["Integridade"]
-    SEG --&gt; SEG3["Resistência"]
     EFI --&gt; EFI1["Comportamento temporal"]
     EFI --&gt; EFI2["Utilização de recursos"]
     EFI --&gt; EFI3["Capacidade"]
@@ -1831,11 +1830,6 @@
 <td>Examinar a proteção contra alterações indevidas nos fluxos de arquivos e rótulos.</td>
 </tr>
 <tr>
-<td>Segurança</td>
-<td>Resistência</td>
-<td>Examinar se a proteção dos rótulos bloqueia variações dos ataques conhecidos durante a abertura de diagramas, no recorte de Q1.5 e M1.3.</td>
-</tr>
-<tr>
 <td>Eficiência de desempenho</td>
 <td>Comportamento temporal</td>
 <td>Avaliar o tempo para abrir, atualizar o texto de um rótulo e exportar em cada formato.</td>
@@ -1863,8 +1857,7 @@
 </tbody>
 </table>
 <p>Para Eficiência, mantêm-se as três subcaracterísticas porque rapidez, consumo de recursos e porte suportado respondem a necessidades distintas dos <a href="../partes-interessadas/#necessidades-de-eficiencia">usuários finais</a>. A observação de recursos é parcial: o projeto delimita a coleta à memória JavaScript, sem cobrir todos os recursos computacionais.</p>
-<p>Para Segurança, selecionam-se <strong>confidencialidade, integridade e resistência</strong>. A resistência foi incorporada ao modelo de Segurança na edição de 2023 da ISO/IEC 25010. Neste projeto, seu recorte é a proteção dos rótulos contra variações dos ataques conhecidos: a questão <strong>Q1.5</strong> e a hipótese <strong>H1.5</strong>, em <a href="../../fase-2/objetivos-questoes-hipoteses/">Objetivos, questões e hipóteses</a>, são verificadas pela <strong>M1.3 — Taxa de bloqueio de variações dos ataques conhecidos</strong>, descrita em <a href="../../fase-2/metricas/">Métricas</a>. Essa medida oferece uma observação parcial da resistência, limitada às variações e às condições definidas para os testes; não representa uma avaliação completa da subcaracterística.</p>
-<p>Para Manutenibilidade, selecionam-se <strong>analisabilidade e modificabilidade</strong>, aplicadas ao código dos componentes escolhidos. As demais subcaracterísticas de Segurança e Manutenibilidade não receberão julgamento próprio neste recorte.</p>
+<p>O recorte de Segurança em confidencialidade e integridade acompanha o objetivo já fornecido pela Dupla 1 no Overleaf. O de Manutenibilidade em analisabilidade e modificabilidade acompanha o planejamento da Dupla 3 para os componentes selecionados. As demais subcaracterísticas dessas duas características não receberão julgamento próprio; as duplas responsáveis deverão explicitar a cobertura e as limitações dos seus instrumentos na Fase 2.</p>
 <h2 id="priorizacao">Priorização<a class="headerlink" href="#priorizacao" title="Permanent link">&para;</a></h2>
 <p>A <strong>nota de ênfase, de 1 a 5</strong>, expressa a prioridade relativa da característica para o esforço de avaliação: quanto maior a nota, maior a atenção proposta. Não é uma nota de qualidade do draw.io, uma probabilidade de falha nem um limiar de aprovação. Os valores deverão ser validados para o cenário do requisitante.</p>
 <table>
@@ -1879,7 +1872,7 @@
 <tr>
 <td><strong>Segurança</strong></td>
 <td><strong>5/5</strong></td>
-<td>O cenário envolve arquivos de clientes e hospedagem própria; a proteção da confidencialidade e da integridade condiciona a adoção.</td>
+<td>O cenário envolve arquivos de clientes e hospedagem própria; a proteção da confidencialidade e da integridade condiciona a adoção. A nota segue a proposta da Dupla 1 no ponto de controle.</td>
 </tr>
 <tr>
 <td><strong>Eficiência de desempenho</strong></td>
@@ -1889,7 +1882,7 @@
 <tr>
 <td><strong>Manutenibilidade</strong></td>
 <td><strong>4/5</strong></td>
-<td>Compreender e alterar os três componentes importa para corrigir e adaptar uma instalação própria. O recorte não cobre a manutenção de todo o produto.</td>
+<td>Compreender e alterar os três componentes importa para corrigir e adaptar uma instalação própria. O recorte não cobre a manutenção de todo o produto; a nota preserva a contribuição da Dupla 3.</td>
 </tr>
 </tbody>
 </table>
@@ -1951,7 +1944,7 @@
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="24 de outubro de 2026 02:43:40 UTC">24 de outubro de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="20 de outubro de 2026 02:24:02 UTC">20 de outubro de 2026</span>
   </span>
 
     
@@ -2027,7 +2020,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      FGA0315 Qualidade de Software 1 - 2026.2 - T01 - Grupo Mary Jackson | E1 | Versão 0.2 - 23/10/2026
+      FGA0315 Qualidade de Software 1 - 2026.2 - T01 - Grupo Mary Jackson | Versão 0.1 - 16/10/2026
     </div>
   
   
