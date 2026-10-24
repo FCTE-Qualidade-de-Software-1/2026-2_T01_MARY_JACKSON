@@ -1,9 +1,11 @@
 # Qualidade de software - 2026.2 - T01 - Mary Jackson
 
 ## :scroll: Sobre o projeto
-   Avaliação da qualidade de componentes do draw.io , ferramenta de diagramação usada pela equipe ao longo do curso. A avaliação segue o processo de avaliação de produto da SQuaRE (ISO/IEC 25040), considera as características Segurança, Eficiência de desempenho e Manutenibilidade (ISO/IEC 25010:2023) e define as métricas com o método GQM. A gestão do projeto usa métricas PSM/CID.
+
+Avaliação da qualidade de componentes do draw.io , ferramenta de diagramação usada pela equipe ao longo do curso. A avaliação segue o processo de avaliação de produto da SQuaRE (ISO/IEC 25040), considera as características Segurança, Eficiência de desempenho e Manutenibilidade (ISO/IEC 25010:2023) e define as métricas com o método GQM. A gestão do projeto usa métricas PSM/CID.
 
 ## :paperclip: Link da página de documentação
+
 https://fcte-qualidade-de-software-1.github.io/2026-2_T01_MARY_JACKSON/
 
 ## :star2: Integrantes
@@ -64,19 +66,20 @@ https://fcte-qualidade-de-software-1.github.io/2026-2_T01_MARY_JACKSON/
  <! -- ## :email: Site -->
 <hr/>
 
-
 ## :bookmark_tabs: Documentação
 
 - [Fase 1: Estabelecer os requisitos da avaliação](https://fcte-qualidade-de-software-1.github.io/2026-2_T01_MARY_JACKSON/fase-1/)
 - [Fase 2: Especificar a avaliação](https://fcte-qualidade-de-software-1.github.io/2026-2_T01_MARY_JACKSON/fase-2/)
 - [Gestão do projeto (PSM/CID)](https://fcte-qualidade-de-software-1.github.io/2026-2_T01_MARY_JACKSON/gestao/)
 - [Planejamento das sprints](docs/gestao/planejamento.md)
+- [Ambiente Docker do draw.io 32.2.0](docs/gestao/ambiente-drawio.md)
 - [Atas das reuniões](atas/)
 - [Dados](dados/)
 
+## :octocat: Histórico de versão
 
-## :octocat: Histórico de versão 
-| Versão | Data | Descrição  |  Autor(a) |
-|--------|------|------------|-----------|
-| 0.1 | 16/10/2026 | Criação do README a partir do template da disciplina | yasmin |
-| 0.2  | 18/10/2026 | Atualização do read e adicação do termo de consentimento ao git | heyttor|
+| Versão | Data       | Descrição                                                       | Autor(a) |
+| ------ | ---------- | --------------------------------------------------------------- | -------- |
+| 0.1    | 16/10/2026 | Criação do README a partir do template da disciplina            | yasmin   |
+| 0.2    | 18/10/2026 | Atualização do read e adicação do termo de consentimento ao git | heyttor  |
+| 0.3    | 24/10/2026 | Adição de informações sobre o ambiente Docker do draw.io        | Lucas  |
