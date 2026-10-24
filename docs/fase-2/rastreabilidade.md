@@ -50,9 +50,9 @@ Os códigos R-ED indicam a necessidade da Fase 1 que originou cada questão.
 
 | Questão | Componente | Subcaracterística | Métrica |
 |---|---|---|---|
-| Q3.1 Qual é a complexidade cognitiva média das funções responsáveis pela leitura e conversão de arquivos? | Importação | Analisabilidade | M3.1 Complexidade cognitiva média por função |
-| Q3.2 Qual é a complexidade cognitiva média das funções responsáveis pela edição e formatação de rótulos? | Rótulos | Analisabilidade | M3.1 Complexidade cognitiva média por função |
-| Q3.3 Qual é o percentual de linhas de código duplicadas nos componentes responsáveis pela exportação de arquivos PNG, PDF e SVG? | Exportação | Modificabilidade | M3.2 Densidade de linhas duplicadas (%) |
+| Q3.1 Em que medida a complexidade do código responsável pela leitura e conversão de arquivos pode dificultar sua compreensão e manutenção? | Importação | Analisabilidade | M3.1 Complexidade cognitiva média por função |
+| Q3.2 Em que medida a complexidade do código responsável pela edição e formatação de rótulos pode dificultar sua compreensão e manutenção? | Rótulos | Analisabilidade | M3.1 Complexidade cognitiva média por função |
+| Q3.3 Em que medida a duplicação de código entre as implementações de exportação PNG, PDF e SVG pode dificultar futuras modificações? | Exportação | Modificabilidade | M3.2 Percentual de código duplicado |
 
 
 Se alguma prioridade, stakeholder ou necessidade da Fase 1 for revista, as questões, hipóteses, fichas e critérios relacionados devem ser atualizados antes da coleta.
