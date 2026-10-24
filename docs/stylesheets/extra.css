@@ -1,17 +1,39 @@
-/* Tamanho geral do site: cerca de 5% menor que o padrão do tema.
-   Para ajustar, mude os três valores juntos (padrão do tema: 125%, 137.5% e 150%). */
+/* Tamanho geral do site: igual em qualquer largura de tela (equivale ao zoom de 75% da versão anterior).
+   Para ajustar o conteúdo, mude só este valor; o cabeçalho tem tamanho próprio abaixo. */
 html {
-  font-size: 118.75%;
+  font-size: 93.75%;
 }
 @media screen and (min-width: 100em) {
   html {
-    font-size: 131.25%;
+    font-size: 93.75%;
   }
 }
 @media screen and (min-width: 125em) {
   html {
-    font-size: 143.75%;
+    font-size: 93.75%;
   }
+}
+
+/* Cabeçalho maior que o conteúdo */
+.md-header__inner {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.md-header__title {
+  font-size: 1.25rem;
+}
+.md-header .md-search__input {
+  font-size: 0.95rem;
+}
+.md-header .md-source {
+  font-size: 0.8rem;
+}
+.md-tabs__list {
+  padding-bottom: 0.3rem;
+}
+.md-tabs .md-tabs__link {
+  font-size: 1rem;
+  margin-top: 0.8rem;
 }
 
 /* Largura do site: o tema limita a 61rem e deixa muito espaço em branco nas laterais */
@@ -47,9 +69,7 @@ html {
 .md-nav {
   font-size: 0.85rem;
 }
-.md-tabs__link {
-  font-size: 0.85rem;
-}
+
 
 /* Links sublinhados (não dependem só da cor), com traço fino e afastado do texto */
 .md-typeset a {
@@ -200,4 +220,20 @@ html {
   .md-typeset .mj-hero h1 {
     font-size: 2rem;
   }
+}
+/* Imagens centralizadas, com a legenda logo abaixo também centralizada */
+.md-typeset p:has(> img) {
+  text-align: center;
+}
+.md-typeset p:has(> img) + p:has(> em:only-child) {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+/* Borda leve nas imagens */
+.md-typeset p:has(> img) img {
+  border: 1px solid #d1d5db;
+  border-radius: 0.4rem;
+  padding: 0.5rem;
+  background: #ffffff;
 }

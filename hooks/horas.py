@@ -18,7 +18,7 @@ import re
 import statistics
 import unicodedata
 import urllib.request
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from collections import OrderedDict
 from pathlib import Path
 
@@ -162,6 +162,17 @@ def _horas_reais(corpo):
     return sum(float(x.replace(",", ".")) for x in re.findall(r"(\d+(?:[.,]\d+)?)\s*h\b", texto))
 
 
+def _linhas_horas(corpo):
+    """Linhas 'dd/mm - Nome - X h' do campo 'Horas reais', como ((mês, dia), nome, horas)."""
+    resultado = []
+    for linha in _campo(corpo, "Horas reais").splitlines():
+        m = re.match(r"\s*[-*]?\s*(\d{1,2})/(\d{1,2})\s*[-–]\s*(.+?)\s*[-–]\s*(\d+(?:[.,]\d+)?)\s*h\b", linha)
+        if m:
+            resultado.append(((int(m.group(2)), int(m.group(1))), m.group(3).strip(),
+                              float(m.group(4).replace(",", "."))))
+    return resultado
+
+
 def _horas_por_pessoa(corpo):
     """Horas de cada pessoa no campo 'Horas reais' (linhas 'dd/mm - Nome - X h')."""
     resultado = {}
@@ -234,13 +245,14 @@ def _linhas_csv(config):
     return linhas
 
 
-def _horas_combinadas(issues, sprints, config):
+def _horas_combinadas(issues, sprints, config, fim_csv=(10, 22)):
     """Junta as horas do horas.csv e do campo "Horas reais" das issues.
 
     - Linha do CSV com número de issue: entra na sprint (milestone) dessa issue.
     - Linha do CSV sem issue: entra na sprint pela data, comparada com o prazo de cada milestone.
-    - Linha "dd/mm - Nome - X h" de uma issue: entra, exceto quando a mesma pessoa já registrou
-      a mesma issue no CSV (para não contar duas vezes; nesse caso vale o CSV).
+    - Linha "dd/mm - Nome - X h" de uma issue: entra, exceto quando é de até 22/10 (período em que o
+      CSV era o registro oficial) e a mesma pessoa já registrou a mesma issue no CSV; nesse caso vale o CSV.
+      Linhas a partir de 23/10 sempre entram.
 
     Devolve as horas por sprint, a conferência por pessoa e a lista de linhas ignoradas.
     """
@@ -280,15 +292,16 @@ def _horas_combinadas(issues, sprints, config):
 
     for i in issues:
         sprint = (i.get("milestone") or {}).get("title") or "Sem sprint"
-        por_nome = _horas_por_pessoa(i.get("body"))
-        for nome, horas in por_nome.items():
-            if (i["number"], _pessoa(nome)) in ja_no_csv:
+        linhas = _linhas_horas(i.get("body"))
+        for dia, nome, horas in linhas:
+            repetida = (i["number"], _pessoa(nome)) in ja_no_csv and dia <= fim_csv
+            if repetida:
                 pessoa(nome)["ignoradas"] += horas
                 ignoradas.append((i["number"], nomes[_pessoa(nome) or "sem nome"], horas))
             else:
                 pessoa(nome)["issues"] += horas
                 por_sprint[sprint] = por_sprint.get(sprint, 0) + horas
-        sem_nome = _horas_reais(i.get("body")) - sum(por_nome.values())
+        sem_nome = _horas_reais(i.get("body")) - sum(h for _, _, h in linhas)
         if sem_nome > 0.001:
             pessoa("")["issues"] += sem_nome
             por_sprint[sprint] = por_sprint.get(sprint, 0) + sem_nome
@@ -410,8 +423,10 @@ def _painel_psm(markdown, config):
               "do projeto, e o campo \"Horas reais\" das issues, adotado a partir de 21/10 (Ata 04). As regras são:", "",
               "1. Linha do registro **com** número de issue: entra na sprint dessa issue.",
               "2. Linha do registro **sem** número de issue: entra na sprint pela data.",
-              "3. Horas escritas na issue: entram, **exceto** quando a mesma pessoa já registrou a mesma issue no "
-              "registro de horas. Nesse caso vale o registro, para não contar o mesmo trabalho duas vezes.", "",
+              "3. Horas escritas na issue **até 22/10** (fim da Sprint 2, quando o registro de horas era o oficial): entram, "
+              "**exceto** quando a mesma pessoa já registrou a mesma issue no registro de horas. Nesse caso vale o registro, "
+              "para não contar o mesmo trabalho duas vezes.",
+              "4. Horas escritas na issue **a partir de 23/10**: entram sempre.", "",
               "| Integrante | Registradas no horas.csv | Registradas nas issues | Repetidas (já estavam no horas.csv) | Total contado | % do total |",
               "|---|---|---|---|---|---|"]
     h = lambda v: f"{_fmt(v)} h" if v > 0.001 else "—"
@@ -437,7 +452,8 @@ def _painel_psm(markdown, config):
     saida += _ficha("Quanto tempo uma tarefa leva entre ser aberta e ser concluída.",
                     "Data de fechamento da issue − data de abertura, em dias (média e mediana por sprint).",
                     "Datas registradas pelo GitHub em cada issue.",
-                    f"Issue aberta há mais de {_fmt(lim_dias, 0)} dias sem atualização: cobrar o responsável ou dividir a tarefa.",
+                    f"Issue aberta há mais de {_fmt(lim_dias, 0)} dia(s) sem atualização, contados a partir do início da sprint: "
+                    "cobrar o responsável ou dividir a tarefa.",
                     "PSM/CID, Parte 1, Tabela 5, linha 32; Parte 2, seção 8.5.")
     saida += ["| Sprint | Issues concluídas | Média (dias) | Mediana (dias) |", "|---|---|---|---|"]
     medias = []
@@ -454,10 +470,30 @@ def _painel_psm(markdown, config):
     saida += _grafico(rotulos, medias, "dias",
                       legenda=f"Figura 4. Tempo de ciclo médio por sprint. Barras lilás: média de dias entre abrir e "
                               f"fechar a issue. Fonte: datas das issues no GitHub, em {data_hoje}.")
-    paradas = [i for i in issues if i["state"] == "open"
-               and (agora - _data(i.get("updated_at") or i["created_at"])).total_seconds() / 86400 > lim_dias]
+    # Início de cada sprint = prazo da sprint anterior. Uma issue criada antes da sprint
+    # só começa a contar como parada a partir do início da sprint dela.
+    prazos = sorted({(i.get("milestone") or {}).get("due_on") for i in issues
+                     if (i.get("milestone") or {}).get("due_on")})
+
+    def inicio_da_sprint(issue):
+        prazo = (issue.get("milestone") or {}).get("due_on")
+        anteriores = [p for p in prazos if prazo and p < prazo]
+        if not anteriores:
+            return None
+        fim = _data(anteriores[-1])  # o GitHub guarda só a data do prazo
+        return datetime(fim.year, fim.month, fim.day, 3, tzinfo=timezone.utc) + timedelta(days=1)  # dia seguinte, 0h em Brasília
+
+    def sem_andamento(issue):
+        referencia = _data(issue.get("updated_at") or issue["created_at"])
+        inicio = inicio_da_sprint(issue)
+        if inicio and inicio > referencia:
+            referencia = inicio
+        return (agora - referencia).total_seconds() / 86400
+
+    paradas = [i for i in issues if i["state"] == "open" and sem_andamento(i) > lim_dias]
     saida += [f"### Issues paradas", "",
-              f"Issues ainda abertas e sem nenhuma atualização há mais de {_fmt(lim_dias, 0)} dias "
+              f"Issues ainda abertas e sem nenhuma atualização há mais de {_fmt(lim_dias, 0)} dia(s), "
+              "contados a partir do início da sprint de cada issue "
               "(limite de decisão desta métrica):", ""]
     if paradas:
         saida.append(", ".join(link(i["number"]) for i in paradas) + ".")
