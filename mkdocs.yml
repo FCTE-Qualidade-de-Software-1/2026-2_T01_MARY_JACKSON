@@ -6,104 +6,119 @@ repo_url: https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSO
 repo_name: 2026-2_T01_MARY_JACKSON
 edit_uri: edit/main/docs/
 
-# Versão e data no rodapé (rubrica). Atualizar a cada mudança relevante.
-copyright: "FGA0315 Qualidade de Software 1 - 2026.2 - T01 - Grupo Mary Jackson | Versão 0.1 - 16/10/2026"
+# Versão da GitPage, independente do histórico de versões do planejamento. Atualizar a cada mudança relevante.
+copyright: "FGA0315 Qualidade de Software 1 - 2026.2 - T01 - Grupo Mary Jackson | E1 | Versão 0.2 - 23/10/2026"
 
 theme:
   name: material
   language: pt-BR
+  logo: assets/images/drawio.svg
+  favicon: assets/images/drawio.svg
   font:
-    text: Source Sans 3
+    text: Inter
     code: JetBrains Mono
   palette:
     - scheme: default
       primary: custom
       accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Ativar tema escuro
+    - scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Ativar tema claro
   features:
     - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.tracking
     - navigation.sections
     - navigation.indexes
     - navigation.top
     - navigation.footer
     - toc.follow
     - search.highlight
+    - search.suggest
     - content.action.edit
 
 extra:
-  generator: false
-  # Custo da hora: R$ 1.950 (salário + 30%) ÷ 132 h/mês. Fontes: Glassdoor, DevMedia, Lei 11.788/2008.
-  custo_hora: 14.77
-  # Soma das estimativas das três duplas para a E1 (docs/gestao/planejamento.md).
-  horas_estimadas: 70.5
+    generator: false
+    # Custo da hora: R$ 1.950 (salário + 30%) ÷ 132 h/mês. Fontes: Glassdoor, DevMedia, Lei 11.788/2008.
+    custo_hora: 14.77
+    # Soma das estimativas das três duplas para a E1 (docs/gestao/planejamento.md).
+    horas_estimadas: 70.5
 
 hooks:
-  - hooks/horas.py
+    - hooks/horas.py
 
 extra_css:
-  - stylesheets/extra.css
+    - stylesheets/extra.css
 
 plugins:
-  - search:
-      lang: pt
-  - git-revision-date-localized:
-      enabled: !ENV [GIT_DATES, true]   # sem commits ainda: GIT_DATES=false mkdocs serve
-      type: date
-      locale: pt
-      fallback_to_build_date: true
+    - search:
+          lang: pt
+    - git-revision-date-localized:
+          enabled: !ENV [GIT_DATES, true] # sem commits ainda: GIT_DATES=false mkdocs serve
+          type: date
+          locale: pt
+          fallback_to_build_date: true
 
 markdown_extensions:
-  - admonition
-  - attr_list
-  - md_in_html
-  - tables
-  - footnotes
-  - toc:
-      permalink: true
-  - pymdownx.details
-  - pymdownx.tasklist:
-      custom_checkbox: true
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
-  - pymdownx.snippets:
-      base_path: ["."]
-      check_paths: true
+    - admonition
+    - attr_list
+    - md_in_html
+    - tables
+    - footnotes
+    - toc:
+          permalink: true
+    - pymdownx.details
+    - pymdownx.tasklist:
+          custom_checkbox: true
+    - pymdownx.superfences:
+          custom_fences:
+              - name: mermaid
+                class: mermaid
+                format: !!python/name:pymdownx.superfences.fence_code_format
+    - pymdownx.snippets:
+          base_path: ["."]
+          check_paths: true
 
 nav:
-  - Início: index.md
-  - Fase 1:
-      - fase-1/index.md
-      - Propósito da avaliação: fase-1/proposito.md
-      - Requisitante e partes interessadas: fase-1/partes-interessadas.md
-      - Produto e componentes avaliados: fase-1/produto.md
-      - Modelo de qualidade: fase-1/modelo-de-qualidade.md
-      - Características e priorização: fase-1/caracteristicas.md
-      - Escopo e profundidade: fase-1/escopo.md
-      - ODS relacionados: fase-1/ods.md
-  - Fase 2:
-      - fase-2/index.md
-      - Objetivos, questões e hipóteses: fase-2/objetivos-questoes-hipoteses.md
-      - Métricas: fase-2/metricas.md
-      - Níveis de pontuação e julgamento: fase-2/niveis-e-julgamento.md
-      - Diagrama GQM: fase-2/diagrama-gqm.md
-      - Rastreabilidade: fase-2/rastreabilidade.md
-  - Fase 3: fase-3/index.md
-  - Fase 4: fase-4/index.md
-  - Gestão do projeto:
-      - gestao/index.md
-      - Planejar:
-          - Planejamento das sprints: gestao/planejamento.md
-          - Plano de medição: gestao/plano-de-medicao.md
-      - Medir:
-          - Painel do PSM: gestao/painel-psm.md
-          - Horas e custos: gestao/horas.md
-      - Avaliar e decidir:
-          - Registro de medições: gestao/registro-de-medicoes.md
-          - Atas de reunião: gestao/atas.md
-  - Sobre:
-      - sobre/index.md
-      - Equipe: sobre/equipe.md
-      - Declaração de uso de IA: sobre/uso-de-ia.md
-      - Referências: sobre/referencias.md
+    - Início: index.md
+    - Fase 1:
+          - fase-1/index.md
+          - Propósito da avaliação: fase-1/proposito.md
+          - Requisitante e partes interessadas: fase-1/partes-interessadas.md
+          - Produto e componentes avaliados: fase-1/produto.md
+          - Modelo de qualidade: fase-1/modelo-de-qualidade.md
+          - Características e priorização: fase-1/caracteristicas.md
+          - Escopo e profundidade: fase-1/escopo.md
+          - ODS relacionados: fase-1/ods.md
+    - Fase 2:
+          - fase-2/index.md
+          - Objetivos, questões e hipóteses: fase-2/objetivos-questoes-hipoteses.md
+          - Métricas: fase-2/metricas.md
+          - Níveis de pontuação e julgamento: fase-2/niveis-e-julgamento.md
+          - Diagrama GQM: fase-2/diagrama-gqm.md
+          - Rastreabilidade: fase-2/rastreabilidade.md
+    - Fase 3: fase-3/index.md
+    - Fase 4: fase-4/index.md
+    - Gestão do projeto:
+          - gestao/index.md
+          - Planejar:
+                - Planejamento das sprints: gestao/planejamento.md
+                - Ambiente Docker do draw.io: gestao/ambiente-drawio.md
+                - Plano de medição: gestao/plano-de-medicao.md
+          - Medir:
+                - Painel do PSM: gestao/painel-psm.md
+                - Horas e custos: gestao/horas.md
+          - Avaliar e decidir:
+                - Registro de medições: gestao/registro-de-medicoes.md
+                - Atas de reunião: gestao/atas.md
+    - Sobre:
+          - sobre/index.md
+          - Equipe: sobre/equipe.md
+          - Declaração de uso de IA: sobre/uso-de-ia.md
+          - Referências: sobre/referencias.md

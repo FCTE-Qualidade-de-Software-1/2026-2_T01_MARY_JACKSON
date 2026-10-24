@@ -10,7 +10,7 @@ Esta página mostra como cada objetivo GQM da Fase 2 deriva da Fase 1: da caract
 |---|:-:|---|---|---|:-:|---|---|
 | Segurança | 5/5 | Liberar ou não a abertura de diagramas de terceiros e o servidor de exportação próprio | Diretoria de TI da empresa júnior | Confidencialidade, integridade e resistência | G1 | Q1.1 a Q1.5 | M1.1 a M1.3 |
 | Eficiência de desempenho | 4/5 | Se a ferramenta aguenta os diagramas grandes dos projetos ou se é preciso limitar o tamanho | Usuários finais da empresa júnior | Comportamento temporal, utilização de recursos e capacidade | G2 | Q2.1 a Q2.4 | M2.1 a M2.6 |
-| Manutenibilidade | 4/5 | Se é viável manter uma versão própria e aplicar correções | Desenvolvedores responsáveis pela manutenção | Analisabilidade e modificabilidade | G3 | Q3.1 a Q3.3 | M3.1 e M3.2 |
+| Manutenibilidade | 4/5 | Se é viável manter uma versão própria e aplicar correções | Equipe Mary Jackson, avaliadora | Analisabilidade e modificabilidade | G3 | Q3.1 a Q3.3 | M3.1 e M3.2 |
 
 ## Componentes do escopo → questões
 

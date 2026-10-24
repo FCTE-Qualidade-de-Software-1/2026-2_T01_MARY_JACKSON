@@ -1,0 +1,6 @@
+services:
+    drawio:
+        image: jgraph/drawio:32.2.0
+        ports:
+            - "8080:8080"
+        restart: unless-stopped

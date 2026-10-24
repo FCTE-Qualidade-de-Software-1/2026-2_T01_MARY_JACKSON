@@ -4,7 +4,7 @@ O objetivo G2 se desdobra em quatro questões, uma para cada operação do fluxo
 
 ![Diagrama GQM da eficiência de desempenho: o objetivo G2 liga-se às questões Q2.1 a Q2.4, que se ligam às métricas M2.1 a M2.6](../imagens/diagramas-GQM/gqm-eficiencia.png)
 
-*Figura: hierarquia GQM da eficiência de desempenho. O objetivo G2 (nível conceitual) se liga às questões Q2.1 a Q2.4 (nível operacional), e cada questão às suas métricas (nível quantitativo): Q2.1 a M2.1 e M2.2, Q2.2 a M2.3, Q2.3 a M2.4 e M2.5, e Q2.4 a M2.6. Fonte: elaboração da equipe; código-fonte Graphviz em [gqm-eficiencia.dot](../imagens/gqm-eficiencia.dot).*
+*Figura: hierarquia GQM da eficiência de desempenho. O objetivo G2 (nível conceitual) se liga às questões Q2.1 a Q2.4 (nível operacional), e cada questão às suas métricas (nível quantitativo): Q2.1 a M2.1 e M2.2, Q2.2 a M2.3, Q2.3 a M2.4 e M2.5, e Q2.4 a M2.6. Fonte: elaboração da equipe.*
 ### Recorte por subcaracterística
 
 Os diagramas abaixo mostram, para cada subcaracterística da eficiência de desempenho, quais questões e métricas a avaliam. Q2.1 e Q2.3 aparecem em mais de um recorte porque medem tanto o tempo quanto a memória.

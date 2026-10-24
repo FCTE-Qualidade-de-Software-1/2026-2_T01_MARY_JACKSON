@@ -13,7 +13,7 @@ O recorte proposto é o **draw.io web, versão 32.2.0, hospedado em Docker, em a
 | Máquina servidora e exportação | Pendentes: recursos do host e do contêiner, limites configurados e caminho de exportação de cada formato, incluindo eventual serviço de exportação próprio. |
 | Diagramas de referência | Cargas sintéticas planejadas de **50, 300, 1.000, 2.000 e 5.000 formas**; registrar geração, estrutura e identificação dos arquivos. |
 
-A [descrição do produto](produto.md) ainda cita a versão desktop 32.2.0. A conciliação dessa página com o ambiente web proposto cabe à Dupla 3 e à decisão do grupo. Nenhuma conclusão deve misturar evidências de distribuições ou versões diferentes.
+Conforme a [descrição do produto](produto.md), a Manutenibilidade será avaliada no código-fonte da versão 32.2.0; a Eficiência de desempenho e a Segurança, no editor web dessa versão. A identificação exata do código e da instalação será registrada antes da coleta.
 
 ## Componentes incluídos
 
