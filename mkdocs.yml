@@ -49,6 +49,11 @@ extra:
     custo_hora: 14.77
     # Soma das estimativas das três duplas para a E1 (docs/gestao/planejamento.md).
     horas_estimadas: 70.5
+    # Limites de decisão do PSM (docs/gestao/plano-de-medicao.md).
+    psm:
+        concluido_minimo: 50
+        razao_maxima: 1.5
+        dias_parada: 1
 
 hooks:
     - hooks/horas.py
