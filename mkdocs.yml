@@ -92,6 +92,7 @@ markdown_extensions:
 
 nav:
     - Início: index.md
+    - Metodologia : metodologia/index.md
     - Fase 1:
           - fase-1/index.md
           - Propósito da avaliação: fase-1/proposito.md
