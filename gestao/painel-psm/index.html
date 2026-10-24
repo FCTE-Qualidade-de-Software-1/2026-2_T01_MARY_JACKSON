@@ -305,17 +305,20 @@
   
   
   
-    <li class="md-tabs__item">
-      <a href="../../fase-3/" class="md-tabs__link">
-        
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../fase-3/" class="md-tabs__link">
+          
   
   
     
   
   Fase 3
 
-      </a>
-    </li>
+        </a>
+      </li>
+    
   
 
       
@@ -1002,9 +1005,34 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../fase-3/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../fase-3/" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -1018,7 +1046,59 @@
   
   
 
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fase 3
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fase-3/ambiente-drawio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ambiente Docker do draw.io
+  
+
+    
+  </span>
+  
+  
+
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1141,8 +1221,6 @@
       
         
       
-        
-      
     
     
     
@@ -1206,34 +1284,6 @@
     
   
     Planejamento das sprints
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../ambiente-drawio/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Ambiente Docker do draw.io
   
 
     
@@ -1962,7 +2012,7 @@
 
 <h1 id="painel-do-psm">Painel do PSM<a class="headerlink" href="#painel-do-psm" title="Permanent link">&para;</a></h1>
 <p>Esta página é gerada automaticamente a cada publicação do site e sempre que uma issue é aberta, fechada ou editada. Os dados vêm das issues do GitHub: a sprint (milestone), as datas de abertura e fechamento e os campos "Estimativa (horas)" e "Horas reais" do formulário de tarefa. As definições de cada métrica estão no <a href="../plano-de-medicao/">Plano de medição</a>.</p>
-<p><em>Atualizado automaticamente em 24/10/2026 16:30 (horário de Brasília), a partir de 36 issues e do registro de horas.</em></p>
+<p><em>Atualizado automaticamente em 24/10/2026 16:46 (horário de Brasília), a partir de 36 issues e do registro de horas.</em></p>
 <h2 id="como-este-painel-e-montado">Como este painel é montado<a class="headerlink" href="#como-este-painel-e-montado" title="Permanent link">&para;</a></h2>
 <p>A cada publicação do site, o script <code>hooks/horas.py</code> lê as issues do GitHub e o registro de horas, calcula as três métricas do <a href="../plano-de-medicao/">Plano de medição</a> e compara cada resultado com o limite de decisão. A interpretação e as decisões de cada medição ficam no <a href="../registro-de-medicoes/">Registro de medições</a>.</p>
 <pre class="mermaid"><code>flowchart LR
