@@ -38,7 +38,7 @@ As questões e hipóteses foram definidas para orientar a avaliação da seguran
 | Para o propósito de | Entender. |
 | Com respeito a | Eficiência de desempenho: comportamento temporal, utilização de recursos e capacidade. |
 | Do ponto de vista de | Usuários finais da empresa júnior (desenvolvedores, analistas e gerentes de projeto). |
-| No contexto de | Disciplina Qualidade de Software 1 , em cenário hipotético de adoção do _draw.io_ por uma empresa júnior de software. |
+| No contexto de | Disciplina Qualidade de Software 1, em cenário hipotético de adoção do _draw.io_ por uma empresa júnior de software. |
 
 **G2:** Analisar o _draw.io_ para o propósito de entender, com respeito à eficiência de desempenho (comportamento temporal, utilização de recursos e capacidade), do ponto de vista dos usuários finais da empresa júnior, no contexto da disciplina Qualidade de Software 1.
 
