@@ -120,7 +120,7 @@ _Figura 5. Issues paradas no fim da Sprint 2: nenhuma issue aberta estava sem at
 - **Interpretação:** as tarefas da Sprint 2 foram abertas e fechadas no mesmo dia ou no seguinte, porque foram concentradas antes do Ponto de Controle. Na Sprint 1, o tempo inclui o fechamento atrasado da #8. Nenhuma issue estava parada no fim da sprint.
 - **Decisão:** reduzir o limite de 3 dias para 1 dia sem atualização, contado a partir do início da sprint: na Sprint 3, de 4 dias (23 a 26/10), o limite de 3 dias só dispararia depois do fim da sprint, e as issues criadas antes da sprint apareciam como paradas no primeiro dia. Consultar o painel de novo em 24/10 (metade da Sprint 3) para decidir se é preciso redistribuir tarefas.
 
-**Aprovação das decisões:** propostas pela gestão em 23/10/2026 e submetidas à equipe em enquete no grupo de WhatsApp até 24/10/2026, às 12h. Resultado: _a registrar_.
+**Aprovação das decisões:** propostas pela gestão em 23/10/2026 e aprovadas pela equipe em enquete no grupo de WhatsApp, encerrada em 24/10/2026 às 12h: as quatro decisões foram aprovadas, sem votos contrários (5 integrantes votaram; os demais foram contados como de acordo, conforme a regra da enquete).
 
 ## Medição 3 (26/10/2026, Entrega 1)
 
