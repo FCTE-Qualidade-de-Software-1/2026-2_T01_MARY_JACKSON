@@ -1916,7 +1916,7 @@
 
 <h1 id="painel-do-psm">Painel do PSM<a class="headerlink" href="#painel-do-psm" title="Permanent link">&para;</a></h1>
 <p>Esta página é gerada automaticamente a cada publicação do site e sempre que uma issue é aberta, fechada ou editada. Os dados vêm das issues do GitHub: a sprint (milestone), as datas de abertura e fechamento e os campos "Estimativa (horas)" e "Horas reais" do formulário de tarefa. As definições de cada métrica estão no <a href="../plano-de-medicao/">Plano de medição</a>.</p>
-<p><em>Atualizado automaticamente em 24/10/2026 14:11, a partir de 36 issues e do registro de horas.</em></p>
+<p><em>Atualizado automaticamente em 24/10/2026 17:16, a partir de 36 issues e do registro de horas.</em></p>
 <h2 id="como-este-painel-e-montado">Como este painel é montado<a class="headerlink" href="#como-este-painel-e-montado" title="Permanent link">&para;</a></h2>
 <p>A cada publicação do site, o script <code>hooks/horas.py</code> lê as issues do GitHub e o registro de horas, calcula as três métricas do <a href="../plano-de-medicao/">Plano de medição</a> e compara cada resultado com o limite de decisão. A interpretação e as decisões de cada medição ficam no <a href="../registro-de-medicoes/">Registro de medições</a>.</p>
 <pre class="mermaid"><code>flowchart LR
@@ -2134,7 +2134,7 @@ xychart-beta
 <li><strong>O que mede:</strong> Quanto tempo uma tarefa leva entre ser aberta e ser concluída.</li>
 <li><strong>Como é calculada:</strong> Data de fechamento da issue − data de abertura, em dias (média e mediana por sprint).</li>
 <li><strong>De onde vêm os dados:</strong> Datas registradas pelo GitHub em cada issue.</li>
-<li><strong>Quando exige decisão:</strong> Issue aberta há mais de 3 dia(s) sem atualização, contados a partir do início da sprint: cobrar o responsável ou dividir a tarefa.</li>
+<li><strong>Quando exige decisão:</strong> Issue aberta há mais de 1 dia(s) sem atualização, contados a partir do início da sprint: cobrar o responsável ou dividir a tarefa.</li>
 <li><strong>Referência:</strong> PSM/CID, Parte 1, Tabela 5, linha 32; Parte 2, seção 8.5.</li>
 </ul>
 <table>
@@ -2181,8 +2181,8 @@ xychart-beta
     bar [1.9, 1.1, 0.0, 0.4]</code></pre>
 <p><em>Figura 4. Tempo de ciclo médio por sprint. Barras lilás: média de dias entre abrir e fechar a issue. Fonte: datas das issues no GitHub, em 24/10/2026.</em></p>
 <h3 id="issues-paradas">Issues paradas<a class="headerlink" href="#issues-paradas" title="Permanent link">&para;</a></h3>
-<p>Issues ainda abertas e sem nenhuma atualização há mais de 3 dia(s), contados a partir do início da sprint de cada issue (limite de decisão desta métrica):</p>
-<p><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/23">#23</a>, <a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/21">#21</a>.</p>
+<p>Issues ainda abertas e sem nenhuma atualização há mais de 1 dia(s), contados a partir do início da sprint de cada issue (limite de decisão desta métrica):</p>
+<p><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/31">#31</a>, <a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/30">#30</a>, <a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/29">#29</a>, <a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/28">#28</a>, <a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/27">#27</a>, <a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/26">#26</a>, <a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/24">#24</a>, <a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/23">#23</a>, <a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/21">#21</a>, <a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/12">#12</a>, <a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/9">#9</a>.</p>
 
 
 

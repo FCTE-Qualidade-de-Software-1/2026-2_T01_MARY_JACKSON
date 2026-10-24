@@ -1270,10 +1270,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#calendario-e-progresso" class="md-nav__link">
+  <a href="#origem-das-medidas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Calendário e Progresso
+        Origem das medidas
       
     </span>
   </a>
@@ -1281,10 +1281,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#recursos-e-custos" class="md-nav__link">
+  <a href="#1-planejado-vs-concluido" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Recursos e Custos
+        1. Planejado vs. concluído
       
     </span>
   </a>
@@ -1292,10 +1292,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#desempenho-dos-processos" class="md-nav__link">
+  <a href="#2-estimado-vs-realizado" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Desempenho dos Processos
+        2. Estimado vs. realizado
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-tempo-de-ciclo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Tempo de ciclo
       
     </span>
   </a>
@@ -1778,10 +1789,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#calendario-e-progresso" class="md-nav__link">
+  <a href="#origem-das-medidas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Calendário e Progresso
+        Origem das medidas
       
     </span>
   </a>
@@ -1789,10 +1800,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#recursos-e-custos" class="md-nav__link">
+  <a href="#1-planejado-vs-concluido" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Recursos e Custos
+        1. Planejado vs. concluído
       
     </span>
   </a>
@@ -1800,10 +1811,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#desempenho-dos-processos" class="md-nav__link">
+  <a href="#2-estimado-vs-realizado" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Desempenho dos Processos
+        2. Estimado vs. realizado
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-tempo-de-ciclo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Tempo de ciclo
       
     </span>
   </a>
@@ -1847,72 +1869,249 @@
 
 
 <h1 id="plano-de-medicao">Plano de medição<a class="headerlink" href="#plano-de-medicao" title="Permanent link">&para;</a></h1>
-<p>A gestão do projeto usa uma métrica por categoria pedida na especificação (Seção 2), escolhidas na Tabela 5 do CID Measurement Framework, Parte 1. Cada métrica responde a uma necessidade de informação, como no modelo de informação do PSM (Aula 09). Os resultados ficam no <a href="../registro-de-medicoes/">Registro de medições</a> e as decisões nas <a href="../atas/">Atas</a>.</p>
-<h2 id="calendario-e-progresso">Calendário e Progresso<a class="headerlink" href="#calendario-e-progresso" title="Permanent link">&para;</a></h2>
+<p>A gestão do projeto segue o PSM (<em>Practical Software and Systems Measurement</em>): cada medida responde a uma <strong>necessidade de informação</strong> da equipe e apoia uma <strong>decisão</strong> (Aula 09). A especificação do trabalho (Seção 2) pede medidas em três <strong>categorias de informação</strong>; a equipe escolheu uma medida para cada uma, na tabela de categorias, conceitos mensuráveis e medidas (ICM) do PSM/CID, e descreveu cada medida no template de instância do modelo de informação da Aula 09 (Figura 1).</p>
+<p>Os valores medidos ficam no <a href="../painel-psm/">Painel do PSM</a>; a interpretação e as decisões de cada medição, no <a href="../registro-de-medicoes/">Registro de medições</a>. As referências completas estão em <a href="../../sobre/referencias/">Referências</a>.</p>
+<p><img alt="Template de instância do modelo de informação, com os campos necessidade de informação, conceito mensurável, entidades, atributos, medidas básicas, método de medição, tipo de método, escala, tipo de escala, unidade de medida, medida derivada, função de medição, indicador, modelo de análise e critérios de decisão" src="../../imagens/plano-de-medicao/aula09-slide19-template.png" width="620" /></p>
+<p><em>Figura 1. Template para descrever uma instância do modelo de informação (measurement construct). Fonte: Aula 09, slide 19.</em></p>
+<h2 id="origem-das-medidas">Origem das medidas<a class="headerlink" href="#origem-das-medidas" title="Permanent link">&para;</a></h2>
+<p>Cada medida foi tirada da Tabela 5 do PSM/CID (Parte 1). De cada linha usada vieram a categoria de informação, o conceito mensurável, as necessidades de informação e a medida, indicados na legenda de cada figura.</p>
+<p><img alt="Linha 1 da Tabela 5 do PSM/CID: Schedule and Progress, Work Unit Progress, medidas Burndown, Committed vs. Completed e Velocity" src="../../imagens/plano-de-medicao/cid-p1-tabela5-linha1.png" /></p>
+<p><em>Figura 2. Origem de <strong>Planejado vs. concluído</strong> (<em>Committed vs. Completed</em>): Tabela 5, linha 1. Fonte: PSM/CID Parte 1 (2021), p. 19.</em></p>
+<p><img alt="Linhas 8 e 9 da Tabela 5 do PSM/CID: Resources and Cost, Financial Performance, medidas Estimate vs. Actual Effort e Estimation Accuracy" src="../../imagens/plano-de-medicao/cid-p1-tabela5-linhas8-9.png" /></p>
+<p><em>Figura 3. Origem de <strong>Estimado vs. realizado</strong> (<em>Estimate vs. Actual Effort</em>): Tabela 5, linha 8; a necessidade de informação da equipe vem da linha 9. Fonte: PSM/CID Parte 1 (2021), p. 20.</em></p>
+<p><img alt="Linhas 30 e 32 da Tabela 5 do PSM/CID: Process Performance, Process Efficiency Speed, medidas Committed vs. Completed, Cumulative Flow e Cycle Time" src="../../imagens/plano-de-medicao/cid-p1-tabela5-linhas30-32.png" /></p>
+<p><em>Figura 4. Origem de <strong>Tempo de ciclo</strong> (<em>Cycle Time</em>): Tabela 5, linha 32; a necessidade de informação da equipe vem da linha 30. Fonte: PSM/CID Parte 1 (2021), p. 24.</em></p>
+<p>As medidas foram adaptadas ao projeto (issues no lugar de <em>story points</em>). Estimado vs. realizado não tem especificação na Parte 2; o cálculo foi definido pela equipe.</p>
+<h2 id="1-planejado-vs-concluido">1. Planejado vs. concluído<a class="headerlink" href="#1-planejado-vs-concluido" title="Permanent link">&para;</a></h2>
+<p><img alt="Seção 8.3 da Parte 2 do PSM/CID: necessidade de informação, medidas básicas e medida derivada Percent Work Items Completed" src="../../imagens/plano-de-medicao/cid-p2-8-3-medidas.png" /></p>
+<p><em>Figura 5. Medidas básicas e fórmula do Committed vs. Completed. Fonte: PSM/CID Parte 2 (2021), seção 8.3, p. 15.</em></p>
+<p><img alt="Seção 8.3 da Parte 2 do PSM/CID: modelo de análise e critérios de decisão de 5% e 10%" src="../../imagens/plano-de-medicao/cid-p2-8-3-criterio.png" /></p>
+<p><em>Figura 6. Modelo de análise e critérios de decisão do Committed vs. Completed. Fonte: PSM/CID Parte 2 (2021), seção 8.3, p. 17.</em></p>
+<p>A especificação do guia está nas Figuras 5 e 6; a Tabela 1 mostra a adaptação ao projeto.</p>
 <table>
 <thead>
 <tr>
-<th>Indicador</th>
-<th>Necessidade de informação</th>
-<th>Fórmula</th>
-<th>Fonte</th>
-<th>Critério de decisão</th>
+<th>Campo do template</th>
+<th>Definição</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Planejado vs. concluído (<em>Committed vs. Completed</em>, CID Parte 1, Tabela 5, linha 1, p. 19)</td>
-<td>Vamos cumprir o marco da sprint?</td>
-<td>Tarefas concluídas ÷ tarefas planejadas na sprint × 100</td>
-<td><a href="../planejamento/">Planejamento</a>, milestones e GitHub Project</td>
-<td>Menos de 50% concluído na metade da sprint: redistribuir tarefas ou remarcar o marco</td>
+<td>Necessidade de informação</td>
+<td>As tarefas planejadas para a sprint estão sendo entregues? Quais estão em risco de não ser concluídas no prazo?</td>
+</tr>
+<tr>
+<td>Conceito mensurável</td>
+<td>Progresso das unidades de trabalho</td>
+</tr>
+<tr>
+<td>Entidades relevantes</td>
+<td>Issues de cada sprint (milestone)</td>
+</tr>
+<tr>
+<td>Atributos</td>
+<td>Situação de cada issue: aberta ou fechada</td>
+</tr>
+<tr>
+<td>Medidas básicas</td>
+<td>1. P = issues planejadas na sprint. 2. C = issues fechadas da sprint</td>
+</tr>
+<tr>
+<td>Método de medição</td>
+<td>1 e 2. Contagem automática das issues de cada milestone pelo script <code>hooks/horas.py</code>, a cada publicação do site</td>
+</tr>
+<tr>
+<td>Tipo de método de medição</td>
+<td>1 e 2. Objetivo</td>
+</tr>
+<tr>
+<td>Escala</td>
+<td>1 e 2. Inteiros de zero ao infinito</td>
+</tr>
+<tr>
+<td>Tipo de escala</td>
+<td>1 e 2. Razão</td>
+</tr>
+<tr>
+<td>Unidade de medida</td>
+<td>1 e 2. Issue</td>
+</tr>
+<tr>
+<td>Medida derivada</td>
+<td>Percentual concluído da sprint</td>
+</tr>
+<tr>
+<td>Função de medição</td>
+<td>C × 100 ÷ P</td>
+</tr>
+<tr>
+<td>Indicador</td>
+<td>Tabela e gráfico de barras por sprint, com a linha do critério de decisão, no <a href="../painel-psm/">Painel do PSM</a></td>
+</tr>
+<tr>
+<td>Modelo de análise</td>
+<td>Quanto maior a diferença entre o planejado e o concluído, maior o risco de a sprint não cumprir o seu marco</td>
+</tr>
+<tr>
+<td>Critérios de decisão</td>
+<td><strong>Guia (Parte 2, p. 17), no fim da sprint:</strong> diferença acima de 5%, investigar as causas; acima de 10%, tomar ação corretiva. <strong>Equipe, na metade da sprint:</strong> menos de 50% concluído, redistribuir as tarefas</td>
 </tr>
 </tbody>
 </table>
-<h2 id="recursos-e-custos">Recursos e Custos<a class="headerlink" href="#recursos-e-custos" title="Permanent link">&para;</a></h2>
+<p><em>Tabela 1. Instância do modelo de informação de Planejado vs. concluído. Fonte: elaboração da equipe, com base na Aula 09 e no PSM/CID.</em></p>
+<h2 id="2-estimado-vs-realizado">2. Estimado vs. realizado<a class="headerlink" href="#2-estimado-vs-realizado" title="Permanent link">&para;</a></h2>
+<p>Como o guia não especifica esta medida, a Tabela 2 foi definida pela equipe a partir da linha 8 da Tabela 5 do PSM/CID (Figura 3).</p>
 <table>
 <thead>
 <tr>
-<th>Indicador</th>
-<th>Necessidade de informação</th>
-<th>Fórmula</th>
-<th>Fonte</th>
-<th>Critério de decisão</th>
+<th>Campo do template</th>
+<th>Definição</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Estimado vs. realizado (<em>Estimate vs. Actual Effort</em>, CID Parte 1, Tabela 5, linha 8, p. 20)</td>
-<td>As estimativas de esforço e custo estão certas?</td>
-<td>Horas realizadas ÷ horas estimadas; custo = horas × R$ 14,77</td>
-<td><code>dados/gestao/horas.csv</code> e estimativas do <a href="../planejamento/">Planejamento</a></td>
-<td>Razão acima de 1,5: revisar as estimativas das tarefas restantes</td>
+<td>Necessidade de informação</td>
+<td>As estimativas de esforço e de custo da equipe são precisas?</td>
+</tr>
+<tr>
+<td>Conceito mensurável</td>
+<td>Desempenho financeiro</td>
+</tr>
+<tr>
+<td>Entidades relevantes</td>
+<td>Tarefas (issues) de cada sprint</td>
+</tr>
+<tr>
+<td>Atributos</td>
+<td>Esforço estimado e esforço realizado</td>
+</tr>
+<tr>
+<td>Medidas básicas</td>
+<td>1. E = horas estimadas da sprint. 2. R = horas realizadas da sprint</td>
+</tr>
+<tr>
+<td>Método de medição</td>
+<td>1. Soma do campo "Estimativa (horas)" das issues. 2. Soma das horas registradas em <code>dados/gestao/horas.csv</code> e no campo "Horas reais" das issues, sem contar a mesma hora duas vezes (regras no <a href="../painel-psm/#conferencia-das-horas">Painel do PSM</a>)</td>
+</tr>
+<tr>
+<td>Tipo de método de medição</td>
+<td>1. Subjetivo (cada responsável estima as próprias tarefas). 2. Objetivo</td>
+</tr>
+<tr>
+<td>Escala</td>
+<td>1 e 2. Reais de zero ao infinito</td>
+</tr>
+<tr>
+<td>Tipo de escala</td>
+<td>1 e 2. Razão</td>
+</tr>
+<tr>
+<td>Unidade de medida</td>
+<td>1 e 2. Hora</td>
+</tr>
+<tr>
+<td>Medidas derivadas</td>
+<td>Razão entre o realizado e o estimado; custo realizado</td>
+</tr>
+<tr>
+<td>Função de medição</td>
+<td>Razão = R ÷ E. Custo = R × R$ 14,77 por hora (<a href="../horas/">Horas e custos</a>)</td>
+</tr>
+<tr>
+<td>Indicador</td>
+<td>Tabela e gráfico por sprint e conferência das horas por integrante no <a href="../painel-psm/">Painel do PSM</a></td>
+</tr>
+<tr>
+<td>Modelo de análise</td>
+<td>Razão acima de 1: a equipe subestimou o esforço; abaixo de 1: superestimou</td>
+</tr>
+<tr>
+<td>Critério de decisão</td>
+<td><strong>Equipe:</strong> razão acima de 1,5, revisar as estimativas das tarefas restantes</td>
 </tr>
 </tbody>
 </table>
-<h2 id="desempenho-dos-processos">Desempenho dos Processos<a class="headerlink" href="#desempenho-dos-processos" title="Permanent link">&para;</a></h2>
+<p><em>Tabela 2. Instância do modelo de informação de Estimado vs. realizado. Fonte: elaboração da equipe, com base na Aula 09 e no PSM/CID.</em></p>
+<h2 id="3-tempo-de-ciclo">3. Tempo de ciclo<a class="headerlink" href="#3-tempo-de-ciclo" title="Permanent link">&para;</a></h2>
+<p><img alt="Seção 8.5 da Parte 2 do PSM/CID: medidas básicas de início e fim e medida derivada Elapsed Time com exemplos" src="../../imagens/plano-de-medicao/cid-p2-8-5-medidas.png" /></p>
+<p><em>Figura 7. Medidas básicas e fórmula do Cycle Time. Fonte: PSM/CID Parte 2 (2021), seção 8.5, p. 24.</em></p>
+<p><img alt="Seção 8.5 da Parte 2 do PSM/CID: critério de decisão, investigar valores que se afastam mais de 10% da média" src="../../imagens/plano-de-medicao/cid-p2-8-5-criterio.png" /></p>
+<p><em>Figura 8. Critério de decisão do Cycle Time. Fonte: PSM/CID Parte 2 (2021), seção 8.5, p. 26.</em></p>
+<p>A especificação do guia está nas Figuras 7 e 8; a Tabela 3 mostra a adaptação ao projeto.</p>
 <table>
 <thead>
 <tr>
-<th>Indicador</th>
-<th>Necessidade de informação</th>
-<th>Fórmula</th>
-<th>Fonte</th>
-<th>Critério de decisão</th>
+<th>Campo do template</th>
+<th>Definição</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Tempo de ciclo (<em>Cycle Time</em>, CID Parte 1, Tabela 5, linha 32, p. 24)</td>
-<td>As tarefas andam ou ficam paradas?</td>
-<td>Data de fechamento − data de abertura da issue, em dias</td>
-<td>Datas registradas pelo GitHub em cada issue</td>
-<td>Issue aberta há mais de 3 dias sem andamento: cobrar o responsável ou dividir a tarefa</td>
+<td>Necessidade de informação</td>
+<td>Quanto tempo uma tarefa leva para ser concluída, e o trabalho está andando ou parado?</td>
+</tr>
+<tr>
+<td>Conceito mensurável</td>
+<td>Eficiência do processo: velocidade</td>
+</tr>
+<tr>
+<td>Entidades relevantes</td>
+<td>Issues</td>
+</tr>
+<tr>
+<td>Atributos</td>
+<td>Data de abertura, data de fechamento e data da última atualização</td>
+</tr>
+<tr>
+<td>Medidas básicas</td>
+<td>1. Data de início (abertura da issue). 2. Data de fim (fechamento da issue)</td>
+</tr>
+<tr>
+<td>Método de medição</td>
+<td>1 e 2. Leitura automática das datas registradas pelo GitHub em cada issue, pelo script <code>hooks/horas.py</code></td>
+</tr>
+<tr>
+<td>Tipo de método de medição</td>
+<td>1 e 2. Objetivo</td>
+</tr>
+<tr>
+<td>Escala</td>
+<td>1 e 2. Datas e horas do calendário</td>
+</tr>
+<tr>
+<td>Tipo de escala</td>
+<td>1 e 2. Intervalar</td>
+</tr>
+<tr>
+<td>Unidade de medida</td>
+<td>1 e 2. Data e hora</td>
+</tr>
+<tr>
+<td>Medida derivada</td>
+<td>Tempo de ciclo de cada issue; média e mediana por sprint</td>
+</tr>
+<tr>
+<td>Função de medição</td>
+<td>Data de fim − data de início, em dias com fração (as datas do GitHub incluem a hora; por isso não se soma 1 dia, como no exemplo 3 da Figura 7)</td>
+</tr>
+<tr>
+<td>Indicador</td>
+<td>Tabela e gráfico por sprint e lista de issues paradas no <a href="../painel-psm/">Painel do PSM</a></td>
+</tr>
+<tr>
+<td>Modelo de análise</td>
+<td>Tempos maiores indicam tarefas acumuladas ou paradas; tempos muito curtos podem indicar tarefas concluídas sem acompanhamento durante a sprint</td>
+</tr>
+<tr>
+<td>Critérios de decisão</td>
+<td><strong>Guia (Parte 2, p. 26):</strong> investigar as issues fechadas com tempo de ciclo mais de 10% acima ou abaixo da média. <strong>Equipe:</strong> issue aberta há mais de 1 dia sem atualização, contado a partir do início da sprint, cobrar o responsável ou dividir a tarefa (limite revisto na Medição 2)</td>
 </tr>
 </tbody>
 </table>
-<p>Os limites dos critérios de decisão foram definidos pela equipe para o prazo curto da E1 e podem ser revistos nas próximas medições.</p>
+<p><em>Tabela 3. Instância do modelo de informação de Tempo de ciclo. Fonte: elaboração da equipe, com base na Aula 09 e no PSM/CID.</em></p>
+<p>Os critérios marcados como "Equipe" foram definidos pelo grupo para o prazo curto da E1; a Aula 09 admite critérios baseados em acordos, e eles podem ser revistos a cada medição.</p>
 <h2 id="calendario-das-medicoes">Calendário das medições<a class="headerlink" href="#calendario-das-medicoes" title="Permanent link">&para;</a></h2>
+<p>As medições seguem o calendário da Tabela 4.</p>
 <table>
 <thead>
 <tr>
@@ -1933,12 +2132,18 @@
 <td>Fim da Sprint 2</td>
 </tr>
 <tr>
+<td>Consulta</td>
+<td>24/10/2026</td>
+<td>Metade da Sprint 3</td>
+</tr>
+<tr>
 <td>3</td>
 <td>26/10/2026</td>
 <td>Entrega 1</td>
 </tr>
 </tbody>
 </table>
+<p><em>Tabela 4. Calendário das medições. Fonte: elaboração da equipe.</em></p>
 
 
 
@@ -1959,7 +2164,7 @@
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="21 de outubro de 2026 00:32:06 UTC">21 de outubro de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="24 de outubro de 2026 17:10:11 UTC">24 de outubro de 2026</span>
   </span>
 
     
