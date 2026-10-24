@@ -109,13 +109,14 @@ nav:
           - Níveis de pontuação e julgamento: fase-2/niveis-e-julgamento.md
           - Diagrama GQM: fase-2/diagrama-gqm.md
           - Rastreabilidade: fase-2/rastreabilidade.md
-    - Fase 3: fase-3/index.md
+    - Fase 3:
+          - fase-3/index.md
+          - Ambiente Docker do draw.io: fase-3/ambiente-drawio.md
     - Fase 4: fase-4/index.md
     - Gestão do projeto:
           - gestao/index.md
           - Planejar:
                 - Planejamento das sprints: gestao/planejamento.md
-                - Ambiente Docker do draw.io: gestao/ambiente-drawio.md
                 - Plano de medição: gestao/plano-de-medicao.md
           - Medir:
                 - Painel do PSM: gestao/painel-psm.md
