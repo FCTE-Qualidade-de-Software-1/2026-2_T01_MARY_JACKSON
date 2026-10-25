@@ -14,7 +14,7 @@ https://fcte-qualidade-de-software-1.github.io/2026-2_T01_MARY_JACKSON/
 <table style="margin-left: auto; margin-right: auto;">
     <tr>
         <td align="center">
-            <a href="https://github.com/H3yttt0r10">
+            <a href="https://github.com/H3ytt0r10">
                 <img style="border-radius: 50%; width: 100px; heigth: 100px" src="https://github.com/H3ytt0r10.png" />
                 <h5 class="text-center">Heyttor Augusto de Assis Silva </h5>
                 <h5 class="text-center">232002996</h5>
