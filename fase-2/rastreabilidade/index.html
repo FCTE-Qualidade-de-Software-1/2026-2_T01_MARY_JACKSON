@@ -1988,7 +1988,7 @@
 
 
 <h1 id="rastreabilidade">Rastreabilidade<a class="headerlink" href="#rastreabilidade" title="Permanent link">&para;</a></h1>
-<!-- Rubrica F2-C11: o objetivo de medição (foco de qualidade e ponto de vista) deve derivar das características priorizadas e dos stakeholders da Fase 1. -->
+<!-- Rubrica F2-C11: o objetivo de medição (com respeito a e ponto de vista) deve derivar das características priorizadas e dos stakeholders da Fase 1. -->
 
 <p>Esta página mostra como cada objetivo GQM da Fase 2 deriva da Fase 1: da característica priorizada (com sua nota de importância), do stakeholder que dá o ponto de vista e da decisão do requisitante que a avaliação apoia. Os detalhes da Fase 1 estão em <a href="../../fase-1/proposito/">Propósito</a>, <a href="../../fase-1/partes-interessadas/">Requisitante e partes interessadas</a> e <a href="../../fase-1/caracteristicas/">Características e priorização</a>.</p>
 <h2 id="fase-1-objetivos-gqm">Fase 1 → objetivos GQM<a class="headerlink" href="#fase-1-objetivos-gqm" title="Permanent link">&para;</a></h2>
@@ -1998,8 +1998,8 @@
 <th>Característica (Fase 1)</th>
 <th style="text-align: center;">Importância</th>
 <th>Decisão do requisitante</th>
-<th>Stakeholder / ponto de vista</th>
-<th>Foco de qualidade</th>
+<th>Do ponto de vista de</th>
+<th>Com respeito a</th>
 <th style="text-align: center;">Objetivo</th>
 <th>Questões</th>
 <th>Métricas</th>
@@ -2089,16 +2089,34 @@
 </thead>
 <tbody>
 <tr>
-<td>Q1.1 A importação bloqueia scripts maliciosos embutidos na abertura de diagramas?</td>
+<td>Q1.1 Em que medida o componente de importação de arquivos previne a execução de <em>scripts</em> maliciosos embutidos durante a abertura de diagramas?</td>
 <td>Importação</td>
 <td>Confidencialidade e integridade</td>
 <td>M1.1 (CVE-2026-46642 e CVE-2026-58504)</td>
 </tr>
 <tr>
-<td>Q1.2 O tratamento de rótulos sanitiza o texto dos rótulos, inclusive o de diagramas recebidos de terceiros?</td>
+<td>Q1.2 Qual o percentual de rótulos de formas, inclusive os oriundos de diagramas de terceiros, que são devidamente sanitizados antes da exibição?</td>
 <td>Rótulos</td>
 <td>Confidencialidade e integridade</td>
 <td>M1.1 (CVE-2026-46642 e CVE-2026-58504)</td>
+</tr>
+<tr>
+<td>Q1.3 Em que medida o servidor <em>proxy</em> de exportação restringe requisições de acesso não autorizado a caminhos de diretórios?</td>
+<td>Exportação</td>
+<td>Confidencialidade e integridade</td>
+<td>M1.1 (CVE-2026-63416)</td>
+</tr>
+<tr>
+<td>Q1.4 Qual a proporção de trechos de código que exibem rótulos de formas em HTML com aplicação prévia de sanitização ou escape?</td>
+<td>Rótulos</td>
+<td>Confidencialidade e integridade</td>
+<td>M1.2</td>
+</tr>
+<tr>
+<td>Q1.5 Qual a taxa de resistência da proteção de rótulos frente a variações de ataques conhecidos, incluindo combinações de formas com estilos distintos?</td>
+<td>Rótulos</td>
+<td>Resistência</td>
+<td>M1.3</td>
 </tr>
 <tr>
 <td>Q1.3 O proxy de exportação restringe o acesso não autorizado a caminhos de diretórios?</td>
@@ -2210,7 +2228,7 @@
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="24 de outubro de 2026 03:11:13 UTC">24 de outubro de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="25 de outubro de 2026 15:07:10 UTC">25 de outubro de 2026</span>
   </span>
 
     
