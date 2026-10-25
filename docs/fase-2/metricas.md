@@ -16,7 +16,7 @@ Foram selecionadas três métricas para responder às cinco questões estabeleci
 | Definição | Percentual de casos de teste maliciosos bloqueados pelo componente, construídos a partir dos cenários descritos nos avisos de segurança das CVE-2026-46642, CVE-2026-58504 e CVE-2026-63416. |
 | Cálculo | `M1.1 = (Cb / Ct) x 100` |
 | Fonte | Registro dos testes e console do navegador; avisos de segurança do GitHub ([GHSA-fqhg-287p-c6vf](https://github.com/jgraph/drawio/security/advisories/GHSA-fqhg-287p-c6vf), [GHSA-c76x-r78m-phwx](https://github.com/jgraph/drawio/security/advisories/GHSA-c76x-r78m-phwx)) e NVD ([CVE-2026-63416](https://nvd.nist.gov/vuln/detail/CVE-2026-63416)). |
-| Coleta | No draw.io web 32.2.0, no ambiente local definido no [escopo](../fase-1/escopo.md) (Docker, sem acesso à rede externa), executar variações do conteúdo do rótulo e da combinação de estilos das formas (HTML ou texto simples, editável ou não), cada uma em sessão limpa do navegador. O repositório registra a descrição de cada variação e o resultado, sem publicar os arquivos de ataque. |
+| Coleta | No ambiente de teste local definido no plano de avaliação (Fase 3), sem acesso à rede externa, executar os casos de teste de cada componente, cada um em sessão limpa do navegador. O repositório registra a descrição de cada caso e o resultado, sem publicar os arquivos de ataque. |
 
 ### M1.2 — Cobertura da proteção dos rótulos
 
@@ -40,7 +40,7 @@ Foram selecionadas três métricas para responder às cinco questões estabeleci
 | Definição | Percentual de variações dos ataques das CVE-2026-46642 e CVE-2026-58504 bloqueadas. |
 | Cálculo | `M1.3 = (Wb / Wt) x 100` |
 | Fonte | Registro dos testes e console do navegador. |
-| Coleta | No draw.io web 32.2.0, no ambiente local definido no [escopo](../fase-1/escopo.md) (Docker, sem acesso à rede externa), executar variações do conteúdo do rótulo e da combinação de estilos das formas (HTML ou texto simples, editável ou não), cada uma em sessão limpa do navegador. O repositório registra a descrição de cada variação e o resultado, sem publicar os arquivos de ataque. |
+| Coleta | No ambiente de teste local definido no plano de avaliação (Fase 3), sem acesso à rede externa, executar variações do conteúdo do rótulo e da combinação de estilos das formas (HTML ou texto simples, editável ou não), cada uma em sessão limpa do navegador. O repositório registra a descrição de cada variação e o resultado, sem publicar os arquivos de ataque. |
 
 **Nota:** `Cb` representa os casos de teste bloqueados e `Ct` o total de casos de teste aplicados ao componente; `Pp`, os trechos protegidos e `Pt`, o total de trechos que exibem o rótulo como HTML; `Wb`, as variações bloqueadas e `Wt`, o total de variações testadas.
 
