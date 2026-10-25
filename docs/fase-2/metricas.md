@@ -4,22 +4,22 @@
 
 ## Segurança (Dupla 1)
 
-Foram selecionadas três métricas para responder às cinco questões estabelecidas. A primeira é aplicada separadamente aos componentes de importação, rótulos e _proxy_ de exportação; a segunda, ao código que exibe os rótulos; e a terceira, às variações dos ataques conhecidos. M1.1 e M1.2 são coletadas por inspeção do código-fonte, e M1.3, por testes em ambiente local. As métricas seguem a estrutura de medição em forma de proporção (`X = A / B`) para quantificar a eficácia dos controles, conforme as diretrizes apresentadas por Karnouskos et al. (2018, p. 5, Seção F).
+Foram selecionadas três métricas para responder às cinco questões estabelecidas. A primeira é aplicada separadamente aos componentes de importação, rótulos e _proxy_ de exportação; a segunda, ao código que exibe os rótulos; e a terceira, às variações dos ataques conhecidos. M1.1 e M1.3 são coletadas por testes em ambiente local, e M1.2, por inspeção do código-fonte. As métricas seguem a forma de proporção (`X = A / B`) adotada pela ISO/IEC 25023 para as medidas de segurança (seção 8.6, p. 26–27, versão de trabalho de 2011 disponibilizada na disciplina): M1.1 e M1.3 foram adaptadas de *Access controllability* (8.6.1, p. 27) e seguem a recomendação de testes de penetração da Nota 1 da seção 8.6 (p. 26); M1.2 foi adaptada de *Data corruption prevention* (8.6.2, p. 27), contando trechos protegidos em vez de danos ocorridos. Karnouskos et al. (2018, p. 5, Seção F) descrevem essas medidas da norma e mostram que algumas podem ser verificadas antes da implantação, por lista de verificação. As ferramentas de apoio à coleta serão definidas no plano de avaliação da Fase 3.
 
-### M1.1 — Correções verificadas das vulnerabilidades conhecidas
+### M1.1 — Taxa de bloqueio de casos de teste das vulnerabilidades conhecidas
 
 | Campo | Descrição |
 | --- | --- |
 | Subcaracterística | Confidencialidade e integridade. |
 | Questões associadas | Q1.1, Q1.2 e Q1.3. |
 | Componentes | Importação, rótulos e _proxy_ de exportação, analisados separadamente. |
-| Definição | Percentual das correções das CVE-2026-46642, CVE-2026-58504 e CVE-2026-63416, relativas ao componente, presentes no código da versão 32.2.0. |
-| Cálculo | `M1.1 = (Cv / Ct) x 100` |
-| Fonte | Código-fonte da tag v32.2.0, ChangeLog e avisos de segurança do GitHub ([GHSA-fqhg-287p-c6vf](https://github.com/jgraph/drawio/security/advisories/GHSA-fqhg-287p-c6vf), [GHSA-c76x-r78m-phwx](https://github.com/jgraph/drawio/security/advisories/GHSA-c76x-r78m-phwx), [CVE-2026-63416](https://nvd.nist.gov/vuln/detail/CVE-2026-63416)). |
-| Coleta | Localizar no código da tag v32.2.0 cada correção descrita nos avisos de segurança e registrar arquivo e linha. |
+| Definição | Percentual de casos de teste maliciosos bloqueados pelo componente, construídos a partir dos cenários descritos nos avisos de segurança das CVE-2026-46642, CVE-2026-58504 e CVE-2026-63416. |
+| Cálculo | `M1.1 = (Cb / Ct) x 100` |
+| Fonte | Registro dos testes e console do navegador; avisos de segurança do GitHub ([GHSA-fqhg-287p-c6vf](https://github.com/jgraph/drawio/security/advisories/GHSA-fqhg-287p-c6vf), [GHSA-c76x-r78m-phwx](https://github.com/jgraph/drawio/security/advisories/GHSA-c76x-r78m-phwx)) e NVD ([CVE-2026-63416](https://nvd.nist.gov/vuln/detail/CVE-2026-63416)). |
+| Coleta | No draw.io web 32.2.0, no ambiente local definido no [escopo](../fase-1/escopo.md) (Docker, sem acesso à rede externa), executar variações do conteúdo do rótulo e da combinação de estilos das formas (HTML ou texto simples, editável ou não), cada uma em sessão limpa do navegador. O repositório registra a descrição de cada variação e o resultado, sem publicar os arquivos de ataque. |
 
 ### M1.2 — Cobertura da proteção dos rótulos
- 
+
 | Campo | Descrição |
 | --- | --- |
 | Subcaracterística | Integridade. |
@@ -31,19 +31,18 @@ Foram selecionadas três métricas para responder às cinco questões estabeleci
 | Coleta | Localizar as chamadas `getLabelValue` em `Format.js`, `Graph.js` e `Editor.js` e verificar se o valor passa por `Graph.sanitizeHtml` ou `mxUtils.htmlEntities`; registrar arquivo e linha de cada trecho. |
 
 ### M1.3 — Taxa de bloqueio de variações dos ataques conhecidos
- 
+
 | Campo | Descrição |
 | --- | --- |
-| Subcaracterística | Resistência. |
+| Subcaracterística | Resistência: grau em que o produto ou sistema mantém o funcionamento enquanto está sob ataque de um agente malicioso (ISO/IEC 25010:2023, conforme ISO 25000 Portal). |
 | Questão associada | Q1.5. |
 | Componentes | Importação e rótulos. |
 | Definição | Percentual de variações dos ataques das CVE-2026-46642 e CVE-2026-58504 bloqueadas. |
 | Cálculo | `M1.3 = (Wb / Wt) x 100` |
 | Fonte | Registro dos testes e console do navegador. |
-| Coleta | No draw.io web 32.2.0 em Docker local, sem acesso à rede externa, executar variações do conteúdo do rótulo e da combinação de estilos das formas (HTML ou texto simples, editável ou não), cada uma em sessão limpa do navegador. O repositório registra a descrição de cada variação e o resultado, sem publicar os arquivos de ataque. |
- 
-**Nota:** `Cv` representa as correções encontradas no código e `Ct` o total de correções relativas ao componente; `Pp`, os trechos protegidos e `Pt`, o total de trechos que exibem o rótulo como HTML; `Wb`, as variações bloqueadas e `Wt`, o total de variações testadas.
- 
+| Coleta | No draw.io web 32.2.0, no ambiente local definido no [escopo](../fase-1/escopo.md) (Docker, sem acesso à rede externa), executar variações do conteúdo do rótulo e da combinação de estilos das formas (HTML ou texto simples, editável ou não), cada uma em sessão limpa do navegador. O repositório registra a descrição de cada variação e o resultado, sem publicar os arquivos de ataque. |
+
+**Nota:** `Cb` representa os casos de teste bloqueados e `Ct` o total de casos de teste aplicados ao componente; `Pp`, os trechos protegidos e `Pt`, o total de trechos que exibem o rótulo como HTML; `Wb`, as variações bloqueadas e `Wt`, o total de variações testadas.
 
 ## Eficiência de desempenho (Dupla 2)
 
