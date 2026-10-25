@@ -964,10 +964,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#m11-correcoes-verificadas-das-vulnerabilidades-conhecidas" class="md-nav__link">
+  <a href="#m11-taxa-de-bloqueio-de-casos-de-teste-das-vulnerabilidades-conhecidas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        M1.1 — Correções verificadas das vulnerabilidades conhecidas
+        M1.1 — Taxa de bloqueio de casos de teste das vulnerabilidades conhecidas
       
     </span>
   </a>
@@ -2003,10 +2003,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#m11-correcoes-verificadas-das-vulnerabilidades-conhecidas" class="md-nav__link">
+  <a href="#m11-taxa-de-bloqueio-de-casos-de-teste-das-vulnerabilidades-conhecidas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        M1.1 — Correções verificadas das vulnerabilidades conhecidas
+        M1.1 — Taxa de bloqueio de casos de teste das vulnerabilidades conhecidas
       
     </span>
   </a>
@@ -2191,8 +2191,8 @@
 <!-- O que entra aqui: para cada métrica: definição, fórmula, fonte, procedimento de coleta e escala. Partir das medidas da ISO/IEC 25023. Rubrica F2-C4. -->
 
 <h2 id="seguranca-dupla-1">Segurança (Dupla 1)<a class="headerlink" href="#seguranca-dupla-1" title="Permanent link">&para;</a></h2>
-<p>Foram selecionadas três métricas para responder às cinco questões estabelecidas. A primeira é aplicada separadamente aos componentes de importação, rótulos e <em>proxy</em> de exportação; a segunda, ao código que exibe os rótulos; e a terceira, às variações dos ataques conhecidos. M1.1 e M1.2 são coletadas por inspeção do código-fonte, e M1.3, por testes em ambiente local. As métricas seguem a estrutura de medição em forma de proporção (<code>X = A / B</code>) para quantificar a eficácia dos controles, conforme as diretrizes apresentadas por Karnouskos et al. (2018, p. 5, Seção F).</p>
-<h3 id="m11-correcoes-verificadas-das-vulnerabilidades-conhecidas">M1.1 — Correções verificadas das vulnerabilidades conhecidas<a class="headerlink" href="#m11-correcoes-verificadas-das-vulnerabilidades-conhecidas" title="Permanent link">&para;</a></h3>
+<p>Foram selecionadas três métricas para responder às cinco questões estabelecidas. A primeira é aplicada separadamente aos componentes de importação, rótulos e <em>proxy</em> de exportação; a segunda, ao código que exibe os rótulos; e a terceira, às variações dos ataques conhecidos. M1.1 e M1.3 são coletadas por testes em ambiente local, e M1.2, por inspeção do código-fonte. As métricas seguem a forma de proporção (<code>X = A / B</code>) adotada pela ISO/IEC 25023 para as medidas de segurança (seção 8.6, p. 26–27, versão de trabalho de 2011 disponibilizada na disciplina): M1.1 e M1.3 foram adaptadas de <em>Access controllability</em> (8.6.1, p. 27) e seguem a recomendação de testes de penetração da Nota 1 da seção 8.6 (p. 26); M1.2 foi adaptada de <em>Data corruption prevention</em> (8.6.2, p. 27), contando trechos protegidos em vez de danos ocorridos. Karnouskos et al. (2018, p. 5, Seção F) descrevem essas medidas da norma e mostram que algumas podem ser verificadas antes da implantação, por lista de verificação. As ferramentas de apoio à coleta serão definidas no plano de avaliação da Fase 3.</p>
+<h3 id="m11-taxa-de-bloqueio-de-casos-de-teste-das-vulnerabilidades-conhecidas">M1.1 — Taxa de bloqueio de casos de teste das vulnerabilidades conhecidas<a class="headerlink" href="#m11-taxa-de-bloqueio-de-casos-de-teste-das-vulnerabilidades-conhecidas" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -2215,19 +2215,19 @@
 </tr>
 <tr>
 <td>Definição</td>
-<td>Percentual das correções das CVE-2026-46642, CVE-2026-58504 e CVE-2026-63416, relativas ao componente, presentes no código da versão 32.2.0.</td>
+<td>Percentual de casos de teste maliciosos bloqueados pelo componente, construídos a partir dos cenários descritos nos avisos de segurança das CVE-2026-46642, CVE-2026-58504 e CVE-2026-63416.</td>
 </tr>
 <tr>
 <td>Cálculo</td>
-<td><code>M1.1 = (Cv / Ct) x 100</code></td>
+<td><code>M1.1 = (Cb / Ct) x 100</code></td>
 </tr>
 <tr>
 <td>Fonte</td>
-<td>Código-fonte da tag v32.2.0, ChangeLog e avisos de segurança do GitHub (<a href="https://github.com/jgraph/drawio/security/advisories/GHSA-fqhg-287p-c6vf">GHSA-fqhg-287p-c6vf</a>, <a href="https://github.com/jgraph/drawio/security/advisories/GHSA-c76x-r78m-phwx">GHSA-c76x-r78m-phwx</a>, <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-63416">CVE-2026-63416</a>).</td>
+<td>Registro dos testes e console do navegador; avisos de segurança do GitHub (<a href="https://github.com/jgraph/drawio/security/advisories/GHSA-fqhg-287p-c6vf">GHSA-fqhg-287p-c6vf</a>, <a href="https://github.com/jgraph/drawio/security/advisories/GHSA-c76x-r78m-phwx">GHSA-c76x-r78m-phwx</a>) e NVD (<a href="https://nvd.nist.gov/vuln/detail/CVE-2026-63416">CVE-2026-63416</a>).</td>
 </tr>
 <tr>
 <td>Coleta</td>
-<td>Localizar no código da tag v32.2.0 cada correção descrita nos avisos de segurança e registrar arquivo e linha.</td>
+<td>No draw.io web 32.2.0, no ambiente local definido no <a href="../../fase-1/escopo/">escopo</a> (Docker, sem acesso à rede externa), executar variações do conteúdo do rótulo e da combinação de estilos das formas (HTML ou texto simples, editável ou não), cada uma em sessão limpa do navegador. O repositório registra a descrição de cada variação e o resultado, sem publicar os arquivos de ataque.</td>
 </tr>
 </tbody>
 </table>
@@ -2281,7 +2281,7 @@
 <tbody>
 <tr>
 <td>Subcaracterística</td>
-<td>Resistência.</td>
+<td>Resistência: grau em que o produto ou sistema mantém o funcionamento enquanto está sob ataque de um agente malicioso (ISO/IEC 25010:2023, conforme ISO 25000 Portal).</td>
 </tr>
 <tr>
 <td>Questão associada</td>
@@ -2305,11 +2305,11 @@
 </tr>
 <tr>
 <td>Coleta</td>
-<td>No draw.io web 32.2.0 em Docker local, sem acesso à rede externa, executar variações do conteúdo do rótulo e da combinação de estilos das formas (HTML ou texto simples, editável ou não), cada uma em sessão limpa do navegador. O repositório registra a descrição de cada variação e o resultado, sem publicar os arquivos de ataque.</td>
+<td>No draw.io web 32.2.0, no ambiente local definido no <a href="../../fase-1/escopo/">escopo</a> (Docker, sem acesso à rede externa), executar variações do conteúdo do rótulo e da combinação de estilos das formas (HTML ou texto simples, editável ou não), cada uma em sessão limpa do navegador. O repositório registra a descrição de cada variação e o resultado, sem publicar os arquivos de ataque.</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Nota:</strong> <code>Cv</code> representa as correções encontradas no código e <code>Ct</code> o total de correções relativas ao componente; <code>Pp</code>, os trechos protegidos e <code>Pt</code>, o total de trechos que exibem o rótulo como HTML; <code>Wb</code>, as variações bloqueadas e <code>Wt</code>, o total de variações testadas.</p>
+<p><strong>Nota:</strong> <code>Cb</code> representa os casos de teste bloqueados e <code>Ct</code> o total de casos de teste aplicados ao componente; <code>Pp</code>, os trechos protegidos e <code>Pt</code>, o total de trechos que exibem o rótulo como HTML; <code>Wb</code>, as variações bloqueadas e <code>Wt</code>, o total de variações testadas.</p>
 <h2 id="eficiencia-de-desempenho-dupla-2">Eficiência de desempenho (Dupla 2)<a class="headerlink" href="#eficiencia-de-desempenho-dupla-2" title="Permanent link">&para;</a></h2>
 <p>Foram selecionadas seis métricas para responder às quatro questões estabelecidas. Para cada porte e operação/formato, serão realizadas cinco tentativas válidas; interrupções externas serão registradas e repostas. Para M2.1 a M2.5, calcula-se a mediana das quatro ou cinco tentativas bem-sucedidas com dados completos; menos de quatro sucessos tornam o cenário não conclusivo. Falhas não recebem valores artificiais de tempo ou memória.</p>
 <h3 id="m21-tempo-de-abertura">M2.1: Tempo de abertura<a class="headerlink" href="#m21-tempo-de-abertura" title="Permanent link">&para;</a></h3>
@@ -2648,7 +2648,7 @@
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="25 de outubro de 2026 02:30:42 UTC">25 de outubro de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="25 de outubro de 2026 17:42:16 UTC">25 de outubro de 2026</span>
   </span>
 
     
