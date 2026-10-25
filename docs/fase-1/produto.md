@@ -26,6 +26,12 @@ O público-alvo do draw.io inclui profissionais e estudantes que utilizam diagra
 - Líderes de projetos;
 - Estudantes de áreas relacionadas à tecnologia e engenharia.
 
+Contextualizando para o ambiente descrito no [propósito](../fase-1/proposito.md), a empresa junior ficticia seria o publico alvo do draw.io com o objetivo de criar:
+
+- Fluxogramas de trabalho
+- Diagramas de seus prototipos de software
+- Mapas mentais possiveis reuniões feitas em seus nucleos.
+
 ## Tecnologias utilizadas
 
 As tecnologias associadas ao desenvolvimento do draw.io incluem:

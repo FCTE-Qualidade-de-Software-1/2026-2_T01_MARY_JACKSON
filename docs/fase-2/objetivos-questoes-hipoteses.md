@@ -61,10 +61,10 @@ As questões e hipóteses derivam das necessidades R-ED-01 a R-ED-04 da [Fase 1]
 
 | Template GQM | G3 |
 | --- | --- |
-| Analisar | _draw.io_. |
+| Analisar | O _draw.io_. |
 | Para o propósito de | Entender. |
 | Com respeito a | Manutenibilidade: analisabilidade e modificabilidade. |
-| Do ponto de vista do/a | Equipe Mary Jackson, responsável por realizar a avaliação. |
+| Do ponto de vista de | Equipe Mary Jackson, responsável por realizar a avaliação. |
 | No contexto de | Disciplina Qualidade de Software 1, no cenário hipotético de adoção do _draw.io_ por uma empresa júnior de software. |
 
 **G3:** Analisar o _draw.io_ para o propósito de entender, com respeito à manutenibilidade (analisabilidade e modificabilidade), do ponto de vista da equipe Mary Jackson, responsável pela avaliação, no contexto da disciplina Qualidade de Software 1 e do cenário hipotético de adoção por uma empresa júnior de software.
@@ -75,6 +75,6 @@ As questões e hipóteses foram definidas para orientar a avaliação da manuten
 
 | Questão | Hipótese |
 | --- | --- |
-| **Q3.1**<br>Em que medida a complexidade do código responsável pela leitura e conversão de arquivos pode dificultar sua compreensão e manutenção? | **H3.1**<br>O código de importação apresenta complexidade cognitiva média inferior ou igual a 10 por função. |
-| **Q3.2**<br>Em que medida a complexidade do código responsável pela edição e formatação de rótulos pode dificultar sua compreensão e manutenção? | **H3.2**<br>O código de edição de rótulos apresenta complexidade cognitiva média inferior ou igual a 10 por função. |
-| **Q3.3**<br>Em que medida a duplicação de código entre as implementações de exportação PNG, PDF e SVG pode dificultar futuras modificações? | **H3.3**<br>O percentual de código duplicado no escopo de exportação é inferior ou igual a 5%. |
+| **Q3.1**<br>Em que medida a complexidade do código responsável pela leitura e conversão de arquivos pode dificultar sua compreensão e manutenção? | **H3.1**<br>O código de importação apresenta complexidade cognitiva média inferior ou igual a 10 por função.(M3.1 < 10 ) |
+| **Q3.2**<br>Em que medida a complexidade do código responsável pela edição e formatação de rótulos pode dificultar sua compreensão e manutenção? | **H3.2**<br>O código de edição de rótulos apresenta complexidade cognitiva média inferior ou igual a 10 por função.(M3.1 < 10) |
+| **Q3.3**<br>Em que medida a duplicação de código entre as implementações de exportação PNG, PDF e SVG pode dificultar futuras modificações? | **H3.3**<br>O percentual de código duplicado no escopo de exportação é inferior ou igual a 5%.(M3.2 < 5%) |

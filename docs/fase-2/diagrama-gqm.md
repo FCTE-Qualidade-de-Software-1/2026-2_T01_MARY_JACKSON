@@ -64,7 +64,7 @@ As definições estão em [Objetivos, questões e hipóteses](objetivos-questoes
 
 ## Manutenibilidade 
 
-O objetivo G3 se desdobra em 3 questões (Q3.1 a Q3.3), cobrindo a verificação da complexidade cognitiva dos códigos e verificação de redundâncias e duplicação de codigos, cada questão é respondida por uma das duas métricas (M3.1 e M3.2).
+O objetivo G3 se desdobra em 3 questões (Q3.1 a Q3.3), cobrindo a verificação da complexidade cognitiva dos códigos e verificação de redundâncias e duplicação de códigos, cada questão é respondida às suas métricas (M3.1 e M3.2).
 
 ![Diagrama GQM da Manutenibilidade: o objetivo G3 liga-se às questões Q3.1 a Q3.3, que se ligam às métricas M3.1 e M3.2](../imagens/diagramas-GQM/GQM_geral_dupla3.drawio%20(1).png)
 
@@ -72,17 +72,17 @@ O objetivo G3 se desdobra em 3 questões (Q3.1 a Q3.3), cobrindo a verificação
 
 ### Recorte por subcaracterística
 
-Os diagramas abaixo mostram, para cada foco da segurança (Analisabilidade e modificabilidade), quais questões e métricas a avaliam.
+Os diagramas abaixo mostram, para cada subcaracterística de manutabilidade (Analisabilidade e modificabilidade), quais questões e métricas a avaliam.
 
 #### Analisabilidade
 
-![Recorte do GQM da manutenibilidade para: Q3.3 com M3.2](../imagens/diagramas-GQM/GQM_analis_dupla3.drawio.png)
+![Recorte do GQM da manutenibilidade para: Q3.1 e Q3.2 com M3.1](../imagens/diagramas-GQM/gqm_atualizado_analisab.drawio.png)
 
-*Figura: Analisabilidade, Analise da duplicação de código nas funções de exportação de imagens(Q 3.3) através da métrica de porcentagem de duplicação (M3.2). Fonte: elaboração da equipe.*
+*Figura: Analisabilidade,avaliada nos trechos de conversão de arquivos (Q3.1) e edição e formatação de rótulos (Q3.2) através da métrica  (M3.1). Fonte: elaboração da equipe.* 
 
 #### Modificabilidade
 
-![Recorte do GQM da manutenibilidade para Modificabilidade: Q3.1, Q3.2 com M3.1](../imagens/diagramas-GQM/GQM_modific_dupla3.drawio.png)
+![Recorte do GQM da manutenibilidade para Modificabilidade: Q3.3 com M3.2](../imagens/diagramas-GQM/gqm_atualizado_modific.drawio.png)
 
-*Figura: Análise de complexidade, avaliada nos trechos de conversão de arquivos (Q3.1) e edição e formatação de rotulos (Q3.2) através da métrica  (M3.1). Fonte: elaboração da equipe.*
+*Figura: Análise de complexidade, Análise da duplicação de código nas funções de exportação de imagens(Q 3.3) através da métrica de porcentagem de duplicação (M3.2). Fonte: elaboração da equipe.*
 
