@@ -14,13 +14,16 @@ hide:
 <p class="mj-chamada">Avaliação da segurança, da eficiência de desempenho e da manutenibilidade do draw.io, feita pela equipe Mary Jackson na disciplina Qualidade de Software 1 (FGA0315, UnB, 2026/2).</p>
 
 [Ver documentação](fase-1/index.md){ .md-button .md-button--primary }
-[Artigo (PDF)](artigo/artigo-e1.pdf){ .md-button target="_blank" rel="noopener" }
+[Artigo (PDF)](artigo/artigo-e1.pdf){ .md-button target="\_blank" rel="noopener" }
 [Repositório](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON){ .md-button }
+
+Este projeto usou ferramentas de IA (Claude, Gemini e ChatGPT/Codex) como apoio na redação, na organização e nos scripts da GitPage. A logo foi gerada por IA. As ferramentas, tarefas e revisões da equipe estão na [Declaração de uso de IA](sobre/uso-de-ia.md).
+{ .mj-transparencia }
 
 </div>
 <figure class="mj-retrato">
   <img src="assets/images/mary-jackson.jpg" alt="Mary Jackson trabalhando na NASA, com caderno e lápis diante de equipamentos." width="985" height="1260" fetchpriority="high">
-  <figcaption><strong>Mary Jackson</strong><a href="https://commons.wikimedia.org/wiki/File:Mary_Jackson.jpg" target="_blank" rel="noopener">Foto: NASA · domínio público</a></figcaption>
+  <figcaption><strong>Mary Jackson</strong><a href="https://commons.wikimedia.org/wiki/File:Mary_Jackson.jpg" target="_blank" rel="noopener">Fotografia histórica: NASA on The Commons</a></figcaption>
 </figure>
 </div>
 
@@ -52,3 +55,6 @@ hide:
 </div>
 </div>
 </div>
+
+Projeto acadêmico independente em homenagem a Mary Jackson, sem vínculo ou endosso da NASA ou do draw.io. [Identidade visual e créditos](sobre/uso-de-ia.md#identidade-visual-e-creditos).
+{ .mj-identidade-nota }

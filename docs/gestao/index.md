@@ -1,21 +1,27 @@
 # Gestão do projeto
 
-A equipe acompanha o projeto com o PSM, usando o modelo de medição para desenvolvimento contínuo e iterativo (CID Measurement Framework, Parte 1). Foi escolhida uma métrica para cada categoria pedida na especificação (Seção 2), a partir da Tabela 5 do CID:
+A equipe acompanha o projeto com o PSM (*Practical Software and Systems Measurement*), usando o guia para desenvolvimento contínuo e iterativo (PSM/CID). A especificação do trabalho (Seção 2) pede medidas em três categorias de informação, e a equipe escolheu uma medida para cada uma:
 
-| Categoria da especificação | Métrica do PSM | Onde está na Tabela 5 do CID | Pergunta que responde |
+| Categoria de informação | Medida | Origem no PSM/CID | Pergunta que responde |
 |---|---|---|---|
-| Calendário e Progresso | Planejado vs. concluído (*Committed vs. Completed*) | Linha 1, *Schedule and Progress*, p. 19 | Vamos cumprir o marco da sprint? |
-| Recursos e Custos | Estimado vs. realizado (*Estimate vs. Actual Effort*) | Linha 8, *Resources and Cost*, p. 20 | As estimativas de esforço e custo estão certas? |
-| Desempenho dos Processos | Tempo de ciclo (*Cycle Time*) | Linha 32, *Process Performance*, p. 24 | As tarefas andam ou ficam paradas? |
+| Calendário e Progresso | Planejado vs. concluído (*Committed vs. Completed*) | Parte 1, Tabela 5, linha 1; Parte 2, seção 8.3 | As tarefas da sprint estão sendo entregues? |
+| Recursos e Custos | Estimado vs. realizado (*Estimate vs. Actual Effort*) | Parte 1, Tabela 5, linhas 8 e 9 | As estimativas de esforço são precisas? |
+| Desempenho dos Processos | Tempo de ciclo (*Cycle Time*) | Parte 1, Tabela 5, linhas 30 e 32; Parte 2, seção 8.5 | Quanto tempo uma tarefa leva, e o trabalho está andando? |
 
-As páginas seguem as etapas do processo de medição do PSM: planejar o que medir, medir durante as sprints e avaliar os resultados para tomar decisões.
+A descrição completa de cada medida, com as figuras da Tabela 5, está no [Plano de medição](plano-de-medicao.md).
+
+As páginas de gestão seguem as atividades centrais do modelo de processo de medição do PSM (Figura 1): **planejar** a medição, **executar** a medição e **avaliar** os resultados para decidir as ações de melhoria.
+
+![Modelo de processo de medição do PSM: estabelecer e manter o compromisso, planejar a medição, executar a medição e avaliar a medição, ligados aos processos técnicos e de gestão do projeto](../imagens/gestao/mcgarry-fig1-2-processo-medicao.png){ width="560" }
+
+_Figura 1. Modelo de processo de medição do PSM. Fonte: McGarry et al. (2002, cap. 1, Figura 1-2, p. 11)._
 
 <div class="mj-colunas">
 <div class="mj-coluna">
 <p class="mj-secao"><span>Planejar</span></p>
 <div class="mj-painel">
 <a class="mj-item" href="planejamento/"><small>Tarefas, responsáveis e estimativas (linha de base)</small><span>Planejamento das sprints</span></a>
-<a class="mj-item" href="plano-de-medicao/"><small>Fórmula, fonte e critério de decisão de cada métrica</small><span>Plano de medição</span></a>
+<a class="mj-item" href="plano-de-medicao/"><small>Instância do modelo de informação de cada medida</small><span>Plano de medição</span></a>
 </div>
 </div>
 <div class="mj-coluna">

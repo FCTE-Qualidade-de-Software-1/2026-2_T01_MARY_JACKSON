@@ -21,6 +21,7 @@ import urllib.request
 from datetime import datetime, timedelta, timezone
 from collections import OrderedDict
 from pathlib import Path
+BRASILIA = timezone(timedelta(hours=-3))  
 
 MARCADOR_HORAS = "[[TABELA_HORAS]]"
 API = "https://api.github.com/repos/{repo}/issues?state=all&per_page=100&page={page}"
@@ -346,8 +347,8 @@ def _painel_psm(markdown, config):
     horas_sprint, conferencia, ignoradas = _horas_combinadas(issues, sprints, config)
     link = lambda n: f"[#{n}]({repo_url}/issues/{n})"
 
-    data_hoje = agora.astimezone().strftime("%d/%m/%Y")
-    saida = [f"_Atualizado automaticamente em {agora.astimezone().strftime('%d/%m/%Y %H:%M')}, "
+    data_hoje = agora.astimezone(BRASILIA).strftime("%d/%m/%Y")
+    saida = [f"_Atualizado automaticamente em {agora.astimezone(BRASILIA).strftime('%d/%m/%Y %H:%M')} (horário de Brasília), "
              f"a partir de {len(issues)} issues e do registro de horas._", ""]
 
     # Como o painel é montado

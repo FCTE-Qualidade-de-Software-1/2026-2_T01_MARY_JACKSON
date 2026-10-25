@@ -72,7 +72,7 @@ https://fcte-qualidade-de-software-1.github.io/2026-2_T01_MARY_JACKSON/
 - [Fase 2: Especificar a avaliação](https://fcte-qualidade-de-software-1.github.io/2026-2_T01_MARY_JACKSON/fase-2/)
 - [Gestão do projeto (PSM/CID)](https://fcte-qualidade-de-software-1.github.io/2026-2_T01_MARY_JACKSON/gestao/)
 - [Planejamento das sprints](docs/gestao/planejamento.md)
-- [Ambiente Docker do draw.io 32.2.0](docs/gestao/ambiente-drawio.md)
+- [Ambiente Docker do draw.io 32.2.0](docs/fase-3/ambiente-drawio.md)
 - [Atas das reuniões](atas/)
 - [Dados](dados/)
 

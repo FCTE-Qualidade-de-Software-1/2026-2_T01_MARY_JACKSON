@@ -120,8 +120,16 @@ _Figura 5. Issues paradas no fim da Sprint 2: nenhuma issue aberta estava sem at
 - **Interpretação:** as tarefas da Sprint 2 foram abertas e fechadas no mesmo dia ou no seguinte, porque foram concentradas antes do Ponto de Controle. Na Sprint 1, o tempo inclui o fechamento atrasado da #8. Nenhuma issue estava parada no fim da sprint.
 - **Decisão:** reduzir o limite de 3 dias para 1 dia sem atualização, contado a partir do início da sprint: na Sprint 3, de 4 dias (23 a 26/10), o limite de 3 dias só dispararia depois do fim da sprint, e as issues criadas antes da sprint apareciam como paradas no primeiro dia. Consultar o painel de novo em 24/10 (metade da Sprint 3) para decidir se é preciso redistribuir tarefas.
 
-**Aprovação das decisões:** propostas pela gestão em 23/10/2026 e submetidas à equipe em enquete no grupo de WhatsApp até 24/10/2026, às 12h. Resultado: _a registrar_.
+**Aprovação das decisões:** propostas pela gestão em 23/10/2026 e aprovadas pela equipe em enquete no grupo de WhatsApp, encerrada em 24/10/2026 às 12h: as quatro decisões foram aprovadas, sem votos contrários (5 integrantes votaram; os demais foram contados como de acordo, conforme a regra da enquete).
 
 ## Medição 3 (26/10/2026, Entrega 1)
 
-_A realizar._
+## Consulta da metade da Sprint 3 (24/10/2026)
+
+**Fonte:** [Painel do PSM](painel-psm.md) publicado em 24/10/2026 às 14h16 (versão `1aba800` da branch `gh-pages`; o painel dessa versão mostra 17:16 porque ainda usava o horário UTC). Decisões e verificação de 25/10 registradas na [Ata 05](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/blob/main/atas/2026-10-25-ata-05.md).
+
+| Medida | Valor | Interpretação | Decisão |
+|---|---|---|---|
+| Planejado vs. concluído | Sprint 3: 0 de 13 issues concluídas (0%) | Abaixo do limite da equipe (50% na metade da sprint). Parte das tarefas só pode ser concluída no fim da sprint (#29 e #31). | Redistribuir o trabalho da Dupla 1: o Miquéias assume o conteúdo (#33, #34 e #24) e a Yasmin, a revisão e a gestão. Orientar o grupo a fechar cada issue no dia em que concluir a tarefa. |
+| Estimado vs. realizado | Sprint 3: 7,8 h de 20,0 h estimadas (razão 0,39) | Dentro do limite (1,5). O valor ainda é parcial: parte das horas não tinha sido registrada nas issues. | Todos registram as horas, inclusive as retroativas, até 25/10 às 20h. |
+| Tempo de ciclo (issues paradas) | 11 issues sem atualização há mais de 1 dia: #9, #12, #21, #23, #24, #26, #27, #28, #29, #30, #31 | Acima do limite de 1 dia. Inclui issues de sprints anteriores ainda abertas (#9 e #12) e tarefas previstas para o fim da sprint (#29 e #31). | Cada responsável comenta na própria issue o que falta; a issue sem andamento até 25/10 às 12h é dividida com outra dupla. A proposta foi enviada ao grupo; o Pedro Ian concordou, e não houve manifestação contrária. |
