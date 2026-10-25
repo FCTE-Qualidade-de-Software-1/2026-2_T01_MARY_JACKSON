@@ -4,7 +4,7 @@
 
 ## Segurança (Dupla 1)
 
-Foram selecionadas três métricas para responder às cinco questões estabelecidas. A primeira é aplicada separadamente aos componentes de importação, rótulos e _proxy_ de exportação; a segunda, ao código que exibe os rótulos; e a terceira, às variações dos ataques conhecidos. M1.1 e M1.2 são coletadas por inspeção do código-fonte, e M1.3, por testes em ambiente local. As métricas seguem a forma de proporção (`X = A / B`) adotada pela ISO/IEC 25023 para as medidas de segurança, como a de prevenção de corrupção de dados (seção 8.6, p. 26–27, versão de trabalho de 2011 disponibilizada na disciplina).
+Foram selecionadas três métricas para responder às cinco questões estabelecidas. A primeira é aplicada separadamente aos componentes de importação, rótulos e _proxy_ de exportação; a segunda, ao código que exibe os rótulos; e a terceira, às variações dos ataques conhecidos. M1.1 e M1.2 são coletadas por inspeção do código-fonte, e M1.3, por testes em ambiente local. As métricas seguem a estrutura de medição em forma de proporção (`X = A / B`) para quantificar a eficácia dos controles, conforme as diretrizes apresentadas por Karnouskos et al. (2018, p. 5, Seção F).
 
 ### M1.1 — Correções verificadas das vulnerabilidades conhecidas
 

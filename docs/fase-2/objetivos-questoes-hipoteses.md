@@ -10,11 +10,11 @@ Cada característica priorizada na [Fase 1](../fase-1/caracteristicas.md) gera u
 | Elemento | Descrição |
 | --- | --- |
 | Identificador | G1 |
-| Objeto | Componentes de importação de arquivos, tratamento de rótulos e _proxy_ de exportação do _draw.io_. |
-| Propósito | Avaliar a segurança dos componentes selecionados. |
-| Foco | Confidencialidade, integridade e resistência. |
-| Ponto de vista | Diretoria de TI da empresa júnior. |
-| Contexto | _Draw.io_ web, versão 32.2.0, hospedado em Docker, em ambiente local de testes. |
+| Analisar | O software _draw.io_. |
+| Para o propósito de | Entender. |
+| Com respeito a | Segurança. |
+| Do ponto de vista de | Diretoria de TI da empresa júnior. |
+| No contexto de | A disciplina de Qualidade de Software 1, no cenário da empresa júnior. |
 
 ### Questões e hipóteses
  
@@ -22,11 +22,11 @@ As questões e hipóteses foram definidas para orientar a avaliação da seguran
  
 | Questão | Hipótese |
 | --- | --- |
-| **Q1.1**<br>O componente de importação de arquivos bloqueia a execução de _scripts_ maliciosos embutidos na abertura de diagramas? | **H1.1**<br>O sistema de importação impede a execução automática de _scripts_ no momento da carga inicial do arquivo (M1.1 = 100%). |
-| **Q1.2**<br>O tratamento de rótulos das formas sanitiza adequadamente o texto dos rótulos, inclusive o de diagramas recebidos de terceiros? | **H1.2**<br>A camada de apresentação limpa os caracteres especiais e _tags_ HTML nos rótulos e metadados, impedindo a persistência de injeções de código (M1.1 = 100%). |
-| **Q1.3**<br>O servidor _proxy_ de exportação restringe solicitações de acesso não autorizado a caminhos de diretórios? | **H1.3**<br>O _proxy_ valida e restringe as rotas nas requisições de saída, impedindo ataques de _Path Traversal_ (M1.1 = 100%). |
-| **Q1.4**<br>Nos componentes avaliados, todos os trechos do código que exibem o rótulo de uma forma como HTML aplicam sanitização ou escape antes? | **H1.4**<br>Todos esses trechos aplicam proteção na versão 32.2.0, ao contrário do trecho que originou a CVE-2026-46642 (M1.2 = 100%). |
-| **Q1.5**<br>A proteção dos rótulos resiste a variações dos ataques conhecidos, incluindo combinações de formas com estilos diferentes, como no contorno registrado na CVE-2026-58504? | **H1.5**<br>Nenhuma das variações testadas executa código na abertura do arquivo (M1.3 = 100%). |
+| **Q1.1**<br>Em que medida o componente de importação de arquivos previne a execução de _scripts_ maliciosos embutidos durante a abertura de diagramas? | **H1.1**<br>O sistema de importação impede a execução automática de _scripts_ no momento da carga inicial do arquivo (M1.1 = 100%). |
+| **Q1.2**<br>Qual o percentual de rótulos de formas, inclusive os oriundos de diagramas de terceiros, que são devidamente sanitizados antes da exibição? | **H1.2**<br>A camada de apresentação limpa os caracteres especiais e _tags_ HTML nos rótulos e metadados, impedindo a persistência de injeções de código (M1.1 = 100%). |
+| **Q1.3**<br>Em que medida o servidor _proxy_ de exportação restringe requisições de acesso não autorizado a caminhos de diretórios? | **H1.3**<br>O _proxy_ valida e restringe as rotas nas requisições de saída, impedindo ataques de _Path Traversal_ (M1.1 = 100%). |
+| **Q1.4**<br>Qual a proporção de trechos de código que exibem rótulos de formas em HTML com aplicação prévia de sanitização ou escape? | **H1.4**<br>Todos esses trechos aplicam proteção na versão 32.2.0, ao contrário do trecho que originou a CVE-2026-46642 (M1.2 = 100%). |
+| **Q1.5**<br>Qual a taxa de resistência da proteção de rótulos frente a variações de ataques conhecidos, incluindo combinações de formas com estilos distintos? | **H1.5**<br>Nenhuma das variações testadas executa código na abertura do arquivo (M1.3 = 100%). |
 
 ## Eficiência de desempenho (Dupla 2)
 
