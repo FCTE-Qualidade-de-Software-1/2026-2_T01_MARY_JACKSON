@@ -784,10 +784,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#produto-versao-e-ambiente-alvo" class="md-nav__link">
+  <a href="#produto-avaliado" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Produto, versão e ambiente alvo
+        Produto avaliado
       
     </span>
   </a>
@@ -1874,10 +1874,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#produto-versao-e-ambiente-alvo" class="md-nav__link">
+  <a href="#produto-avaliado" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Produto, versão e ambiente alvo
+        Produto avaliado
       
     </span>
   </a>
@@ -1954,8 +1954,8 @@
 
 
 <h1 id="escopo-e-profundidade">Escopo e profundidade<a class="headerlink" href="#escopo-e-profundidade" title="Permanent link">&para;</a></h1>
-<h2 id="produto-versao-e-ambiente-alvo">Produto, versão e ambiente alvo<a class="headerlink" href="#produto-versao-e-ambiente-alvo" title="Permanent link">&para;</a></h2>
-<p>O recorte proposto é o <strong>draw.io web, versão 32.2.0, hospedado em Docker, em ambiente local de testes</strong>, para apoiar o <a href="../proposito/">cenário de adoção em infraestrutura própria</a>. Essa identificação é o alvo do planejamento, sem pressupor que a instalação ou a coleta já tenham ocorrido.</p>
+<h2 id="produto-avaliado">Produto avaliado<a class="headerlink" href="#produto-avaliado" title="Permanent link">&para;</a></h2>
+<p>O recorte proposto é o <strong>draw.io web, em instalação própria</strong>, para apoiar o <a href="../proposito/">cenário de adoção em infraestrutura própria</a>. A versão, a instalação e o ambiente de execução serão especificados no plano de avaliação da <a href="../../fase-3/">Fase 3</a>.</p>
 <table>
 <thead>
 <tr>
@@ -1965,16 +1965,16 @@
 </thead>
 <tbody>
 <tr>
-<td>Distribuição e versão alvo</td>
-<td>Editor web draw.io 32.2.0. A disponibilidade da imagem correspondente e a versão/build executada precisam ser verificadas.</td>
+<td>Distribuição</td>
+<td>Editor web do draw.io, em instalação própria. Versão e build definidos no plano de avaliação (Fase 3, Entrega 2).</td>
 </tr>
 <tr>
 <td>Implantação</td>
-<td>Docker, em ambiente local de testes; registrar imagem, tag, digest, configuração e versões dos serviços utilizados antes da coleta.</td>
+<td>Definida no plano de avaliação (Fase 3, Entrega 2). A configuração inicial está em <a href="../../fase-3/ambiente-drawio/">Ambiente Docker do draw.io</a>.</td>
 </tr>
 <tr>
 <td>Código-fonte</td>
-<td>Fixar a tag ou o commit correspondente à versão avaliada e os arquivos de cada componente antes da análise de Manutenibilidade.</td>
+<td>Tag ou commit e arquivos de cada componente definidos no plano de avaliação (Fase 3, Entrega 2), antes da análise de Manutenibilidade.</td>
 </tr>
 <tr>
 <td>Navegador e máquina cliente</td>
@@ -1990,7 +1990,7 @@
 </tr>
 </tbody>
 </table>
-<p>Conforme a <a href="../produto/">descrição do produto</a>, a Manutenibilidade será avaliada no código-fonte da versão 32.2.0; a Eficiência de desempenho e a Segurança, no editor web dessa versão. A identificação exata do código e da instalação será registrada antes da coleta.</p>
+<p>Conforme a <a href="../produto/">descrição do produto</a>, a Manutenibilidade será avaliada no código-fonte do draw.io; a Eficiência de desempenho e a Segurança, no editor web. A identificação exata da versão, do código e da instalação será registrada na Fase 3, antes da coleta.</p>
 <h2 id="componentes-incluidos">Componentes incluídos<a class="headerlink" href="#componentes-incluidos" title="Permanent link">&para;</a></h2>
 <p>O fluxo central é <strong>abrir um diagrama, editar um rótulo e exportar</strong>. A abertura corresponde à operação <strong>Abrir de/Dispositivo</strong>, substituindo o documento atual; o comando deve ser confirmado na instalação de referência. Não se inclui neste recorte a inserção de conteúdo em um diagrama já aberto por colagem ou importação adicional.</p>
 <table>
@@ -2060,7 +2060,7 @@
 <p>Não estão previstas busca de vulnerabilidades inéditas, avaliação de todas as funções ou sessões de testes com usuários. A seleção dessas abordagens não pressupõe que a ferramenta seja segura, rápida ou fácil de manter.</p>
 <h2 id="limites-de-validade">Limites de validade<a class="headerlink" href="#limites-de-validade" title="Permanent link">&para;</a></h2>
 <ul>
-<li>As conclusões ficarão vinculadas à versão, ao código, às configurações, às máquinas, ao navegador e às cargas documentados. Fixar apenas a imagem Docker não controla os recursos da máquina cliente.</li>
+<li>As conclusões ficarão vinculadas à versão, ao código, às configurações, às máquinas, ao navegador e às cargas documentados. Fixar apenas a instalação não controla os recursos da máquina cliente.</li>
 <li>O recorte de memória de Eficiência corresponde ao <strong>heap JavaScript do editor</strong>; ele não representa a RAM total do navegador, da máquina ou de um eventual servidor de exportação.</li>
 <li>A capacidade será limitada ao maior porte aprovado <strong>entre os cinco ensaiados</strong>, conforme os critérios posteriores. Não representará um máximo absoluto do produto nem será inferida apenas pelo número de formas.</li>
 <li>As cargas sintéticas não abrangem todas as combinações de conteúdo, conectores, estilos e imagens dos diagramas reais.</li>
@@ -2088,7 +2088,7 @@
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="24 de outubro de 2026 20:09:28 UTC">24 de outubro de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="25 de outubro de 2026 18:26:56 UTC">25 de outubro de 2026</span>
   </span>
 
     
