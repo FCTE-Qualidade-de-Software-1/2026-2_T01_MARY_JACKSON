@@ -4,7 +4,7 @@
 
 A **diretoria de TI de uma empresa júnior de software da universidade**, em cenário hipotético, considera hospedar o draw.io em infraestrutura própria para produzir diagramas de arquitetura, UML e bancos de dados nos projetos com clientes. A intenção é manter o controle sobre os arquivos e sobre a configuração do serviço.
 
-O objeto proposto é o **draw.io web, versão 32.2.0, hospedado em Docker, em ambiente local de testes**, com os limites e as pendências de identificação descritos no [escopo](escopo.md). O cenário representa uma necessidade de avaliação; não constitui registro de entrevista, aprovação do requisitante ou implantação já realizada.
+O objeto proposto é o **draw.io web, em instalação própria**, com os limites descritos no [escopo](escopo.md). A versão e o ambiente de execução da avaliação serão especificados no plano de avaliação da [Fase 3](../fase-3/index.md). O cenário representa uma necessidade de avaliação; não constitui registro de entrevista, aprovação do requisitante ou implantação já realizada.
 
 ## Propósito e decisões apoiadas
 

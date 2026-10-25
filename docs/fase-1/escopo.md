@@ -1,19 +1,19 @@
 # Escopo e profundidade
 
-## Produto, versão e ambiente alvo
+## Produto avaliado
 
-O recorte proposto é o **draw.io web, versão 32.2.0, hospedado em Docker, em ambiente local de testes**, para apoiar o [cenário de adoção em infraestrutura própria](proposito.md). Essa identificação é o alvo do planejamento, sem pressupor que a instalação ou a coleta já tenham ocorrido.
+O recorte proposto é o **draw.io web, em instalação própria**, para apoiar o [cenário de adoção em infraestrutura própria](proposito.md). A versão, a instalação e o ambiente de execução serão especificados no plano de avaliação da [Fase 3](../fase-3/index.md).
 
 | Elemento | Delimitação e situação |
 |---|---|
-| Distribuição e versão alvo | Editor web draw.io 32.2.0. A disponibilidade da imagem correspondente e a versão/build executada precisam ser verificadas. |
-| Implantação | Docker, em ambiente local de testes; registrar imagem, tag, digest, configuração e versões dos serviços utilizados antes da coleta. |
-| Código-fonte | Fixar a tag ou o commit correspondente à versão avaliada e os arquivos de cada componente antes da análise de Manutenibilidade. |
+| Distribuição | Editor web do draw.io, em instalação própria. Versão e build definidos no plano de avaliação (Fase 3, Entrega 2). |
+| Implantação | Definida no plano de avaliação (Fase 3, Entrega 2). A configuração inicial está em [Ambiente Docker do draw.io](../fase-3/ambiente-drawio.md). |
+| Código-fonte | Tag ou commit e arquivos de cada componente definidos no plano de avaliação (Fase 3, Entrega 2), antes da análise de Manutenibilidade. |
 | Navegador e máquina cliente | Definidos no plano de avaliação (Fase 3, Entrega 2). As condições serão mantidas documentadas e comparáveis entre as medições. |
 | Máquina servidora e exportação | Definidas no plano de avaliação (Fase 3, Entrega 2). A configuração inicial do contêiner está em [Ambiente Docker do draw.io](../fase-3/ambiente-drawio.md). |
 | Diagramas de referência | Cargas sintéticas planejadas de **50, 300, 1.000, 2.000 e 5.000 formas**; registrar geração, estrutura e identificação dos arquivos. |
 
-Conforme a [descrição do produto](produto.md), a Manutenibilidade será avaliada no código-fonte da versão 32.2.0; a Eficiência de desempenho e a Segurança, no editor web dessa versão. A identificação exata do código e da instalação será registrada antes da coleta.
+Conforme a [descrição do produto](produto.md), a Manutenibilidade será avaliada no código-fonte do draw.io; a Eficiência de desempenho e a Segurança, no editor web. A identificação exata da versão, do código e da instalação será registrada na Fase 3, antes da coleta.
 
 ## Componentes incluídos
 
@@ -45,7 +45,7 @@ Não estão previstas busca de vulnerabilidades inéditas, avaliação de todas 
 
 ## Limites de validade
 
-- As conclusões ficarão vinculadas à versão, ao código, às configurações, às máquinas, ao navegador e às cargas documentados. Fixar apenas a imagem Docker não controla os recursos da máquina cliente.
+- As conclusões ficarão vinculadas à versão, ao código, às configurações, às máquinas, ao navegador e às cargas documentados. Fixar apenas a instalação não controla os recursos da máquina cliente.
 - O recorte de memória de Eficiência corresponde ao **heap JavaScript do editor**; ele não representa a RAM total do navegador, da máquina ou de um eventual servidor de exportação.
 - A capacidade será limitada ao maior porte aprovado **entre os cinco ensaiados**, conforme os critérios posteriores. Não representará um máximo absoluto do produto nem será inferida apenas pelo número de formas.
 - As cargas sintéticas não abrangem todas as combinações de conteúdo, conectores, estilos e imagens dos diagramas reais.
