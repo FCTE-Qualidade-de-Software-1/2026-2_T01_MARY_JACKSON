@@ -12,9 +12,9 @@ Cada característica priorizada na [Fase 1](../fase-1/caracteristicas.md) gera u
 | Identificador | G1 |
 | Analisar | O software _draw.io_. |
 | Para o propósito de | Entender. |
-| Com respeito a | Segurança: confidencialidade, integridade e resistência. |
+| Com respeito a | Segurança (confidencialidade, integridade e resistência). |
 | Do ponto de vista de | Diretoria de TI. |
-| No contexto de | A disciplina de Qualidade de Software 1, no cenário da empresa júnior. |
+| No contexto de | da empresa júnior. |
 
 **G1:** Analisar o _draw.io_ para o propósito de entender, com respeito à segurança (confidencialidade, integridade e resistência), do ponto de vista da diretoria de TI, no contexto da disciplina Qualidade de Software 1, no cenário da empresa júnior.
 
@@ -27,7 +27,7 @@ As questões e hipóteses foram definidas para orientar a avaliação da seguran
 | **Q1.1**<br>Qual a taxa de bloqueio de arquivos de teste com conteúdo malicioso na importação de diagramas? | **H1.1**<br>O componente de importação bloqueia a totalidade dos cenários de teste aplicados (M1.1 = 100%). |
 | **Q1.2**<br>Qual a taxa de bloqueio de rótulos de teste com conteúdo malicioso na exibição das formas? | **H1.2**<br>O tratamento de rótulos sanitiza o conteúdo e bloqueia todos os casos de teste aplicados (M1.1 = 100%). |
 | **Q1.3**<br>Qual a taxa de bloqueio de requisições de teste com caminhos indevidos ao _proxy_ de exportação? | **H1.3**<br>O _proxy_ de exportação rejeita todas as requisições de teste com caminhos indevidos (M1.1 = 100%). |
-| **Q1.4**<br>Qual a proporção de trechos de código que exibem rótulos de formas em HTML com aplicação prévia de sanitização ou escape? | **H1.4**<br>Todos esses trechos aplicam proteção na versão 32.2.0, ao contrário do trecho que originou a CVE-2026-46642 (M1.2 = 100%). |
+| **Q1.4**<br>Qual a proporção de trechos de código que exibem rótulos de formas em HTML com aplicação prévia de sanitização ou escape? | **H1.4**<br>Todos esses trechos aplicam proteção na versão avaliada, ao contrário do trecho que originou a CVE-2026-46642 (M1.2 = 100%). |
 | **Q1.5**<br>Qual a taxa de resistência da proteção de rótulos frente a variações de ataques conhecidos, incluindo combinações de formas com estilos distintos? | **H1.5**<br>Nenhuma das variações testadas executa código na abertura do arquivo (M1.3 = 100%). |
 
 ## Eficiência de desempenho (Dupla 2)
@@ -38,7 +38,7 @@ As questões e hipóteses foram definidas para orientar a avaliação da seguran
 | --- | --- |
 | Analisar | O _draw.io_. |
 | Para o propósito de | Entender. |
-| Com respeito a | Eficiência de desempenho: comportamento temporal, utilização de recursos e capacidade. |
+| Com respeito a | Eficiência de desempenho (comportamento temporal, utilização de recursos e capacidade). |
 | Do ponto de vista de | Usuários finais da empresa júnior (desenvolvedores, analistas e gerentes de projeto). |
 | No contexto de | Disciplina Qualidade de Software 1, em cenário hipotético de adoção do _draw.io_ por uma empresa júnior de software. |
 
@@ -63,7 +63,7 @@ As questões e hipóteses derivam das necessidades R-ED-01 a R-ED-04 da [Fase 1]
 | --- | --- |
 | Analisar | O _draw.io_. |
 | Para o propósito de | Entender. |
-| Com respeito a | Manutenibilidade: analisabilidade e modificabilidade. |
+| Com respeito a | Manutenibilidade (analisabilidade e modificabilidade). |
 | Do ponto de vista de | Equipe Mary Jackson, responsável por realizar a avaliação. |
 | No contexto de | Disciplina Qualidade de Software 1, no cenário hipotético de adoção do _draw.io_ por uma empresa júnior de software. |
 
