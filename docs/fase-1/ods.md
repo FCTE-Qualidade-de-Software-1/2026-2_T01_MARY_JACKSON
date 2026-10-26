@@ -19,7 +19,7 @@ A avaliação de qualidade do *draw.io* pode contribuir, de forma indireta, para
 
 * **Meta 16.6:** Desenvolver instituições eficazes, responsáveis e transparentes em todos os níveis ([IPEA](https://www.ipea.gov.br/ods/ods16.html)).
 * **Aplicação no Projeto:** a empresa júnior guarda em diagramas informações de seus clientes, como a arquitetura dos sistemas que desenvolve. Uma instituição responsável precisa saber se a ferramenta protege essas informações. O histórico do draw.io registra falhas em que abrir um diagrama recebido de terceiros executava código no navegador ([CVE-2026-46642](https://nvd.nist.gov/vuln/detail/CVE-2026-46642)), e os desenvolvedores não corrigem versões antigas: quem hospeda a ferramenta deve mantê-la atualizada ([política de segurança do draw.io](https://github.com/jgraph/drawio/security/policy)). A avaliação dá à diretoria de TI evidências para decidir com responsabilidade se adota a ferramenta e com quais cuidados.
-* **Indicador no projeto:** resultado das métricas de Segurança (confidencialidade, integridade e resistência), coletadas na versão 32.2.0 em ambiente local de testes. Os indicadores oficiais da meta (16.6.1 e 16.6.2) tratam de despesas e serviços públicos e não se aplicam a este projeto.
+* **Indicador no projeto:** resultado das métricas de Segurança (confidencialidade, integridade e resistência), coletadas na versão e no ambiente definidos no plano de avaliação (Fase 3). Os indicadores oficiais da meta (16.6.1 e 16.6.2) tratam de despesas e serviços públicos e não se aplicam a este projeto.
 
 ### ODS 8: Trabalho Decente e Crescimento Econômico
 *Promover o crescimento econômico sustentado, inclusivo e sustentável, emprego pleno e produtivo, e trabalho decente para todos.*
