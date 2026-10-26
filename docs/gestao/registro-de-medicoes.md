@@ -122,8 +122,6 @@ _Figura 5. Issues paradas no fim da Sprint 2: nenhuma issue aberta estava sem at
 
 **Aprovação das decisões:** propostas pela gestão em 23/10/2026 e aprovadas pela equipe em enquete no grupo de WhatsApp, encerrada em 24/10/2026 às 12h: as quatro decisões foram aprovadas, sem votos contrários (5 integrantes votaram; os demais foram contados como de acordo, conforme a regra da enquete).
 
-## Medição 3 (26/10/2026, Entrega 1)
-
 ## Consulta da metade da Sprint 3 (24/10/2026)
 
 **Fonte:** [Painel do PSM](painel-psm.md) publicado em 24/10/2026 às 14h16 (versão `1aba800` da branch `gh-pages`; o painel dessa versão mostra 17:16 porque ainda usava o horário UTC). Decisões e verificação de 25/10 registradas na [Ata 05](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/blob/main/atas/2026-10-25-ata-05.md).
@@ -133,3 +131,81 @@ _Figura 5. Issues paradas no fim da Sprint 2: nenhuma issue aberta estava sem at
 | Planejado vs. concluído | Sprint 3: 0 de 13 issues concluídas (0%) | Abaixo do limite da equipe (50% na metade da sprint). Parte das tarefas só pode ser concluída no fim da sprint (#29 e #31). | Redistribuir o trabalho da Dupla 1: o Miquéias assume o conteúdo (#33, #34 e #24) e a Yasmin, a revisão e a gestão. Orientar o grupo a fechar cada issue no dia em que concluir a tarefa. |
 | Estimado vs. realizado | Sprint 3: 7,8 h de 20,0 h estimadas (razão 0,39) | Dentro do limite (1,5). O valor ainda é parcial: parte das horas não tinha sido registrada nas issues. | Todos registram as horas, inclusive as retroativas, até 25/10 às 20h. |
 | Tempo de ciclo (issues paradas) | 11 issues sem atualização há mais de 1 dia: #9, #12, #21, #23, #24, #26, #27, #28, #29, #30, #31 | Acima do limite de 1 dia. Inclui issues de sprints anteriores ainda abertas (#9 e #12) e tarefas previstas para o fim da sprint (#29 e #31). | Cada responsável comenta na própria issue o que falta; a issue sem andamento até 25/10 às 12h é dividida com outra dupla. A proposta foi enviada ao grupo; o Pedro Ian concordou, e não houve manifestação contrária. |
+
+## Medição 3 (fim da Sprint 3, 26/10/2026)
+
+**Fonte:** [Painel do PSM](painel-psm.md) publicado em 26/10/2026 às 14h05 (versão `d69793d` da branch `gh-pages`). As figuras abaixo são recortes dessa publicação. O corte foi feito depois do prazo combinado para o registro de horas (25/10, 20h, Ata 05); as horas registradas até o corte estão incluídas. Os valores das medições anteriores continuam os registrados nas versões citadas em cada uma.
+
+![Linha do painel: atualizado automaticamente em 26/10/2026 14:05 (horário de Brasília), a partir de 36 issues e do registro de horas](../imagens/medicao3/medicao3-atualizacao.png){ width="620" }
+
+_Figura 6. Topo do Painel do PSM na publicação usada nesta medição. Fonte: Painel do PSM, versão `d69793d`._
+
+### Calendário e Progresso: planejado vs. concluído
+
+![Tabela de issues planejadas e concluídas por sprint](../imagens/medicao3/medicao3-planejado-concluido-tabela.png){ width="520" }
+
+_Figura 7. Issues planejadas e concluídas por sprint. Fonte: Painel do PSM, versão `d69793d`._
+
+![Gráfico de barras do percentual concluído por sprint, com a linha do limite em 50%](../imagens/medicao3/medicao3-planejado-concluido-grafico.png){ width="420" }
+
+_Figura 8. Percentual concluído por sprint. Barras lilás: percentual de issues concluídas; linha azul: limite de decisão (50%). Fonte: Painel do PSM, versão `d69793d`._
+
+- **Interpretação:** a Sprint 3 ficou dentro do limite de decisão do painel, mas a diferença de 47,1% entre o planejado e o concluído passa do limite de 10% do guia (Parte 2, p. 17), o que pede ação corretiva. Parte das issues abertas só fecha com a entrega (Medição 3, tabela de contribuição, montagem do artigo e release). A Sprint 2 aparece completa porque as issues abertas foram movidas para a Sprint 3, conforme decidido na Medição 2.
+- **Decisão:** replanejar para a E2 as issues não concluídas na E1, com comentário na issue. Na E2, planejar menos issues de revisão no fim de cada sprint e aplicar a regra de acompanhamento com prazo e responsável pela verificação (Ata 05).
+
+### Recursos e Custos: estimado vs. realizado
+
+![Tabela de horas estimadas, horas reais, razão e custo por sprint](../imagens/medicao3/medicao3-estimado-realizado-tabela.png){ width="620" }
+
+_Figura 9. Horas estimadas e reais por sprint. Fonte: Painel do PSM, versão `d69793d`._
+
+![Gráfico de horas estimadas (barras) e horas reais (linha) por sprint](../imagens/medicao3/medicao3-estimado-realizado-grafico.png){ width="420" }
+
+_Figura 10. Estimado vs. realizado. Barras lilás: horas estimadas por sprint; linha azul: horas reais. Fonte: Painel do PSM, versão `d69793d`._
+
+![Tabela de conferência das horas por integrante, com total contado de 109,4 horas](../imagens/medicao3/medicao3-conferencia-horas.png){ width="620" }
+
+_Figura 11. Horas por integrante na E1, base da tabela de contribuição do artigo. Fonte: Painel do PSM, versão `d69793d`._
+
+- **Interpretação:** as Sprints 1 e 3 passam do limite de 1,5. As issues sem estimativa numérica entram com horas reais e sem estimativa, o que aumenta a razão. Além disso, a gestão, a revisão do artigo e as correções do feedback do Ponto de Controle 1 não foram estimadas. As horas das issues movidas da Sprint 2 passaram a contar na Sprint 3, o que também aumenta a razão dessa sprint.
+- **Decisão:** na E2, toda issue deve ter estimativa numérica ao ser aberta; gestão, revisão cruzada e montagem do artigo passam a ser estimadas como tarefas próprias, e a razão da E1 é usada para calibrar as novas estimativas.
+
+### Desempenho dos Processos: tempo de ciclo
+
+![Tabela de média e mediana do tempo de ciclo por sprint, em dias](../imagens/medicao3/medicao3-tempo-de-ciclo-tabela.png){ width="480" }
+
+_Figura 12. Média e mediana do tempo de ciclo por sprint. Fonte: Painel do PSM, versão `d69793d`._
+
+![Gráfico de barras do tempo de ciclo médio por sprint, em dias](../imagens/medicao3/medicao3-tempo-de-ciclo-grafico.png){ width="420" }
+
+_Figura 13. Tempo de ciclo médio por sprint. Barras lilás: média de dias entre abrir e fechar a issue. Fonte: Painel do PSM, versão `d69793d`._
+
+![Seção de issues paradas: #31, #29 e #26](../imagens/medicao3/medicao3-issues-paradas.png){ width="620" }
+
+_Figura 14. Issues paradas no fim da Sprint 3, pelo limite de 1 dia sem atualização. Fonte: Painel do PSM, versão `d69793d`._
+
+- **Interpretação:** na Sprint 3, a mediana (5,2 dias) ficou acima da média, ou seja, mais da metade das issues levou mais de 5 dias para fechar. Como o painel não permite aplicar o critério do guia (ver limitação abaixo), foi analisada a causa geral: as issues movidas da Sprint 2 continuaram com a data de abertura de 20/10, e várias issues da Sprint 3 foram criadas antes do início da sprint e fechadas só no fim. As issues paradas são as últimas tarefas da entrega (montagem do artigo, Medição 3 e release).
+- **Decisão:** na E2, abrir as issues no início de cada sprint e fechá-las assim que a tarefa terminar. Incluir no painel o tempo de ciclo de cada issue, para aplicar o critério do guia na próxima medição.
+- **Limitação do painel:** o painel calcula o tempo de ciclo só como média e mediana por sprint e não mostra o tempo de cada issue. Com isso, não é possível aplicar o critério do guia (investigar as issues com tempo mais de 10% acima ou abaixo da média, Parte 2, p. 26), que depende do valor individual. A falha já existia nas medições anteriores, mas só ficou evidente na Medição 3, quando a média subiu e pediu investigação. Na E2, o painel deve listar o tempo de ciclo de cada issue e marcar as que ficarem fora da faixa de ±10% da média da sprint.
+
+### Resultados da E1 e próximos passos
+
+As três medições mostraram o mesmo padrão: o grupo gastou mais horas do que estimou em todas as sprints, deixou issues para a sprint seguinte (Sprints 2 e 3) e manteve issues abertas por mais tempo do que o trabalho levou. As causas principais foram:
+
+- estimativas incompletas, sem as tarefas de gestão, revisão e montagem do artigo, e issues sem estimativa numérica;
+- issues abertas antes do início da sprint e fechadas só no fim, o que aumenta o tempo de ciclo;
+- registro de horas atrasado, corrigido na Ata 05.
+
+**Orientação da consulta de 24/10** (cada responsável comentar na issue o que faltava, fechá-la no dia da conclusão e, se ela continuasse sem andamento até 25/10 às 12h, dividir a tarefa com outra dupla): não cumprida, porque não havia responsável por verificá-la no prazo. Por isso, a partir da E2, toda regra de acompanhamento terá prazo, responsável pela verificação e ação para o descumprimento ([Ata 05](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/blob/main/atas/2026-10-25-ata-05.md)).
+
+O processo de medição também foi avaliado: o painel atende ao progresso e às horas, mas precisa mostrar o tempo de ciclo por issue para aplicar o critério do guia.
+
+Próximos passos para a E2:
+
+1. Replanejar as issues não concluídas na E1.
+2. Estimar todas as issues ao abri-las, incluindo gestão, revisão e montagem do artigo, usando a razão da E1 como referência.
+3. Abrir as issues no início da sprint e fechá-las no dia da conclusão.
+4. Registrar as horas até o prazo combinado em ata.
+5. Incluir no painel o tempo de ciclo de cada issue.
+
+**Aprovação das decisões:** propostas pela gestão em 26/10/2026, a validar com a equipe no início da E2.
