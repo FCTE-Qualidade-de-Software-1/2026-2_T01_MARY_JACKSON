@@ -12,7 +12,7 @@ Do ponto de vista da diretoria de TI da empresa júnior, a classificação é cr
 
 **Por que a avaliação se delimita a esses componentes:** embora receba a classificação máxima de importância devido ao alto risco do vetor de ataque, a avaliação foca estritamente nos mecanismos de entrada, sanitização e saída da aplicação draw.io (ambiente web/Docker). A análise não se estende à segurança dos provedores de nuvem terceirizados nem às políticas globais de rede da organização, concentrando o escopo no impacto direto que o comprometimento dessas três frentes causa à confidencialidade e integridade dos dados da empresa júnior.
 
-**Histórico de vulnerabilidades (NVD):** todas foram corrigidas antes da versão 32.2.0, avaliada neste trabalho.
+**Histórico de vulnerabilidades (NVD):** todas foram corrigidas antes da versão avaliada, definida no plano de avaliação (Fase 3).
 
 | CVE                                                               | Componente                       | Falha                                                                                                                                                                                                    | Corrigida em |
 | ----------------------------------------------------------------- | -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
