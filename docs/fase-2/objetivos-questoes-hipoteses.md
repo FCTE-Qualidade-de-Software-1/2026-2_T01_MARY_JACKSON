@@ -14,7 +14,7 @@ Cada característica priorizada na [Fase 1](../fase-1/caracteristicas.md) gera u
 | Para o propósito de | Entender. |
 | Com respeito a | Segurança (confidencialidade, integridade e resistência). |
 | Do ponto de vista de | Diretoria de TI. |
-| No contexto de | da empresa júnior. |
+| No contexto de | adoção do draw.io por uma empresa júnior de software. |
 
 **G1:** Analisar o _draw.io_ para o propósito de entender, com respeito à segurança (confidencialidade, integridade e resistência), do ponto de vista da diretoria de TI, no contexto da disciplina Qualidade de Software 1, no cenário da empresa júnior.
 
