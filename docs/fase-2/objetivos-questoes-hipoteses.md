@@ -46,7 +46,7 @@ As questões e hipóteses foram definidas para orientar a avaliação da seguran
 
 ### Questões e hipóteses
 
-As questões e hipóteses derivam das necessidades R-ED-01 a R-ED-04 da [Fase 1](../fase-1/partes-interessadas.md#necessidades-de-eficiencia). As hipóteses serão verificadas na E2.
+As questões e hipóteses foram definidas para orientar a avaliação da eficiência de desempenho dos três componentes selecionados. As hipóteses serão verificadas na E2.
 
 | Questão | Hipótese |
 | --- | --- |
