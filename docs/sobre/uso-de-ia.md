@@ -16,6 +16,9 @@
 | 17 a 24/10/2026 | Claude | Revisão e refinamento dos textos da Dupla 2 (Fase 1, GQM de Eficiência e GitPage), incluindo a adequação do objetivo G2 e das questões ao feedback do PC1. | Textos conferidos com o enunciado, os slides da disciplina e a ISO/IEC 25010:2023, e ajustados pelo Pedro antes de cada commit. | Pedro Ian (Dupla 2) |
 | 12 a 16/10/2026 | Chat GPT | Geração de código latex para a adição de informações no artigo|verificação de informações, feita após a adição do conteúdo. | Heyttor augusto (Dupla 3) |
 | 22 a 25/10/2026 | Chat GPT | Revisão gramatical do código .md feito | Revisão do texto após as correções apontadas pela IA |Heyttor augusto (Dupla 3) |
+| 21 a 24/10/2026 | Claude | Gestão: painel automático do PSM (`hooks/horas.py`), Medição 2, plano de medição no template da Aula 09 e recortes do PSM/CID. | Valores conferidos com as issues e o `horas.csv`; páginas do PSM/CID conferidas nos PDFs; site testado com `mkdocs serve` antes de cada envio. | Yasmin (Dupla 1) |
+| 25 e 26/10/2026 | Claude | Revisão do GQM de Segurança (questões, métricas e fundamentação na ISO/IEC 25023), busca de artigos, Referencial teórico, Metodologia e reorganização do artigo; Medição 3, tabela de contribuição e página Resumo do PSM. | Artigos e páginas citadas conferidos nos PDFs originais; números conferidos com o Painel do PSM (versão `d69793d`); texto reescrito pela equipe no Overleaf. | Yasmin (Dupla 1) |
+| 26/10/2026 | Gemini | Formatação do artigo no Overleaf. | A saída alterou o layout para duas colunas e inventou três referências; a versão foi descartada, o artigo restaurado pelo histórico do Overleaf e as referências conferidas uma a uma nos PDFs. | Yasmin (Dupla 1) |
 
 ## Identidade visual e créditos
 
