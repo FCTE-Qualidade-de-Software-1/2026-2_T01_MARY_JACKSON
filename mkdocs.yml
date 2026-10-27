@@ -7,8 +7,7 @@ repo_name: 2026-2_T01_MARY_JACKSON
 edit_uri: edit/main/docs/
 
 # Versão da GitPage, independente do histórico de versões do planejamento. Atualizar a cada mudança relevante.
-copyright: "FGA0315 Qualidade de Software 1 - 2026.2 - T01 - Grupo Mary Jackson | E1 | Versão 0.2 - 23/10/2026 | Logo gerada por IA (OpenAI)"
-
+copyright: "FGA0315 Qualidade de Software 1 - 2026.2 - T01 - Grupo Mary Jackson | E1 | Versão 1.0 - 26/10/2026 | Logo gerada por IA (OpenAI)"
 theme:
   name: material
   language: pt-BR
