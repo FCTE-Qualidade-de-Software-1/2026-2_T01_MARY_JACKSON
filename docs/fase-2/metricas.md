@@ -27,7 +27,7 @@ Foram selecionadas três métricas para responder às cinco questões estabeleci
 | Componente | Rótulos. |
 | Definição | Percentual de trechos que aplicam sanitização ou escape antes de exibir o rótulo como HTML. |
 | Cálculo | `M1.2 = (Pp / Pt) x 100` |
-| Fonte | Código-fonte da tag v32.2.0. |
+| Fonte | Código-fonte da da versão atualizada, definida no plano de avaliação (Fase 3). |
 | Coleta | Localizar as chamadas `getLabelValue` em `Format.js`, `Graph.js` e `Editor.js` e verificar se o valor passa por `Graph.sanitizeHtml` ou `mxUtils.htmlEntities`; registrar arquivo e linha de cada trecho. |
 
 ### M1.3 — Taxa de bloqueio de variações dos ataques conhecidos
