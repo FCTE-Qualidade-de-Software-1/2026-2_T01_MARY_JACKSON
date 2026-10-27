@@ -167,6 +167,8 @@ _Figura 10. Estimado vs. realizado. Barras lilás: horas estimadas por sprint; l
 
 _Figura 11. Horas por integrante na E1, base da tabela de contribuição do artigo. Fonte: Painel do PSM, versão `d69793d`._
 
+**Correção após a publicação:** duas linhas do Miquéias no `horas.csv` (registradas em 24/10, issues #12 e #14) usavam vírgula no decimal e foram ignoradas pelo painel. O aviso aparecia só no fim da página Horas e custos e não foi percebido. As 5,0 h foram somadas na tabela de contribuição do artigo, que passa a totalizar 114,4 h.
+
 - **Interpretação:** as Sprints 1 e 3 passam do limite de 1,5. As issues sem estimativa numérica entram com horas reais e sem estimativa, o que aumenta a razão. Além disso, a gestão, a revisão do artigo e as correções do feedback do Ponto de Controle 1 não foram estimadas. As horas das issues movidas da Sprint 2 passaram a contar na Sprint 3, o que também aumenta a razão dessa sprint.
 - **Decisão:** na E2, toda issue deve ter estimativa numérica ao ser aberta; gestão, revisão cruzada e montagem do artigo passam a ser estimadas como tarefas próprias, e a razão da E1 é usada para calibrar as novas estimativas.
 
@@ -194,11 +196,12 @@ As três medições mostraram o mesmo padrão: o grupo gastou mais horas do que 
 
 - estimativas incompletas, sem as tarefas de gestão, revisão e montagem do artigo, e issues sem estimativa numérica;
 - issues abertas antes do início da sprint e fechadas só no fim, o que aumenta o tempo de ciclo;
-- registro de horas atrasado, corrigido na Ata 05.
+- registro de horas atrasado, corrigido na Ata 05;
+- linhas do registro de horas ignoradas por erro de formato, com o aviso exibido só no fim da página Horas e custos, fora do painel.
 
 **Orientação da consulta de 24/10** (cada responsável comentar na issue o que faltava, fechá-la no dia da conclusão e, se ela continuasse sem andamento até 25/10 às 12h, dividir a tarefa com outra dupla): não cumprida, porque não havia responsável por verificá-la no prazo. Por isso, a partir da E2, toda regra de acompanhamento terá prazo, responsável pela verificação e ação para o descumprimento ([Ata 05](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/blob/main/atas/2026-10-25-ata-05.md)).
 
-O processo de medição também foi avaliado: o painel atende ao progresso e às horas, mas precisa mostrar o tempo de ciclo por issue para aplicar o critério do guia.
+O processo de medição também foi avaliado: o painel atende ao progresso e às horas, mas precisa mostrar o tempo de ciclo por issue, para aplicar o critério do guia, e avisar no próprio painel quando uma linha de horas for ignorada.
 
 Próximos passos para a E2:
 
@@ -207,5 +210,6 @@ Próximos passos para a E2:
 3. Abrir as issues no início da sprint e fechá-las no dia da conclusão.
 4. Registrar as horas até o prazo combinado em ata.
 5. Incluir no painel o tempo de ciclo de cada issue.
+6. Incluir no painel um aviso de linhas ignoradas (horas não lidas).
 
 **Aprovação das decisões:** propostas pela gestão em 26/10/2026, a validar com a equipe no início da E2.
