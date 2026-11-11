@@ -1,6 +1,6 @@
 # Horas e custos
 
-As tabelas abaixo são geradas automaticamente a partir de `dados/gestao/horas.csv`. Para registrar horas, acrescente uma linha nesse arquivo com a data, o seu nome, o número da issue, a atividade e as horas (ponto decimal, sem vírgula na atividade).
+As tabelas abaixo são geradas automaticamente a cada publicação do site, a partir do campo "Horas reais" das issues. Para registrar horas, preencha esse campo no formato `dd/mm - Nome - X h`, uma linha por dia. As horas da E1 anteriores a 22/10 vêm do registro usado antes das issues.
 
 [[TABELA_HORAS]]
 
