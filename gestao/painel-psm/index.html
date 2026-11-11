@@ -18,7 +18,7 @@
         <link rel="prev" href="../plano-de-medicao/">
       
       
-        <link rel="next" href="../horas/">
+        <link rel="next" href="../dashboard/">
       
       
         
@@ -56,6 +56,8 @@
     
     
       <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/dashboard-psm.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1348,6 +1350,8 @@
       
         
       
+        
+      
     
     
     
@@ -1544,6 +1548,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard do PSM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -2042,7 +2074,7 @@
 
 <h1 id="painel-do-psm">Painel do PSM<a class="headerlink" href="#painel-do-psm" title="Permanent link">&para;</a></h1>
 <p>Esta página é gerada automaticamente a cada publicação do site e sempre que uma issue é aberta, fechada ou editada. Os dados vêm das issues do GitHub: a sprint (milestone), as datas de abertura e fechamento e os campos "Estimativa (horas)" e "Horas reais" do formulário de tarefa. As definições de cada métrica estão no <a href="../plano-de-medicao/">Plano de medição</a>.</p>
-<p><em>Atualizado automaticamente em 10/11/2026 22:58 (horário de Brasília), a partir de 37 issues e do registro de horas.</em></p>
+<p><em>Atualizado automaticamente em 11/11/2026 09:34 (horário de Brasília), a partir de 38 issues e do registro de horas.</em></p>
 <h2 id="como-este-painel-e-montado">Como este painel é montado<a class="headerlink" href="#como-este-painel-e-montado" title="Permanent link">&para;</a></h2>
 <p>A cada publicação do site, o script <code>hooks/horas.py</code> lê as issues do GitHub e o registro de horas, calcula as três métricas do <a href="../plano-de-medicao/">Plano de medição</a> e compara cada resultado com o limite de decisão. A interpretação e as decisões de cada medição ficam no <a href="../registro-de-medicoes/">Registro de medições</a>.</p>
 <pre class="mermaid"><code>flowchart LR
@@ -2059,8 +2091,8 @@
 <h2 id="1-planejado-vs-concluido-calendario-e-progresso">1. Planejado vs. concluído (Calendário e Progresso)<a class="headerlink" href="#1-planejado-vs-concluido-calendario-e-progresso" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>O que mede:</strong> Quanto do que a equipe planejou para a sprint já foi entregue.</li>
-<li><strong>Como é calculada:</strong> Issues fechadas da sprint ÷ issues da sprint × 100.</li>
-<li><strong>De onde vêm os dados:</strong> Milestone (sprint) e situação (aberta ou fechada) de cada issue.</li>
+<li><strong>Como é calculada:</strong> Issues concluídas da sprint ÷ issues da sprint × 100. Issues fechadas como "não planejada" contam como planejadas, mas não como concluídas.</li>
+<li><strong>De onde vêm os dados:</strong> Milestone (sprint), situação e motivo do fechamento de cada issue.</li>
 <li><strong>Quando exige decisão:</strong> Menos de 50% concluído na metade da sprint: redistribuir tarefas.</li>
 <li><strong>Referência:</strong> PSM/CID, Parte 1, Tabela 5, linha 1; Parte 2, seção 8.3.</li>
 </ul>
@@ -2070,6 +2102,7 @@
 <th>Sprint</th>
 <th>Planejadas</th>
 <th>Concluídas</th>
+<th>Não planejadas</th>
 <th>Concluído</th>
 <th>Situação</th>
 </tr>
@@ -2079,6 +2112,7 @@
 <td>Sprint 1 - Fase 1</td>
 <td>10</td>
 <td>10</td>
+<td>—</td>
 <td>100,0%</td>
 <td>dentro do limite</td>
 </tr>
@@ -2086,6 +2120,7 @@
 <td>Sprint 2 – Fase 2</td>
 <td>8</td>
 <td>8</td>
+<td>—</td>
 <td>100,0%</td>
 <td>dentro do limite</td>
 </tr>
@@ -2093,6 +2128,7 @@
 <td>Sprint 3 – Entrega 1</td>
 <td>17</td>
 <td>14</td>
+<td>—</td>
 <td>82,4%</td>
 <td>dentro do limite</td>
 </tr>
@@ -2100,14 +2136,16 @@
 <td>Sprint 4 – Coleta e análise</td>
 <td>1</td>
 <td>0</td>
+<td>—</td>
 <td>0,0%</td>
 <td>abaixo do limite</td>
 </tr>
 <tr>
 <td>Sem sprint</td>
+<td>2</td>
 <td>1</td>
-<td>1</td>
-<td>100,0%</td>
+<td>—</td>
+<td>50,0%</td>
 <td>dentro do limite</td>
 </tr>
 </tbody>
@@ -2116,9 +2154,9 @@
 xychart-beta
     x-axis ["Sprint 1", "Sprint 2", "Sprint 3", "Sprint 4", "Sem sprint"]
     y-axis "% concluído" 0 --&gt; 100
-    bar [100.0, 100.0, 82.4, 0.0, 100.0]
+    bar [100.0, 100.0, 82.4, 0.0, 50.0]
     line [50.0, 50.0, 50.0, 50.0, 50.0]</code></pre>
-<p><em>Figura 2. Percentual de issues concluídas por sprint. Barras lilás: percentual concluído; linha azul: limite de decisão (50%). Fonte: issues e milestones do GitHub, em 10/11/2026.</em></p>
+<p><em>Figura 2. Percentual de issues concluídas por sprint. Barras lilás: percentual concluído; linha azul: limite de decisão (50%). Fonte: issues e milestones do GitHub, em 11/11/2026.</em></p>
 <h2 id="2-estimado-vs-realizado-recursos-e-custos">2. Estimado vs. realizado (Recursos e Custos)<a class="headerlink" href="#2-estimado-vs-realizado-recursos-e-custos" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>O que mede:</strong> Se o esforço gasto está de acordo com o que foi estimado.</li>
@@ -2177,7 +2215,15 @@ xychart-beta
 <td>7,0 h</td>
 <td>2,33</td>
 <td>R$ 103,39</td>
-<td>—</td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/39">#39</a></td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>66,0 h</strong></td>
+<td><strong>119,9 h</strong></td>
+<td><strong>1,82</strong></td>
+<td><strong>R$ 1.771,07</strong></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -2188,7 +2234,7 @@ xychart-beta
     y-axis "horas" 0 --&gt; 59
     bar [12.0, 21.0, 27.0, 3.0, 3.0]
     line [28.3, 33.0, 51.6, 0.0, 7.0]</code></pre>
-<p><em>Figura 3. Horas estimadas e realizadas por sprint. Barras lilás: horas estimadas; linha azul: horas reais. Fonte: issues do GitHub e registro de horas, em 10/11/2026.</em></p>
+<p><em>Figura 3. Horas estimadas e realizadas por sprint. Barras lilás: horas estimadas; linha azul: horas reais. Fonte: issues do GitHub e registro de horas, em 11/11/2026.</em></p>
 <h3 id="conferencia-das-horas">Conferência das horas<a class="headerlink" href="#conferencia-das-horas" title="Permanent link">&para;</a></h3>
 <p>As horas reais vêm de dois lugares: o registro de horas (<code>dados/gestao/horas.csv</code>), usado desde o início do projeto, e o campo "Horas reais" das issues, adotado a partir de 21/10 (Ata 04). As regras são:</p>
 <ol>
@@ -2269,14 +2315,14 @@ xychart-beta
 </table>
 <p>Como ler: <strong>Total contado</strong> = horas no horas.csv + horas nas issues − horas repetidas. Um traço (—) indica que a pessoa não registrou horas naquele lugar.</p>
 <p><strong>Horas repetidas, contadas uma vez só:</strong> <a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/32">#32</a> (Yasmin, 2,0 h); <a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/25">#25</a> (Lucas, 0,5 h); <a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/19">#19</a> (Lucas, 1,0 h); <a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/16">#16</a> (Lucas, 1,0 h); <a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/12">#12</a> (Lucas, 2,0 h); <a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/6">#6</a> (Heyttor, 1,0 h); <a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/6">#6</a> (Lucas, 1,0 h); <a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/3">#3</a> (Heyttor, 1,5 h).</p>
-<p>A página <a href="../horas/">Horas e custos</a> mostra só o registro de horas; a coluna "Contadas" acima soma também as horas das issues.</p>
+<p>A página <a href="../horas/">Horas e custos</a> usa a mesma soma, por entrega e por integrante.</p>
 <h2 id="3-tempo-de-ciclo-desempenho-dos-processos">3. Tempo de ciclo (Desempenho dos Processos)<a class="headerlink" href="#3-tempo-de-ciclo-desempenho-dos-processos" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>O que mede:</strong> Quanto tempo uma tarefa leva entre ser aberta e ser concluída.</li>
-<li><strong>Como é calculada:</strong> Data de fechamento da issue − data de abertura, em dias (média e mediana por sprint).</li>
+<li><strong>Como é calculada:</strong> Data de fechamento da issue − data de abertura, em dias, por issue; média e mediana por sprint. Issues fechadas como "não planejada" ficam de fora.</li>
 <li><strong>De onde vêm os dados:</strong> Datas registradas pelo GitHub em cada issue.</li>
-<li><strong>Quando exige decisão:</strong> Issue aberta há mais de 1 dia(s) sem atualização, contados a partir do início da sprint: cobrar o responsável ou dividir a tarefa.</li>
-<li><strong>Referência:</strong> PSM/CID, Parte 1, Tabela 5, linha 32; Parte 2, seção 8.5.</li>
+<li><strong>Quando exige decisão:</strong> Guia: investigar as issues mais de 10% acima ou abaixo da média da sprint. Equipe: issue aberta há mais de 1 dia(s) sem atualização, contados a partir do início da sprint: cobrar o responsável ou dividir a tarefa.</li>
+<li><strong>Referência:</strong> PSM/CID, Parte 1, Tabela 5, linha 32; Parte 2, seção 8.5, p. 26.</li>
 </ul>
 <table>
 <thead>
@@ -2285,6 +2331,7 @@ xychart-beta
 <th>Issues concluídas</th>
 <th>Média (dias)</th>
 <th>Mediana (dias)</th>
+<th>Fora da faixa de ±10%</th>
 </tr>
 </thead>
 <tbody>
@@ -2293,22 +2340,26 @@ xychart-beta
 <td>10</td>
 <td>1,9</td>
 <td>1,6</td>
+<td>7</td>
 </tr>
 <tr>
 <td>Sprint 2 – Fase 2</td>
 <td>8</td>
 <td>1,6</td>
 <td>0,8</td>
+<td>8</td>
 </tr>
 <tr>
 <td>Sprint 3 – Entrega 1</td>
 <td>14</td>
 <td>4,9</td>
 <td>5,6</td>
+<td>12</td>
 </tr>
 <tr>
 <td>Sprint 4 – Coleta e análise</td>
 <td>0</td>
+<td>—</td>
 <td>—</td>
 <td>—</td>
 </tr>
@@ -2317,6 +2368,7 @@ xychart-beta
 <td>1</td>
 <td>0,4</td>
 <td>0,4</td>
+<td>0</td>
 </tr>
 </tbody>
 </table>
@@ -2326,10 +2378,224 @@ xychart-beta
     x-axis ["Sprint 1", "Sprint 2", "Sprint 3", "Sprint 4", "Sem sprint"]
     y-axis "dias" 0 --&gt; 6
     bar [1.9, 1.6, 4.9, 0.0, 0.4]</code></pre>
-<p><em>Figura 4. Tempo de ciclo médio por sprint. Barras lilás: média de dias entre abrir e fechar a issue. Fonte: datas das issues no GitHub, em 10/11/2026.</em></p>
+<p><em>Figura 4. Tempo de ciclo médio por sprint. Barras lilás: média de dias entre abrir e fechar a issue. Fonte: datas das issues no GitHub, em 11/11/2026.</em></p>
+<details class="info">
+<summary>Tempo de ciclo de cada issue e comparação com a média da sprint (±10%)</summary>
+<table>
+<thead>
+<tr>
+<th>Sprint</th>
+<th>Issue</th>
+<th>Dias</th>
+<th>Comparação com a média da sprint</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sprint 1 - Fase 1</td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/1">#1</a></td>
+<td>1,6</td>
+<td>abaixo (-16%)</td>
+</tr>
+<tr>
+<td>Sprint 1 - Fase 1</td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/2">#2</a></td>
+<td>1,6</td>
+<td>abaixo (-16%)</td>
+</tr>
+<tr>
+<td>Sprint 1 - Fase 1</td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/3">#3</a></td>
+<td>1,7</td>
+<td>dentro da faixa</td>
+</tr>
+<tr>
+<td>Sprint 1 - Fase 1</td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/4">#4</a></td>
+<td>1,6</td>
+<td>abaixo (-13%)</td>
+</tr>
+<tr>
+<td>Sprint 1 - Fase 1</td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/5">#5</a></td>
+<td>1,7</td>
+<td>abaixo (-11%)</td>
+</tr>
+<tr>
+<td>Sprint 1 - Fase 1</td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/6">#6</a></td>
+<td>1,7</td>
+<td>dentro da faixa</td>
+</tr>
+<tr>
+<td>Sprint 1 - Fase 1</td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/7">#7</a></td>
+<td>1,6</td>
+<td>abaixo (-14%)</td>
+</tr>
+<tr>
+<td>Sprint 1 - Fase 1</td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/8">#8</a></td>
+<td>3,9</td>
+<td>acima (+110%)</td>
+</tr>
+<tr>
+<td>Sprint 1 - Fase 1</td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/10">#10</a></td>
+<td>1,4</td>
+<td>abaixo (-27%)</td>
+</tr>
+<tr>
+<td>Sprint 1 - Fase 1</td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/11">#11</a></td>
+<td>2,0</td>
+<td>dentro da faixa</td>
+</tr>
+<tr>
+<td>Sprint 2 – Fase 2</td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/12">#12</a></td>
+<td>5,7</td>
+<td>acima (+248%)</td>
+</tr>
+<tr>
+<td>Sprint 2 – Fase 2</td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/14">#14</a></td>
+<td>0,8</td>
+<td>abaixo (-54%)</td>
+</tr>
+<tr>
+<td>Sprint 2 – Fase 2</td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/15">#15</a></td>
+<td>0,3</td>
+<td>abaixo (-81%)</td>
+</tr>
+<tr>
+<td>Sprint 2 – Fase 2</td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/16">#16</a></td>
+<td>0,2</td>
+<td>abaixo (-86%)</td>
+</tr>
+<tr>
+<td>Sprint 2 – Fase 2</td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/17">#17</a></td>
+<td>0,8</td>
+<td>abaixo (-54%)</td>
+</tr>
+<tr>
+<td>Sprint 2 – Fase 2</td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/18">#18</a></td>
+<td>0,3</td>
+<td>abaixo (-80%)</td>
+</tr>
+<tr>
+<td>Sprint 2 – Fase 2</td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/20">#20</a></td>
+<td>3,6</td>
+<td>acima (+117%)</td>
+</tr>
+<tr>
+<td>Sprint 2 – Fase 2</td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/32">#32</a></td>
+<td>1,5</td>
+<td>abaixo (-11%)</td>
+</tr>
+<tr>
+<td>Sprint 3 – Entrega 1</td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/9">#9</a></td>
+<td>5,7</td>
+<td>acima (+15%)</td>
+</tr>
+<tr>
+<td>Sprint 3 – Entrega 1</td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/19">#19</a></td>
+<td>5,5</td>
+<td>acima (+11%)</td>
+</tr>
+<tr>
+<td>Sprint 3 – Entrega 1</td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/21">#21</a></td>
+<td>5,4</td>
+<td>dentro da faixa</td>
+</tr>
+<tr>
+<td>Sprint 3 – Entrega 1</td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/23">#23</a></td>
+<td>6,7</td>
+<td>acima (+35%)</td>
+</tr>
+<tr>
+<td>Sprint 3 – Entrega 1</td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/24">#24</a></td>
+<td>5,8</td>
+<td>acima (+18%)</td>
+</tr>
+<tr>
+<td>Sprint 3 – Entrega 1</td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/25">#25</a></td>
+<td>5,2</td>
+<td>dentro da faixa</td>
+</tr>
+<tr>
+<td>Sprint 3 – Entrega 1</td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/27">#27</a></td>
+<td>6,7</td>
+<td>acima (+35%)</td>
+</tr>
+<tr>
+<td>Sprint 3 – Entrega 1</td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/28">#28</a></td>
+<td>6,7</td>
+<td>acima (+35%)</td>
+</tr>
+<tr>
+<td>Sprint 3 – Entrega 1</td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/29">#29</a></td>
+<td>6,5</td>
+<td>acima (+31%)</td>
+</tr>
+<tr>
+<td>Sprint 3 – Entrega 1</td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/31">#31</a></td>
+<td>6,7</td>
+<td>acima (+35%)</td>
+</tr>
+<tr>
+<td>Sprint 3 – Entrega 1</td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/33">#33</a></td>
+<td>2,9</td>
+<td>abaixo (-42%)</td>
+</tr>
+<tr>
+<td>Sprint 3 – Entrega 1</td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/34">#34</a></td>
+<td>1,9</td>
+<td>abaixo (-62%)</td>
+</tr>
+<tr>
+<td>Sprint 3 – Entrega 1</td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/35">#35</a></td>
+<td>1,9</td>
+<td>abaixo (-61%)</td>
+</tr>
+<tr>
+<td>Sprint 3 – Entrega 1</td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/37">#37</a></td>
+<td>1,7</td>
+<td>abaixo (-65%)</td>
+</tr>
+<tr>
+<td>Sem sprint</td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/36">#36</a></td>
+<td>0,4</td>
+<td>dentro da faixa</td>
+</tr>
+</tbody>
+</table>
+</details>
 <h3 id="issues-paradas">Issues paradas<a class="headerlink" href="#issues-paradas" title="Permanent link">&para;</a></h3>
 <p>Issues ainda abertas e sem nenhuma atualização há mais de 1 dia(s), contados a partir do início da sprint de cada issue (limite de decisão desta métrica):</p>
 <p><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/30">#30</a>, <a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/26">#26</a>, <a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/22">#22</a>.</p>
+<p>O previsto e o realizado de cada entrega, com a evolução das três categorias ao longo das sprints, estão no <a href="../dashboard/">Dashboard do PSM</a>.</p>
 
 
 
@@ -2403,13 +2669,13 @@ xychart-beta
         
         
           
-          <a href="../horas/" class="md-footer__link md-footer__link--next" aria-label="Próximo: Horas e custos">
+          <a href="../dashboard/" class="md-footer__link md-footer__link--next" aria-label="Próximo: Dashboard do PSM">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Próximo
               </span>
               <div class="md-ellipsis">
-                Horas e custos
+                Dashboard do PSM
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2449,6 +2715,10 @@ xychart-beta
     
     
       <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+      
+        <script src="../../javascripts/dashboard-psm.js"></script>
       
     
   </body>

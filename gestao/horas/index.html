@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://fcte-qualidade-de-software-1.github.io/2026-2_T01_MARY_JACKSON/gestao/horas/">
       
       
-        <link rel="prev" href="../painel-psm/">
+        <link rel="prev" href="../dashboard/">
       
       
         <link rel="next" href="../registro-de-medicoes/">
@@ -56,6 +56,8 @@
     
     
       <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/dashboard-psm.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1348,6 +1350,8 @@
       
         
       
+        
+      
     
     
     
@@ -1428,6 +1432,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard do PSM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1491,10 +1523,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#estimado-vs-realizado-e1" class="md-nav__link">
+  <a href="#estimado-vs-realizado-por-entrega" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Estimado vs. realizado (E1)
+        Estimado vs. realizado por entrega
       
     </span>
   </a>
@@ -1513,10 +1545,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#registro-de-horas" class="md-nav__link">
+  <a href="#registro-de-horas-no-horascsv" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Registro de horas
+        Registro de horas no horas.csv
       
     </span>
   </a>
@@ -1904,10 +1936,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#estimado-vs-realizado-e1" class="md-nav__link">
+  <a href="#estimado-vs-realizado-por-entrega" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Estimado vs. realizado (E1)
+        Estimado vs. realizado por entrega
       
     </span>
   </a>
@@ -1926,10 +1958,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#registro-de-horas" class="md-nav__link">
+  <a href="#registro-de-horas-no-horascsv" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Registro de horas
+        Registro de horas no horas.csv
       
     </span>
   </a>
@@ -1974,30 +2006,40 @@
 
 <h1 id="horas-e-custos">Horas e custos<a class="headerlink" href="#horas-e-custos" title="Permanent link">&para;</a></h1>
 <p>As tabelas abaixo são geradas automaticamente a partir de <code>dados/gestao/horas.csv</code>. Para registrar horas, acrescente uma linha nesse arquivo com a data, o seu nome, o número da issue, a atividade e as horas (ponto decimal, sem vírgula na atividade).</p>
-<h2 id="estimado-vs-realizado-e1">Estimado vs. realizado (E1)<a class="headerlink" href="#estimado-vs-realizado-e1" title="Permanent link">&para;</a></h2>
+<h2 id="estimado-vs-realizado-por-entrega">Estimado vs. realizado por entrega<a class="headerlink" href="#estimado-vs-realizado-por-entrega" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th></th>
-<th>Horas</th>
-<th>Custo</th>
+<th>Entrega</th>
+<th>Linha de base</th>
+<th>Custo previsto</th>
+<th>Horas reais</th>
+<th>Custo real</th>
+<th>Real ÷ linha de base</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Estimado (linha de base)</td>
+<td>Entrega 1</td>
 <td>70,5 h</td>
 <td>R$ 1.041,29</td>
+<td>119,91 h</td>
+<td>R$ 1.771,07</td>
+<td>1,70</td>
 </tr>
 <tr>
-<td>Realizado até agora</td>
-<td>70,18 h</td>
-<td>R$ 1.036,56</td>
+<td>Entrega 2</td>
+<td>a definir</td>
+<td>—</td>
+<td>0 h</td>
+<td>R$ 0,00</td>
+<td>—</td>
 </tr>
 </tbody>
 </table>
-<p>Realizado até agora: 100% das horas estimadas para a E1.</p>
+<p>A linha de base é a soma das estimativas do planejamento de cada entrega (extra.entregas no mkdocs.yml). Os detalhes por sprint estão no <a href="../painel-psm/">Painel do PSM</a>.</p>
 <h2 id="horas-e-custo-por-integrante">Horas e custo por integrante<a class="headerlink" href="#horas-e-custo-por-integrante" title="Permanent link">&para;</a></h2>
+<p>Soma do horas.csv e do campo "Horas reais" das issues, sem contar a mesma hora duas vezes (regras na <a href="../painel-psm/#conferencia-das-horas">conferência das horas do Painel do PSM</a>).</p>
 <table>
 <thead>
 <tr>
@@ -2010,50 +2052,51 @@
 <tbody>
 <tr>
 <td>Yasmin</td>
-<td>28,75 h</td>
-<td>41%</td>
-<td>R$ 424,64</td>
-</tr>
-<tr>
-<td>Pedro</td>
-<td>10 h</td>
-<td>14%</td>
-<td>R$ 147,70</td>
+<td>39,45 h</td>
+<td>33%</td>
+<td>R$ 582,68</td>
 </tr>
 <tr>
 <td>Heyttor</td>
-<td>9,33 h</td>
-<td>13%</td>
-<td>R$ 137,80</td>
-</tr>
-<tr>
-<td>Miquéias Ezequiel</td>
-<td>8,6 h</td>
-<td>12%</td>
-<td>R$ 127,02</td>
+<td>21,33 h</td>
+<td>18%</td>
+<td>R$ 315,04</td>
 </tr>
 <tr>
 <td>Lucas</td>
-<td>7 h</td>
-<td>10%</td>
-<td>R$ 103,39</td>
+<td>16,83 h</td>
+<td>14%</td>
+<td>R$ 248,58</td>
+</tr>
+<tr>
+<td>Pedro</td>
+<td>16,5 h</td>
+<td>14%</td>
+<td>R$ 243,70</td>
+</tr>
+<tr>
+<td>Miquéias</td>
+<td>13,8 h</td>
+<td>12%</td>
+<td>R$ 203,83</td>
 </tr>
 <tr>
 <td>Thiago</td>
-<td>6,5 h</td>
-<td>9%</td>
-<td>R$ 96,00</td>
+<td>12 h</td>
+<td>10%</td>
+<td>R$ 177,24</td>
 </tr>
 <tr>
 <td><strong>Total</strong></td>
-<td><strong>70,18 h</strong></td>
+<td><strong>119,91 h</strong></td>
 <td><strong>100%</strong></td>
-<td><strong>R$ 1.036,56</strong></td>
+<td><strong>R$ 1.771,07</strong></td>
 </tr>
 </tbody>
 </table>
 <p>Custo da hora usado: R$ 14,77.</p>
-<h2 id="registro-de-horas">Registro de horas<a class="headerlink" href="#registro-de-horas" title="Permanent link">&para;</a></h2>
+<h2 id="registro-de-horas-no-horascsv">Registro de horas no horas.csv<a class="headerlink" href="#registro-de-horas-no-horascsv" title="Permanent link">&para;</a></h2>
+<p>Registro oficial até 22/10 (Ata 04); depois, as horas passaram ao campo "Horas reais" das issues.</p>
 <table>
 <thead>
 <tr>
@@ -2526,7 +2569,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Rodapé" >
         
           
-          <a href="../painel-psm/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Painel do PSM">
+          <a href="../dashboard/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Dashboard do PSM">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2536,7 +2579,7 @@
                 Anterior
               </span>
               <div class="md-ellipsis">
-                Painel do PSM
+                Dashboard do PSM
               </div>
             </div>
           </a>
@@ -2589,6 +2632,10 @@
     
     
       <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+      
+        <script src="../../javascripts/dashboard-psm.js"></script>
       
     
   </body>
