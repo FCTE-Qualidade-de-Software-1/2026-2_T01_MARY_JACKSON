@@ -1,0 +1,216 @@
+/* Dashboard do PSM (docs/gestao/dashboard.md). Usa as cores do site (extra.css). */
+
+/* Só na página do dashboard: o conteúdo usa uma largura maior que a das outras páginas. */
+body:has(.mj-pa) .md-grid {
+  max-width: 96rem;
+}
+
+.mj-pa {
+  --pa-laranja: #e07000;
+  --pa-azul: #1f5fa8;
+  --pa-bom: #1f5fa8;
+  --pa-ruim: #c62828;
+  --pa-fundo: var(--mj-canvas, #f4f5f7);
+  --pa-cartao: var(--mj-surface, #ffffff);
+  --pa-borda: var(--mj-border, #e2e5e9);
+  --pa-texto: var(--md-default-fg-color, #252e39);
+  --pa-suave: var(--md-default-fg-color--light, #576170);
+  --pa-topo: var(--mj-header, #18212e);
+  margin: 0 0 1rem;
+  overflow: hidden;
+  background: var(--pa-fundo);
+  color: var(--pa-texto);
+  border: 1px solid var(--pa-borda);
+  border-radius: var(--mj-radius, 0.9rem);
+}
+
+[data-md-color-scheme="slate"] .mj-pa {
+  --pa-laranja: #ffac52;
+  --pa-azul: #7fb3ff;
+  --pa-bom: #7fb3ff;
+  --pa-ruim: #ff8a80;
+  --pa-topo: #141d29;
+}
+
+/* Topo escuro, como o cabeçalho do site */
+.mj-pa-topo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.6rem 1.5rem;
+  padding: 1.2rem 1.4rem;
+  background: var(--pa-topo);
+  border-bottom: 4px solid var(--pa-laranja);
+  color: #ffffff;
+}
+
+.mj-pa .mj-pa-titulo {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.mj-pa .mj-pa-sub,
+.mj-pa .mj-pa-atualizado {
+  margin: 0.2rem 0 0;
+  font-size: 0.8rem;
+  color: #c9d1dc;
+}
+
+/* Números de cada entrega */
+.mj-pa-numeros {
+  display: grid;
+  gap: 1rem;
+  padding: 1.2rem 1.4rem 0;
+}
+
+.mj-pa-entrega {
+  margin: 0 0 0.45rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.mj-pa-cartoes {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.mj-pa-cartao {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.6rem 0.8rem;
+  background: var(--pa-cartao);
+  border: 1px solid var(--pa-borda);
+  border-radius: 0.5rem;
+}
+
+.mj-pa-rot {
+  font-size: 0.72rem;
+  color: var(--pa-suave);
+}
+
+.mj-pa-num {
+  white-space: nowrap;
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.25;
+  font-variant-numeric: tabular-nums;
+}
+
+.mj-pa-det {
+  font-size: 0.7rem;
+  color: var(--pa-suave);
+}
+
+.mj-pa-dif { font-weight: 700; }
+.mj-pa-cartao--ruim .mj-pa-dif { color: var(--pa-ruim); }
+.mj-pa-cartao--bom .mj-pa-dif { color: var(--pa-bom); }
+/* Issues concluídas: a cor vai no número, porque o percentual é a própria medida. */
+.mj-pa-cartao--ruim:not(:has(.mj-pa-dif)) .mj-pa-num { color: var(--pa-ruim); }
+.mj-pa-cartao--bom:not(:has(.mj-pa-dif)) .mj-pa-num { color: var(--pa-bom); }
+
+/* Gráficos */
+.mj-pa-graficos {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  padding: 1.2rem 1.4rem;
+}
+
+.mj-pa figure.mj-pa-grafico {
+  display: block;
+  width: auto;
+  min-width: 0;
+  max-width: 100%;
+  margin: 0;
+  padding: 0.9rem 1rem 0.7rem;
+  background: var(--pa-cartao);
+  border: 1px solid var(--pa-borda);
+  border-radius: 0.6rem;
+  text-align: left;
+}
+
+.mj-pa figure.mj-pa-grafico figcaption {
+  display: flex;
+  flex-direction: column;
+  max-width: none;
+  margin: 0 0 0.4rem;
+  font-style: normal;
+  text-align: left;
+}
+
+.mj-pa-gtitulo {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--pa-texto);
+}
+
+.mj-pa-gsub {
+  font-size: 0.72rem;
+  color: var(--pa-suave);
+}
+
+.mj-pa-canvas {
+  position: relative;
+  height: 18rem;
+}
+
+.mj-pa .mj-pa-legenda {
+  margin: 0.5rem 0 0;
+  font-size: 0.68rem;
+  line-height: 1.45;
+  color: var(--pa-suave);
+}
+
+/* Frases por categoria */
+.mj-pa-frases {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  padding: 0 1.4rem 1.4rem;
+}
+
+.mj-pa-frase {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.2rem 0 0 0.8rem;
+  border-left: 3px solid var(--pa-laranja);
+  font-size: 0.75rem;
+  line-height: 1.45;
+}
+
+.mj-pa-frase strong {
+  font-size: 0.8rem;
+}
+
+.mj-pa .mj-pa-fonte {
+  margin: 0;
+  padding: 0 1.4rem 1.2rem;
+  font-size: 0.68rem;
+  color: var(--pa-suave);
+}
+
+/* Telas menores */
+@media screen and (max-width: 59.9375em) {
+  .mj-pa-cartoes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media screen and (max-width: 59.9375em) {
+  .mj-pa-frases { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media screen and (max-width: 44.9375em) {
+  .mj-pa-topo,
+  .mj-pa-numeros,
+  .mj-pa-graficos { padding-left: 0.8rem; padding-right: 0.8rem; }
+  .mj-pa-frases { padding: 0 0.8rem 1rem; }
+  .mj-pa-cartoes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mj-pa-cartao { padding: 0.55rem 0.6rem; }
+  .mj-pa-num { font-size: 1.05rem; }
+  .mj-pa-canvas { height: 14rem; }
+}
