@@ -2074,7 +2074,7 @@
 
 <h1 id="painel-do-psm">Painel do PSM<a class="headerlink" href="#painel-do-psm" title="Permanent link">&para;</a></h1>
 <p>Esta página é gerada automaticamente a cada publicação do site e sempre que uma issue é aberta, fechada ou editada. Os dados vêm das issues do GitHub: a sprint (milestone), as datas de abertura e fechamento e os campos "Estimativa (horas)" e "Horas reais" do formulário de tarefa. As definições de cada métrica estão no <a href="../plano-de-medicao/">Plano de medição</a>.</p>
-<p><em>Atualizado automaticamente em 11/11/2026 23:35 (horário de Brasília), a partir de 51 issues e do registro de horas.</em></p>
+<p><em>Atualizado automaticamente em 12/11/2026 11:18 (horário de Brasília), a partir de 51 issues e do registro de horas.</em></p>
 <h2 id="como-este-painel-e-montado">Como este painel é montado<a class="headerlink" href="#como-este-painel-e-montado" title="Permanent link">&para;</a></h2>
 <p>A cada publicação do site, o script <code>hooks/horas.py</code> lê as issues do GitHub e o registro de horas, calcula as três métricas do <a href="../plano-de-medicao/">Plano de medição</a> e compara cada resultado com o limite de decisão. A interpretação e as decisões de cada medição ficam no <a href="../registro-de-medicoes/">Registro de medições</a>.</p>
 <pre class="mermaid"><code>flowchart LR
@@ -2157,7 +2157,7 @@ xychart-beta
     y-axis "% concluído" 0 --&gt; 100
     bar [100.0, 100.0, 82.4, 0.0, 100.0]
     line [50.0, 50.0, 50.0, 50.0, 50.0]</code></pre>
-<p><em>Figura 2. Percentual de issues concluídas por sprint. Barras lilás: percentual concluído; linha azul: limite de decisão (50%). Fonte: issues e milestones do GitHub, em 11/11/2026.</em></p>
+<p><em>Figura 2. Percentual de issues concluídas por sprint. Barras lilás: percentual concluído; linha azul: limite de decisão (50%). Fonte: issues e milestones do GitHub, em 12/11/2026.</em></p>
 <h2 id="2-estimado-vs-realizado-recursos-e-custos">2. Estimado vs. realizado (Recursos e Custos)<a class="headerlink" href="#2-estimado-vs-realizado-recursos-e-custos" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>O que mede:</strong> Se o esforço gasto está de acordo com o que foi estimado.</li>
@@ -2204,11 +2204,11 @@ xychart-beta
 </tr>
 <tr>
 <td>Sprint 4 – Coleta e análise</td>
-<td>25,0 h</td>
+<td>30,0 h</td>
 <td>0,0 h</td>
 <td>0,00</td>
 <td>R$ 0,00</td>
-<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/41">#41</a>, <a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/45">#45</a>, <a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/48">#48</a></td>
+<td><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/41">#41</a>, <a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/48">#48</a></td>
 </tr>
 <tr>
 <td>Sem sprint</td>
@@ -2220,9 +2220,9 @@ xychart-beta
 </tr>
 <tr>
 <td><strong>Total</strong></td>
-<td><strong>88,0 h</strong></td>
+<td><strong>93,0 h</strong></td>
 <td><strong>119,9 h</strong></td>
-<td><strong>1,36</strong></td>
+<td><strong>1,29</strong></td>
 <td><strong>R$ 1.771,07</strong></td>
 <td></td>
 </tr>
@@ -2233,9 +2233,9 @@ xychart-beta
 xychart-beta
     x-axis ["Sprint 1", "Sprint 2", "Sprint 3", "Sprint 4", "Sem sprint"]
     y-axis "horas" 0 --&gt; 59
-    bar [12.0, 21.0, 27.0, 25.0, 3.0]
+    bar [12.0, 21.0, 27.0, 30.0, 3.0]
     line [28.3, 33.0, 51.6, 0.0, 7.0]</code></pre>
-<p><em>Figura 3. Horas estimadas e realizadas por sprint. Barras lilás: horas estimadas; linha azul: horas reais. Fonte: issues do GitHub e registro de horas, em 11/11/2026.</em></p>
+<p><em>Figura 3. Horas estimadas e realizadas por sprint. Barras lilás: horas estimadas; linha azul: horas reais. Fonte: issues do GitHub e registro de horas, em 12/11/2026.</em></p>
 <h3 id="conferencia-das-horas">Conferência das horas<a class="headerlink" href="#conferencia-das-horas" title="Permanent link">&para;</a></h3>
 <p>As horas reais vêm de dois lugares: o registro de horas (<code>dados/gestao/horas.csv</code>), usado desde o início do projeto, e o campo "Horas reais" das issues, adotado a partir de 21/10 (Ata 04). As regras são:</p>
 <ol>
@@ -2379,7 +2379,7 @@ xychart-beta
     x-axis ["Sprint 1", "Sprint 2", "Sprint 3", "Sprint 4", "Sem sprint"]
     y-axis "dias" 0 --&gt; 6
     bar [1.9, 1.6, 4.9, 0.0, 0.4]</code></pre>
-<p><em>Figura 4. Tempo de ciclo médio por sprint. Barras lilás: média de dias entre abrir e fechar a issue. Fonte: datas das issues no GitHub, em 11/11/2026.</em></p>
+<p><em>Figura 4. Tempo de ciclo médio por sprint. Barras lilás: média de dias entre abrir e fechar a issue. Fonte: datas das issues no GitHub, em 12/11/2026.</em></p>
 <details class="info">
 <summary>Tempo de ciclo de cada issue e comparação com a média da sprint (±10%)</summary>
 <table>
@@ -2595,7 +2595,7 @@ xychart-beta
 </details>
 <h3 id="issues-paradas">Issues paradas<a class="headerlink" href="#issues-paradas" title="Permanent link">&para;</a></h3>
 <p>Issues ainda abertas e sem nenhuma atualização há mais de 1 dia(s), contados a partir do início da sprint de cada issue (limite de decisão desta métrica):</p>
-<p><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/38">#38</a>.</p>
+<p><a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/52">#52</a>, <a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/51">#51</a>, <a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/50">#50</a>, <a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/49">#49</a>, <a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/42">#42</a>, <a href="https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/issues/38">#38</a>.</p>
 <p>O previsto e o realizado de cada entrega, com a evolução das três categorias ao longo das sprints, estão no <a href="../dashboard/">Dashboard do PSM</a>.</p>
 
 
