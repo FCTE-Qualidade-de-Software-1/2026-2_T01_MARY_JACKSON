@@ -1827,6 +1827,141 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#eficiencia-de-desempenho-dupla-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eficiência de desempenho (Dupla 2)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Eficiência de desempenho (Dupla 2)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#versao-avaliada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versão avaliada
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maquina-cliente-e-navegador" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Máquina cliente e navegador
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ferramentas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ferramentas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#condicoes-de-execucao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Condições de execução
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cargas-sinteticas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cargas sintéticas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#procedimento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Procedimento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leitura-das-medidas-no-trace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leitura das medidas no trace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tentativas-validas-falhas-e-interrupcoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tentativas válidas, falhas e interrupções
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registro-dos-dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registro dos dados
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#piloto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Piloto
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1854,7 +1989,287 @@
 <!-- O que entra aqui: plano de avaliação: método, instruções para o avaliador, recursos e cronograma (Aula 07, págs. 18 e 19). Entrega 2. -->
 
 <p>O ambiente de execução previsto para a avaliação é o draw.io web 32.2.0 em Docker local. Consulte o <a href="ambiente-drawio/">guia do ambiente Docker</a> para iniciar e operar o contêiner.</p>
-<p><em>Demais itens do plano de avaliação em elaboração.</em></p>
+<h2 id="eficiencia-de-desempenho-dupla-2">Eficiência de desempenho (Dupla 2)<a class="headerlink" href="#eficiencia-de-desempenho-dupla-2" title="Permanent link">&para;</a></h2>
+<p>Esta seção define como serão coletadas as métricas M2.1 a M2.6 da <a href="../fase-2/metricas/">Fase 2</a>. Toda a coleta é feita por um único avaliador, em uma única máquina e um único navegador, para que os resultados dos cinco portes sejam comparáveis entre si. Conforme os <a href="../fase-1/escopo/">limites de validade</a> da Fase 1, as conclusões ficam vinculadas a essa versão, máquina, navegador e cargas.</p>
+<h3 id="versao-avaliada">Versão avaliada<a class="headerlink" href="#versao-avaliada" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Definição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Produto</td>
+<td>draw.io web, a partir do fork <a href="https://github.com/H3ytt0r10/drawio"><code>H3ytt0r10/drawio</code></a>.</td>
+</tr>
+<tr>
+<td>Versão</td>
+<td>32.6.10 (arquivo <code>VERSION</code> do fork).</td>
+</tr>
+<tr>
+<td>Commit</td>
+<td><code>c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3</code>, o mesmo usado pelas três duplas.</td>
+</tr>
+<tr>
+<td>Execução</td>
+<td>Contêiner local, conforme o <a href="ambiente-drawio/">guia do ambiente</a>, acessado em <code>http://localhost:8080/?offline=1</code>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="maquina-cliente-e-navegador">Máquina cliente e navegador<a class="headerlink" href="#maquina-cliente-e-navegador" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Configuração</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Processador</td>
+<td>Intel Core i5-1235U (12ª geração), 10 núcleos, 12 processadores lógicos, 1,30 GHz de base.</td>
+</tr>
+<tr>
+<td>Memória RAM</td>
+<td>16 GB (15,7 GB utilizáveis).</td>
+</tr>
+<tr>
+<td>Armazenamento</td>
+<td>SSD NVMe.</td>
+</tr>
+<tr>
+<td>Placa de vídeo</td>
+<td>Intel Iris Xe (integrada).</td>
+</tr>
+<tr>
+<td>Sistema operacional</td>
+<td>Windows 11, versão 25H2 (build 26200.9974).</td>
+</tr>
+<tr>
+<td>Navegador</td>
+<td>Google Chrome 157.0.8103.79, 64 bits (V8 15.7.112.43).</td>
+</tr>
+<tr>
+<td>Avaliador</td>
+<td>Pedro Ian (Dupla 2).</td>
+</tr>
+</tbody>
+</table>
+<p>Se o Chrome for atualizado durante a coleta, a nova versão é registrada a partir da tentativa em que passou a valer.</p>
+<h3 id="ferramentas">Ferramentas<a class="headerlink" href="#ferramentas" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Ferramenta</th>
+<th>Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chrome DevTools, painel <strong>Performance</strong>, com a opção <strong>Memory</strong> marcada</td>
+<td>Uma gravação por operação. A mesma gravação fornece o tempo (M2.1, M2.3, M2.4) e a curva do heap JS (M2.2, M2.5). Cada gravação é salva como arquivo de trace.</td>
+</tr>
+<tr>
+<td>Script <code>gerar_cargas.py</code> (Python 3)</td>
+<td>Gera as cinco cargas sintéticas de forma reprodutível.</td>
+</tr>
+<tr>
+<td><code>Get-FileHash</code> (PowerShell)</td>
+<td>Calcula o SHA-256 das cargas para identificá-las.</td>
+</tr>
+<tr>
+<td>Planilha CSV</td>
+<td>Registro de cada tentativa (ver <a href="#registro-dos-dados">Registro dos dados</a>).</td>
+</tr>
+<tr>
+<td>Visualizadores padrão do Windows e o próprio Chrome</td>
+<td>Validação dos arquivos PNG, PDF e SVG exportados.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="condicoes-de-execucao">Condições de execução<a class="headerlink" href="#condicoes-de-execucao" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Condição</th>
+<th>Regra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Perfil do navegador</td>
+<td>Janela de convidado do Chrome, sem extensões, sem histórico e sem outras abas abertas.</td>
+</tr>
+<tr>
+<td>DevTools</td>
+<td>Aberto em janela separada, sem limitação de CPU ou de rede.</td>
+</tr>
+<tr>
+<td>Sessão limpa</td>
+<td>Antes de cada sessão, recarregar a página com <code>Ctrl+Shift+R</code> e acionar <strong>Coletar lixo</strong> no painel Performance.</td>
+</tr>
+<tr>
+<td>Máquina</td>
+<td>Conectada à energia, modo de energia equilibrado, outros programas fechados e notificações do Windows silenciadas. O percentual de memória em uso no início de cada sessão é registrado.</td>
+</tr>
+<tr>
+<td>Rede</td>
+<td>Instância local com <code>offline=1</code>. Sem acesso a serviços em nuvem.</td>
+</tr>
+<tr>
+<td>Ordem</td>
+<td>Portes do menor para o maior; dentro de cada porte, as cinco tentativas são feitas em sequência.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cargas-sinteticas">Cargas sintéticas<a class="headerlink" href="#cargas-sinteticas" title="Permanent link">&para;</a></h3>
+<p>As cargas são geradas pelo script <code>gerar_cargas.py</code>. Cada arquivo <code>.drawio</code> (XML não compactado) contém N retângulos iguais de 120 x 60 px, dispostos em grade de 50 colunas, sem conectores, imagens ou estilos adicionais. As formas têm identificadores <code>v0001</code>, <code>v0002</code>, ... e rótulos <code>Rotulo 0001</code>, <code>Rotulo 0002</code>, ...; a forma <code>v0001</code> é a usada na M2.3. A saída é determinística: executar o script novamente gera arquivos com o mesmo SHA-256.</p>
+<table>
+<thead>
+<tr>
+<th>Porte (formas)</th>
+<th>Arquivo</th>
+<th>SHA-256</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>50</td>
+<td><code>carga-00050.drawio</code></td>
+<td><code>03d1a23d7dab0002d11be9eff8207e9cdbb5bcd01fa6c862dd564bac8dd7e139</code></td>
+</tr>
+<tr>
+<td>300</td>
+<td><code>carga-00300.drawio</code></td>
+<td><code>229e6dc2f2a4271deb106fe79be3f9f1da14990e560ade53fadf5bc1b459281a</code></td>
+</tr>
+<tr>
+<td>1.000</td>
+<td><code>carga-01000.drawio</code></td>
+<td><code>1e16ccfe0894ec0afa3163cc43e846e1dda9177465ade1684af1a99995234b91</code></td>
+</tr>
+<tr>
+<td>2.000</td>
+<td><code>carga-02000.drawio</code></td>
+<td><code>1de87eea590083ac74e2d59bc86129a50fafd7a8a87396ec8d5cf13bda3d4777</code></td>
+</tr>
+<tr>
+<td>5.000</td>
+<td><code>carga-05000.drawio</code></td>
+<td><code>9c35607e784f835084f3dd505021ab75ddce2c7f3eb870a3f4e0328766096d62</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="procedimento">Procedimento<a class="headerlink" href="#procedimento" title="Permanent link">&para;</a></h3>
+<p>Cada tentativa de um porte é composta por quatro sessões limpas: uma para abertura e rótulo e uma para cada formato de exportação. Separar as exportações evita que a memória de uma operação influencie o pico da seguinte.</p>
+<p><strong>Sessão A: abertura e rótulo (M2.1, M2.2 e M2.3)</strong></p>
+<ol>
+<li>Preparar a sessão limpa e iniciar a gravação no painel Performance.</li>
+<li>Acionar <strong>Arquivo &gt; Abrir de &gt; Dispositivo</strong>, selecionar a carga e confirmar no seletor de arquivos, substituindo o documento atual.</li>
+<li>Aguardar o diagrama ficar estável e interativo, esperar mais 2 s e parar a gravação.</li>
+<li>Iniciar nova gravação, selecionar a forma <code>v0001</code>, pressionar <code>F2</code>, substituir o texto por <code>Rotulo A001</code> e confirmar com <code>Ctrl+Enter</code>.</li>
+<li>Aguardar a renderização do novo rótulo e parar a gravação.</li>
+</ol>
+<p><strong>Sessões B, C e D: exportação em PNG, PDF e SVG (M2.4 e M2.5)</strong></p>
+<ol>
+<li>Preparar a sessão limpa e abrir a carga (abertura não medida).</li>
+<li>Acionar <strong>Coletar lixo</strong> e iniciar a gravação.</li>
+<li>Acionar <strong>Arquivo &gt; Exportar como &gt; (formato)</strong>, manter as opções padrão do draw.io (zoom 100%, sem borda adicional, sem cópia do diagrama embutida) e confirmar.</li>
+<li>Parar a gravação quando o arquivo estiver disponível nos downloads.</li>
+<li>Abrir o arquivo exportado e verificar se está íntegro e no formato solicitado.</li>
+</ol>
+<h3 id="leitura-das-medidas-no-trace">Leitura das medidas no trace<a class="headerlink" href="#leitura-das-medidas-no-trace" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Início (<code>ti</code>)</th>
+<th>Fim (<code>tf</code>)</th>
+<th>Valor registrado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M2.1</td>
+<td>Confirmação no seletor de arquivos.</td>
+<td>Último quadro renderizado após a última tarefa do thread principal, com o diagrama interativo.</td>
+<td><code>tf - ti</code>, em ms.</td>
+</tr>
+<tr>
+<td>M2.2</td>
+<td></td>
+<td></td>
+<td>Heap JS 2 s após o <code>tf</code> de M2.1, em MiB.</td>
+</tr>
+<tr>
+<td>M2.3</td>
+<td>Tecla <code>Ctrl+Enter</code>.</td>
+<td>Quadro em que o novo rótulo aparece renderizado e estável.</td>
+<td><code>tf - ti</code>, em ms.</td>
+</tr>
+<tr>
+<td>M2.4</td>
+<td>Clique de confirmação no diálogo de exportação.</td>
+<td>Arquivo íntegro disponível nos downloads.</td>
+<td><code>tf - ti</code>, em ms.</td>
+</tr>
+<tr>
+<td>M2.5</td>
+<td>Mesmo <code>ti</code> de M2.4.</td>
+<td>Mesmo <code>tf</code> de M2.4.</td>
+<td>Maior valor do heap JS entre <code>ti</code> e <code>tf</code>, em MiB.</td>
+</tr>
+<tr>
+<td>M2.6</td>
+<td></td>
+<td></td>
+<td>Consolidado das tentativas de M2.1 a M2.5, conforme a Fase 2.</td>
+</tr>
+</tbody>
+</table>
+<p>Valores do heap em bytes são convertidos por <code>MiB = bytes / 2^20</code>.</p>
+<h3 id="tentativas-validas-falhas-e-interrupcoes">Tentativas válidas, falhas e interrupções<a class="headerlink" href="#tentativas-validas-falhas-e-interrupcoes" title="Permanent link">&para;</a></h3>
+<p>Para cada porte e operação são realizadas cinco tentativas válidas. Uma tentativa interrompida por fator externo ao draw.io (notificação, atualização do sistema, outro programa) é descartada, registrada com o motivo e reposta. É considerada <strong>falha</strong> do draw.io a tentativa com erro exibido, travamento da aba, arquivo exportado inválido ou operação que não termina em até duas vezes o limite candidato do cenário (faixa da nota 1 na Fase 2). Falhas contam para a M2.6 e não recebem valores de tempo ou memória. As medianas seguem a regra da Fase 2: quatro ou cinco sucessos com dados completos; menos de quatro torna o cenário não conclusivo.</p>
+<h3 id="registro-dos-dados">Registro dos dados<a class="headerlink" href="#registro-dos-dados" title="Permanent link">&para;</a></h3>
+<p>Os dados ficam em <code>dados/avaliacao/eficiencia/</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Caminho</th>
+<th>Conteúdo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cargas/</code></td>
+<td>As cinco cargas e o script <code>gerar_cargas.py</code>.</td>
+</tr>
+<tr>
+<td><code>brutos/tentativas.csv</code></td>
+<td>Uma linha por operação medida.</td>
+</tr>
+<tr>
+<td><code>brutos/traces/</code></td>
+<td>Traces do DevTools compactados (<code>.json.gz</code>), nomeados por porte, operação, formato e tentativa. Arquivos acima de 50 MB ficam na pasta compartilhada da equipe, com link e SHA-256 registrados no CSV.</td>
+</tr>
+<tr>
+<td><code>brutos/exportados/</code></td>
+<td>Os arquivos exportados de uma tentativa por porte e formato, como amostra da validação.</td>
+</tr>
+</tbody>
+</table>
+<p>Colunas de <code>tentativas.csv</code>: <code>data</code>, <code>tentativa</code>, <code>porte</code>, <code>operacao</code>, <code>formato</code>, <code>versao_chrome</code>, <code>memoria_em_uso_pct</code>, <code>tempo_ms</code>, <code>heap_mib</code>, <code>resultado</code> (sucesso, falha ou descartada), <code>observacao</code>, <code>trace</code>.</p>
+<h3 id="piloto">Piloto<a class="headerlink" href="#piloto" title="Permanent link">&para;</a></h3>
+<p>Antes da coleta oficial é feita uma rodada piloto, com uma tentativa por porte e operação, para:</p>
+<ul>
+<li>confirmar os comandos de abertura e exportação na versão fixada;</li>
+<li>identificar, na aba <strong>Rede</strong> do DevTools, se cada formato é gerado no navegador ou depende de um serviço de exportação, como exige o escopo da Fase 1;</li>
+<li>verificar se os limites candidatos da Fase 2 são plausíveis nesta máquina e submeter eventuais ajustes à aprovação do requisitante;</li>
+<li>estimar a duração total da coleta.</li>
+</ul>
+<p>Os resultados do piloto são registrados à parte e não entram no cálculo das métricas.</p>
 
 
 
@@ -1875,7 +2290,7 @@
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="24 de outubro de 2026 19:46:20 UTC">24 de outubro de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="12 de novembro de 2026 19:26:11 UTC">12 de novembro de 2026</span>
   </span>
 
     
