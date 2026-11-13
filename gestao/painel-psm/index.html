@@ -2074,7 +2074,7 @@
 
 <h1 id="painel-do-psm">Painel do PSM<a class="headerlink" href="#painel-do-psm" title="Permanent link">&para;</a></h1>
 <p>Esta página é gerada automaticamente a cada publicação do site e sempre que uma issue é aberta, fechada ou editada. Os dados vêm das issues do GitHub: a sprint (milestone), as datas de abertura e fechamento e os campos "Estimativa (horas)" e "Horas reais" do formulário de tarefa. As definições de cada métrica estão no <a href="../plano-de-medicao/">Plano de medição</a>.</p>
-<p><em>Atualizado automaticamente em 13/11/2026 15:19 (horário de Brasília), a partir de 52 issues e do registro de horas.</em></p>
+<p><em>Atualizado automaticamente em 13/11/2026 17:11 (horário de Brasília), a partir de 53 issues e do registro de horas.</em></p>
 <h2 id="como-este-painel-e-montado">Como este painel é montado<a class="headerlink" href="#como-este-painel-e-montado" title="Permanent link">&para;</a></h2>
 <p>A cada publicação do site, o script <code>hooks/horas.py</code> lê as issues do GitHub e o registro de horas, calcula as três métricas do <a href="../plano-de-medicao/">Plano de medição</a> e compara cada resultado com o limite de decisão. A interpretação e as decisões de cada medição ficam no <a href="../registro-de-medicoes/">Registro de medições</a>.</p>
 <pre class="mermaid"><code>flowchart LR
@@ -2142,10 +2142,10 @@
 </tr>
 <tr>
 <td>Sem sprint</td>
-<td>1</td>
+<td>2</td>
 <td>1</td>
 <td>—</td>
-<td>100,0%</td>
+<td>50,0%</td>
 <td>dentro do limite</td>
 </tr>
 </tbody>
@@ -2155,7 +2155,7 @@
 xychart-beta
     x-axis ["Sprint 1", "Sprint 2", "Sprint 3", "Sprint 4", "Sem sprint"]
     y-axis "% concluído" 0 --&gt; 100
-    bar [100.0, 100.0, 82.4, 0.0, 100.0]
+    bar [100.0, 100.0, 82.4, 0.0, 50.0]
     line [50.0, 50.0, 50.0, 50.0, 50.0]</code></pre>
 <p><em>Figura 2. Percentual de issues concluídas por sprint. Barras lilás: percentual concluído; linha azul: limite de decisão (50%). Fonte: issues e milestones do GitHub, em 13/11/2026.</em></p>
 <h2 id="2-estimado-vs-realizado-recursos-e-custos">2. Estimado vs. realizado (Recursos e Custos)<a class="headerlink" href="#2-estimado-vs-realizado-recursos-e-custos" title="Permanent link">&para;</a></h2>
@@ -2212,17 +2212,17 @@ xychart-beta
 </tr>
 <tr>
 <td>Sem sprint</td>
-<td>3,0 h</td>
+<td>5,0 h</td>
 <td>7,0 h</td>
-<td>2,33</td>
+<td>1,40</td>
 <td>R$ 103,39</td>
 <td>—</td>
 </tr>
 <tr>
 <td><strong>Total</strong></td>
-<td><strong>92,5 h</strong></td>
+<td><strong>94,5 h</strong></td>
 <td><strong>121,4 h</strong></td>
-<td><strong>1,31</strong></td>
+<td><strong>1,28</strong></td>
 <td><strong>R$ 1.793,23</strong></td>
 <td></td>
 </tr>
@@ -2233,7 +2233,7 @@ xychart-beta
 xychart-beta
     x-axis ["Sprint 1", "Sprint 2", "Sprint 3", "Sprint 4", "Sem sprint"]
     y-axis "horas" 0 --&gt; 59
-    bar [12.0, 21.0, 27.0, 29.5, 3.0]
+    bar [12.0, 21.0, 27.0, 29.5, 5.0]
     line [28.3, 33.0, 51.6, 1.5, 7.0]</code></pre>
 <p><em>Figura 3. Horas estimadas e realizadas por sprint. Barras lilás: horas estimadas; linha azul: horas reais. Fonte: issues do GitHub e registro de horas, em 13/11/2026.</em></p>
 <h3 id="conferencia-das-horas">Conferência das horas<a class="headerlink" href="#conferencia-das-horas" title="Permanent link">&para;</a></h3>
