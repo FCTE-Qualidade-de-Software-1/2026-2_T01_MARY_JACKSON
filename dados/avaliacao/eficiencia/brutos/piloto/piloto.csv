@@ -1,0 +1,11 @@
+data,tentativa,porte,operacao,formato,versao_chrome,memoria_em_uso_pct,tempo_ms,heap_mib,resultado,observacao,trace,ti_ms,tf_ms
+2026-11-14,1,50,abrir,,157.0.8103.79,,73.9,43.2,sucesso,,piloto_p00050_abrir_t1.json.gz,2720.5,2794.3
+2026-11-14,1,50,exportar,pdf,157.0.8103.79,,175.6,38.62,sucesso,,piloto_p00050_exportar-pdf_t1.json.gz,3892.6,4068.2
+2026-11-14,1,50,exportar,png,157.0.8103.79,,101.5,38.07,sucesso,,piloto_p00050_exportar-png_t1.json.gz,1187.5,1288.9
+2026-11-14,1,50,exportar,svg,157.0.8103.79,,418.5,40.45,sucesso,,piloto_p00050_exportar-svg_t1.json.gz,1121.8,1540.3
+2026-11-14,1,50,rotulo,,157.0.8103.79,,39.7,,sucesso,,piloto_p00050_rotulo_t1.json.gz,5361.4,5401.2
+2026-11-14,1,5000,abrir,,157.0.8103.79,,1428.9,83.75,sucesso,,piloto_p05000_abrir_t1.json.gz,2671.3,4100.2
+2026-11-14,1,5000,exportar,pdf,157.0.8103.79,,7181.4,134.78,sucesso,,piloto_p05000_exportar-pdf_t1.json.gz,4540.1,11721.5
+2026-11-14,1,5000,exportar,png,157.0.8103.79,,3348.1,89.56,sucesso,,piloto_p05000_exportar-png_t1.json.gz,1293.9,4642.0
+2026-11-14,1,5000,exportar,svg,157.0.8103.79,,118258.0,358.19,sucesso,,piloto_p05000_exportar-svg_t1.json.gz,1286.3,119544.3
+2026-11-14,1,5000,rotulo,,157.0.8103.79,,176.9,,sucesso,,piloto_p05000_rotulo_t1.json.gz,7680.1,7857.0
