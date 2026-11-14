@@ -2,7 +2,7 @@
 
 <!-- O que entra aqui: plano de avaliação: método, instruções para o avaliador, recursos e cronograma (Aula 07, págs. 18 e 19). Entrega 2. -->
 
-O ambiente de execução previsto para a avaliação é o draw.io web 32.6.10 em Docker local. Consulte o [guia do ambiente Docker](ambiente-drawio.md) para iniciar e operar o contêiner.
+O ambiente de execução previsto para a avaliação é o draw.io web 32.6.10 localmente por meio de um fork feito pelo membro Heyttor Augusto. Consulte o [guia do ambiente local](ambiente-drawio.md) para iniciar e operar o contêiner.
 
 
 ## Eficiência de desempenho (Dupla 2)
@@ -114,6 +114,71 @@ Os dados ficam em `dados/avaliacao/eficiencia/`:
 | `brutos/exportados/` | Os arquivos exportados de uma tentativa por porte e formato, como amostra da validação. |
 
 Colunas de `tentativas.csv`: `data`, `tentativa`, `porte`, `operacao`, `formato`, `versao_chrome`, `memoria_em_uso_pct`, `tempo_ms`, `heap_mib`, `resultado` (sucesso, falha ou descartada), `observacao`, `trace`.
+
+### Piloto
+
+Antes da coleta oficial é feita uma rodada piloto, com uma tentativa por porte e operação, para:
+
+- confirmar os comandos de abertura e exportação na versão fixada;
+- identificar, na aba **Rede** do DevTools, se cada formato é gerado no navegador ou depende de um serviço de exportação, como exige o escopo da Fase 1;
+- verificar se os limites candidatos da Fase 2 são plausíveis nesta máquina e submeter eventuais ajustes à aprovação do requisitante;
+- estimar a duração total da coleta.
+
+Os resultados do piloto são registrados à parte e não entram no cálculo das métricas.
+
+## Manutenibilidade (Dupla 3)
+
+Esta seção define como serão coletadas as métricas M3.1 e M3.2 da [Fase 2](../fase-2/metricas.md). Toda a coleta é feita e avaliada pela dupla, utilizando a mesma versão do programa de avaliação e do programa avaliado. Conforme os [limites de validade](../fase-1/escopo.md) da Fase 1, as conclusões ficam vinculadas a essa versão.
+
+### Versão avaliada
+
+| Item | Definição |
+| --- | --- |
+| Produto | draw.io web, a partir do fork [`H3ytt0r10/drawio`](https://github.com/H3ytt0r10/drawio). |
+| Versão | 32.6.10 (arquivo `VERSION` do fork). |
+| Commit | `c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3`, o mesmo usado pelas três duplas. |
+| Execução | localmente, conforme o [guia do ambiente](ambiente-drawio.md). |
+
+### Máquina cliente e navegador
+
+| Item | Configuração |
+| --- | --- |
+| Processador | Intel Core i5-1135G (11ª geração), 10 núcleos, 12 processadores lógicos, 1,38 GHz de base. |
+| Memória RAM | 16 GB (15,7 GB utilizáveis). |
+| Armazenamento | SSD NVMe. |
+| Placa de vídeo | Intel Iris Xe (integrada). |
+| Sistema operacional | Windows 11, versão 25H2 (build 26200.9974). |
+| Navegador | Google Chrome 157.0.8103.79, 64 bits (V8 15.7.112.43). |
+| Avaliador | Lucas Gabriel (Dupla 3). |
+
+Se o Chrome for atualizado durante a coleta, a nova versão é registrada a partir da tentativa em que passou a valer.
+
+### Ferramentas
+
+| Ferramenta | Uso |
+| --- | --- |
+| Sonarclaude | Para a avaliação das funções escolhidas dentro do trabalho |
+
+### Condições de execução
+
+| Condição | Regra |
+| --- | --- |
+| Perfil do navegador | Janela de convidado do Chrome, sem extensões, sem histórico e sem outras abas abertas. |
+| DevTools | Aberto em janela separada, sem limitação de CPU ou de rede. |
+| Sessão limpa | Antes de cada sessão, recarregar a página com `Ctrl+Shift+R` e acionar **Coletar lixo** no painel Performance. |
+| Máquina | Conectada à energia, modo de energia equilibrado, outros programas fechados e notificações do Windows silenciadas. O percentual de memória em uso no início de cada sessão é registrado. |
+| Rede | Instância local com `offline=1`. Sem acesso a serviços em nuvem. |
+| Ordem | Portes do menor para o maior; dentro de cada porte, as cinco tentativas são feitas em sequência. |
+
+### Observações encontradas
+
+### Procedimento
+
+
+### Tentativas válidas, falhas e interrupções
+
+
+### Registro dos dados
 
 ### Piloto
 

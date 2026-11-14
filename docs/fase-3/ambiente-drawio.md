@@ -1,36 +1,54 @@
-# Ambiente Docker do draw.io
+# Obtenção e execução do ambiente de avaliação do draw.io
 
-O arquivo [`compose.yaml`](../../compose.yaml) permite que cada integrante execute localmente a mesma versão do draw.io usada no planejamento: `32.2.0`. Cada pessoa precisa ter Docker Desktop (Windows/macOS) ou Docker Engine e Docker Compose v2 instalados e iniciados.
+O ambiente de avaliação utiliza o fork
+[H3ytt0r10/drawio](https://github.com/H3ytt0r10/drawio), derivado do
+repositório oficial do draw.io. Cada integrante deverá clonar esse
+repositório para sua máquina local, garantindo que todos utilizem o
+código-fonte mantido para a avaliação de qualidade do software.
 
-## Iniciar pela primeira vez
+## Obtenção do código-fonte
 
-Abra um terminal na raiz do repositório e execute:
+Cada integrante deverá ter o Git instalado e executar os seguintes
+comandos em um terminal:
 
-```bash
-docker compose pull
-docker compose up -d
+``` bash
+git clone https://github.com/H3ytt0r10/drawio.git
+cd drawio
 ```
 
-A imagem é publicada no Docker Hub como `jgraph/drawio:32.2.0`. Quando o contêiner estiver ativo, acesse <http://localhost:8080/?offline=1>. O parâmetro `offline=1` desativa a integração com armazenamento em nuvem.
+Para garantir que todos utilizem a mesma versão do código, será
+utilizada a branch `dev` do fork, no commit definido para a avaliação.
 
-## Operações do contêiner
+``` bash
+git checkout <HASH_DO_COMMIT>
+```
 
-| Ação                             | Comando                         |
-| -------------------------------- | ------------------------------- |
-| Ver estado e porta               | `docker compose ps`             |
-| Acompanhar logs                  | `docker compose logs -f drawio` |
-| Parar sem remover                | `docker compose stop`           |
-| Iniciar novamente                | `docker compose start`          |
-| Reiniciar                        | `docker compose restart`        |
-| Remover contêiner e rede         | `docker compose down`           |
-| Baixar novamente a imagem fixada | `docker compose pull`           |
+O identificador do commit deverá ser disponibilizado aos integrantes
+para garantir a padronização do ambiente.
 
-`docker compose down` remove o contêiner e a rede do Compose, mas mantém a imagem baixada. Os diagramas são abertos e baixados pelo navegador; este Compose não configura armazenamento persistente no servidor.
+## Execução local
 
-## Solução de problemas
+Com o repositório clonado, cada integrante poderá executar a avaliação descrita na documentação com uma versão fixa definida. 
 
-- Se o comando informar que o daemon não está disponível, inicie o Docker Desktop e repita o comando.
-- Se a porta 8080 já estiver ocupada, altere o mapeamento em `compose.yaml` para `"8081:8080"` e acesse <http://localhost:8081/?offline=1>.
-- Se ainda existir um contêiner criado manualmente com o nome `drawio-v32-2-0` ocupando a porta, pare-o com `docker stop drawio-v32-2-0` antes de executar `docker compose up -d`.
+## Atualização do código-fonte
 
-Cada integrante executa o serviço na própria máquina. `localhost` não disponibiliza o contêiner aos demais integrantes; para acesso remoto seria necessário hospedar o serviço em um servidor compartilhado.
+Caso seja necessário atualizar a cópia local, execute:
+
+``` bash
+git pull origin dev
+```
+
+Entretanto, durante o período de avaliação, os integrantes deverão
+permanecer no commit definido para os testes, evitando divergências
+entre os ambientes.
+
+## Verificação da versão utilizada
+
+Para conferir se todos estão utilizando o mesmo código-fonte, execute:
+
+``` bash
+git rev-parse HEAD
+```
+
+O resultado deverá ser idêntico ao hash de commit compartilhado pelo
+grupo.
