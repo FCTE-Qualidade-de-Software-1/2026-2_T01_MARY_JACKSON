@@ -14,4 +14,4 @@ A Fase 2 transforma as características priorizadas na [Fase 1](../fase-1/index.
 | [Métricas](metricas.md) | Definição, cálculo, fonte e coleta de cada métrica. |
 | [Níveis de pontuação e julgamento](niveis-e-julgamento.md) | Faixas de cada métrica e como os resultados serão julgados. |
 | [Diagrama GQM](diagrama-gqm.md) | Hierarquia entre objetivo, questões e métricas de cada característica. |
-| [Rastreabilidade](rastreabilidade.md) | Ligação entre as necessidades e prioridades da Fase 1 e os objetivos da Fase 2. |
+| [Rastreabilidade](rastreabilidade.md) | Ligação entre as prioridades e as partes interessadas da Fase 1 e os objetivos da Fase 2. |

@@ -42,10 +42,10 @@ Cada componente definido no [escopo](../fase-1/escopo.md) é coberto por uma que
 
 | Questão | Componente | Subcaracterística | Métrica |
 |---|---|---|---|
-| Q2.1 (R-ED-01) Como o tempo de abertura e o consumo de memória variam à medida que o porte do diagrama aumenta? | Importação | Comportamento temporal e utilização de recursos | M2.1 Tempo de abertura e M2.2 Heap após a abertura |
-| Q2.2 (R-ED-02) Em que medida a edição de rótulos permanece responsiva à medida que o número de formas aumenta? | Rótulos | Comportamento temporal | M2.3 Latência do rótulo |
-| Q2.3 (R-ED-03) Como os formatos PNG, PDF e SVG diferem em tempo de exportação e pico de memória? | Exportação | Comportamento temporal e utilização de recursos | M2.4 Tempo de exportação e M2.5 Pico de heap na exportação |
-| Q2.4 (R-ED-04) Qual o maior porte de diagrama em que o fluxo abrir, editar e exportar é concluído de forma repetível? | Fluxo completo | Capacidade | M2.6 Maior porte aprovado |
+| Q2.1 Como o tempo de abertura e o consumo de memória variam à medida que o porte do diagrama aumenta? | Importação | Comportamento temporal e utilização de recursos | M2.1 Tempo de abertura e M2.2 Heap após a abertura |
+| Q2.2 Em que medida a edição de rótulos permanece responsiva à medida que o número de formas aumenta? | Rótulos | Comportamento temporal | M2.3 Latência do rótulo |
+| Q2.3 Como os formatos PNG, PDF e SVG diferem em tempo de exportação e pico de memória? | Exportação | Comportamento temporal e utilização de recursos | M2.4 Tempo de exportação e M2.5 Pico de heap na exportação |
+| Q2.4 Qual o maior porte de diagrama em que o fluxo abrir, editar e exportar é concluído de forma repetível? | Fluxo completo | Capacidade | M2.6 Maior porte aprovado |
 
 Os códigos R-ED indicam a necessidade da Fase 1 que originou cada questão.
 
@@ -57,4 +57,4 @@ Os códigos R-ED indicam a necessidade da Fase 1 que originou cada questão.
 | Q3.2 A complexidade do código de edição e formatação de rótulos dificulta sua manutenção? | Rótulos | Modificabilidade | M3.1 Complexidade cognitiva média por função |
 | Q3.3 A duplicação entre as exportações PNG, PDF e SVG dificulta futuras modificações? | Exportação | Analisabilidade | M3.2 Percentual de código duplicado |
 
-Se alguma prioridade, stakeholder ou necessidade da Fase 1 for revista, as questões, hipóteses, fichas e critérios relacionados devem ser atualizados antes da coleta.
+Se alguma prioridade ou parte interessada da Fase 1 for revista, as questões, hipóteses, fichas e critérios relacionados devem ser atualizados antes da coleta.
