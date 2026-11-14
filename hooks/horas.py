@@ -201,6 +201,31 @@ def _linhas_horas(corpo):
     return resultado
 
 
+def _linhas_fora_do_formato(issues):
+    """Linhas do campo 'Horas reais' que não seguem 'dd/mm - Nome - X h', como (número da issue, linha)."""
+    fora = []
+    for i in sorted(issues, key=lambda x: x["number"]):
+        for linha in _campo(i.get("body"), "Horas reais").splitlines():
+            texto = linha.strip()
+            if not texto or texto.lower() in ("_no response_", "no response"):
+                continue
+            if not re.match(r"\s*[-*]?\s*(\d{1,2})/(\d{1,2})\s*[-–]\s*(.+?)\s*[-–]\s*(\d+(?:[.,]\d+)?)\s*h\b",
+                            texto, re.I):
+                fora.append((i["number"], texto))
+    return fora
+
+
+def _aviso_formato(fora, repo_url):
+    if not fora:
+        return []
+    saida = ['!!! warning "Horas fora do formato"',
+             '    Estas linhas do campo "Horas reais" não seguem o formato `dd/mm - Nome - X h`. Elas ficam fora da '
+             'contagem ou entram sem nome. Corrija na própria issue (⋯ → Edit), uma linha por dia.', '']
+    for numero, texto in fora:
+        saida.append(f"    - [#{numero}]({repo_url}/issues/{numero}): `{texto.replace('`', chr(39))[:120]}`")
+    return saida + [""]
+
+
 def _rotulo(nome):
     """Nome curto da sprint para o eixo do gráfico ("Sprint 1 - Fase 1" vira "Sprint 1")."""
     curto = re.split(r"\s+[-–]\s+", nome)[0]
@@ -439,6 +464,7 @@ def _painel_psm(markdown, config):
     saida = [f"_Atualizado automaticamente em {agora.astimezone(BRASILIA).strftime('%d/%m/%Y %H:%M')} (horário de Brasília), "
              f"a partir de {len(issues)} issues e do registro de horas._", ""]
     saida += _aviso_csv(_ler_csv(config)[1])
+    saida += _aviso_formato(_linhas_fora_do_formato(issues), repo_url)
 
     # Como o painel é montado
     saida += ["## Como este painel é montado", "",
