@@ -7,7 +7,7 @@ O ambiente de execução previsto para a avaliação é o draw.io web 32.6.10 lo
 
 ## Eficiência de desempenho (Dupla 2)
 
-Esta seção define como serão coletadas as métricas M2.1 a M2.6 da [Fase 2](../fase-2/metricas.md). Toda a coleta é feita por um único avaliador, em uma única máquina e um único navegador, para que os resultados dos cinco portes sejam comparáveis entre si. Conforme os [limites de validade](../fase-1/escopo.md) da Fase 1, as conclusões ficam vinculadas a essa versão, máquina, navegador e cargas.
+Esta seção define como são coletadas as métricas M2.1 a M2.6 da [Fase 2](../fase-2/metricas.md). Toda a coleta é feita em uma única máquina e em um único navegador, para que os resultados dos cinco portes sejam comparáveis entre si. A coleta oficial é automatizada por script, depois de um [piloto](#piloto) manual que validou o procedimento no DevTools e de um piloto automatizado. Conforme os [limites de validade](../fase-1/escopo.md) da Fase 1, as conclusões ficam vinculadas a essa versão, máquina, navegador e cargas.
 
 ### Versão avaliada
 
@@ -16,7 +16,7 @@ Esta seção define como serão coletadas as métricas M2.1 a M2.6 da [Fase 2](.
 | Produto | draw.io web, a partir do fork [`H3ytt0r10/drawio`](https://github.com/H3ytt0r10/drawio). |
 | Versão | 32.6.10 (arquivo `VERSION` do fork). |
 | Commit | `c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3`, o mesmo usado pelas três duplas. |
-| Execução | Contêiner local, conforme o [guia do ambiente](ambiente-drawio.md), acessado em `http://localhost:8080/?offline=1`. |
+| Execução | Servidor HTTP estático local (`python -m http.server 8080`) servindo a pasta `src/main/webapp` do fork, acessado em `http://localhost:8080/?offline=1`. Não há servidor de exportação. |
 
 ### Máquina cliente e navegador
 
@@ -28,7 +28,7 @@ Esta seção define como serão coletadas as métricas M2.1 a M2.6 da [Fase 2](.
 | Placa de vídeo | Intel Iris Xe (integrada). |
 | Sistema operacional | Windows 11, versão 25H2 (build 26200.9974). |
 | Navegador | Google Chrome 157.0.8103.79, 64 bits (V8 15.7.112.43). |
-| Avaliador | Pedro Ian (Dupla 2). |
+| Avaliador responsável | Pedro Ian (Dupla 2). |
 
 Se o Chrome for atualizado durante a coleta, a nova versão é registrada a partir da tentativa em que passou a valer.
 
@@ -36,26 +36,26 @@ Se o Chrome for atualizado durante a coleta, a nova versão é registrada a part
 
 | Ferramenta | Uso |
 | --- | --- |
-| Chrome DevTools, painel **Performance**, com a opção **Memory** marcada | Uma gravação por operação. A mesma gravação fornece o tempo (M2.1, M2.3, M2.4) e a curva do heap JS (M2.2, M2.5). Cada gravação é salva como arquivo de trace. |
+| Script `coletar.py` (Python 3 e Playwright) | Abre o Google Chrome instalado na máquina, executa as operações do [procedimento](#procedimento) e grava um trace do Chrome por operação, com as categorias de eventos do painel Performance do DevTools (tarefas do thread principal, eventos, contadores de memória e capturas de tela). |
+| Script `ler_traces.py` (Python 3) | Lê os traces, extrai tempo e heap segundo a [leitura das medidas](#leitura-das-medidas) e gera o CSV de tentativas. Apenas lê os traces, sem alterá-los. |
 | Script `gerar_cargas.py` (Python 3) | Gera as cinco cargas sintéticas de forma reprodutível. |
 | `Get-FileHash` (PowerShell) | Calcula o SHA-256 das cargas para identificá-las. |
-| Planilha CSV | Registro de cada tentativa (ver [Registro dos dados](#registro-dos-dados)). |
-| Visualizadores padrão do Windows e o próprio Chrome | Validação dos arquivos PNG, PDF e SVG exportados. |
+| Chrome DevTools, painel Performance | Usado no piloto manual e para conferir qualquer trace: o CSV registra os instantes `ti` e `tf` usados em cada medida. |
 
 ### Condições de execução
 
 | Condição | Regra |
 | --- | --- |
-| Perfil do navegador | Janela de convidado do Chrome, sem extensões, sem histórico e sem outras abas abertas. |
-| DevTools | Aberto em janela separada, sem limitação de CPU ou de rede. |
-| Sessão limpa | Antes de cada sessão, recarregar a página com `Ctrl+Shift+R` e acionar **Coletar lixo** no painel Performance. |
-| Máquina | Conectada à energia, modo de energia equilibrado, outros programas fechados e notificações do Windows silenciadas. O percentual de memória em uso no início de cada sessão é registrado. |
+| Perfil do navegador | Perfil novo e temporário criado pela automação a cada sessão, sem extensões e sem histórico, equivalente à janela de convidado. Idioma da interface `en-US`. |
+| Janela | Chrome com janela visível, área da página de 1366 x 768 px, sem interação do avaliador durante a coleta. |
+| Sessão limpa | Cada sessão começa em um perfil novo. Antes de cada gravação, a automação aciona a coleta de lixo do JavaScript (`HeapProfiler.collectGarbage`). |
+| Máquina | Conectada à energia, outros programas fechados, sincronização do OneDrive pausada e notificações do Windows silenciadas. O percentual de memória em uso é registrado no início da coleta. |
 | Rede | Instância local com `offline=1`. Sem acesso a serviços em nuvem. |
 | Ordem | Portes do menor para o maior; dentro de cada porte, as cinco tentativas são feitas em sequência. |
 
 ### Cargas sintéticas
 
-As cargas são geradas pelo script `gerar_cargas.py`. Cada arquivo `.drawio` (XML não compactado) contém N retângulos iguais de 120 x 60 px, dispostos em grade de 50 colunas, sem conectores, imagens ou estilos adicionais. As formas têm identificadores `v0001`, `v0002`, ... e rótulos `Rotulo 0001`, `Rotulo 0002`, ...; a forma `v0001` é a usada na M2.3. A saída é determinística: executar o script novamente gera arquivos com o mesmo SHA-256.
+As cargas são geradas pelo script `gerar_cargas.py`. Cada arquivo `.drawio` (XML não compactado) contém N retângulos iguais de 120 x 60 px, dispostos em grade de 50 colunas, sem conectores, imagens ou estilos adicionais. As formas têm identificadores `v0001`, `v0002`, ... e rótulos `Rotulo 0001`, `Rotulo 0002`, ...; a forma `v0001` é a usada na M2.3. A saída é determinística: executar o script novamente gera arquivos com o mesmo SHA-256. Os valores abaixo valem para os arquivos como estão no repositório (fim de linha LF); no Windows, o Git pode converter o fim de linha da cópia local para CRLF, o que muda o SHA-256 calculado por `Get-FileHash` sem alterar o conteúdo do diagrama.
 
 | Porte (formas) | Arquivo | SHA-256 |
 | --- | --- | --- |
@@ -67,40 +67,47 @@ As cargas são geradas pelo script `gerar_cargas.py`. Cada arquivo `.drawio` (XM
 
 ### Procedimento
 
-Cada tentativa de um porte é composta por quatro sessões limpas: uma para abertura e rótulo e uma para cada formato de exportação. Separar as exportações evita que a memória de uma operação influencie o pico da seguinte.
+Cada tentativa de um porte é composta por quatro sessões, cada uma em um perfil novo: uma para abertura e rótulo e uma para cada formato de exportação. Separar as exportações evita que a memória de uma operação influencie o pico da seguinte. Ao detectar o fim de cada operação, o script grava a marca `fim_operacao` no trace, usada na leitura do instante final.
 
 **Sessão A: abertura e rótulo (M2.1, M2.2 e M2.3)**
 
-1. Preparar a sessão limpa e iniciar a gravação no painel Performance.
-2. Acionar **Arquivo > Abrir de > Dispositivo**, selecionar a carga e confirmar no seletor de arquivos, substituindo o documento atual.
-3. Aguardar o diagrama ficar estável e interativo, esperar mais 2 s e parar a gravação.
-4. Iniciar nova gravação, selecionar a forma `v0001`, pressionar `F2`, substituir o texto por `Rotulo A001` e confirmar com `Ctrl+Enter`.
-5. Aguardar a renderização do novo rótulo e parar a gravação.
+1. Acionar a coleta de lixo e iniciar a gravação.
+2. Acionar **File > Open from > Device...** e selecionar a carga, substituindo o documento atual.
+3. Aguardar as formas da carga no documento, gravar a marca, esperar 3 s e parar a gravação.
+4. Iniciar nova gravação, clicar na forma `v0001`, pressionar `F2`, `Ctrl+A`, digitar `Rotulo A001` e confirmar com `Ctrl+Enter`.
+5. Aguardar o novo rótulo no documento, gravar a marca, esperar 2 s e parar a gravação.
 
 **Sessões B, C e D: exportação em PNG, PDF e SVG (M2.4 e M2.5)**
 
-1. Preparar a sessão limpa e abrir a carga (abertura não medida).
-2. Acionar **Coletar lixo** e iniciar a gravação.
-3. Acionar **Arquivo > Exportar como > (formato)**, manter as opções padrão do draw.io (zoom 100%, sem borda adicional, sem cópia do diagrama embutida) e confirmar.
-4. Parar a gravação quando o arquivo estiver disponível nos downloads.
-5. Abrir o arquivo exportado e verificar se está íntegro e no formato solicitado.
+1. Abrir a carga (abertura não medida) e acionar **File > Export as > (formato)...**, mantendo as opções padrão do draw.io (zoom 100%, tamanho Diagram e a opção "Include a copy of my diagram" marcada, como vem por padrão).
+2. Acionar a coleta de lixo e iniciar a gravação.
+3. Clicar em **Export**.
+4. PNG e SVG: aguardar o diálogo "Save as", que indica o arquivo gerado. PDF: aguardar a chamada de impressão (ver adaptação 2 abaixo). Gravar a marca, esperar 1,5 s e parar a gravação.
 
-### Leitura das medidas no trace
+**Adaptações necessárias à automação**
+
+1. **Seletor de arquivos.** No Chrome, o draw.io usa o seletor nativo da API File System Access, que não aceita automação. A automação desativa essa API na página, e o draw.io passa a usar o seletor `<input type="file">`, que também faz parte do produto. A leitura e a renderização do diagrama são as mesmas; muda apenas a forma de entregar o arquivo à página.
+2. **PDF.** Sem servidor de exportação, o draw.io prepara uma página de impressão em nova janela e chama `print()`; o arquivo PDF seria produzido pela impressão do próprio Chrome. A automação substitui `print()` por uma função que apenas grava a marca `fim_operacao`. Assim, M2.4 e M2.5 de PDF medem a preparação da página de impressão pelo draw.io, e a geração do arquivo pelo navegador, que não é do draw.io, fica fora da medida.
+3. **Salvamento em disco.** O salvamento depende de diálogos com o avaliador (o "Save as" do draw.io e o seletor do Windows) e não é medido. A exportação termina quando o draw.io conclui a geração e exibe o diálogo "Save as".
+
+### Leitura das medidas
+
+As medidas consideram as tarefas de pelo menos 1 ms do thread principal da página do draw.io. São ignoradas as tarefas que apenas tratam movimento do mouse ou tecla sendo solta, que são ações de entrada e não processamento da operação, e as tarefas da própria automação.
 
 | Métrica | Início (`ti`) | Fim (`tf`) | Valor registrado |
 | --- | --- | --- | --- |
-| M2.1 | Confirmação no seletor de arquivos. | Último quadro renderizado após a última tarefa do thread principal, com o diagrama interativo. | `tf - ti`, em ms. |
-| M2.2 | | | Heap JS 2 s após o `tf` de M2.1, em MiB. |
-| M2.3 | Tecla `Ctrl+Enter`. | Quadro em que o novo rótulo aparece renderizado e estável. | `tf - ti`, em ms. |
-| M2.4 | Clique de confirmação no diálogo de exportação. | Arquivo íntegro disponível nos downloads. | `tf - ti`, em ms. |
-| M2.5 | Mesmo `ti` de M2.4. | Mesmo `tf` de M2.4. | Maior valor do heap JS entre `ti` e `tf`, em MiB. |
+| M2.1 | Início da tarefa que trata o evento `change` do seletor de arquivos. | Fim da última tarefa iniciada antes da marca `fim_operacao` (formas no documento). | `tf - ti`, em ms. |
+| M2.2 | | | Heap JS usado 2 s após o `tf` de M2.1 (última amostra até `tf + 2 s`), em MiB. |
+| M2.3 | Início da tarefa que trata a última tecla pressionada (o `Enter` de `Ctrl+Enter`). | Fim da última tarefa iniciada antes da marca (novo rótulo no documento). | `tf - ti`, em ms. |
+| M2.4 | Início da tarefa que trata o clique em **Export**. | Fim da última tarefa iniciada antes da marca (diálogo "Save as" ou chamada de impressão). | `tf - ti`, em ms. |
+| M2.5 | Mesmo `ti` de M2.4. | Mesmo `tf` de M2.4. | Maior valor do heap JS usado entre `ti` e `tf`, em MiB. |
 | M2.6 | | | Consolidado das tentativas de M2.1 a M2.5, conforme a Fase 2. |
 
-Valores do heap em bytes são convertidos por `MiB = bytes / 2^20`.
+Valores do heap em bytes são convertidos por `MiB = bytes / 2^20`. Nos traces manuais do piloto, que não têm a marca, o fim é o término da sequência de processamento iniciada em `ti`, encerrada no primeiro intervalo de mais de 250 ms sem tarefas, e o início da abertura é a primeira tarefa após o fechamento do seletor nativo.
 
 ### Tentativas válidas, falhas e interrupções
 
-Para cada porte e operação são realizadas cinco tentativas válidas. Uma tentativa interrompida por fator externo ao draw.io (notificação, atualização do sistema, outro programa) é descartada, registrada com o motivo e reposta. É considerada **falha** do draw.io a tentativa com erro exibido, travamento da aba, arquivo exportado inválido ou operação que não termina em até duas vezes o limite candidato do cenário (faixa da nota 1 na Fase 2). Falhas contam para a M2.6 e não recebem valores de tempo ou memória. As medianas seguem a regra da Fase 2: quatro ou cinco sucessos com dados completos; menos de quatro torna o cenário não conclusivo.
+Para cada porte e operação são realizadas cinco tentativas válidas. Uma tentativa interrompida por fator externo ao draw.io é descartada, registrada com o motivo e reposta. É considerada **falha** do draw.io a tentativa com erro exibido, travamento da aba, arquivo exportado inválido ou operação que não termina em até duas vezes o limite candidato do cenário (faixa da nota 1 na Fase 2). A automação registra em `brutos/traces/falhas.txt` as operações que não concluem em 180 s ou terminam com erro. Como os limites candidatos ainda dependem de aprovação, o CSV guarda o valor medido de todas as tentativas concluídas; na análise, as que passam de duas vezes o limite são tratadas como falha, contam para a M2.6 e não entram nas medianas. As medianas seguem a regra da Fase 2: quatro ou cinco sucessos com dados completos; menos de quatro torna o cenário não conclusivo.
 
 ### Registro dos dados
 
@@ -109,22 +116,39 @@ Os dados ficam em `dados/avaliacao/eficiencia/`:
 | Caminho | Conteúdo |
 | --- | --- |
 | `cargas/` | As cinco cargas e o script `gerar_cargas.py`. |
-| `brutos/tentativas.csv` | Uma linha por operação medida. |
-| `brutos/traces/` | Traces do DevTools compactados (`.json.gz`), nomeados por porte, operação, formato e tentativa. Arquivos acima de 50 MB ficam na pasta compartilhada da equipe, com link e SHA-256 registrados no CSV. |
-| `brutos/exportados/` | Os arquivos exportados de uma tentativa por porte e formato, como amostra da validação. |
+| `coletar.py` e `ler_traces.py` | Scripts de coleta e de leitura dos traces. |
+| `brutos/tentativas.csv` | Uma linha por operação medida na coleta oficial. |
+| `brutos/traces/` | Traces da coleta oficial (`.json.gz`), nomeados por porte, operação, formato e tentativa, como `p05000_exportar-svg_t3.json.gz`. URLs do tipo `data:` (imagens geradas durante a exportação) são truncadas em 200 caracteres para reduzir o tamanho; o restante do trace não é alterado. |
+| `brutos/piloto/` | Traces e CSV do piloto automatizado. |
+| `brutos/piloto/manual/` | Traces e CSV do piloto manual. |
 
-Colunas de `tentativas.csv`: `data`, `tentativa`, `porte`, `operacao`, `formato`, `versao_chrome`, `memoria_em_uso_pct`, `tempo_ms`, `heap_mib`, `resultado` (sucesso, falha ou descartada), `observacao`, `trace`.
+Colunas de `tentativas.csv`: `data`, `tentativa`, `porte`, `operacao`, `formato`, `versao_chrome`, `memoria_em_uso_pct`, `tempo_ms`, `heap_mib`, `resultado` (sucesso, falha, descartada ou verificar), `observacao`, `trace`, `ti_ms` e `tf_ms` (instantes de início e fim em ms desde o começo do trace, para conferência no DevTools).
 
 ### Piloto
 
-Antes da coleta oficial é feita uma rodada piloto, com uma tentativa por porte e operação, para:
+O piloto foi feito em duas etapas, e seus resultados não entram no cálculo das métricas.
 
-- confirmar os comandos de abertura e exportação na versão fixada;
-- identificar, na aba **Rede** do DevTools, se cada formato é gerado no navegador ou depende de um serviço de exportação, como exige o escopo da Fase 1;
-- verificar se os limites candidatos da Fase 2 são plausíveis nesta máquina e submeter eventuais ajustes à aprovação do requisitante;
-- estimar a duração total da coleta.
+**Piloto manual (13 e 14/11/2026).** Gravações no painel Performance do DevTools com a carga de 50 formas: abertura, rótulo e exportação em PNG e PDF. Achados:
 
-Os resultados do piloto são registrados à parte e não entram no cálculo das métricas.
+- Na abertura, o draw.io usa o seletor nativo da API File System Access, e não há evento `change`; o início da medida foi redefinido.
+- Na exportação PNG e SVG há dois diálogos depois de **Export**: o "Save as" do draw.io e o seletor do Windows. O fim da medida foi fixado no "Save as".
+- No PDF, o draw.io abre uma página de impressão, e o arquivo é gerado pela impressão do Chrome. O arquivo obtido sai com cabeçalho do navegador (data e título), dividido em 10 páginas e com formas cortadas na borda da página.
+- A opção "Include a copy of my diagram" vem marcada por padrão e foi mantida.
+- Ao abrir um arquivo pelo seletor nativo, o draw.io pode gravar as alterações de volta nesse arquivo. Durante o piloto, a edição do rótulo foi gravada na carga de 50 formas, que passou a ter um trecho de HTML no rótulo da forma `v0001`. A carga foi restaurada a partir do repositório e conferida antes da coleta oficial desse porte; a automação não grava as cargas.
+- A leitura manual de cada gravação é demorada e varia conforme o avaliador; para 125 gravações, optou-se pela automação.
+
+**Piloto automatizado (14/11/2026).** Uma tentativa nos portes extremos (50 e 5.000 formas), suficiente para validar o procedimento e verificar a capacidade; os portes intermediários são cobertos pela coleta oficial. Todas as operações foram concluídas. A exportação SVG com 5.000 formas levou cerca de 118 s, quase três vezes o limite candidato (40 s); as demais operações ficaram muito abaixo dos limites candidatos, o que indica que esses limites são folgados para esta máquina. Eventuais ajustes são decisão do grupo com o requisitante.
+
+**Comparação entre piloto manual e automatizado (50 formas).**
+
+| Operação | Manual (ms) | Automatizado (ms) |
+| --- | --- | --- |
+| Abrir | 288,7 | 73,9 |
+| Rótulo | 118,4 | 39,7 |
+| Exportar PNG | 269,6 | 101,5 |
+| Exportar PDF | 235,8 | 175,6 |
+
+Os valores manuais são sistematicamente maiores, mas da mesma ordem de grandeza. A gravação manual mantém o DevTools aberto e liga a amostragem de JavaScript (eventos `ProfileChunk` presentes no trace manual), o que acrescenta custo à página; a gravação automatizada não liga essa amostragem. Na abertura, a medida manual inclui ainda a entrega do arquivo pelo seletor nativo. Por medir com menor interferência do instrumento e de forma repetível, adota-se a coleta automatizada.
 
 ## Manutenibilidade (Dupla 3)
 
