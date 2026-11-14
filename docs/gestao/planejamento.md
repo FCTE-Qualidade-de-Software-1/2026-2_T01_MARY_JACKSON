@@ -90,7 +90,7 @@ Fonte: estimativas definidas pelos integrantes da Dupla 3 (Heyttor e Lucas).
   - Planejamento inicial e divisão de tarefas (Dupla 1)
   - Configuração do repositório a partir do template da disciplina (Dupla 1)
   - Estimativa de horas por tarefa: linha de base do PSM (todas as duplas)
-  - Proposta de escopo: componentes, versão 32.2.0 e levantamento de CVEs (Dupla 2)
+  - Proposta de escopo: componentes, versão 32.6.10 e levantamento de CVEs (Dupla 2)
   - Descrição do draw.io e diagrama de contexto (Dupla 3)
   - Justificativa de cada característica com nota de ênfase de 1 a 5 (cada dupla)
   - Propósito, requisitante e stakeholders (Dupla 2)
