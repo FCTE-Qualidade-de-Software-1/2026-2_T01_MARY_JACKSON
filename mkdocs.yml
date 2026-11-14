@@ -129,6 +129,9 @@ nav:
     - Fase 3:
           - fase-3/index.md
           - Ambiente Docker do draw.io: fase-3/ambiente-drawio.md
+          - Coleta de dados: fase-3/coleta-de-dados.md
+          - Análise dos dados e resultados: fase-3/resultados.md
+          - Ambiente de execução: fase-3/ambiente-de-execucao.md
     - Fase 4: fase-4/index.md
     - Gestão do projeto:
           - gestao/index.md
