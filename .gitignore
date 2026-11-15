@@ -4,3 +4,6 @@ venv/
 __pycache__/
 .DS_Store
 .cache/
+
+# Traces de eficiencia: preservados nos pacotes externos de evidencias.
+/dados/avaliacao/eficiencia/brutos/**/*.json.gz
