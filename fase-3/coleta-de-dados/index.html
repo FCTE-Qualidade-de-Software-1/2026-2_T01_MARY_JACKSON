@@ -1259,6 +1259,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#validacao-dos-arquivos-exportados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validação dos arquivos exportados
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2193,6 +2204,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#validacao-dos-arquivos-exportados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validação dos arquivos exportados
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2528,6 +2550,55 @@
 <li><strong>Exportação PDF.</strong> Os valores medem a preparação da página de impressão pelo draw.io. O arquivo PDF é gerado pela impressão do navegador, que no piloto manual produziu um documento com cabeçalho do navegador, dividido em páginas e com formas cortadas na borda.</li>
 <li><strong>Dispersão.</strong> A exportação PNG com 5.000 formas teve a maior variação relativa entre tentativas (1,7 a 3,6 s); nas demais operações, as cinco tentativas ficaram próximas entre si.</li>
 <li><strong>Memória.</strong> O maior heap observado foi 418,3 MiB, no SVG com 5.000 formas. O heap após a abertura com 2.000 formas ficou ligeiramente abaixo do de 1.000 formas, o que é compatível com o momento da coleta de lixo do JavaScript.</li>
+</ul>
+<h3 id="validacao-dos-arquivos-exportados">Validação dos arquivos exportados<a class="headerlink" href="#validacao-dos-arquivos-exportados" title="Permanent link">&para;</a></h3>
+<p>Em 15/11/2026, o script <code>validar_exportacoes.py</code> exportou e salvou um arquivo de cada formato por porte e verificou cada um, conforme a <a href="../#validacao-das-exportacoes">validação das exportações</a> do plano. O resultado está em <code>dados/avaliacao/eficiencia/brutos/exportados/validacao.csv</code>, e os arquivos, no pacote <code>eficiencia-exportacoes-2026-11-15.zip</code> da <a href="https://drive.google.com/drive/folders/1jwootYRyhx7-tQTW6iViqpkXdaKxO7FM?usp=sharing">pasta de evidências</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Porte</th>
+<th>PNG</th>
+<th>SVG</th>
+<th>PDF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>50</td>
+<td>Completo (7.962 x 62 px)</td>
+<td>Completo (50 de 50 rótulos)</td>
+<td>Abre; 10 páginas, 47 de 50 rótulos inteiros</td>
+</tr>
+<tr>
+<td>300</td>
+<td>Completo (7.962 x 562 px)</td>
+<td>Completo (300 de 300 rótulos)</td>
+<td>Abre; 10 páginas, 282 de 300 rótulos inteiros</td>
+</tr>
+<tr>
+<td>1.000</td>
+<td>Completo (7.962 x 1.962 px)</td>
+<td>Completo (1.000 de 1.000 rótulos)</td>
+<td>Abre; 20 páginas, 940 de 1.000 rótulos inteiros</td>
+</tr>
+<tr>
+<td>2.000</td>
+<td>Completo (7.962 x 3.962 px)</td>
+<td>Completo (2.000 de 2.000 rótulos)</td>
+<td>Abre; 40 páginas, 1.880 de 2.000 rótulos inteiros</td>
+</tr>
+<tr>
+<td>5.000</td>
+<td>Completo (7.962 x 9.962 px)</td>
+<td>Não gerado</td>
+<td>Abre; 100 páginas, 4.700 de 5.000 rótulos inteiros</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>PNG e SVG.</strong> Os arquivos gerados abrem e contêm o diagrama completo: as imagens PNG têm exatamente as dimensões da área das formas, e cada SVG traz todos os rótulos da carga.</li>
+<li><strong>PDF.</strong> Todos os arquivos abrem, mas o diagrama é dividido em páginas tamanho carta, e as formas que caem na divisão entre páginas são cortadas. Em todos os portes, cerca de 6% dos rótulos não aparecem inteiros em nenhuma página. A medida confirma o que o piloto manual havia mostrado.</li>
+<li><strong>SVG com 5.000 formas.</strong> O arquivo não foi gerado. Em quatro execuções, a exportação não concluiu: nas duas com a janela visível, o draw.io exibiu a mensagem "Error: Timeout"; nas duas sem janela, o diálogo de salvamento não apareceu em 5 e em 15 minutos. Na coleta, a mesma exportação chegou ao diálogo "Save as" nas cinco tentativas, em cerca de 2 minutos. A validação difere da coleta no caminho de salvamento (Download, em vez do seletor do navegador) e no estado da máquina, e esta avaliação não isolou a causa. O resultado indica que, nesse porte, a exportação SVG está no limite do que o draw.io consegue concluir.</li>
 </ul>
 <p>O julgamento das medidas pelos níveis da Fase 2 está em <a href="../resultados/">Análise dos dados e resultados</a>.</p>
 <h2 id="manutenibilidade-dupla-3">Manutenibilidade (Dupla 3)<a class="headerlink" href="#manutenibilidade-dupla-3" title="Permanent link">&para;</a></h2>

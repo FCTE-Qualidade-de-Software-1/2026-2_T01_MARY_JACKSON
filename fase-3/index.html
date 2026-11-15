@@ -2002,6 +2002,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#validacao-das-exportacoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validação das exportações
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#leitura-das-medidas" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2282,6 +2293,10 @@
 <td>Lê os traces, extrai tempo e heap segundo a <a href="#leitura-das-medidas">leitura das medidas</a> e gera o CSV de tentativas. Apenas lê os traces, sem alterá-los.</td>
 </tr>
 <tr>
+<td>Script <code>validar_exportacoes.py</code> (Python 3, Playwright e pypdf)</td>
+<td>Exporta e salva um arquivo de cada formato por porte e verifica se o arquivo é válido e se contém o diagrama completo (ver <a href="#validacao-das-exportacoes">validação das exportações</a>). Não mede tempo.</td>
+</tr>
+<tr>
 <td>Script <code>gerar_cargas.py</code> (Python 3)</td>
 <td>Gera as cinco cargas sintéticas de forma reprodutível.</td>
 </tr>
@@ -2391,6 +2406,35 @@
 <li><strong>PDF.</strong> Sem servidor de exportação, o draw.io prepara uma página de impressão em nova janela e chama <code>print()</code>; o arquivo PDF seria produzido pela impressão do próprio Chrome. A automação substitui <code>print()</code> por uma função que apenas grava a marca <code>fim_operacao</code>. Assim, M2.4 e M2.5 de PDF medem a preparação da página de impressão pelo draw.io, e a geração do arquivo pelo navegador, que não é do draw.io, fica fora da medida.</li>
 <li><strong>Salvamento em disco.</strong> O salvamento depende de diálogos com o avaliador (o "Save as" do draw.io e o seletor do Windows) e não é medido. A exportação termina quando o draw.io conclui a geração e exibe o diálogo "Save as".</li>
 </ol>
+<h3 id="validacao-das-exportacoes">Validação das exportações<a class="headerlink" href="#validacao-das-exportacoes" title="Permanent link">&para;</a></h3>
+<p>A coleta mede o tempo até o draw.io concluir a exportação, sem salvar os arquivos. Por isso, a integridade dos arquivos é verificada à parte, depois da coleta, pelo script <code>validar_exportacoes.py</code>. Para cada porte, ele exporta e salva um arquivo de cada formato e registra, separadamente, se o arquivo abre (formato válido) e se o diagrama está completo nele. A validação não mede tempo, e as condições de execução da coleta não se aplicam a ela.</p>
+<table>
+<thead>
+<tr>
+<th>Formato</th>
+<th>Como o arquivo é obtido</th>
+<th>Verificação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PNG</td>
+<td>Diálogo "Save as" com a opção Download, pois a API de salvamento do navegador é desativada para permitir a automação.</td>
+<td>Assinatura do formato e dimensões da imagem, comparadas com a área ocupada pelas formas da carga; uma imagem cortada teria outras dimensões.</td>
+</tr>
+<tr>
+<td>SVG</td>
+<td>Como no PNG.</td>
+<td>XML válido e quantidade de rótulos <code>Rotulo NNNN</code> distintos igual ao número de formas da carga.</td>
+</tr>
+<tr>
+<td>PDF</td>
+<td>Página de impressão preparada pelo draw.io, convertida em PDF pelo mecanismo de impressão do Chrome, o mesmo do "Salvar como PDF", em papel tamanho carta.</td>
+<td>Assinatura do formato, número de páginas e quantidade de rótulos que aparecem inteiros em alguma página.</td>
+</tr>
+</tbody>
+</table>
+<p>PNG e SVG podem ser exportados com a janela do navegador visível (opção <code>--janela</code>); o PDF é gerado sem janela, único modo em que o Chrome permite gerar o PDF por automação.</p>
 <h3 id="leitura-das-medidas">Leitura das medidas<a class="headerlink" href="#leitura-das-medidas" title="Permanent link">&para;</a></h3>
 <p>As medidas consideram as tarefas de pelo menos 1 ms do thread principal da página do draw.io. São ignoradas as tarefas que apenas tratam movimento do mouse ou tecla sendo solta, que são ações de entrada e não processamento da operação, e as tarefas da própria automação.</p>
 <table>
@@ -2477,6 +2521,10 @@
 <tr>
 <td><code>brutos/piloto/manual/</code></td>
 <td>CSV versionado e caminho local dos 4 traces do piloto manual, restaurados do pacote externo.</td>
+</tr>
+<tr>
+<td><code>brutos/exportados/</code></td>
+<td><code>validacao.csv</code> versionado e caminho local dos 14 arquivos exportados na validação, restaurados do pacote externo.</td>
 </tr>
 <tr>
 <td><code>README.md</code> e <code>SHA256SUMS.txt</code></td>
