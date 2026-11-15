@@ -2164,7 +2164,7 @@
 
 <h1 id="painel-do-psm">Painel do PSM<a class="headerlink" href="#painel-do-psm" title="Permanent link">&para;</a></h1>
 <p>Esta página é gerada automaticamente a cada publicação do site e sempre que uma issue é aberta, fechada ou editada. Os dados vêm das issues do GitHub: a sprint (milestone), as datas de abertura e fechamento e os campos "Estimativa (horas)" e "Horas reais" do formulário de tarefa. As definições de cada métrica estão no <a href="../plano-de-medicao/">Plano de medição</a>.</p>
-<p><em>Atualizado automaticamente em 15/11/2026 20:08 (horário de Brasília), a partir de 53 issues e do registro de horas.</em></p>
+<p><em>Atualizado automaticamente em 15/11/2026 20:12 (horário de Brasília), a partir de 53 issues e do registro de horas.</em></p>
 <h2 id="como-este-painel-e-montado">Como este painel é montado<a class="headerlink" href="#como-este-painel-e-montado" title="Permanent link">&para;</a></h2>
 <p>A cada publicação do site, o script <code>hooks/horas.py</code> lê as issues do GitHub e o registro de horas, calcula as três métricas do <a href="../plano-de-medicao/">Plano de medição</a> e compara cada resultado com o limite de decisão. A interpretação e as decisões de cada medição ficam no <a href="../registro-de-medicoes/">Registro de medições</a>.</p>
 <pre class="mermaid"><code>flowchart LR
@@ -2183,7 +2183,7 @@
 <li><strong>O que mede:</strong> Quanto do que a equipe planejou para a sprint já foi entregue.</li>
 <li><strong>Como é calculada:</strong> Issues concluídas da sprint ÷ issues da sprint × 100. Issues fechadas como "não planejada" contam como planejadas, mas não como concluídas.</li>
 <li><strong>De onde vêm os dados:</strong> Milestone (sprint), situação e motivo do fechamento de cada issue.</li>
-<li><strong>Quando exige decisão:</strong> Menos de 50% concluído na metade da sprint: redistribuir tarefas.</li>
+<li><strong>Quando exige decisão:</strong> Até a metade da sprint (equipe): menos de 50% concluído, redistribuir tarefas. Da metade ao fim (guia): diferença entre planejado e concluído acima de 5%, investigar; acima de 10%, ação corretiva. A coluna "Critério" mostra qual foi aplicado na data desta publicação.</li>
 <li><strong>Referência:</strong> PSM/CID, Parte 1, Tabela 5, linha 1; Parte 2, seção 8.3.</li>
 </ul>
 <table>
@@ -2194,6 +2194,7 @@
 <th>Concluídas</th>
 <th>Não planejadas</th>
 <th>Concluído</th>
+<th>Critério</th>
 <th>Situação</th>
 </tr>
 </thead>
@@ -2204,6 +2205,7 @@
 <td>10</td>
 <td>—</td>
 <td>100,0%</td>
+<td>fim da sprint (guia)</td>
 <td>dentro do limite</td>
 </tr>
 <tr>
@@ -2212,6 +2214,7 @@
 <td>8</td>
 <td>—</td>
 <td>100,0%</td>
+<td>fim da sprint (guia)</td>
 <td>dentro do limite</td>
 </tr>
 <tr>
@@ -2220,7 +2223,8 @@
 <td>15</td>
 <td>2</td>
 <td>88,2%</td>
-<td>dentro do limite</td>
+<td>fim da sprint (guia)</td>
+<td>fora do limite: ação corretiva (faltam 11,8%)</td>
 </tr>
 <tr>
 <td>Sprint 4 – Coleta e análise</td>
@@ -2228,7 +2232,8 @@
 <td>10</td>
 <td>—</td>
 <td>62,5%</td>
-<td>dentro do limite</td>
+<td>segunda metade (guia)</td>
+<td>fora do limite: ação corretiva (faltam 37,5%)</td>
 </tr>
 <tr>
 <td>Sem sprint</td>
@@ -2236,7 +2241,8 @@
 <td>2</td>
 <td>—</td>
 <td>100,0%</td>
-<td>dentro do limite</td>
+<td>—</td>
+<td>sem prazo</td>
 </tr>
 </tbody>
 </table>
@@ -2247,7 +2253,7 @@ xychart-beta
     y-axis "% concluído" 0 --&gt; 100
     bar [100.0, 100.0, 88.2, 62.5, 100.0]
     line [50.0, 50.0, 50.0, 50.0, 50.0]</code></pre>
-<p><em>Figura 2. Percentual de issues concluídas por sprint. Barras lilás: percentual concluído; linha azul: limite de decisão (50%). Fonte: issues e milestones do GitHub, em 15/11/2026.</em></p>
+<p><em>Figura 2. Percentual de issues concluídas por sprint. Barras lilás: percentual concluído; linha azul: critério da metade da sprint (50%). No fim da sprint vale a diferença de até 10% (ver a coluna Critério). Fonte: issues e milestones do GitHub, em 15/11/2026.</em></p>
 <h2 id="2-estimado-vs-realizado-recursos-e-custos">2. Estimado vs. realizado (Recursos e Custos)<a class="headerlink" href="#2-estimado-vs-realizado-recursos-e-custos" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>O que mede:</strong> Se o esforço gasto está de acordo com o que foi estimado.</li>
