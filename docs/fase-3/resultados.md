@@ -129,6 +129,20 @@ Abertura e edição apresentam desempenho favorável nas cargas testadas. G2 = 1
 
 A revisão de 15/11/2026 apresenta inspeção qualitativa e correções do procedimento. **Ainda não há métricas SonarCloud para os sete arquivos completos; o novo escopo permanece sem julgamento quantitativo.** Consulte o [relatório fornecido](evidencias/resultados-das-analises.md) e o [inventário da coleta](coleta-de-dados.md#manutenibilidade-dupla-3).
 
+### Conferência das entregas da tarefa #47
+
+A tarefa solicita comparar os dados com a Fase 2, pontuar as questões e o objetivo e registrar interpretação, sugestões e conclusão inicial. Essas entregas estão apresentadas abaixo para os dados quantitativos disponíveis na seção 5 do relatório fornecido, referentes à campanha de 08/11/2026. Os numeradores, denominadores e IDs foram preservados também em [CSV de agregados históricos](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/blob/main/dados/avaliacao/manutenibilidade/metricas-historicas.csv); os cálculos foram conferidos a partir desses valores.
+
+| Entrega solicitada | Registro nesta página | Alcance |
+| --- | --- | --- |
+| Comparação com métricas e critérios da Fase 2 | Fórmulas, resultados e faixas na tabela de julgamento | Recortes históricos |
+| Nota de cada questão | Q3.1 = 3; Q3.2 = 5; Q3.3 = 5 | Recortes históricos |
+| Nota do objetivo de Manutenibilidade | G3 = mínimo(3, 5, 5) = 3 (Atenção) | Recortes históricos |
+| Interpretação e sugestões ao draw.io | Interpretação das hipóteses e quatro sugestões fundamentadas | Dados históricos e inspeção qualitativa, com limites explícitos |
+| Conclusão inicial | Adoção com ressalvas sob a perspectiva de Manutenibilidade | Avaliação parcial |
+
+**Situação:** análise documental dos dados históricos registrada; avaliação quantitativa do escopo revisado pendente. O anexo não fornece novas medidas dos sete arquivos completos. A conclusão da análise histórica não demonstra a conclusão dessa nova coleta nem confirma, por si só, a publicação desta página na GitPage.
+
 ### Cálculo das métricas, notas e julgamento
 
 A coleta de 08/11/2026, versão `32.6.10`, commit `c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3`, mediu recortes de funções. A comparação abaixo utiliza as [fórmulas da Fase 2](../fase-2/metricas.md#manutenibilidade-dupla-3) e os [critérios de julgamento e pontuação](../fase-2/niveis-e-julgamento.md#manutenibilidade-dupla-3). **As notas se restringem aos recortes históricos; não representam os sete arquivos completos.** A correspondência Adequado = 5, Atenção = 3 e Crítico = 1 e a regra de agregação de G3 foram acrescentadas após essa coleta, para completar a pontuação, mantendo as faixas originais.

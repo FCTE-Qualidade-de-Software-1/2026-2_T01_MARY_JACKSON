@@ -1,0 +1,4 @@
+data_coleta,versao,commit,escopo,questao,metrica,numerador,denominador,fator,resultado,nota,julgamento,analysis_id
+2026-11-08,32.6.10,c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3,recortes historicos de importacao,Q3.1,M3.1,275,25,1,11.000000,3,Atencao,55180c38-c24b-48d4-adc7-41c45969d11a
+2026-11-08,32.6.10,c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3,recortes historicos de rotulos corrigidos,Q3.2,M3.1,1057,116,1,9.112069,5,Adequado,4853c608-87f3-477c-ae03-18d6f2fab544
+2026-11-08,32.6.10,c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3,recortes historicos de exportacao com cobertura parcial de PDF,Q3.3,M3.2,28,2846,100,0.983837,5,Adequado,932752e9-e32c-4e9f-877f-b208641f4374
