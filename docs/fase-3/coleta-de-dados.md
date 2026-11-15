@@ -82,42 +82,56 @@ O julgamento das medidas pelos níveis da Fase 2 está em [Análise dos dados e 
 
 ## Manutenibilidade (Dupla 3)
 
-- **Versão avaliada:** draw.io release `32.6.10` (`H3ytt0r10/drawio`, commit `c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3`).
-- **Ambiente de execução e limitação:**  — Foi utilizado o sonarcloud dentro de um fork do projeto original, como descrito na versão utilizada para responder todas as questões relacionadas a manutenibilidade (Q3.1 a Q3.3).
-- **Dados brutos (CSV):** armazenados em `dados/avaliacao/manutenibilidade/` (`resultados_dinamicos.csv` e `inspecao_estatica.csv`).
+- **Versão avaliada:** draw.io release `32.6.10` (`H3ytt0r10/drawio`). A campanha histórica utilizou o commit `c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3`; a nova inspeção informa o commit base `aacddaf44e6b4db468ef3f4f3e3bb56863f1d581`.
+- **Ambiente de execução e limitação:** análise estática no fork do projeto, com SonarCloud na campanha histórica e inspeção local dos sete arquivos completos na revisão de 15/11/2026. Ainda não existem medidas SonarCloud coletadas para esse conjunto completo.
+- **Dados e evidências:** [relatório consolidado das análises](evidencias/resultados-das-analises.md), preservado conforme o documento fornecido. Os CSVs anteriormente mencionados não estão disponíveis neste repositório; os scripts, manifestos e demais artefatos citados no relatório pertencem ao ambiente de origem.
 
+### Verificação de duplicidade entre os códigos (Q3.3 e M3.2)
 
-### Verificação de duplicidade entre dos códigos ( Q3.3 e M3.2)
+A métrica utiliza a razão entre as linhas duplicadas e o total de linhas do recorte de exportação PNG, PDF e SVG, multiplicada por 100. O resultado histórico disponível corresponde a recortes de funções, com cobertura parcial do fluxo de PDF:
 
-Foi feito um relátorio encima dos arquivos EditorUI.js(src/main/webapp/js/diagramly/EditorUi.js),  Editor.js (src/main/webapp/js/diagramly/Editor.js), Graph (src/main/webapp/js/grapheditor/Graph.js) e  Menus.js (src/main/webapp/js/diagramly/Menus.js), para o calculo da porcentagem foi feita a razão entre o número de linhas duplicadas e o numero total de linhas do arquivo, o resultado encontrado foi: 
+| Componente | Número de linhas duplicadas | Número total de linhas | Porcentagem | Status histórico |
+| --- | ---: | ---: | ---: | --- |
+| Exportação PNG/PDF/SVG — recorte de 08/11/2026 | 28 | 2.846 | 0,983837% | Adequado |
 
-| Arquivo | Número de linhas duplicadas | Número total | Porcentagem | Status |
-| --- | --- | --- | --- | --- |
-|EditorUI.js| 0 |  43510   |  0%  |  Adequado  |
-|Editor.js| 0  | 15362 | 0% | Adequado |
-|Graph|  0 |  54775 |   0% | Adequado |
-| Menus.js|  0 |  7421    |  0%|  Adequado|
+Para o novo escopo, as linhas duplicadas e o percentual de duplicação ainda não foram coletados no SonarCloud. Assim, os zeros e os julgamentos anteriormente apresentados por arquivo foram retirados. O total dos sete arquivos inclui outras funcionalidades e não pode ser utilizado automaticamente como denominador da exportação. Também não se deve calcular a média simples dos percentuais individuais dos arquivos.
 
+### Verificação da complexidade cognitiva das funções (Q3.1, Q3.2 e M3.1)
 
-### Verificação da complexidade cognitiva das funcções ( Q3.1, Q3.2 e M3.2)
+A complexidade cognitiva média deve ser calculada pela divisão da complexidade cognitiva total pela quantidade de funções de cada componente. A complexidade total de um arquivo não pode ser comparada diretamente às faixas de julgamento da média por função.
 
+**Para as funções de rótulos: edição de texto e tratamento HTML**
 
-Foi feito um relátorio encima dos arquivos relacionados as funções de Rótulos: edição de texto e tratamento HTML: EditorUI.js(src/main/webapp/js/diagramly/EditorUi.js),  mxCellEditor.js (src/main/webapp/mxgraph/src/view/mxCellEditor.js), Graph (src/main/webapp/js/grapheditor/Graph.js) e  purify.min.js (src/main/webapp/js/sanitizer/purify.min.js). Foi feita tambem a análise dos codigos relacionados as funções de Importação: abrir arquivos locais .drawio e .xml: EditorUI.js(src/main/webapp/js/diagramly/EditorUi.js), App.js (src/main/webapp/js/diagramly/App.js),Editor.js (src/main/webapp/js/grapheditor/Editor.js) e mxCodec.js (src/main/webapp/mxgraph/src/io/mxCodec.js). O resultado encontrado foi:
+O escopo inclui `src/main/webapp/js/diagramly/EditorUi.js`, `src/main/webapp/mxgraph/src/view/mxCellEditor.js`, `src/main/webapp/js/grapheditor/Graph.js` e `src/main/webapp/js/sanitizer/purify.min.js`.
 
-**Para as funções de Rótulos: edição de texto e tratamento HTML**
-
-| Arquivo | Complexidade cognitiva |  Status |
+| Arquivo | Complexidade cognitiva | Status |
 | --- | --- | --- |
-|EditorUI.js| 0 |    Adequado  |
-| mxCellEditor| 197  | Crítico |
-|Graph|  0 | Adequado |
-| purify.min.js|  0 | Adequado|
+| `EditorUi.js` | Não coletada no novo escopo | Sem julgamento |
+| `mxCellEditor.js` | Não coletada no novo escopo | Sem julgamento |
+| `Graph.js` | Não coletada no novo escopo | Sem julgamento |
+| `purify.min.js` | Não coletada no novo escopo | Sem julgamento |
 
-**Para as funções de  Importação: abrir arquivos locais**
+O recorte histórico corrigido de rótulos registrou complexidade total de **1.057** e **116 funções**, com média de **9,112069 (Adequado)**. A média original de `9,512820512820513` foi invalidada por sobreposição de trechos. Esses números não representam os quatro arquivos completos.
 
-| Arquivo | Complexidade cognitiva |  Status |
+**Para as funções de importação: abertura de arquivos locais `.drawio` e `.xml`**
+
+O escopo inclui `src/main/webapp/js/diagramly/EditorUi.js`, `src/main/webapp/js/diagramly/App.js`, `src/main/webapp/js/grapheditor/Editor.js` e `src/main/webapp/mxgraph/src/io/mxCodec.js`. O caminho correto é `grapheditor/Editor.js`, distinto de `diagramly/Editor.js` utilizado anteriormente.
+
+| Arquivo | Complexidade cognitiva | Status |
 | --- | --- | --- |
-|EditorUI.js| 0 |    Adequado  |
-| App.js| 3547 | Crítico |
-|Editor.js|  1116 | Crítico  |
-| mxCodec.js  |  119 | Crítico |
+| `EditorUi.js` | Não coletada no novo escopo | Sem julgamento |
+| `App.js` | Não coletada no novo escopo | Sem julgamento |
+| `Editor.js` (`grapheditor`) | Não coletada no novo escopo | Sem julgamento |
+| `mxCodec.js` | Não coletada no novo escopo | Sem julgamento |
+
+O recorte histórico de importação registrou complexidade total de **275** e **25 funções**, com média de **11,000000 (Atenção)**. Esses números não representam os quatro arquivos completos.
+
+### Observações e falhas da coleta
+
+- **Necessidade de nova análise.** Os dados iniciais pareciam estranhos, especialmente os zeros de complexidade e duplicação em arquivos extensos. Por isso, foi necessário realizar uma nova análise do escopo e do procedimento.
+- **Diferenças de escopo.** A campanha anterior utilizou 41 recortes e omitiu quatro arquivos das imagens. A revisão inventariou sete arquivos únicos completos e corrigiu a identificação de `Editor.js`.
+- **Configuração da análise.** Além da falha de configuração relatada inicialmente, foi identificado risco de exclusão dos arquivos maiores. O relatório informa a preparação de configuração conjunta com limite de tamanho ampliado; isso ainda exige confirmação do processamento remoto e não comprova exclusão na campanha passada.
+- **Validação local.** Segundo o relatório, os sete arquivos passaram em `node --check`. Isso verifica a sintaxe, sem comprovar funcionamento ou baixa complexidade. O inventário de linhas, tamanhos e os achados qualitativos estão no relatório consolidado.
+- **Limites dos dados.** Ausência de coleta não equivale a zero. Os valores históricos pertencem aos recortes de 08/11/2026 e não classificam os sete arquivos completos. O novo escopo permanece sem julgamento quantitativo.
+
+Os cálculos, os critérios de julgamento e os limites das conclusões estão em [Análise dos dados e resultados](resultados.md#manutenibilidade-dupla-3).

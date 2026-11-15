@@ -34,4 +34,30 @@ Conforme definido na árvore GQM da Fase 2, a métrica **M1.1** é calculada ind
 
 ## Manutenibilidade (Dupla 3)
 
-*Espaço reservado para a análise e resultados da Dupla 3.*
+### Resultado atualizado
+
+A revisão de 15/11/2026 apresenta inspeção qualitativa e correções do procedimento. **Ainda não há métricas SonarCloud para os sete arquivos completos; o novo escopo permanece sem julgamento quantitativo.** Consulte o [relatório fornecido](evidencias/resultados-das-analises.md) e o [inventário da coleta](coleta-de-dados.md#manutenibilidade-dupla-3).
+
+### Métricas históricas — outro escopo
+
+A coleta de 08/11/2026, versão `32.6.10`, commit `c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3`, mediu recortes de funções. Estes valores são preservados para rastreabilidade e não representam os sete arquivos completos.
+
+| Questão / Métrica | Dados registrados | Cálculo | Resultado | Julgamento histórico |
+| --- | --- | --- | ---: | --- |
+| Q3.1 — Importação / M3.1 | Complexidade 275; 25 funções | `275 / 25` | 11,000000 | Atenção |
+| Q3.2 — Rótulos / M3.1 | Complexidade 1057; 116 funções | `1057 / 116` | 9,112069 | Adequado |
+| Q3.3 — Exportação / M3.2 | 28 linhas duplicadas; 2846 linhas totais | `100 × 28 / 2846` | 0,983837% | Adequado |
+
+A média original de rótulos, `9,512820512820513`, foi invalidada por sobreposição de trechos. O valor corrigido é `9,112069`. Os IDs históricos constam no relatório preservado.
+
+Os critérios da equipe são: M3.1 adequado até 10, atenção acima de 10 até 15 e crítico acima de 15; M3.2 adequado até 5%, atenção acima de 5% até 10% e crítico acima de 10%. A complexidade total de um arquivo não pode ser comparada diretamente às faixas da média por função.
+
+### Achados, melhorias e conclusão
+
+A inspeção relatada identificou responsabilidades distribuídas entre aplicação, interface, editor e codecs. A edição de rótulos exige acompanhar a implementação base e as redefinições em `Graph.js`; a sanitização envolve a biblioteca e sua integração. O tamanho dos arquivos, isoladamente, não prova baixa manutenibilidade.
+
+Recomenda-se medir a complexidade por função e as dependências antes de escolher refatorações. A nova conclusão depende de coleta conjunta, confirmação do inventário remoto, preservação de parâmetros e inspeção dos blocos duplicados. Para M3.1, calcular `C / F` com `F > 0`; para M3.2, calcular `100 × Ld / Lt` com `Lt > 0`, delimitando o código de exportação e sem calcular média simples dos percentuais por arquivo.
+
+**Não há evidência quantitativa suficiente para classificar os sete arquivos completos nem confirmar H3.3 no novo escopo.** Os resultados históricos se limitam aos recortes medidos, com cobertura parcial de PDF; não sustentam conclusões sobre todo o produto ou sobre a versão de referência `32.2.0`. A inspeção do cliente não cobre a implementação do servidor externo de PDF.
+
+Se uma coleta válida retornar 0%, registrar apenas que não foi detectada duplicação nas condições medidas. A validação do detector com duplicação conhecida em campanha piloto separada ainda não foi executada.

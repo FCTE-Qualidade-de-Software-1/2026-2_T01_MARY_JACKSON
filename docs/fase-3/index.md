@@ -199,7 +199,7 @@ Se o Chrome for atualizado durante a coleta, a nova versão é registrada a part
 
 A análise de manutenibilidade utiliza duas medidas: a complexidade cognitiva média por função, calculada separadamente para importação de arquivos e edição de rótulos, e o percentual de código duplicado no conjunto de exportação PNG, PDF e SVG. Os resultados se restringem ao código selecionado, conforme o [escopo da avaliação](../fase-1/escopo.md).
 
-Segundo o relato da dupla, houve uma única falha na configuração do SonarCloud; após a correção, as demais execuções ocorreram sem problemas. <!-- Falar aqui sobre observações encontradas sobre os dados brutos do sonarclolud, se houver. -->
+Os dados iniciais pareciam estranhos, especialmente os zeros de complexidade e duplicação em arquivos extensos. Por isso, foi necessário realizar uma nova análise. A revisão de 15/11/2026 identificou diferenças de escopo, confusão entre `diagramly/Editor.js` e `grapheditor/Editor.js` e risco de exclusão dos arquivos maiores. A [coleta atualizada](coleta-de-dados.md#manutenibilidade-dupla-3) distingue o inventário dos sete arquivos completos das métricas históricas de recortes de funções. Ainda não há medidas SonarCloud para o novo escopo.
 
 ### Procedimento
 
@@ -223,11 +223,15 @@ O procedimento segue as [fichas das métricas](../fase-2/metricas.md#manutenibil
 
 Uma execução é considerada **válida** quando a análise do SonarCloud termina com sucesso, corresponde ao commit e ao escopo definidos e fornece os dados necessários ao cálculo da métrica. Para M3.1, é necessário `F > 0`; para M3.2, `Lt > 0`. A ausência de dados não é registrada como valor zero: o resultado permanece pendente até que a coleta seja completada.
 
-Segundo o relato da dupla, ocorreu **uma única tentativa com falha**, causada por erro na configuração do SonarCloud. Essa tentativa foi desconsiderada para o cálculo das métricas e a análise foi executada novamente após a correção. As demais execuções ocorreram normalmente, sem outras falhas ou interrupções relatadas. O incidente é registrado como falha da configuração da coleta, sem atribuí-lo à qualidade do código do draw.io.
+Segundo o relato da dupla, ocorreu uma única tentativa com falha, causada por erro na configuração do SonarCloud. Essa tentativa foi desconsiderada para o cálculo das métricas e a análise foi executada novamente após a correção. As demais execuções ocorreram normalmente, sem outras falhas ou interrupções relatadas. O incidente é registrado como falha da configuração da coleta, sem atribuí-lo à qualidade do código do draw.io.
+
+Além disso, durante a avaliação dos resultados obtidos, foram identificados dados inconsistentes e valores que não refletiam adequadamente o escopo definido nas fases anteriores do estudo. Após essa verificação, foi realizada uma nova análise dos dados, aplicando um filtro para considerar exclusivamente os arquivos que continham as funções previamente selecionadas e descritas nas etapas anteriores. Esse refinamento teve como objetivo garantir maior aderência entre as métricas coletadas e o conjunto de funcionalidades efetivamente analisadas, evitando que arquivos não relacionados influenciassem os resultados apresentados.
 
 Como a coleta é feita por análise estática, não se aplica a repetição de cinco tentativas nem o cálculo de medianas adotados pela Dupla 2. Uma nova execução é necessária quando houver falha, dados incompletos ou alteração do commit, do escopo ou da configuração; nesse último caso, os resultados devem ser identificados separadamente.
 
 ### Registro dos dados
+
+O [relatório consolidado fornecido](evidencias/resultados-das-analises.md) foi preservado neste repositório. A [coleta](coleta-de-dados.md#manutenibilidade-dupla-3) registra o inventário e a situação das medidas; os [resultados](resultados.md#manutenibilidade-dupla-3) apresentam os cálculos históricos e seus limites. Os demais artefatos citados no relatório são referências ao ambiente de origem e não foram fornecidos aqui.
 
 ### Piloto
 
