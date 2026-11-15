@@ -38,6 +38,7 @@ Se o Chrome for atualizado durante a coleta, a nova versão é registrada a part
 | --- | --- |
 | Script `coletar.py` (Python 3 e Playwright) | Abre o Google Chrome instalado na máquina, executa as operações do [procedimento](#procedimento) e grava um trace do Chrome por operação, com as categorias de eventos do painel Performance do DevTools (tarefas do thread principal, eventos, contadores de memória e capturas de tela). |
 | Script `ler_traces.py` (Python 3) | Lê os traces, extrai tempo e heap segundo a [leitura das medidas](#leitura-das-medidas) e gera o CSV de tentativas. Apenas lê os traces, sem alterá-los. |
+| Script `validar_exportacoes.py` (Python 3, Playwright e pypdf) | Exporta e salva um arquivo de cada formato por porte e verifica se o arquivo é válido e se contém o diagrama completo (ver [validação das exportações](#validacao-das-exportacoes)). Não mede tempo. |
 | Script `gerar_cargas.py` (Python 3) | Gera as cinco cargas sintéticas de forma reprodutível. |
 | `Get-FileHash` (PowerShell) | Calcula o SHA-256 das cargas para identificá-las. |
 | Chrome DevTools, painel Performance | Usado no piloto manual e para conferir qualquer trace: o CSV registra os instantes `ti` e `tf` usados em cada medida. |
@@ -90,6 +91,18 @@ Cada tentativa de um porte é composta por quatro sessões, cada uma em um perfi
 2. **PDF.** Sem servidor de exportação, o draw.io prepara uma página de impressão em nova janela e chama `print()`; o arquivo PDF seria produzido pela impressão do próprio Chrome. A automação substitui `print()` por uma função que apenas grava a marca `fim_operacao`. Assim, M2.4 e M2.5 de PDF medem a preparação da página de impressão pelo draw.io, e a geração do arquivo pelo navegador, que não é do draw.io, fica fora da medida.
 3. **Salvamento em disco.** O salvamento depende de diálogos com o avaliador (o "Save as" do draw.io e o seletor do Windows) e não é medido. A exportação termina quando o draw.io conclui a geração e exibe o diálogo "Save as".
 
+### Validação das exportações
+
+A coleta mede o tempo até o draw.io concluir a exportação, sem salvar os arquivos. Por isso, a integridade dos arquivos é verificada à parte, depois da coleta, pelo script `validar_exportacoes.py`. Para cada porte, ele exporta e salva um arquivo de cada formato e registra, separadamente, se o arquivo abre (formato válido) e se o diagrama está completo nele. A validação não mede tempo, e as condições de execução da coleta não se aplicam a ela.
+
+| Formato | Como o arquivo é obtido | Verificação |
+| --- | --- | --- |
+| PNG | Diálogo "Save as" com a opção Download, pois a API de salvamento do navegador é desativada para permitir a automação. | Assinatura do formato e dimensões da imagem, comparadas com a área ocupada pelas formas da carga; uma imagem cortada teria outras dimensões. |
+| SVG | Como no PNG. | XML válido e quantidade de rótulos `Rotulo NNNN` distintos igual ao número de formas da carga. |
+| PDF | Página de impressão preparada pelo draw.io, convertida em PDF pelo mecanismo de impressão do Chrome, o mesmo do "Salvar como PDF", em papel tamanho carta. | Assinatura do formato, número de páginas e quantidade de rótulos que aparecem inteiros em alguma página. |
+
+PNG e SVG podem ser exportados com a janela do navegador visível (opção `--janela`); o PDF é gerado sem janela, único modo em que o Chrome permite gerar o PDF por automação.
+
 ### Leitura das medidas
 
 As medidas consideram as tarefas de pelo menos 1 ms do thread principal da página do draw.io. São ignoradas as tarefas que apenas tratam movimento do mouse ou tecla sendo solta, que são ações de entrada e não processamento da operação, e as tarefas da própria automação.
@@ -121,6 +134,7 @@ Os CSVs, scripts e cargas são versionados em `dados/avaliacao/eficiencia/`. Os 
 | `brutos/traces/` | Caminho local dos 125 traces da coleta oficial (`.json.gz`), restaurados do pacote externo e ignorados pelo Git. São nomeados por porte, operação, formato e tentativa, como `p05000_exportar-svg_t3.json.gz`. Na coleta, URLs do tipo `data:` (imagens geradas durante a exportação) são truncadas em 200 caracteres para reduzir o tamanho; o restante do trace não é alterado. |
 | `brutos/piloto/` | CSV versionado e caminho local dos 10 traces do piloto automatizado, restaurados do pacote externo. |
 | `brutos/piloto/manual/` | CSV versionado e caminho local dos 4 traces do piloto manual, restaurados do pacote externo. |
+| `brutos/exportados/` | `validacao.csv` versionado e caminho local dos 14 arquivos exportados na validação, restaurados do pacote externo. |
 | `README.md` e `SHA256SUMS.txt` | Orientações de acesso e restauração das evidências e manifesto de integridade. |
 
 Colunas de `tentativas.csv`: `data`, `tentativa`, `porte`, `operacao`, `formato`, `versao_chrome`, `memoria_em_uso_pct`, `tempo_ms`, `heap_mib`, `resultado` (sucesso, falha, descartada ou verificar), `observacao`, `trace`, `ti_ms` e `tf_ms` (instantes de início e fim em ms desde o começo do trace, para conferência no DevTools).

@@ -80,6 +80,22 @@ Heap JavaScript usado, mediana das cinco tentativas, em MiB, com o menor e o mai
 - **Dispersão.** A exportação PNG com 5.000 formas teve a maior variação relativa entre tentativas (1,7 a 3,6 s); nas demais operações, as cinco tentativas ficaram próximas entre si.
 - **Memória.** O maior heap observado foi 418,3 MiB, no SVG com 5.000 formas. O heap após a abertura com 2.000 formas ficou ligeiramente abaixo do de 1.000 formas, o que é compatível com o momento da coleta de lixo do JavaScript.
 
+### Validação dos arquivos exportados
+
+Em 15/11/2026, o script `validar_exportacoes.py` exportou e salvou um arquivo de cada formato por porte e verificou cada um, conforme a [validação das exportações](index.md#validacao-das-exportacoes) do plano. O resultado está em `dados/avaliacao/eficiencia/brutos/exportados/validacao.csv`, e os arquivos, no pacote `eficiencia-exportacoes-2026-11-15.zip` da [pasta de evidências](https://drive.google.com/drive/folders/1jwootYRyhx7-tQTW6iViqpkXdaKxO7FM?usp=sharing).
+
+| Porte | PNG | SVG | PDF |
+| --- | --- | --- | --- |
+| 50 | Completo (7.962 x 62 px) | Completo (50 de 50 rótulos) | Abre; 10 páginas, 47 de 50 rótulos inteiros |
+| 300 | Completo (7.962 x 562 px) | Completo (300 de 300 rótulos) | Abre; 10 páginas, 282 de 300 rótulos inteiros |
+| 1.000 | Completo (7.962 x 1.962 px) | Completo (1.000 de 1.000 rótulos) | Abre; 20 páginas, 940 de 1.000 rótulos inteiros |
+| 2.000 | Completo (7.962 x 3.962 px) | Completo (2.000 de 2.000 rótulos) | Abre; 40 páginas, 1.880 de 2.000 rótulos inteiros |
+| 5.000 | Completo (7.962 x 9.962 px) | Não gerado | Abre; 100 páginas, 4.700 de 5.000 rótulos inteiros |
+
+- **PNG e SVG.** Os arquivos gerados abrem e contêm o diagrama completo: as imagens PNG têm exatamente as dimensões da área das formas, e cada SVG traz todos os rótulos da carga.
+- **PDF.** Todos os arquivos abrem, mas o diagrama é dividido em páginas tamanho carta, e as formas que caem na divisão entre páginas são cortadas. Em todos os portes, cerca de 6% dos rótulos não aparecem inteiros em nenhuma página. A medida confirma o que o piloto manual havia mostrado.
+- **SVG com 5.000 formas.** O arquivo não foi gerado. Em quatro execuções, a exportação não concluiu: nas duas com a janela visível, o draw.io exibiu a mensagem "Error: Timeout"; nas duas sem janela, o diálogo de salvamento não apareceu em 5 e em 15 minutos. Na coleta, a mesma exportação chegou ao diálogo "Save as" nas cinco tentativas, em cerca de 2 minutos. A validação difere da coleta no caminho de salvamento (Download, em vez do seletor do navegador) e no estado da máquina, e esta avaliação não isolou a causa. O resultado indica que, nesse porte, a exportação SVG está no limite do que o draw.io consegue concluir.
+
 O julgamento das medidas pelos níveis da Fase 2 está em [Análise dos dados e resultados](resultados.md).
 
 ## Manutenibilidade (Dupla 3)
