@@ -5,7 +5,7 @@ Dados da coleta de 14/11/2026, realizada no draw.io 32.6.10. A coleta oficial co
 ## Responsáveis
 
 - **Coleta:** Pedro Ian Guedes de Carvalho.
-- **Análise dos dados e resultados:** Thiago Gomes Pereira de Abreu, na etapa seguinte à coleta.
+- **Análise dos dados e resultados:** Thiago Gomes Pereira de Abreu. A análise está na seção de eficiência de [Análise dos dados e resultados](../../../docs/fase-3/resultados.md).
 
 ## Acesso às evidências
 
@@ -66,3 +66,9 @@ python dados/avaliacao/eficiencia/ler_traces.py dados/avaliacao/eficiencia/bruto
 ```
 
 A saída usa um arquivo separado para preservar `brutos/tentativas.csv`. As tabelas, gráficos e julgamentos da análise devem ser produzidos separadamente, mantendo a rastreabilidade para as tentativas oficiais.
+
+## Análise dos dados e resultados
+
+Execute `python dados/avaliacao/eficiencia/analisar.py` na raiz do repositório para reproduzir a análise. O script preserva os dados brutos e gera `analise/tentativas-classificadas.csv`, `analise/metricas-por-cenario.csv` e `analise/resumo.json`, além de atualizar apenas a seção de eficiência da página de resultados.
+
+As notas são exploratórias, pois os limites ainda constam como candidatos. Cenários com menos de quatro sucessos são não conclusivos e impedem uma nota global completa. O script verifica os hashes dos insumos normalizados para LF e exige revisão se os dados ou critérios mudarem.
