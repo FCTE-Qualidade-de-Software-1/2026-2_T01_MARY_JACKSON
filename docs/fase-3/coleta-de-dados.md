@@ -102,7 +102,7 @@ O julgamento das medidas pelos níveis da Fase 2 está em [Análise dos dados e 
 
 - **Versão avaliada:** draw.io release `32.6.10` (`H3ytt0r10/drawio`). A campanha histórica utilizou o commit `c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3`; a nova inspeção informa o commit base `aacddaf44e6b4db468ef3f4f3e3bb56863f1d581`.
 - **Ambiente de execução e limitação:** análise estática no fork do projeto, com SonarCloud na campanha histórica e inspeção local dos sete arquivos completos na revisão de 15/11/2026. Ainda não existem medidas SonarCloud coletadas para esse conjunto completo.
-- **Dados e evidências:** [relatório consolidado das análises](evidencias/resultados-das-analises.md), preservado conforme o documento fornecido. Os CSVs anteriormente mencionados não estão disponíveis neste repositório; os scripts, manifestos e demais artefatos citados no relatório pertencem ao ambiente de origem.
+- **Dados e evidências:** [relatório consolidado das análises](evidencias/resultados-das-analises.md), preservado conforme o documento fornecido. Os agregados históricos da seção 5 foram transcritos para [CSV](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/blob/main/dados/avaliacao/manutenibilidade/metricas-historicas.csv), com numeradores, denominadores e IDs das análises. Essa transcrição não é uma exportação bruta nem uma nova coleta. Os CSVs originais, scripts, manifestos e demais artefatos citados no relatório pertencem ao ambiente de origem e não estão disponíveis neste repositório.
 
 ### Verificação de duplicidade entre os códigos (Q3.3 e M3.2)
 
