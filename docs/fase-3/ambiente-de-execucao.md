@@ -39,13 +39,13 @@ Esta seção define o protocolo de coleta das métricas **M1.1 a M1.3** da [Fase
 | Condição | Regra / Observação |
 | --- | --- |
 | Perfil do navegador | Janela anônima/convidado, sem extensões instaladas, sem histórico e sem outras abas abertas durante a execução. |
-| Exposição de rede e vínculo de porta (limitação) | Na coleta inicial com `httpd:alpine`, a publicação padrão `-p 8080:80` vinculou o serviço em `0.0.0.0:8080` (acessível na rede local), o que fica registrado como limitação desta coleta. Na execução complementar com `jgraph/drawio:32.6.10` e nos próximos testes, o mapeamento foi restrito exclusivamente à interface de *loopback* (`127.0.0.1:8080:8080` / `127.0.0.1:8080:80`). |
+| Exposição de rede e vínculo de porta (limitação) | Na primeira rodada com `httpd:alpine` (`TD-01`, `TD-02` e `TD-05` a `TD-07`), a publicação padrão `-p 8080:80` vinculou o serviço em `0.0.0.0:8080` (acessível na rede local), o que fica registrado como limitação da coleta inicial. Na validação do servidor Java (`TD-03` e `TD-04`) e nos casos complementares (`TD-08` e `TD-09`), o mapeamento foi restrito exclusivamente à interface de *loopback* (`127.0.0.1:8080:8080` / `127.0.0.1:8080:80`). |
 | Limpeza de estado | Cada caso dinâmico de abertura/importação é executado descartando o diagrama anterior ou recarregando a sessão limpa. |
 | Divulgação responsável (protocolo 5.2.4) | Os arquivos `.drawio` contendo vetores de teste são criados em diretório temporário fora dos repositórios Git e excluídos imediatamente após a coleta. Nenhum *payload* literal ou comando de ataque é publicado no repositório, registrando-se apenas a descrição funcional de cada caso e o resultado observado. |
 
 ### Artefatos e casos de teste
 
-Os testes dinâmicos baseiam-se em cenários de vulnerabilidades históricas documentadas para o draw.io (injeção de script via importação XML, XSS em rótulos HTML — ref. CVE-2026-46642, *Path Traversal*/SSRF no *servlet* `/proxy` e variações de evasão em elementos não editáveis — ref. CVE-2026-58504).
+Os testes dinâmicos baseiam-se em cenários de vulnerabilidades históricas documentadas para o draw.io (injeção de script via importação XML, XSS em rótulos HTML — ref. CVE-2026-46642, *Path Traversal*/SSRF no *servlet* `/proxy` e variações de evasão em elementos não editáveis — ref. CVE-2026-58504), totalizando **9 casos dinâmicos** (ao menos 2 casos por componente em `M1.1` e 3 variações em `M1.3`).
 
 | ID | Questão / Métrica | Artefato ou Requisição | Cenário Testado | Mecanismo Avaliado |
 | --- | --- | --- | --- | --- |
@@ -56,6 +56,8 @@ Os testes dinâmicos baseiam-se em cenários de vulnerabilidades históricas doc
 | **TD-05** | Q1.5 (M1.3) | Arquivo `.drawio` temporário (Célula 1) | Rótulo HTML com elemento vetorial SVG aninhado e evento de carregamento inline. | Filtragem de elementos SVG e eventos automáticos. |
 | **TD-06** | Q1.5 (M1.3) | Arquivo `.drawio` temporário (Célula 2) | Rótulo HTML em célula bloqueada para edição (`editable=0`) contendo âncora com URI de execução de script. | Neutralização de URIs de script em elementos não editáveis. |
 | **TD-07** | Q1.5 (M1.3) | Arquivo `.drawio` temporário (Célula 3) | Rótulo HTML contendo quadro embutido apontando para URI de execução de script. | Remoção de elementos de quadro embutido na renderização. |
+| **TD-08** | Q1.1 (M1.1) | Arquivo `.drawio` temporário | Importação de diagrama contendo elemento vetorial SVG com evento de carregamento inline no atributo de texto (`html=1`). | Remoção de elementos vetoriais e eventos ativos durante a importação XML. |
+| **TD-09** | Q1.2 (M1.1) | Arquivo `.drawio` temporário | Abertura de diagrama contendo célula irmã regular acompanhada de célula bloqueada (`html=1;editable=0`) com imagem e manipulador de erro inline. | Isolamento de renderização e sanitização de rótulos HTML em células não editáveis. |
 
 ### Procedimento
 
@@ -72,8 +74,8 @@ A coleta é dividida em quatro blocos sequenciais:
 **Bloco B: Testes dinâmicos base — importação e rótulos (M1.1 / Q1.1 e Q1.2)**
 
 1. Iniciar o contêiner estático e abrir a aplicação em janela anônima.
-2. Acionar **Arquivo > Importar de > Dispositivo**, selecionar o caso `TD-01` e observar se há execução de script ou renderização limpa da forma.
-3. Acionar **Arquivo > Abrir de > Dispositivo**, descartar o diagrama anterior, selecionar o caso `TD-02` e verificar se o manipulador de evento inline é neutralizado.
+2. Acionar **Arquivo > Importar de > Dispositivo**, executar os casos `TD-01` e `TD-08` (descartando o diagrama entre execuções) e observar se há execução de script ou renderização limpa da forma.
+3. Acionar **Arquivo > Abrir de > Dispositivo**, executar os casos `TD-02` e `TD-09` (incluindo o cenário com célula irmã e célula `editable=0`) e verificar se os manipuladores de evento inline são neutralizados.
 
 **Bloco C: Testes dinâmicos base — proxy e Path Traversal (M1.1 / Q1.3)**
 
@@ -94,8 +96,8 @@ Conforme a estrutura GQM da Fase 2, a métrica **M1.1** é calculada individualm
 
 | Métrica / Componente | Entrada / Escopo | Critério de Sucesso (Protegido / Bloqueado) | Valor Registrado |
 | --- | --- | --- | --- |
-| **M1.1 — Q1.1 (Importação)** | $C_{t,1} = 1$ caso (`TD-01`). | Ausência de disparo de alerta e remoção de tags de script na importação XML. | $M1.1_{Q1.1} = (C_{b,1} / C_{t,1}) \times 100$, em $\%$. |
-| **M1.1 — Q1.2 (Rótulos HTML)** | $C_{t,2} = 1$ caso (`TD-02`). | Neutralização de manipuladores de evento inline em rótulos HTML. | $M1.1_{Q1.2} = (C_{b,2} / C_{t,2}) \times 100$, em $\%$. |
+| **M1.1 — Q1.1 (Importação)** | $C_{t,1} = 2$ casos (`TD-01` e `TD-08`). | Ausência de disparo de alerta e remoção de tags/elementos ativos na importação XML. | $M1.1_{Q1.1} = (C_{b,1} / C_{t,1}) \times 100$, em $\%$. |
+| **M1.1 — Q1.2 (Rótulos HTML)** | $C_{t,2} = 2$ casos (`TD-02` e `TD-09`). | Neutralização de manipuladores de evento inline em rótulos HTML (incluindo células `editable=0`). | $M1.1_{Q1.2} = (C_{b,2} / C_{t,2}) \times 100$, em $\%$. |
 | **M1.1 — Q1.3 (Proxy / Servidor)** | $C_{t,3} = 2$ casos (`TD-03` e `TD-04`). | Rejeição ativa pelo `ProxyServlet` no servidor Tomcat sem vazamento de arquivos internos. | $M1.1_{Q1.3} = (C_{b,3} / C_{t,3}) \times 100$, em $\%$. |
 | **M1.2 — Q1.4 (Sanitização)** | $P_t = 4$ pontos de chamada válidos em `Format.js` e `Graph.js`. | Presença comprovada de sanitização (`DOMPurify`) ou escape (`mxUtils.htmlEntities`) antes da inserção no DOM. | $M1.2 = (P_p / P_t) \times 100$, em $\%$. |
 | **M1.3 — Q1.5 (Resistência)** | $W_t = 3$ variações de evasão (`TD-05` a `TD-07`). | Neutralização integral das tags/atributos ofuscados ou combinados com estilos (`editable=0`). | $M1.3 = (W_b / W_t) \times 100$, em $\%$. |
@@ -110,7 +112,7 @@ Os registros da coleta ficam armazenados em `dados/avaliacao/seguranca/`:
 
 | Caminho | Conteúdo |
 | --- | --- |
-| `resultados_dinamicos.csv` | Registro de cada caso executado (`TD-01` a `TD-07`) com status e comportamento observado. |
+| `resultados_dinamicos.csv` | Registro de cada caso executado (`TD-01` a `TD-09`) com status e comportamento observado. |
 | `inspecao_estatica.csv` | Mapeamento das ocorrências de `getLabelValue` por arquivo, linha, classificação ($P_t$) e proteção ($P_p$). |
 
 Colunas de `resultados_dinamicos.csv`: `data`, `id_teste`, `questao`, `metrica`, `descricao_caso`, `tipo_analise`, `comportamento_observado`, `status`.
