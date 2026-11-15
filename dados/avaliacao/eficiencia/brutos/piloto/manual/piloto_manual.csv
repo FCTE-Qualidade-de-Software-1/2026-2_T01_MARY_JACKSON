@@ -1,0 +1,5 @@
+data,tentativa,porte,operacao,formato,versao_chrome,memoria_em_uso_pct,tempo_ms,heap_mib,resultado,observacao,trace,ti_ms,tf_ms
+2026-11-13,1,50,abrir,,157.0.8103.79,,288.7,37.26,sucesso,,piloto_p00050_abrir.json.gz,25098.5,25387.2
+2026-11-14,1,50,exportar,pdf,157.0.8103.79,,235.8,39.32,sucesso,,piloto_p00050_exportar-pdf.json.gz,8880.4,9116.2
+2026-11-14,1,50,exportar,png,157.0.8103.79,,269.6,37.55,sucesso,,piloto_p00050_exportar-png.json.gz,9499.8,9769.4
+2026-11-14,1,50,rotulo,,157.0.8103.79,,118.4,,sucesso,,piloto_p00050_rotulo.json.gz,17187.0,17305.5

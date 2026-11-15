@@ -4,3 +4,10 @@ venv/
 __pycache__/
 .DS_Store
 .cache/
+
+# Traces de eficiencia: preservados nos pacotes externos de evidencias.
+/dados/avaliacao/eficiencia/brutos/**/*.json.gz
+
+# Arquivos exportados na validacao: preservados nos pacotes externos de evidencias.
+/dados/avaliacao/eficiencia/brutos/exportados/*
+!/dados/avaliacao/eficiencia/brutos/exportados/validacao.csv

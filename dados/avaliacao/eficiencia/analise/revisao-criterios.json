@@ -1,0 +1,350 @@
+{
+  "data_revisao": "2026-11-15",
+  "coleta": "2026-11-14",
+  "momento": "pos-coleta",
+  "criterios_anteriores_sha256_lf": "89c73498ce70227af961e945498c272fdecb48c0b765eba02ff687acdadb1ea3",
+  "justificativa": "Distinguir falha temporal observada de falta de dados e julgar memoria por medidas completas, sem alterar limites ou dados brutos.",
+  "resultados_anteriores": [
+    {
+      "metrica": "M2.5",
+      "porte": "2000",
+      "operacao": "exportar",
+      "formato": "svg",
+      "unidade": "MiB",
+      "tentativas": "5",
+      "sucessos": "4",
+      "falhas": "1",
+      "mediana": "116.305",
+      "minimo_sucessos": "110.69",
+      "maximo_sucessos": "140.83",
+      "limite": "620",
+      "razao": "0.1875887096774193548387096774",
+      "nota": "5",
+      "estado": "exploratorio",
+      "mediana_descritiva_todas": "120.74"
+    },
+    {
+      "metrica": "M2.4",
+      "porte": "5000",
+      "operacao": "exportar",
+      "formato": "svg",
+      "unidade": "ms",
+      "tentativas": "5",
+      "sucessos": "0",
+      "falhas": "5",
+      "mediana": "",
+      "minimo_sucessos": "",
+      "maximo_sucessos": "",
+      "limite": "40000",
+      "razao": "",
+      "nota": "",
+      "estado": "nao_conclusivo",
+      "mediana_descritiva_todas": "113646.1"
+    },
+    {
+      "metrica": "M2.5",
+      "porte": "5000",
+      "operacao": "exportar",
+      "formato": "svg",
+      "unidade": "MiB",
+      "tentativas": "5",
+      "sucessos": "0",
+      "falhas": "5",
+      "mediana": "",
+      "minimo_sucessos": "",
+      "maximo_sucessos": "",
+      "limite": "1050",
+      "razao": "",
+      "nota": "",
+      "estado": "nao_conclusivo",
+      "mediana_descritiva_todas": "381.9"
+    }
+  ],
+  "resumo_anterior": {
+    "entrada_sha256_lf": "b7d51d18d2e57c6841d3e8e690dd1a545bc594b23c446c6a5fd7df7a9c813324",
+    "criterios_sha256_lf": "89c73498ce70227af961e945498c272fdecb48c0b765eba02ff687acdadb1ea3",
+    "limites_aprovados": false,
+    "registros": 125,
+    "sucessos": 119,
+    "falhas": 6,
+    "metricas": {
+      "M2.1": {
+        "nota": 5,
+        "menor_nota_cenarios_conclusivos": 5,
+        "cenarios_nao_conclusivos": 0
+      },
+      "M2.2": {
+        "nota": 5,
+        "menor_nota_cenarios_conclusivos": 5,
+        "cenarios_nao_conclusivos": 0
+      },
+      "M2.3": {
+        "nota": 5,
+        "menor_nota_cenarios_conclusivos": 5,
+        "cenarios_nao_conclusivos": 0
+      },
+      "M2.4": {
+        "nota": null,
+        "menor_nota_cenarios_conclusivos": 2,
+        "cenarios_nao_conclusivos": 1
+      },
+      "M2.5": {
+        "nota": null,
+        "menor_nota_cenarios_conclusivos": 5,
+        "cenarios_nao_conclusivos": 1
+      }
+    },
+    "capacidade_automatizada": 2000,
+    "nota_capacidade_exploratoria": 4,
+    "G2": null,
+    "capacidade_por_porte": [
+      {
+        "porte": 50,
+        "sucessos": [
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        "repetivel": true
+      },
+      {
+        "porte": 300,
+        "sucessos": [
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        "repetivel": true
+      },
+      {
+        "porte": 1000,
+        "sucessos": [
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        "repetivel": true
+      },
+      {
+        "porte": 2000,
+        "sucessos": [
+          5,
+          5,
+          5,
+          5,
+          4
+        ],
+        "repetivel": true
+      },
+      {
+        "porte": 5000,
+        "sucessos": [
+          5,
+          5,
+          5,
+          5,
+          0
+        ],
+        "repetivel": false
+      }
+    ]
+  },
+  "criterios_revisados_sha256_lf": "6929f1a5535764744dcaa8a016a59dff7a4fcb5196de7f8032dbdea00f979379",
+  "resultados_revisados": [
+    {
+      "metrica": "M2.5",
+      "porte": 2000,
+      "operacao": "exportar",
+      "formato": "svg",
+      "unidade": "MiB",
+      "tentativas": 5,
+      "sucessos": 4,
+      "falhas": 1,
+      "amostras_utilizadas": 5,
+      "mediana": "120.74",
+      "minimo_sucessos": "110.69",
+      "maximo_sucessos": "140.83",
+      "limite": "620",
+      "razao": "0.1947419354838709677419354839",
+      "nota": 5,
+      "estado": "julgado_criterios_dupla",
+      "criterio_nota": "mediana",
+      "mediana_descritiva_todas": "120.74"
+    },
+    {
+      "metrica": "M2.4",
+      "porte": 5000,
+      "operacao": "exportar",
+      "formato": "svg",
+      "unidade": "ms",
+      "tentativas": 5,
+      "sucessos": 0,
+      "falhas": 5,
+      "amostras_utilizadas": 0,
+      "mediana": "",
+      "minimo_sucessos": "",
+      "maximo_sucessos": "",
+      "limite": "40000",
+      "razao": "",
+      "nota": 1,
+      "estado": "falha_temporal",
+      "criterio_nota": "menos_de_quatro_sucessos_por_falha_temporal",
+      "mediana_descritiva_todas": "113646.1"
+    },
+    {
+      "metrica": "M2.5",
+      "porte": 5000,
+      "operacao": "exportar",
+      "formato": "svg",
+      "unidade": "MiB",
+      "tentativas": 5,
+      "sucessos": 0,
+      "falhas": 5,
+      "amostras_utilizadas": 5,
+      "mediana": "381.9",
+      "minimo_sucessos": "357.24",
+      "maximo_sucessos": "418.3",
+      "limite": "1050",
+      "razao": "0.3637142857142857142857142857",
+      "nota": 5,
+      "estado": "julgado_criterios_dupla",
+      "criterio_nota": "mediana",
+      "mediana_descritiva_todas": "381.9"
+    }
+  ],
+  "resumo_revisado": {
+    "entrada_sha256_lf": "b7d51d18d2e57c6841d3e8e690dd1a545bc594b23c446c6a5fd7df7a9c813324",
+    "criterios_sha256_lf": "6929f1a5535764744dcaa8a016a59dff7a4fcb5196de7f8032dbdea00f979379",
+    "limites_aprovados": true,
+    "aprovacao_limites": {
+      "responsavel": "Dupla 2 (Thiago e Pedro)",
+      "data": "2026-11-15",
+      "momento": "ratificacao pos-coleta, valores mantidos",
+      "aprovacao_externa_comprovada": false
+    },
+    "registros": 125,
+    "sucessos": 119,
+    "falhas": 6,
+    "metricas": {
+      "M2.1": {
+        "nota": 5,
+        "menor_nota_cenarios_conclusivos": 5,
+        "cenarios_nao_conclusivos": 0
+      },
+      "M2.2": {
+        "nota": 5,
+        "menor_nota_cenarios_conclusivos": 5,
+        "cenarios_nao_conclusivos": 0
+      },
+      "M2.3": {
+        "nota": 5,
+        "menor_nota_cenarios_conclusivos": 5,
+        "cenarios_nao_conclusivos": 0
+      },
+      "M2.4": {
+        "nota": 1,
+        "menor_nota_cenarios_conclusivos": 1,
+        "cenarios_nao_conclusivos": 0
+      },
+      "M2.5": {
+        "nota": 5,
+        "menor_nota_cenarios_conclusivos": 5,
+        "cenarios_nao_conclusivos": 0
+      }
+    },
+    "capacidade_automatizada": 2000,
+    "nota_capacidade": 4,
+    "G2": 1,
+    "questoes": {
+      "Q2.1": 5,
+      "Q2.2": 5,
+      "Q2.3": 1,
+      "Q2.4": 4
+    },
+    "escopo_G2": "fluxo instrumentado; PDF mede preparacao de impressao",
+    "validacao_exportacoes": {
+      "png": {
+        "portes": 5,
+        "arquivos_abrem": 5,
+        "checagem_completo": 5
+      },
+      "svg": {
+        "portes": 5,
+        "arquivos_abrem": 4,
+        "checagem_completo": 4
+      },
+      "pdf": {
+        "portes": 5,
+        "arquivos_abrem": 5,
+        "checagem_completo": 0
+      }
+    },
+    "validacao_sha256_lf": "b6d5fc14b46e6fa54b62a5ea0dbce28a453b0ed7169e0950509f309a802169e1",
+    "capacidade_fluxo_integral": "nao demonstrada na validacao complementar",
+    "pendencias": [],
+    "revisao_pos_coleta": "2026-11-15",
+    "capacidade_por_porte": [
+      {
+        "porte": 50,
+        "sucessos": [
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        "repetivel": true
+      },
+      {
+        "porte": 300,
+        "sucessos": [
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        "repetivel": true
+      },
+      {
+        "porte": 1000,
+        "sucessos": [
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        "repetivel": true
+      },
+      {
+        "porte": 2000,
+        "sucessos": [
+          5,
+          5,
+          5,
+          5,
+          4
+        ],
+        "repetivel": true
+      },
+      {
+        "porte": 5000,
+        "sucessos": [
+          5,
+          5,
+          5,
+          5,
+          0
+        ],
+        "repetivel": false
+      }
+    ]
+  }
+}

@@ -46,7 +46,7 @@ Foram selecionadas três métricas para responder às cinco questões estabeleci
 
 ## Eficiência de desempenho (Dupla 2)
 
-Foram selecionadas seis métricas para responder às quatro questões estabelecidas. Para cada porte e operação/formato, serão realizadas cinco tentativas válidas; interrupções externas serão registradas e repostas. Para M2.1 a M2.5, calcula-se a mediana das quatro ou cinco tentativas bem-sucedidas com dados completos; menos de quatro sucessos tornam o cenário não conclusivo. Falhas não recebem valores artificiais de tempo ou memória.
+Foram selecionadas seis métricas para responder às quatro questões estabelecidas, com cinco tentativas válidas por porte e operação/formato. A especificação inicial previa medianas de quatro ou cinco sucessos para todas as medidas. Na [revisão pós-coleta de 15/11/2026](niveis-e-julgamento.md#revisao-pos-coleta-do-julgamento-15112026), a insuficiência de sucessos por falha do produto passa a receber nota temporal 1, enquanto as medidas completas de memória das operações concluídas são julgadas separadamente. Dados ausentes ou inválidos permanecem não conclusivos. Nenhuma falha recebe valor artificial de tempo ou memória.
 
 ### M2.1: Tempo de abertura
 

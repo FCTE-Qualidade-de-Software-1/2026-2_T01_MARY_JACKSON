@@ -31,7 +31,7 @@ Os limites e níveis apresentados são decisões da equipe, não critérios norm
 
 ## Eficiência de desempenho (Dupla 2)
 
-Os valores de M2.1 a M2.5 são comparados a um limite L, definido por métrica, porte e formato, e julgados pela razão `r = x / L`, em que `x` é a mediana observada. Os limites abaixo são candidatos, ainda não aprovados; a tolerância crescente por porte e a distinção por formato serão avaliadas no piloto e aprovadas pelo requisitante antes da coleta.
+Os valores de M2.1 a M2.5 são comparados a um limite L, definido por métrica, porte e formato, e julgados pela razão `r = x / L`, em que `x` é a mediana observada.
 
 | Métrica/unidade            | 50    | 300    | 1.000  | 2.000  | 5.000  |
 | -------------------------- | ----- | ------ | ------ | ------ | ------ |
@@ -62,6 +62,18 @@ A nota de cada métrica de M2.1 a M2.5 é a menor entre seus cenários, com medi
 
 Dados ausentes, instrumentos inviáveis ou critérios não aprovados impedem a nota global; informa-se avaliação parcial. Os limites e níveis apresentados são decisões da equipe, não critérios normativos da ISO/IEC 25010.
 
+### Revisão pós-coleta do julgamento — 15/11/2026
+
+Na análise da coleta de 14/11/2026, foi identificada uma lacuna: cinco operações podem concluir e fornecer medidas completas, mas falhar no tempo, deixando a mediana de sucessos indefinida. A revisão abaixo foi adotada após observar os dados; não fazia parte do planejamento original e não altera os valores de L nem representa sua aprovação pelo requisitante.
+
+- **Comportamento temporal (M2.1, M2.3 e M2.4):** mantém-se a mediana de quatro ou cinco sucessos. Com menos de quatro sucessos por falhas atribuídas ao produto, em cinco tentativas válidas, o cenário recebe nota 1 por insuficiência de conclusão temporal. Não se inventa uma mediana de sucessos. Dados ausentes, gravações inválidas ou interrupções externas continuam não conclusivos.
+- **Recursos (M2.2 e M2.5):** a mediana usa as medidas completas das operações concluídas, inclusive as que excederam 2L. Exige ao menos quatro medidas válidas e uma janela de medição identificável. Isso julga memória, sem converter uma operação lenta em sucesso temporal.
+- **Capacidade (M2.6):** permanece baseada em pelo menos quatro sucessos temporais por operação. A pontuação de memória não transforma falhas temporais em sucessos.
+- **Consolidação:** usa-se o mínimo das notas calculadas. As notas 1 de cenário por falha entram na consolidação. O julgamento global só é definitivo com critérios aprovados e atendimento do escopo de medição; até lá, os resultados são exploratórios.
+
+O julgamento anterior e os valores afetados estão preservados em `dados/avaliacao/eficiencia/analise/revisao-criterios.json`. A revisão distingue falha observada de falta de dados e deve ser declarada na apresentação dos resultados.
+
+
 
 ## Manutenibilidade (Dupla 3)
 
@@ -73,4 +85,23 @@ Os valores de cada métrica são classificados conforme as faixas abaixo e julga
 | M3.1 — Edição de rótulos (Q3.2)         | M3.1 <= 10 | 10 < M3.1 <= 15  | M3.1 > 15  |
 | M3.2 — Exportação PNG, PDF e SVG (Q3.3) | M3.2 <= 5% | 5% < M3.2 <= 10% | M3.2 > 10% |
 
-Os limites apresentados são critérios preliminares propostos para esta avaliação, não valores normativos da ISO/IEC 25010. Os julgamentos são feitos por questão; não foi definido um critério de agregação dos resultados em um julgamento único para o objetivo G3.
+Os limites apresentados são critérios preliminares propostos para esta avaliação, não valores normativos da ISO/IEC 25010.
+
+### Notas por questão e pelo objetivo G3
+
+Para completar a pontuação solicitada na Fase 3, adota-se a correspondência abaixo, preservando as faixas já definidas. Esta regra numérica e de agregação foi acrescentada após a coleta histórica; não fazia parte do protocolo original e não altera os valores medidos.
+
+| Julgamento | Nota | Decisão apoiada |
+| --- | ---: | --- |
+| Adequado | 5 | Adotar sob a perspectiva de manutenibilidade do escopo avaliado |
+| Atenção | 3 | Adotar com ressalvas sob a perspectiva de manutenibilidade do escopo avaliado |
+| Crítico | 1 | Não adotar sem tratar os problemas de manutenibilidade identificados |
+
+| Questão ou objetivo | Regra de pontuação |
+| --- | --- |
+| Q3.1 | Nota de M3.1 no componente de importação |
+| Q3.2 | Nota de M3.1 no componente de edição de rótulos |
+| Q3.3 | Nota de M3.2 no recorte de exportação PNG, PDF e SVG |
+| G3 | `mínimo(Q3.1, Q3.2, Q3.3)` |
+
+A menor nota evita que um componente adequado compense outro com dificuldade de manutenção. Dados ausentes ou escopo sem medição impedem a nota desse escopo e a nota global correspondente; não recebem nota zero ou nota 1. Notas calculadas sobre recortes históricos devem ser identificadas como avaliação parcial, sem atribuí-las aos arquivos completos ou ao produto inteiro.
