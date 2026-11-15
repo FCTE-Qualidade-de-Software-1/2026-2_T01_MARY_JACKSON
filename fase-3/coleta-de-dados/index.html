@@ -1277,10 +1277,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#verificacao-de-duplicidade-entre-dos-codigos-q33-e-m32" class="md-nav__link">
+  <a href="#verificacao-de-duplicidade-entre-os-codigos-q33-e-m32" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Verificação de duplicidade entre dos códigos ( Q3.3 e M3.2)
+        Verificação de duplicidade entre os códigos (Q3.3 e M3.2)
       
     </span>
   </a>
@@ -1288,10 +1288,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#verificacao-da-complexidade-cognitiva-das-funccoes-q31-q32-e-m32" class="md-nav__link">
+  <a href="#verificacao-da-complexidade-cognitiva-das-funcoes-q31-q32-e-m31" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Verificação da complexidade cognitiva das funcções ( Q3.1, Q3.2 e M3.2)
+        Verificação da complexidade cognitiva das funções (Q3.1, Q3.2 e M3.1)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#observacoes-e-falhas-da-coleta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Observações e falhas da coleta
       
     </span>
   </a>
@@ -2200,10 +2211,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#verificacao-de-duplicidade-entre-dos-codigos-q33-e-m32" class="md-nav__link">
+  <a href="#verificacao-de-duplicidade-entre-os-codigos-q33-e-m32" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Verificação de duplicidade entre dos códigos ( Q3.3 e M3.2)
+        Verificação de duplicidade entre os códigos (Q3.3 e M3.2)
       
     </span>
   </a>
@@ -2211,10 +2222,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#verificacao-da-complexidade-cognitiva-das-funccoes-q31-q32-e-m32" class="md-nav__link">
+  <a href="#verificacao-da-complexidade-cognitiva-das-funcoes-q31-q32-e-m31" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Verificação da complexidade cognitiva das funcções ( Q3.1, Q3.2 e M3.2)
+        Verificação da complexidade cognitiva das funções (Q3.1, Q3.2 e M3.1)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#observacoes-e-falhas-da-coleta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Observações e falhas da coleta
       
     </span>
   </a>
@@ -2510,56 +2532,37 @@
 <p>O julgamento das medidas pelos níveis da Fase 2 está em <a href="../resultados/">Análise dos dados e resultados</a>.</p>
 <h2 id="manutenibilidade-dupla-3">Manutenibilidade (Dupla 3)<a class="headerlink" href="#manutenibilidade-dupla-3" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Versão avaliada:</strong> draw.io release <code>32.6.10</code> (<code>H3ytt0r10/drawio</code>, commit <code>c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3</code>).</li>
-<li><strong>Ambiente de execução e limitação:</strong>  — Foi utilizado o sonarcloud dentro de um fork do projeto original, como descrito na versão utilizada para responder todas as questões relacionadas a manutenibilidade (Q3.1 a Q3.3).</li>
-<li><strong>Dados brutos (CSV):</strong> armazenados em <code>dados/avaliacao/manutenibilidade/</code> (<code>resultados_dinamicos.csv</code> e <code>inspecao_estatica.csv</code>).</li>
+<li><strong>Versão avaliada:</strong> draw.io release <code>32.6.10</code> (<code>H3ytt0r10/drawio</code>). A campanha histórica utilizou o commit <code>c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3</code>; a nova inspeção informa o commit base <code>aacddaf44e6b4db468ef3f4f3e3bb56863f1d581</code>.</li>
+<li><strong>Ambiente de execução e limitação:</strong> análise estática no fork do projeto, com SonarCloud na campanha histórica e inspeção local dos sete arquivos completos na revisão de 15/11/2026. Ainda não existem medidas SonarCloud coletadas para esse conjunto completo.</li>
+<li><strong>Dados e evidências:</strong> <a href="../evidencias/resultados-das-analises/">relatório consolidado das análises</a>, preservado conforme o documento fornecido. Os CSVs anteriormente mencionados não estão disponíveis neste repositório; os scripts, manifestos e demais artefatos citados no relatório pertencem ao ambiente de origem.</li>
 </ul>
-<h3 id="verificacao-de-duplicidade-entre-dos-codigos-q33-e-m32">Verificação de duplicidade entre dos códigos ( Q3.3 e M3.2)<a class="headerlink" href="#verificacao-de-duplicidade-entre-dos-codigos-q33-e-m32" title="Permanent link">&para;</a></h3>
-<p>Foi feito um relátorio encima dos arquivos EditorUI.js(src/main/webapp/js/diagramly/EditorUi.js),  Editor.js (src/main/webapp/js/diagramly/Editor.js), Graph (src/main/webapp/js/grapheditor/Graph.js) e  Menus.js (src/main/webapp/js/diagramly/Menus.js), para o calculo da porcentagem foi feita a razão entre o número de linhas duplicadas e o numero total de linhas do arquivo, o resultado encontrado foi: </p>
+<h3 id="verificacao-de-duplicidade-entre-os-codigos-q33-e-m32">Verificação de duplicidade entre os códigos (Q3.3 e M3.2)<a class="headerlink" href="#verificacao-de-duplicidade-entre-os-codigos-q33-e-m32" title="Permanent link">&para;</a></h3>
+<p>A métrica utiliza a razão entre as linhas duplicadas e o total de linhas do recorte de exportação PNG, PDF e SVG, multiplicada por 100. O resultado histórico disponível corresponde a recortes de funções, com cobertura parcial do fluxo de PDF:</p>
 <table>
 <thead>
 <tr>
-<th>Arquivo</th>
-<th>Número de linhas duplicadas</th>
-<th>Número total</th>
-<th>Porcentagem</th>
-<th>Status</th>
+<th>Componente</th>
+<th style="text-align: right;">Número de linhas duplicadas</th>
+<th style="text-align: right;">Número total de linhas</th>
+<th style="text-align: right;">Porcentagem</th>
+<th>Status histórico</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>EditorUI.js</td>
-<td>0</td>
-<td>43510</td>
-<td>0%</td>
-<td>Adequado</td>
-</tr>
-<tr>
-<td>Editor.js</td>
-<td>0</td>
-<td>15362</td>
-<td>0%</td>
-<td>Adequado</td>
-</tr>
-<tr>
-<td>Graph</td>
-<td>0</td>
-<td>54775</td>
-<td>0%</td>
-<td>Adequado</td>
-</tr>
-<tr>
-<td>Menus.js</td>
-<td>0</td>
-<td>7421</td>
-<td>0%</td>
+<td>Exportação PNG/PDF/SVG — recorte de 08/11/2026</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">2.846</td>
+<td style="text-align: right;">0,983837%</td>
 <td>Adequado</td>
 </tr>
 </tbody>
 </table>
-<h3 id="verificacao-da-complexidade-cognitiva-das-funccoes-q31-q32-e-m32">Verificação da complexidade cognitiva das funcções ( Q3.1, Q3.2 e M3.2)<a class="headerlink" href="#verificacao-da-complexidade-cognitiva-das-funccoes-q31-q32-e-m32" title="Permanent link">&para;</a></h3>
-<p>Foi feito um relátorio encima dos arquivos relacionados as funções de Rótulos: edição de texto e tratamento HTML: EditorUI.js(src/main/webapp/js/diagramly/EditorUi.js),  mxCellEditor.js (src/main/webapp/mxgraph/src/view/mxCellEditor.js), Graph (src/main/webapp/js/grapheditor/Graph.js) e  purify.min.js (src/main/webapp/js/sanitizer/purify.min.js). Foi feita tambem a análise dos codigos relacionados as funções de Importação: abrir arquivos locais .drawio e .xml: EditorUI.js(src/main/webapp/js/diagramly/EditorUi.js), App.js (src/main/webapp/js/diagramly/App.js),Editor.js (src/main/webapp/js/grapheditor/Editor.js) e mxCodec.js (src/main/webapp/mxgraph/src/io/mxCodec.js). O resultado encontrado foi:</p>
-<p><strong>Para as funções de Rótulos: edição de texto e tratamento HTML</strong></p>
+<p>Para o novo escopo, as linhas duplicadas e o percentual de duplicação ainda não foram coletados no SonarCloud. Assim, os zeros e os julgamentos anteriormente apresentados por arquivo foram retirados. O total dos sete arquivos inclui outras funcionalidades e não pode ser utilizado automaticamente como denominador da exportação. Também não se deve calcular a média simples dos percentuais individuais dos arquivos.</p>
+<h3 id="verificacao-da-complexidade-cognitiva-das-funcoes-q31-q32-e-m31">Verificação da complexidade cognitiva das funções (Q3.1, Q3.2 e M3.1)<a class="headerlink" href="#verificacao-da-complexidade-cognitiva-das-funcoes-q31-q32-e-m31" title="Permanent link">&para;</a></h3>
+<p>A complexidade cognitiva média deve ser calculada pela divisão da complexidade cognitiva total pela quantidade de funções de cada componente. A complexidade total de um arquivo não pode ser comparada diretamente às faixas de julgamento da média por função.</p>
+<p><strong>Para as funções de rótulos: edição de texto e tratamento HTML</strong></p>
+<p>O escopo inclui <code>src/main/webapp/js/diagramly/EditorUi.js</code>, <code>src/main/webapp/mxgraph/src/view/mxCellEditor.js</code>, <code>src/main/webapp/js/grapheditor/Graph.js</code> e <code>src/main/webapp/js/sanitizer/purify.min.js</code>.</p>
 <table>
 <thead>
 <tr>
@@ -2570,28 +2573,30 @@
 </thead>
 <tbody>
 <tr>
-<td>EditorUI.js</td>
-<td>0</td>
-<td>Adequado</td>
+<td><code>EditorUi.js</code></td>
+<td>Não coletada no novo escopo</td>
+<td>Sem julgamento</td>
 </tr>
 <tr>
-<td>mxCellEditor</td>
-<td>197</td>
-<td>Crítico</td>
+<td><code>mxCellEditor.js</code></td>
+<td>Não coletada no novo escopo</td>
+<td>Sem julgamento</td>
 </tr>
 <tr>
-<td>Graph</td>
-<td>0</td>
-<td>Adequado</td>
+<td><code>Graph.js</code></td>
+<td>Não coletada no novo escopo</td>
+<td>Sem julgamento</td>
 </tr>
 <tr>
-<td>purify.min.js</td>
-<td>0</td>
-<td>Adequado</td>
+<td><code>purify.min.js</code></td>
+<td>Não coletada no novo escopo</td>
+<td>Sem julgamento</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Para as funções de  Importação: abrir arquivos locais</strong></p>
+<p>O recorte histórico corrigido de rótulos registrou complexidade total de <strong>1.057</strong> e <strong>116 funções</strong>, com média de <strong>9,112069 (Adequado)</strong>. A média original de <code>9,512820512820513</code> foi invalidada por sobreposição de trechos. Esses números não representam os quatro arquivos completos.</p>
+<p><strong>Para as funções de importação: abertura de arquivos locais <code>.drawio</code> e <code>.xml</code></strong></p>
+<p>O escopo inclui <code>src/main/webapp/js/diagramly/EditorUi.js</code>, <code>src/main/webapp/js/diagramly/App.js</code>, <code>src/main/webapp/js/grapheditor/Editor.js</code> e <code>src/main/webapp/mxgraph/src/io/mxCodec.js</code>. O caminho correto é <code>grapheditor/Editor.js</code>, distinto de <code>diagramly/Editor.js</code> utilizado anteriormente.</p>
 <table>
 <thead>
 <tr>
@@ -2602,27 +2607,37 @@
 </thead>
 <tbody>
 <tr>
-<td>EditorUI.js</td>
-<td>0</td>
-<td>Adequado</td>
+<td><code>EditorUi.js</code></td>
+<td>Não coletada no novo escopo</td>
+<td>Sem julgamento</td>
 </tr>
 <tr>
-<td>App.js</td>
-<td>3547</td>
-<td>Crítico</td>
+<td><code>App.js</code></td>
+<td>Não coletada no novo escopo</td>
+<td>Sem julgamento</td>
 </tr>
 <tr>
-<td>Editor.js</td>
-<td>1116</td>
-<td>Crítico</td>
+<td><code>Editor.js</code> (<code>grapheditor</code>)</td>
+<td>Não coletada no novo escopo</td>
+<td>Sem julgamento</td>
 </tr>
 <tr>
-<td>mxCodec.js</td>
-<td>119</td>
-<td>Crítico</td>
+<td><code>mxCodec.js</code></td>
+<td>Não coletada no novo escopo</td>
+<td>Sem julgamento</td>
 </tr>
 </tbody>
 </table>
+<p>O recorte histórico de importação registrou complexidade total de <strong>275</strong> e <strong>25 funções</strong>, com média de <strong>11,000000 (Atenção)</strong>. Esses números não representam os quatro arquivos completos.</p>
+<h3 id="observacoes-e-falhas-da-coleta">Observações e falhas da coleta<a class="headerlink" href="#observacoes-e-falhas-da-coleta" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Necessidade de nova análise.</strong> Os dados iniciais pareciam estranhos, especialmente os zeros de complexidade e duplicação em arquivos extensos. Por isso, foi necessário realizar uma nova análise do escopo e do procedimento.</li>
+<li><strong>Diferenças de escopo.</strong> A campanha anterior utilizou 41 recortes e omitiu quatro arquivos das imagens. A revisão inventariou sete arquivos únicos completos e corrigiu a identificação de <code>Editor.js</code>.</li>
+<li><strong>Configuração da análise.</strong> Além da falha de configuração relatada inicialmente, foi identificado risco de exclusão dos arquivos maiores. O relatório informa a preparação de configuração conjunta com limite de tamanho ampliado; isso ainda exige confirmação do processamento remoto e não comprova exclusão na campanha passada.</li>
+<li><strong>Validação local.</strong> Segundo o relatório, os sete arquivos passaram em <code>node --check</code>. Isso verifica a sintaxe, sem comprovar funcionamento ou baixa complexidade. O inventário de linhas, tamanhos e os achados qualitativos estão no relatório consolidado.</li>
+<li><strong>Limites dos dados.</strong> Ausência de coleta não equivale a zero. Os valores históricos pertencem aos recortes de 08/11/2026 e não classificam os sete arquivos completos. O novo escopo permanece sem julgamento quantitativo.</li>
+</ul>
+<p>Os cálculos, os critérios de julgamento e os limites das conclusões estão em <a href="../resultados/#manutenibilidade-dupla-3">Análise dos dados e resultados</a>.</p>
 
 
 
@@ -2643,7 +2658,7 @@
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="15 de novembro de 2026 15:22:23 UTC">15 de novembro de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="15 de novembro de 2026 17:22:08 UTC">15 de novembro de 2026</span>
   </span>
 
     
