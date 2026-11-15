@@ -126,5 +126,8 @@ As medições seguem o calendário da Tabela 4.
 | 2 | 22/10/2026 | Fim da Sprint 2 |
 | Consulta | 24/10/2026 | Metade da Sprint 3 |
 | 3 | 26/10/2026 | Entrega 1 |
+| Consulta | 12/11/2026 | Metade da Sprint 4 (não realizada; ver Medição 4) |
+| 4 | 15/11/2026 | Fim da Sprint 4 (ponto de controle da E2) |
+| 5 | 22/11/2026 | Entrega 2 |
 
 _Tabela 4. Calendário das medições. Fonte: elaboração da equipe._
