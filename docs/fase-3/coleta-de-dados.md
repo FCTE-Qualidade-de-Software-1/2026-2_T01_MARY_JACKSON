@@ -5,7 +5,7 @@ Esta página documenta a execução prática e a coleta de dados brutos realizad
 ## Segurança (Dupla 1 — Objetivo G1)
 
 - **Versão avaliada:** draw.io release `32.6.10` (`H3ytt0r10/drawio`, commit `c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3`, e imagem oficial `jgraph/drawio:32.6.10`).
-- **Ambiente de execução e limitação:** Contêiner Docker estático (`httpd:alpine`) para os testes de cliente (`Q1.1`, `Q1.2` e `Q1.5`) — registrando-se como limitação da coleta inicial o vínculo padrão em `0.0.0.0:8080` — e contêiner oficial com servidor Java/Tomcat (`jgraph/drawio:32.6.10`) vinculado estritamente ao *loopback* (`127.0.0.1:8080:8080`) para validação do *servlet* `/proxy` (`Q1.3`), além de sessão anônima sem rede externa, VS Code e `curl.exe`.
+- **Ambiente de execução e limitação:** Contêiner Docker estático (`httpd:alpine`) para os testes de cliente (`Q1.1`, `Q1.2` e `Q1.5`) — registrando-se como limitação da primeira rodada o vínculo padrão em `0.0.0.0:8080`, corrigido para `127.0.0.1:8080` nos casos complementares (`TD-08` e `TD-09`) — e contêiner oficial com servidor Java/Tomcat (`jgraph/drawio:32.6.10`) vinculado estritamente ao *loopback* (`127.0.0.1:8080:8080`) para validação do *servlet* `/proxy` (`Q1.3`), além de sessão anônima sem rede externa, VS Code e `curl.exe`.
 - **Dados brutos (CSV):** armazenados em `dados/avaliacao/seguranca/` (`resultados_dinamicos.csv` e `inspecao_estatica.csv`).
 
 ### Testes dinâmicos de penetração (M1.1 e M1.3)
@@ -21,6 +21,8 @@ Em conformidade com as diretrizes de divulgação responsável (protocolo 5.2.4)
 | **TD-05** | Q1.5 (M1.3) — Bypass 1 *(ref. CVE-2026-58504)* | Célula com `html=1` contendo elemento vetorial SVG aninhado e manipulador de evento de carregamento inline. | Elemento SVG e evento inline removidos; célula renderizada em branco. | **Bloqueado** |
 | **TD-06** | Q1.5 (M1.3) — Bypass 2 *(ref. CVE-2026-58504)* | Célula bloqueada para edição (`html=1;editable=0`) contendo âncora com URI de execução de script. | Esquema de script removido; preservado apenas o texto seguro do rótulo bloqueado para edição. | **Bloqueado** |
 | **TD-07** | Q1.5 (M1.3) — Bypass 3 *(ref. CVE-2026-58504)* | Célula com `html=1` contendo quadro embutido apontando para URI de execução de script. | Elemento de quadro embutido integralmente removido na renderização. | **Bloqueado** |
+| **TD-08** | Q1.1 (M1.1) — Importação XML | Importação de diagrama `.drawio` contendo elemento vetorial SVG com manipulador de evento de carregamento inline (`html=1`). | Forma importada vazia sem disparo de alerta; elemento SVG removido durante o *parsing* de importação. | **Bloqueado** |
+| **TD-09** | Q1.2 (M1.1) — Rótulos HTML *(ref. CVE-2026-46642 / 58504)* | Abertura de diagrama contendo célula irmã regular e célula não editável (`html=1;editable=0`) com imagem e manipulador de evento de erro inline. | Célula irmã renderizada normalmente e célula `editable=0` exibindo apenas o ícone de imagem quebrada, sem execução de script. | **Bloqueado** |
 
 ### Inspeção estática de sanitização (M1.2 / Q1.4)
 
@@ -78,8 +80,76 @@ Heap JavaScript usado, mediana das cinco tentativas, em MiB, com o menor e o mai
 - **Dispersão.** A exportação PNG com 5.000 formas teve a maior variação relativa entre tentativas (1,7 a 3,6 s); nas demais operações, as cinco tentativas ficaram próximas entre si.
 - **Memória.** O maior heap observado foi 418,3 MiB, no SVG com 5.000 formas. O heap após a abertura com 2.000 formas ficou ligeiramente abaixo do de 1.000 formas, o que é compatível com o momento da coleta de lixo do JavaScript.
 
+### Validação dos arquivos exportados
+
+Em 15/11/2026, o script `validar_exportacoes.py` exportou e salvou um arquivo de cada formato por porte e verificou cada um, conforme a [validação das exportações](index.md#validacao-das-exportacoes) do plano. O resultado está em `dados/avaliacao/eficiencia/brutos/exportados/validacao.csv`, e os arquivos, no pacote `eficiencia-exportacoes-2026-11-15.zip` da [pasta de evidências](https://drive.google.com/drive/folders/1jwootYRyhx7-tQTW6iViqpkXdaKxO7FM?usp=sharing).
+
+| Porte | PNG | SVG | PDF |
+| --- | --- | --- | --- |
+| 50 | Completo (7.962 x 62 px) | Completo (50 de 50 rótulos) | Abre; 10 páginas, 47 de 50 rótulos inteiros |
+| 300 | Completo (7.962 x 562 px) | Completo (300 de 300 rótulos) | Abre; 10 páginas, 282 de 300 rótulos inteiros |
+| 1.000 | Completo (7.962 x 1.962 px) | Completo (1.000 de 1.000 rótulos) | Abre; 20 páginas, 940 de 1.000 rótulos inteiros |
+| 2.000 | Completo (7.962 x 3.962 px) | Completo (2.000 de 2.000 rótulos) | Abre; 40 páginas, 1.880 de 2.000 rótulos inteiros |
+| 5.000 | Completo (7.962 x 9.962 px) | Não gerado | Abre; 100 páginas, 4.700 de 5.000 rótulos inteiros |
+
+- **PNG e SVG.** Os arquivos gerados abrem e contêm o diagrama completo: as imagens PNG têm exatamente as dimensões da área das formas, e cada SVG traz todos os rótulos da carga.
+- **PDF.** Todos os arquivos abrem, mas o diagrama é dividido em páginas tamanho carta, e as formas que caem na divisão entre páginas são cortadas. Em todos os portes, cerca de 6% dos rótulos não aparecem inteiros em nenhuma página. A medida confirma o que o piloto manual havia mostrado.
+- **SVG com 5.000 formas.** O arquivo não foi gerado. Em quatro execuções, a exportação não concluiu: nas duas com a janela visível, o draw.io exibiu a mensagem "Error: Timeout"; nas duas sem janela, o diálogo de salvamento não apareceu em 5 e em 15 minutos. Na coleta, a mesma exportação chegou ao diálogo "Save as" nas cinco tentativas, em cerca de 2 minutos. A validação difere da coleta no caminho de salvamento (Download, em vez do seletor do navegador) e no estado da máquina, e esta avaliação não isolou a causa. O resultado indica que, nesse porte, a exportação SVG está no limite do que o draw.io consegue concluir.
+
 O julgamento das medidas pelos níveis da Fase 2 está em [Análise dos dados e resultados](resultados.md).
 
 ## Manutenibilidade (Dupla 3)
 
-*Espaço reservado para os dados coletados pela Dupla 3.*
+- **Versão avaliada:** draw.io release `32.6.10` (`H3ytt0r10/drawio`). A campanha histórica utilizou o commit `c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3`; a nova inspeção informa o commit base `aacddaf44e6b4db468ef3f4f3e3bb56863f1d581`.
+- **Ambiente de execução e limitação:** análise estática no fork do projeto, com SonarCloud na campanha histórica e inspeção local dos sete arquivos completos na revisão de 15/11/2026. Ainda não existem medidas SonarCloud coletadas para esse conjunto completo.
+- **Dados e evidências:** [relatório consolidado das análises](evidencias/resultados-das-analises.md), preservado conforme o documento fornecido. Os CSVs anteriormente mencionados não estão disponíveis neste repositório; os scripts, manifestos e demais artefatos citados no relatório pertencem ao ambiente de origem.
+
+### Verificação de duplicidade entre os códigos (Q3.3 e M3.2)
+
+A métrica utiliza a razão entre as linhas duplicadas e o total de linhas do recorte de exportação PNG, PDF e SVG, multiplicada por 100. O resultado histórico disponível corresponde a recortes de funções, com cobertura parcial do fluxo de PDF:
+
+| Componente | Número de linhas duplicadas | Número total de linhas | Porcentagem | Status histórico |
+| --- | ---: | ---: | ---: | --- |
+| Exportação PNG/PDF/SVG — recorte de 08/11/2026 | 28 | 2.846 | 0,983837% | Adequado |
+
+Para o novo escopo, as linhas duplicadas e o percentual de duplicação ainda não foram coletados no SonarCloud. Assim, os zeros e os julgamentos anteriormente apresentados por arquivo foram retirados. O total dos sete arquivos inclui outras funcionalidades e não pode ser utilizado automaticamente como denominador da exportação. Também não se deve calcular a média simples dos percentuais individuais dos arquivos.
+
+### Verificação da complexidade cognitiva das funções (Q3.1, Q3.2 e M3.1)
+
+A complexidade cognitiva média deve ser calculada pela divisão da complexidade cognitiva total pela quantidade de funções de cada componente. A complexidade total de um arquivo não pode ser comparada diretamente às faixas de julgamento da média por função.
+
+**Para as funções de rótulos: edição de texto e tratamento HTML**
+
+O escopo inclui `src/main/webapp/js/diagramly/EditorUi.js`, `src/main/webapp/mxgraph/src/view/mxCellEditor.js`, `src/main/webapp/js/grapheditor/Graph.js` e `src/main/webapp/js/sanitizer/purify.min.js`.
+
+| Arquivo | Complexidade cognitiva | Status |
+| --- | --- | --- |
+| `EditorUi.js` | Não coletada no novo escopo | Sem julgamento |
+| `mxCellEditor.js` | Não coletada no novo escopo | Sem julgamento |
+| `Graph.js` | Não coletada no novo escopo | Sem julgamento |
+| `purify.min.js` | Não coletada no novo escopo | Sem julgamento |
+
+O recorte histórico corrigido de rótulos registrou complexidade total de **1.057** e **116 funções**, com média de **9,112069 (Adequado)**. A média original de `9,512820512820513` foi invalidada por sobreposição de trechos. Esses números não representam os quatro arquivos completos.
+
+**Para as funções de importação: abertura de arquivos locais `.drawio` e `.xml`**
+
+O escopo inclui `src/main/webapp/js/diagramly/EditorUi.js`, `src/main/webapp/js/diagramly/App.js`, `src/main/webapp/js/grapheditor/Editor.js` e `src/main/webapp/mxgraph/src/io/mxCodec.js`. O caminho correto é `grapheditor/Editor.js`, distinto de `diagramly/Editor.js` utilizado anteriormente.
+
+| Arquivo | Complexidade cognitiva | Status |
+| --- | --- | --- |
+| `EditorUi.js` | Não coletada no novo escopo | Sem julgamento |
+| `App.js` | Não coletada no novo escopo | Sem julgamento |
+| `Editor.js` (`grapheditor`) | Não coletada no novo escopo | Sem julgamento |
+| `mxCodec.js` | Não coletada no novo escopo | Sem julgamento |
+
+O recorte histórico de importação registrou complexidade total de **275** e **25 funções**, com média de **11,000000 (Atenção)**. Esses números não representam os quatro arquivos completos.
+
+### Observações e falhas da coleta
+
+- **Necessidade de nova análise.** Os dados iniciais pareciam estranhos, especialmente os zeros de complexidade e duplicação em arquivos extensos. Por isso, foi necessário realizar uma nova análise do escopo e do procedimento.
+- **Diferenças de escopo.** A campanha anterior utilizou 41 recortes e omitiu quatro arquivos das imagens. A revisão inventariou sete arquivos únicos completos e corrigiu a identificação de `Editor.js`.
+- **Configuração da análise.** Além da falha de configuração relatada inicialmente, foi identificado risco de exclusão dos arquivos maiores. O relatório informa a preparação de configuração conjunta com limite de tamanho ampliado; isso ainda exige confirmação do processamento remoto e não comprova exclusão na campanha passada.
+- **Validação local.** Segundo o relatório, os sete arquivos passaram em `node --check`. Isso verifica a sintaxe, sem comprovar funcionamento ou baixa complexidade. O inventário de linhas, tamanhos e os achados qualitativos estão no relatório consolidado.
+- **Limites dos dados.** Ausência de coleta não equivale a zero. Os valores históricos pertencem aos recortes de 08/11/2026 e não classificam os sete arquivos completos. O novo escopo permanece sem julgamento quantitativo.
+
+Os cálculos, os critérios de julgamento e os limites das conclusões estão em [Análise dos dados e resultados](resultados.md#manutenibilidade-dupla-3).

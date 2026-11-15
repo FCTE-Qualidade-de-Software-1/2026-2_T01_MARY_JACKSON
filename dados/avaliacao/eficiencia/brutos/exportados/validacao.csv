@@ -1,0 +1,16 @@
+porte,formato,arquivo,bytes,abre,diagrama_completo,detalhe
+50,png,p00050.png,39907,sim,sim,7962 x 62 px (area do diagrama: 7962 x 62 px)
+50,svg,p00050.svg,492724,sim,sim,50 de 50 rotulos
+50,pdf,p00050.pdf,22409,sim,nao,"10 paginas de 216 x 279 mm, 47 de 50 rotulos inteiros"
+300,png,p00300.png,264231,sim,sim,7962 x 562 px (area do diagrama: 7962 x 562 px)
+300,svg,p00300.svg,2913052,sim,sim,300 de 300 rotulos
+300,pdf,p00300.pdf,25727,sim,nao,"10 paginas de 216 x 279 mm, 282 de 300 rotulos inteiros"
+1000,png,p01000.png,894175,sim,sim,7962 x 1962 px (area do diagrama: 7962 x 1962 px)
+1000,svg,p01000.svg,9855925,sim,sim,1000 de 1000 rotulos
+1000,pdf,p01000.pdf,41070,sim,nao,"20 paginas de 216 x 279 mm, 940 de 1000 rotulos inteiros"
+2000,png,p02000.png,1792055,sim,sim,7962 x 3962 px (area do diagrama: 7962 x 3962 px)
+2000,svg,p02000.svg,19070737,sim,sim,2000 de 2000 rotulos
+2000,pdf,p02000.pdf,67416,sim,nao,"40 paginas de 216 x 279 mm, 1880 de 2000 rotulos inteiros"
+5000,png,p05000.png,4487400,sim,sim,7962 x 9962 px (area do diagrama: 7962 x 9962 px)
+5000,svg,,,nao,nao,arquivo nao gerado: em 4 execucoes a exportacao nao concluiu; nas 2 com janela visivel o draw.io exibiu 'Error: Timeout' e nas 2 sem janela o dialogo de salvamento nao apareceu em 5 e 15 minutos
+5000,pdf,p05000.pdf,146203,sim,nao,"100 paginas de 216 x 279 mm, 4700 de 5000 rotulos inteiros"

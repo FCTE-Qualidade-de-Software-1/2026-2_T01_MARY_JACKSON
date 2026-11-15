@@ -15,8 +15,9 @@ Dados da coleta de 14/11/2026, realizada no draw.io 32.6.10. A coleta oficial co
 | --- | --- | --- |
 | `eficiencia-coleta-2026-11-14.zip` | 125 traces da coleta oficial, em `dados/avaliacao/eficiencia/brutos/traces/`. | 427 MiB |
 | `eficiencia-pilotos-2026-11-14.zip` | 10 traces do piloto automatizado e 4 do manual, em `dados/avaliacao/eficiencia/brutos/piloto/` e `manual/`. | 49 MiB |
+| `eficiencia-exportacoes-2026-11-15.zip` | 14 arquivos exportados (PNG, SVG e PDF) da validação das exportações, em `dados/avaliacao/eficiencia/brutos/exportados/`. | 22 MiB |
 
-Os pacotes conservam os nomes dos arquivos e os caminhos a partir da raiz do repositório. Os traces `.json.gz` ficam fora do versionamento Git; as cópias locais restauradas são ignoradas pelo `.gitignore`. O arquivo [SHA256SUMS.txt](SHA256SUMS.txt) permite conferir a integridade dos dois ZIPs e dos 139 traces.
+Os pacotes conservam os nomes dos arquivos e os caminhos a partir da raiz do repositório. Os traces `.json.gz` ficam fora do versionamento Git; as cópias locais restauradas são ignoradas pelo `.gitignore`. Os arquivos exportados na validação também ficam fora do Git, exceto o relatório `validacao.csv`. O arquivo [SHA256SUMS.txt](SHA256SUMS.txt) permite conferir a integridade dos três ZIPs, dos 139 traces e dos 14 arquivos exportados.
 
 O contexto de execução e os registros das medidas estão na seção de eficiência da página [Coleta de dados](../../../docs/fase-3/coleta-de-dados.md).
 
@@ -26,27 +27,30 @@ O contexto de execução e os registros das medidas estão na seção de eficiê
 | --- | --- |
 | `coletar.py` | Automação da coleta. |
 | `ler_traces.py` | Extração das medidas dos traces. |
+| `validar_exportacoes.py` | Validação dos arquivos exportados (formato e completude do diagrama). |
 | `cargas/gerar_cargas.py` | Geração das cinco cargas sintéticas. |
 | `cargas/carga-*.drawio` | Cargas de 50, 300, 1.000, 2.000 e 5.000 formas. |
 | `brutos/tentativas.csv` | 125 registros da coleta oficial, com nomes dos traces e instantes usados nas medidas. |
 | `brutos/piloto/piloto.csv` | Registros do piloto automatizado. |
 | `brutos/piloto/manual/piloto_manual.csv` | Registros do piloto manual. |
-| `SHA256SUMS.txt` | Hashes dos pacotes externos e dos traces. |
+| `brutos/exportados/validacao.csv` | Resultado da validação dos arquivos exportados, por porte e formato. |
+| `SHA256SUMS.txt` | Hashes dos pacotes externos, dos traces e dos arquivos exportados. |
 
 ## Restaurar os traces localmente
 
-Baixe os dois ZIPs pelo link da pasta de evidências. No PowerShell, abra a raiz do repositório e execute os comandos abaixo, ajustando a pasta de download se necessário:
+Baixe os ZIPs pelo link da pasta de evidências. No PowerShell, abra a raiz do repositório e execute os comandos abaixo, ajustando a pasta de download se necessário:
 
 ```powershell
 Expand-Archive -LiteralPath "$env:USERPROFILE\Downloads\eficiencia-coleta-2026-11-14.zip" -DestinationPath .
 Expand-Archive -LiteralPath "$env:USERPROFILE\Downloads\eficiencia-pilotos-2026-11-14.zip" -DestinationPath .
+Expand-Archive -LiteralPath "$env:USERPROFILE\Downloads\eficiencia-exportacoes-2026-11-15.zip" -DestinationPath .
 ```
 
 A extração recria os caminhos de `dados/avaliacao/eficiencia/brutos/`. Não extraia os pacotes dentro desta pasta de eficiência, pois isso duplicaria a estrutura `dados/avaliacao/eficiencia/`.
 
 ## Conferir a integridade
 
-As duas primeiras entradas do [manifesto SHA-256](SHA256SUMS.txt) correspondem aos ZIPs. As demais correspondem aos traces, com caminhos relativos à raiz do repositório.
+As duas primeiras entradas do [manifesto SHA-256](SHA256SUMS.txt) correspondem aos ZIPs da coleta e dos pilotos, seguidas dos traces. A última seção traz o ZIP da validação das exportações e os arquivos exportados. Os caminhos são relativos à raiz do repositório.
 
 Para conferir os pacotes no PowerShell:
 

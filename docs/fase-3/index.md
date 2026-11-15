@@ -38,6 +38,7 @@ Se o Chrome for atualizado durante a coleta, a nova versão é registrada a part
 | --- | --- |
 | Script `coletar.py` (Python 3 e Playwright) | Abre o Google Chrome instalado na máquina, executa as operações do [procedimento](#procedimento) e grava um trace do Chrome por operação, com as categorias de eventos do painel Performance do DevTools (tarefas do thread principal, eventos, contadores de memória e capturas de tela). |
 | Script `ler_traces.py` (Python 3) | Lê os traces, extrai tempo e heap segundo a [leitura das medidas](#leitura-das-medidas) e gera o CSV de tentativas. Apenas lê os traces, sem alterá-los. |
+| Script `validar_exportacoes.py` (Python 3, Playwright e pypdf) | Exporta e salva um arquivo de cada formato por porte e verifica se o arquivo é válido e se contém o diagrama completo (ver [validação das exportações](#validacao-das-exportacoes)). Não mede tempo. |
 | Script `gerar_cargas.py` (Python 3) | Gera as cinco cargas sintéticas de forma reprodutível. |
 | `Get-FileHash` (PowerShell) | Calcula o SHA-256 das cargas para identificá-las. |
 | Chrome DevTools, painel Performance | Usado no piloto manual e para conferir qualquer trace: o CSV registra os instantes `ti` e `tf` usados em cada medida. |
@@ -90,6 +91,18 @@ Cada tentativa de um porte é composta por quatro sessões, cada uma em um perfi
 2. **PDF.** Sem servidor de exportação, o draw.io prepara uma página de impressão em nova janela e chama `print()`; o arquivo PDF seria produzido pela impressão do próprio Chrome. A automação substitui `print()` por uma função que apenas grava a marca `fim_operacao`. Assim, M2.4 e M2.5 de PDF medem a preparação da página de impressão pelo draw.io, e a geração do arquivo pelo navegador, que não é do draw.io, fica fora da medida.
 3. **Salvamento em disco.** O salvamento depende de diálogos com o avaliador (o "Save as" do draw.io e o seletor do Windows) e não é medido. A exportação termina quando o draw.io conclui a geração e exibe o diálogo "Save as".
 
+### Validação das exportações
+
+A coleta mede o tempo até o draw.io concluir a exportação, sem salvar os arquivos. Por isso, a integridade dos arquivos é verificada à parte, depois da coleta, pelo script `validar_exportacoes.py`. Para cada porte, ele exporta e salva um arquivo de cada formato e registra, separadamente, se o arquivo abre (formato válido) e se o diagrama está completo nele. A validação não mede tempo, e as condições de execução da coleta não se aplicam a ela.
+
+| Formato | Como o arquivo é obtido | Verificação |
+| --- | --- | --- |
+| PNG | Diálogo "Save as" com a opção Download, pois a API de salvamento do navegador é desativada para permitir a automação. | Assinatura do formato e dimensões da imagem, comparadas com a área ocupada pelas formas da carga; uma imagem cortada teria outras dimensões. |
+| SVG | Como no PNG. | XML válido e quantidade de rótulos `Rotulo NNNN` distintos igual ao número de formas da carga. |
+| PDF | Página de impressão preparada pelo draw.io, convertida em PDF pelo mecanismo de impressão do Chrome, o mesmo do "Salvar como PDF", em papel tamanho carta. | Assinatura do formato, número de páginas e quantidade de rótulos que aparecem inteiros em alguma página. |
+
+PNG e SVG podem ser exportados com a janela do navegador visível (opção `--janela`); o PDF é gerado sem janela, único modo em que o Chrome permite gerar o PDF por automação.
+
 ### Leitura das medidas
 
 As medidas consideram as tarefas de pelo menos 1 ms do thread principal da página do draw.io. São ignoradas as tarefas que apenas tratam movimento do mouse ou tecla sendo solta, que são ações de entrada e não processamento da operação, e as tarefas da própria automação.
@@ -121,6 +134,7 @@ Os CSVs, scripts e cargas são versionados em `dados/avaliacao/eficiencia/`. Os 
 | `brutos/traces/` | Caminho local dos 125 traces da coleta oficial (`.json.gz`), restaurados do pacote externo e ignorados pelo Git. São nomeados por porte, operação, formato e tentativa, como `p05000_exportar-svg_t3.json.gz`. Na coleta, URLs do tipo `data:` (imagens geradas durante a exportação) são truncadas em 200 caracteres para reduzir o tamanho; o restante do trace não é alterado. |
 | `brutos/piloto/` | CSV versionado e caminho local dos 10 traces do piloto automatizado, restaurados do pacote externo. |
 | `brutos/piloto/manual/` | CSV versionado e caminho local dos 4 traces do piloto manual, restaurados do pacote externo. |
+| `brutos/exportados/` | `validacao.csv` versionado e caminho local dos 14 arquivos exportados na validação, restaurados do pacote externo. |
 | `README.md` e `SHA256SUMS.txt` | Orientações de acesso e restauração das evidências e manifesto de integridade. |
 
 Colunas de `tentativas.csv`: `data`, `tentativa`, `porte`, `operacao`, `formato`, `versao_chrome`, `memoria_em_uso_pct`, `tempo_ms`, `heap_mib`, `resultado` (sucesso, falha, descartada ou verificar), `observacao`, `trace`, `ti_ms` e `tf_ms` (instantes de início e fim em ms desde o começo do trace, para conferência no DevTools).
@@ -182,7 +196,7 @@ Se o Chrome for atualizado durante a coleta, a nova versão é registrada a part
 
 | Ferramenta | Uso |
 | --- | --- |
-| Sonarclaude | Para a avaliação das funções escolhidas dentro do trabalho |
+| SonarCloud | Análise estática do código selecionado para coletar a complexidade cognitiva (M3.1) e o percentual de código duplicado (M3.2). |
 
 ### Condições de execução
 
@@ -197,13 +211,41 @@ Se o Chrome for atualizado durante a coleta, a nova versão é registrada a part
 
 ### Observações encontradas
 
+A análise de manutenibilidade utiliza duas medidas: a complexidade cognitiva média por função, calculada separadamente para importação de arquivos e edição de rótulos, e o percentual de código duplicado no conjunto de exportação PNG, PDF e SVG. Os resultados se restringem ao código selecionado, conforme o [escopo da avaliação](../fase-1/escopo.md).
+
+Os dados iniciais pareciam estranhos, especialmente os zeros de complexidade e duplicação em arquivos extensos. Por isso, foi necessário realizar uma nova análise. A revisão de 15/11/2026 identificou diferenças de escopo, confusão entre `diagramly/Editor.js` e `grapheditor/Editor.js` e risco de exclusão dos arquivos maiores. A [coleta atualizada](coleta-de-dados.md#manutenibilidade-dupla-3) distingue o inventário dos sete arquivos completos das métricas históricas de recortes de funções. Ainda não há medidas SonarCloud para o novo escopo.
+
 ### Procedimento
 
+O procedimento segue as [fichas das métricas](../fase-2/metricas.md#manutenibilidade-dupla-3), com análise estática pelo SonarCloud e julgamento separado para cada questão do GQM.
+
+**Preparação da análise**
+
+1. Utilizar o código do fork `H3ytt0r10/drawio`, versão `32.6.10`, no commit `c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3`.
+2. Identificar e registrar os arquivos e as funções de importação de arquivos, edição de rótulos e exportação PNG, PDF e SVG que compõem o recorte avaliado.
+3. Configurar o projeto no SonarCloud, conferir o escopo e as exclusões da análise e registrar a configuração utilizada, a identificação da execução e o commit analisado.
+4. Executar a análise e conferir sua conclusão e a presença das medidas necessárias no relatório. Corrigir eventuais erros de configuração e repetir a execução antes de utilizar os resultados.
+
+**Coleta e cálculo das métricas**
+
+1. Para a **M3.1**, registrar a complexidade cognitiva total (`C`) e a quantidade de funções (`F`) pertencentes a cada componente. Calcular `M3.1 = C / F` separadamente para importação (**Q3.1**) e edição de rótulos (**Q3.2**), considerando todas as funções do recorte, inclusive as que não geram alertas.
+2. Para a **M3.2**, analisar conjuntamente o código de exportação PNG, PDF e SVG e registrar as linhas duplicadas (`Ld`) e o total de linhas analisadas (`Lt`). Calcular `M3.2 = (Ld / Lt) × 100`, respondendo à **Q3.3**, sem fazer a média dos percentuais individuais dos arquivos.
+3. Registrar os valores brutos, os arquivos e funções considerados e a referência ao relatório na [coleta de dados](coleta-de-dados.md#manutenibilidade-dupla-3), permitindo conferir os cálculos.
+4. Comparar os resultados com os [níveis de julgamento da Fase 2](../fase-2/niveis-e-julgamento.md#manutenibilidade-dupla-3): para M3.1, adequado até 10, atenção acima de 10 até 15 e crítico acima de 15; para M3.2, adequado até 5%, atenção acima de 5% até 10% e crítico acima de 10%. Registrar o julgamento de cada questão na [análise dos resultados](resultados.md#manutenibilidade-dupla-3).
 
 ### Tentativas válidas, falhas e interrupções
 
+Uma execução é considerada **válida** quando a análise do SonarCloud termina com sucesso, corresponde ao commit e ao escopo definidos e fornece os dados necessários ao cálculo da métrica. Para M3.1, é necessário `F > 0`; para M3.2, `Lt > 0`. A ausência de dados não é registrada como valor zero: o resultado permanece pendente até que a coleta seja completada.
+
+Segundo o relato da dupla, ocorreu uma única tentativa com falha, causada por erro na configuração do SonarCloud. Essa tentativa foi desconsiderada para o cálculo das métricas e a análise foi executada novamente após a correção. As demais execuções ocorreram normalmente, sem outras falhas ou interrupções relatadas. O incidente é registrado como falha da configuração da coleta, sem atribuí-lo à qualidade do código do draw.io.
+
+Além disso, durante a avaliação dos resultados obtidos, foram identificados dados inconsistentes e valores que não refletiam adequadamente o escopo definido nas fases anteriores do estudo. Após essa verificação, foi realizada uma nova análise dos dados, aplicando um filtro para considerar exclusivamente os arquivos que continham as funções previamente selecionadas e descritas nas etapas anteriores. Esse refinamento teve como objetivo garantir maior aderência entre as métricas coletadas e o conjunto de funcionalidades efetivamente analisadas, evitando que arquivos não relacionados influenciassem os resultados apresentados.
+
+Como a coleta é feita por análise estática, não se aplica a repetição de cinco tentativas nem o cálculo de medianas adotados pela Dupla 2. Uma nova execução é necessária quando houver falha, dados incompletos ou alteração do commit, do escopo ou da configuração; nesse último caso, os resultados devem ser identificados separadamente.
 
 ### Registro dos dados
+
+O [relatório consolidado fornecido](evidencias/resultados-das-analises.md) foi preservado neste repositório. A [coleta](coleta-de-dados.md#manutenibilidade-dupla-3) registra o inventário e a situação das medidas; os [resultados](resultados.md#manutenibilidade-dupla-3) apresentam os cálculos históricos e seus limites. Os demais artefatos citados no relatório são referências ao ambiente de origem e não foram fornecidos aqui.
 
 ### Piloto
 

@@ -85,4 +85,23 @@ Os valores de cada métrica são classificados conforme as faixas abaixo e julga
 | M3.1 — Edição de rótulos (Q3.2)         | M3.1 <= 10 | 10 < M3.1 <= 15  | M3.1 > 15  |
 | M3.2 — Exportação PNG, PDF e SVG (Q3.3) | M3.2 <= 5% | 5% < M3.2 <= 10% | M3.2 > 10% |
 
-Os limites apresentados são critérios preliminares propostos para esta avaliação, não valores normativos da ISO/IEC 25010. Os julgamentos são feitos por questão; não foi definido um critério de agregação dos resultados em um julgamento único para o objetivo G3.
+Os limites apresentados são critérios preliminares propostos para esta avaliação, não valores normativos da ISO/IEC 25010.
+
+### Notas por questão e pelo objetivo G3
+
+Para completar a pontuação solicitada na Fase 3, adota-se a correspondência abaixo, preservando as faixas já definidas. Esta regra numérica e de agregação foi acrescentada após a coleta histórica; não fazia parte do protocolo original e não altera os valores medidos.
+
+| Julgamento | Nota | Decisão apoiada |
+| --- | ---: | --- |
+| Adequado | 5 | Adotar sob a perspectiva de manutenibilidade do escopo avaliado |
+| Atenção | 3 | Adotar com ressalvas sob a perspectiva de manutenibilidade do escopo avaliado |
+| Crítico | 1 | Não adotar sem tratar os problemas de manutenibilidade identificados |
+
+| Questão ou objetivo | Regra de pontuação |
+| --- | --- |
+| Q3.1 | Nota de M3.1 no componente de importação |
+| Q3.2 | Nota de M3.1 no componente de edição de rótulos |
+| Q3.3 | Nota de M3.2 no recorte de exportação PNG, PDF e SVG |
+| G3 | `mínimo(Q3.1, Q3.2, Q3.3)` |
+
+A menor nota evita que um componente adequado compense outro com dificuldade de manutenção. Dados ausentes ou escopo sem medição impedem a nota desse escopo e a nota global correspondente; não recebem nota zero ou nota 1. Notas calculadas sobre recortes históricos devem ser identificadas como avaliação parcial, sem atribuí-las aos arquivos completos ou ao produto inteiro.
