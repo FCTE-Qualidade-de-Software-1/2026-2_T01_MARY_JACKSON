@@ -2121,6 +2121,7 @@
 <p>Esta página apresenta o cálculo das métricas a partir dos registros da <a href="../coleta-de-dados/">coleta de dados</a>, a atribuição das notas conforme as <a href="../../fase-2/metricas/">métricas</a> e os <a href="../../fase-2/niveis-e-julgamento/">níveis de julgamento</a> definidos na Fase 2, além das sugestões de melhoria e da conclusão inicial de cada característica avaliada.</p>
 <h2 id="seguranca-dupla-1-objetivo-g1">Segurança (Dupla 1 — Objetivo G1)<a class="headerlink" href="#seguranca-dupla-1-objetivo-g1" title="Permanent link">&para;</a></h2>
 <h3 id="calculo-das-metricas-e-julgamento-isoiec-25040">Cálculo das métricas e julgamento (ISO/IEC 25040)<a class="headerlink" href="#calculo-das-metricas-e-julgamento-isoiec-25040" title="Permanent link">&para;</a></h3>
+<p>Conforme definido na árvore GQM da Fase 2, a métrica <strong>M1.1</strong> é calculada individualmente por componente avaliado (sem agregação somada entre superfícies distintas):</p>
 <table>
 <thead>
 <tr>
@@ -2134,35 +2135,28 @@
 <tbody>
 <tr>
 <td><strong>Q1.1</strong> — Importação XML (<strong>M1.1</strong>)</td>
-<td><code>Cb / Ct = 1 / 1</code></td>
-<td><code>100%</code></td>
+<td><code>Cb,1 / Ct,1 = 1 / 1</code></td>
+<td><strong><code>100%</code></strong></td>
 <td><strong>5</strong></td>
 <td>Bloqueio total (<code>100%</code>)</td>
 </tr>
 <tr>
 <td><strong>Q1.2</strong> — Rótulos HTML (<strong>M1.1</strong>)</td>
-<td><code>Cb / Ct = 1 / 1</code></td>
-<td><code>100%</code></td>
-<td><strong>5</strong></td>
-<td>Bloqueio total (<code>100%</code>)</td>
-</tr>
-<tr>
-<td><strong>Q1.3</strong> — Proxy / Traversal (<strong>M1.1</strong>)</td>
-<td><code>Cb / Ct = 2 / 2</code></td>
-<td><code>100%</code></td>
-<td><strong>5</strong></td>
-<td>Bloqueio total (<code>100%</code>)</td>
-</tr>
-<tr>
-<td><strong>M1.1 Consolidada</strong></td>
-<td><code>M1.1 = (4 / 4) × 100</code></td>
+<td><code>Cb,2 / Ct,2 = 1 / 1</code></td>
 <td><strong><code>100%</code></strong></td>
 <td><strong>5</strong></td>
-<td>Nenhuma vulnerabilidade explorável</td>
+<td>Bloqueio total (<code>100%</code>)</td>
+</tr>
+<tr>
+<td><strong>Q1.3</strong> — Proxy / Servidor (<strong>M1.1</strong>)</td>
+<td><code>Cb,3 / Ct,3 = 2 / 2</code></td>
+<td><strong><code>100%</code></strong></td>
+<td><strong>5</strong></td>
+<td>Bloqueio total (<code>100%</code>)</td>
 </tr>
 <tr>
 <td><strong>Q1.4</strong> — Sanitização Estática (<strong>M1.2</strong>)</td>
-<td><code>M1.2 = (Pp / Pt) × 100 = (3 / 3) × 100</code></td>
+<td><code>M1.2 = (Pp / Pt) × 100 = (4 / 4) × 100</code></td>
 <td><strong><code>100%</code></strong></td>
 <td><strong>5</strong></td>
 <td>Cobertura total dos pontos válidos</td>
@@ -2181,13 +2175,13 @@
 <p><strong>Nota Global (G1) = <code>min(Q1.1, Q1.2, Q1.3, Q1.4, Q1.5) = min(5, 5, 5, 5, 5) = 5</code></strong></p>
 </blockquote>
 <ul>
-<li><strong>Análise:</strong> A arquitetura da versão <code>32.6.10</code> centraliza a sanitização de rótulos HTML no método sobrescrito <code>cellRenderer.getLabelValue</code> (utilizando <code>DOMPurify</code> via <code>sanitizeLabel</code>) e assegura o escape explícito por <code>mxUtils.htmlEntities</code> nos pontos de medição de texto plano renderizados como HTML. Ademais, a implantação estática da aplicação web não expõe o <em>servlet</em> <code>/proxy</code>, eliminando a superfície de ataque de <em>Path Traversal</em> testada.</li>
-<li><strong>Sugestões de melhoria ao draw.io:</strong><ul>
-<li><strong>Testes automatizados de regressão de sanitização:</strong> Incluir na suíte de testes automatizados do cliente web casos cobrindo vetores de <em>bypass</em> com tags alternativas (<code>&lt;svg onload&gt;</code>, <code>&lt;iframe&gt;</code>) e esquemas <code>javascript:</code> em âncoras com <code>editable=0</code>, evitando regressões em futuras atualizações da biblioteca de sanitização.</li>
-<li><strong>Cabeçalhos de <em>Content Security Policy</em> (CSP) no deploy estático:</strong> Recomendar na documentação oficial de implantação estática (Apache, Nginx e Docker) uma política CSP restritiva (bloqueando <em>inline scripts</em> e URIs <code>javascript:</code>) como camada complementar de defesa em profundidade ao <code>DOMPurify</code>.</li>
-</ul>
-</li>
-<li><strong>Conclusão inicial:</strong> Todas as hipóteses de segurança (<code>H1.1</code> a <code>H1.5</code>) foram confirmadas. Recomenda-se a <strong>adoção</strong> da versão <code>32.6.10</code> sob a perspectiva da característica de Segurança, ressalvando-se que a avaliação se restringe ao cliente web estático e aos vetores modelados no escopo.</li>
+<li><strong>Análise:</strong></li>
+<li><strong>Cliente web e inspeção estática (<code>Q1.1</code>, <code>Q1.2</code>, <code>Q1.4</code> e <code>Q1.5</code>):</strong> A versão <code>32.6.10</code> centraliza a sanitização de rótulos HTML no método sobrescrito <code>cellRenderer.getLabelValue</code> (aplicando <code>DOMPurify</code> via <code>sanitizeLabel</code> quando <code>html=1</code>) e aplica escape explícito por <code>mxUtils.htmlEntities</code> nos pontos de medição de texto plano renderizados como HTML. O ponto principal de validação da hipótese <code>H1.4</code> encontra-se em <code>Format.js:5683</code> (<code>canConvertHtmlToSvg</code>), onde o rótulo é atribuído ao <code>.innerHTML</code> — vetor explorado anteriormente na CVE-2026-58504 mediante células não editáveis (<code>editable=0</code>) — mas que na <code>32.6.10</code> executa exclusivamente sob <code>html=1</code> após sanitização completa.</li>
+<li><strong>Servidor Java e <em>servlet</em> <code>/proxy</code> (<code>Q1.3</code>):</strong> Na execução complementar sobre a imagem oficial com servidor Tomcat (<code>jgraph/drawio:32.6.10</code>), confirmou-se que o <code>ProxyServlet</code> está mapeado (<code>WEB-INF/web.xml:11-18</code>) e aplica defesa <em>secure by default</em> (<code>ProxyServlet.java:74-76</code>), recusando imediatamente qualquer requisição com <code>HTTP 404</code> vazio quando a variável de ambiente <code>ENABLE_DRAWIO_PROXY</code> não está explicitamente habilitada, além de validar esquemas e bloquear endereços locais/privados via <code>Utils.validatedAddress</code> quando ativo.</li>
+<li><strong>Sugestões de melhoria ao draw.io:</strong></li>
+<li><strong>Testes automatizados de regressão de sanitização:</strong> Incluir na suíte de testes automatizados do cliente web casos cobrindo variações de evasão com elementos vetoriais SVG, quadros embutidos e esquemas de URI de script em células com <code>editable=0</code> (incluindo o fluxo de <code>canConvertHtmlToSvg</code>), prevenindo regressões em futuras atualizações da biblioteca de sanitização.</li>
+<li><strong>Cabeçalhos de <em>Content Security Policy</em> (CSP) no deploy estático:</strong> Recomendar na documentação oficial de implantação estática (Apache, Nginx e Docker) uma política CSP restritiva (bloqueando scripts inline e URIs de execução de script) como camada complementar de defesa em profundidade ao <code>DOMPurify</code>.</li>
+<li><strong>Conclusão inicial:</strong> Todas as hipóteses de segurança (<code>H1.1</code> a <code>H1.5</code>) foram confirmadas. Recomenda-se a <strong>adoção</strong> da versão <code>32.6.10</code> sob a perspectiva da característica de Segurança, registrando-se como limitação metodológica que os testes iniciais do cliente web utilizaram vínculo de porta aberto na rede local (<code>0.0.0.0:8080</code>), corrigido para <code>127.0.0.1:8080</code> na validação do servidor Java e adotado como padrão para as próximas coletas.</li>
 </ul>
 <h2 id="eficiencia-de-desempenho-dupla-2">Eficiência de desempenho (Dupla 2)<a class="headerlink" href="#eficiencia-de-desempenho-dupla-2" title="Permanent link">&para;</a></h2>
 <p><em>Espaço reservado para a análise e resultados da Dupla 2.</em></p>
@@ -2213,7 +2207,7 @@
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="14 de novembro de 2026 19:57:57 UTC">14 de novembro de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="15 de novembro de 2026 00:30:10 UTC">15 de novembro de 2026</span>
   </span>
 
     

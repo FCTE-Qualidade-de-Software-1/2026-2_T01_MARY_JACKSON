@@ -1273,10 +1273,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#condicoes-de-execucao" class="md-nav__link">
+  <a href="#condicoes-de-execucao-e-limitacoes-de-ambiente" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Condições de execução
+        Condições de execução e limitações de ambiente
       
     </span>
   </a>
@@ -1284,10 +1284,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#artefatos-e-vetores-de-teste" class="md-nav__link">
+  <a href="#artefatos-e-casos-de-teste" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Artefatos e vetores de teste
+        Artefatos e casos de teste
       
     </span>
   </a>
@@ -2137,10 +2137,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#condicoes-de-execucao" class="md-nav__link">
+  <a href="#condicoes-de-execucao-e-limitacoes-de-ambiente" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Condições de execução
+        Condições de execução e limitações de ambiente
       
     </span>
   </a>
@@ -2148,10 +2148,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#artefatos-e-vetores-de-teste" class="md-nav__link">
+  <a href="#artefatos-e-casos-de-teste" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Artefatos e vetores de teste
+        Artefatos e casos de teste
       
     </span>
   </a>
@@ -2246,7 +2246,7 @@
   <h1>Ambiente de execução</h1>
 
 <h2 id="seguranca-dupla-1">Segurança (Dupla 1)<a class="headerlink" href="#seguranca-dupla-1" title="Permanent link">&para;</a></h2>
-<p>Esta seção define o protocolo de coleta das métricas <strong>M1.1 a M1.3</strong> da <a href="../../fase-2/metricas/">Fase 2</a>, vinculadas ao objetivo global <strong>G1</strong> (Confidencialidade, Integridade e Resistência). Toda a avaliação é conduzida por um único avaliador, combinando inspeção estática de código-fonte (caixa-branca) e testes dinâmicos de penetração (caixa-preta) em ambiente local isolado. Conforme os <a href="../../fase-1/escopo/">limites de validade</a> da Fase 1, as conclusões restringem-se à versão avaliada, à configuração de implantação estática e ao modelo de ameaças definido.</p>
+<p>Esta seção define o protocolo de coleta das métricas <strong>M1.1 a M1.3</strong> da <a href="../../fase-2/metricas/">Fase 2</a>, vinculadas ao objetivo global <strong>G1</strong> (Confidencialidade, Integridade e Resistência). Toda a avaliação é conduzida por um único avaliador, combinando inspeção estática de código-fonte (caixa-branca) e testes dinâmicos de penetração (caixa-preta) em ambiente local isolado. Conforme os <a href="../../fase-1/escopo/">limites de validade</a> da Fase 1, as conclusões restringem-se à versão avaliada, à configuração de implantação local e ao modelo de ameaças definido.</p>
 <h3 id="versao-avaliada">Versão avaliada<a class="headerlink" href="#versao-avaliada" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -2258,7 +2258,7 @@
 <tbody>
 <tr>
 <td>Produto</td>
-<td>draw.io web, a partir do fork <a href="https://github.com/H3ytt0r10/drawio"><code>H3ytt0r10/drawio</code></a>.</td>
+<td>draw.io web, a partir do fork <a href="https://github.com/H3ytt0r10/drawio"><code>H3ytt0r10/drawio</code></a> e da imagem oficial <code>jgraph/drawio:32.6.10</code>.</td>
 </tr>
 <tr>
 <td>Versão</td>
@@ -2270,7 +2270,7 @@
 </tr>
 <tr>
 <td>Execução</td>
-<td>Contêiner Docker local (<code>httpd:alpine</code>) montando <code>src/main/webapp</code>, conforme o <a href="../ambiente-drawio/">guia do ambiente</a>, acessado em <code>http://localhost:8080</code>.</td>
+<td>Contêiner Docker estático (<code>httpd:alpine</code>) montando <code>src/main/webapp</code> para os testes de interface web (<code>Q1.1</code>, <code>Q1.2</code> e <code>Q1.5</code>), e contêiner oficial com servidor Java/Tomcat (<code>jgraph/drawio:32.6.10</code>) vinculado estritamente a <code>127.0.0.1:8080:8080</code> para o teste do <em>servlet</em> <code>/proxy</code> (<code>Q1.3</code>).</td>
 </tr>
 </tbody>
 </table>
@@ -2309,11 +2309,11 @@
 </tr>
 <tr>
 <td>Editor e terminal</td>
-<td>Visual Studio Code (VS Code) e PowerShell (<code>curl.exe</code>)</td>
+<td>Visual Studio Code (VS Code) e PowerShell (<code>curl.exe</code>).</td>
 </tr>
 <tr>
 <td>Avaliador</td>
-<td>Miquéias (Dupla 1)</td>
+<td>Miquéias (Dupla 1).</td>
 </tr>
 </tbody>
 </table>
@@ -2327,12 +2327,12 @@
 </thead>
 <tbody>
 <tr>
-<td>Docker (<code>httpd:alpine</code>)</td>
-<td>Hospedagem isolada da aplicação web (<code>src/main/webapp</code>) e captura de logs de acesso HTTP (<code>docker logs</code>) durante os testes de requisição.</td>
+<td>Docker (<code>httpd:alpine</code> e <code>jgraph/drawio:32.6.10</code>)</td>
+<td>Hospedagem local da interface web (<code>src/main/webapp</code>) para os testes de cliente e execução do servidor Java (Tomcat) com <code>ProxyServlet</code> ativo para validação do endpoint <code>/proxy</code>.</td>
 </tr>
 <tr>
 <td>Visual Studio Code (VS Code)</td>
-<td>Busca e rastreamento de fluxo de dados no código-fonte JavaScript (<code>Format.js</code>, <code>Graph.js</code> e <code>Editor.js</code>) para a M1.2, além da criação dos arquivos <code>.drawio</code> de teste.</td>
+<td>Busca e rastreamento de fluxo de dados no código-fonte (<code>Format.js</code>, <code>Graph.js</code>, <code>Editor.js</code> e <code>ProxyServlet.java</code>) para M1.2 e auditoria de servidor, além da criação temporária dos arquivos <code>.drawio</code> de teste.</td>
 </tr>
 <tr>
 <td>Git</td>
@@ -2340,20 +2340,20 @@
 </tr>
 <tr>
 <td>Navegador Web (janela anônima)</td>
-<td>Importação e abertura dos diagramas adulterados em sessão limpa para observação visual e de execução no DOM (M1.1 e M1.3).</td>
+<td>Importação e abertura dos diagramas de teste em sessão limpa para observação visual e de execução no DOM (M1.1 e M1.3).</td>
 </tr>
 <tr>
 <td><code>curl.exe</code> (PowerShell)</td>
-<td>Envio de requisições HTTP forjadas contra o endpoint <code>/proxy</code> para testes de <em>Path Traversal</em> (M1.1 / Q1.3).</td>
+<td>Envio de requisições HTTP de teste contra o endpoint <code>/proxy</code> no servidor Tomcat para validação de <em>Path Traversal</em> e SSRF (M1.1 / Q1.3).</td>
 </tr>
 </tbody>
 </table>
-<h3 id="condicoes-de-execucao">Condições de execução<a class="headerlink" href="#condicoes-de-execucao" title="Permanent link">&para;</a></h3>
+<h3 id="condicoes-de-execucao-e-limitacoes-de-ambiente">Condições de execução e limitações de ambiente<a class="headerlink" href="#condicoes-de-execucao-e-limitacoes-de-ambiente" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
 <th>Condição</th>
-<th>Regra</th>
+<th>Regra / Observação</th>
 </tr>
 </thead>
 <tbody>
@@ -2362,28 +2362,28 @@
 <td>Janela anônima/convidado, sem extensões instaladas, sem histórico e sem outras abas abertas durante a execução.</td>
 </tr>
 <tr>
-<td>Isolamento de rede</td>
-<td>Instância servida exclusivamente em <code>localhost:8080</code>, sem conexão a serviços externos de armazenamento em nuvem.</td>
+<td>Exposição de rede e vínculo de porta (limitação)</td>
+<td>Na coleta inicial com <code>httpd:alpine</code>, a publicação padrão <code>-p 8080:80</code> vinculou o serviço em <code>0.0.0.0:8080</code> (acessível na rede local), o que fica registrado como limitação desta coleta. Na execução complementar com <code>jgraph/drawio:32.6.10</code> e nos próximos testes, o mapeamento foi restrito exclusivamente à interface de <em>loopback</em> (<code>127.0.0.1:8080:8080</code> / <code>127.0.0.1:8080:80</code>).</td>
 </tr>
 <tr>
 <td>Limpeza de estado</td>
 <td>Cada caso dinâmico de abertura/importação é executado descartando o diagrama anterior ou recarregando a sessão limpa.</td>
 </tr>
 <tr>
-<td>Divulgação responsável</td>
-<td>Os arquivos <code>.drawio</code> contendo <em>payloads</em> maliciosos são criados em diretório temporário fora dos repositórios Git e excluídos imediatamente após a coleta, registrando-se apenas os resultados e evidências textuais/visuais.</td>
+<td>Divulgação responsável (protocolo 5.2.4)</td>
+<td>Os arquivos <code>.drawio</code> contendo vetores de teste são criados em diretório temporário fora dos repositórios Git e excluídos imediatamente após a coleta. Nenhum <em>payload</em> literal ou comando de ataque é publicado no repositório, registrando-se apenas a descrição funcional de cada caso e o resultado observado.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="artefatos-e-vetores-de-teste">Artefatos e vetores de teste<a class="headerlink" href="#artefatos-e-vetores-de-teste" title="Permanent link">&para;</a></h3>
-<p>Os testes dinâmicos baseiam-se em vulnerabilidades históricas documentadas para o draw.io (XSS via importação XML, XSS em rótulos HTML — ref. CVE-2026-46642, <em>Path Traversal</em> no proxy e variações de evasão — ref. CVE-2026-58504).</p>
+<h3 id="artefatos-e-casos-de-teste">Artefatos e casos de teste<a class="headerlink" href="#artefatos-e-casos-de-teste" title="Permanent link">&para;</a></h3>
+<p>Os testes dinâmicos baseiam-se em cenários de vulnerabilidades históricas documentadas para o draw.io (injeção de script via importação XML, XSS em rótulos HTML — ref. CVE-2026-46642, <em>Path Traversal</em>/SSRF no <em>servlet</em> <code>/proxy</code> e variações de evasão em elementos não editáveis — ref. CVE-2026-58504).</p>
 <table>
 <thead>
 <tr>
 <th>ID</th>
 <th>Questão / Métrica</th>
 <th>Artefato ou Requisição</th>
-<th>Vetor Empregado</th>
+<th>Cenário Testado</th>
 <th>Mecanismo Avaliado</th>
 </tr>
 </thead>
@@ -2391,51 +2391,51 @@
 <tr>
 <td><strong>TD-01</strong></td>
 <td>Q1.1 (M1.1)</td>
-<td><code>teste_q1_1.drawio</code></td>
-<td>Atributo <code>value="&amp;lt;script&amp;gt;alert('XSS_Q1_1')&amp;lt;/script&amp;gt;"</code> com <code>html=1</code> importado via menu.</td>
+<td>Arquivo <code>.drawio</code> temporário</td>
+<td>Importação de diagrama contendo tag de script embutida no atributo de texto de uma célula (<code>html=1</code>).</td>
 <td>Sanitização na importação de arquivos XML.</td>
 </tr>
 <tr>
 <td><strong>TD-02</strong></td>
 <td>Q1.2 (M1.1)</td>
-<td><code>teste_q1_2.drawio</code></td>
-<td>Atributo <code>value="&amp;lt;img src=x onerror=alert('XSS_Q1_2')&amp;gt;"</code> em célula de texto (<code>html=1</code>).</td>
-<td>Remoção de manipuladores de evento (<code>onerror</code>) em rótulos HTML.</td>
+<td>Arquivo <code>.drawio</code> temporário</td>
+<td>Abertura de diagrama com célula HTML contendo imagem e manipulador de evento de erro inline.</td>
+<td>Remoção de manipuladores de evento em rótulos HTML.</td>
 </tr>
 <tr>
 <td><strong>TD-03</strong></td>
 <td>Q1.3 (M1.1)</td>
-<td>Requisição HTTP <code>GET</code></td>
-<td><code>http://localhost:8080/proxy?url=file:///etc/passwd</code></td>
-<td>Bloqueio de leitura de arquivos locais via proxy.</td>
+<td>Requisição HTTP <code>GET</code> (<code>/proxy</code>)</td>
+<td>Solicitação ao <em>servlet</em> <code>/proxy</code> no servidor Tomcat apontando para caminho de arquivo local do sistema operacional.</td>
+<td>Bloqueio de leitura de arquivos locais e esquemas não HTTP no <code>ProxyServlet</code>.</td>
 </tr>
 <tr>
 <td><strong>TD-04</strong></td>
 <td>Q1.3 (M1.1)</td>
-<td>Requisição HTTP <code>GET</code></td>
-<td><code>http://localhost:8080/proxy?url=http://127.0.0.1:8080/../../WEB-INF/web.xml</code></td>
-<td>Bloqueio de travessia de diretório (<em>Path Traversal</em>).</td>
+<td>Requisição HTTP <code>GET</code> (<code>/proxy</code>)</td>
+<td>Solicitação ao <em>servlet</em> <code>/proxy</code> no servidor Tomcat tentando acessar descritor interno da aplicação (<code>WEB-INF/web.xml</code>).</td>
+<td>Bloqueio de acesso a recursos internos e endereços locais no <code>ProxyServlet</code>.</td>
 </tr>
 <tr>
 <td><strong>TD-05</strong></td>
 <td>Q1.5 (M1.3)</td>
-<td><code>teste_m1_3_bypasses.drawio</code> (Célula 1)</td>
-<td>Tag SVG aninhada: <code>&amp;lt;svg onload=alert('Bypass_1')&amp;gt;&amp;lt;/svg&amp;gt;</code> (<code>html=1</code>).</td>
-<td>Filtragem de elementos SVG e eventos <code>onload</code>.</td>
+<td>Arquivo <code>.drawio</code> temporário (Célula 1)</td>
+<td>Rótulo HTML com elemento vetorial SVG aninhado e evento de carregamento inline.</td>
+<td>Filtragem de elementos SVG e eventos automáticos.</td>
 </tr>
 <tr>
 <td><strong>TD-06</strong></td>
 <td>Q1.5 (M1.3)</td>
-<td><code>teste_m1_3_bypasses.drawio</code> (Célula 2)</td>
-<td>Âncora <code>&amp;lt;a href="javascript:alert('Bypass_2')"&amp;gt;Clique&amp;lt;/a&amp;gt;</code> com <code>html=1;editable=0</code>.</td>
-<td>Neutralização de URIs <code>javascript:</code> em elementos não editáveis.</td>
+<td>Arquivo <code>.drawio</code> temporário (Célula 2)</td>
+<td>Rótulo HTML em célula bloqueada para edição (<code>editable=0</code>) contendo âncora com URI de execução de script.</td>
+<td>Neutralização de URIs de script em elementos não editáveis.</td>
 </tr>
 <tr>
 <td><strong>TD-07</strong></td>
 <td>Q1.5 (M1.3)</td>
-<td><code>teste_m1_3_bypasses.drawio</code> (Célula 3)</td>
-<td>Quadro embutido <code>&amp;lt;iframe src="javascript:alert('Bypass_3')"&amp;gt;&amp;lt;/iframe&amp;gt;</code> (<code>html=1</code>).</td>
-<td>Remoção de tags <code>&lt;iframe&gt;</code> na renderização de rótulos.</td>
+<td>Arquivo <code>.drawio</code> temporário (Célula 3)</td>
+<td>Rótulo HTML contendo quadro embutido apontando para URI de execução de script.</td>
+<td>Remoção de elementos de quadro embutido na renderização.</td>
 </tr>
 </tbody>
 </table>
@@ -2445,33 +2445,35 @@
 <ol>
 <li>Abrir o diretório do repositório <code>H3ytt0r10/drawio</code> (versão <code>32.6.10</code>) no VS Code.</li>
 <li>Localizar os arquivos <code>Format.js</code>, <code>Graph.js</code> e <code>Editor.js</code> dentro de <code>src/main/webapp/js/</code>.</li>
-<li>Pesquisar todas as ocorrências da chamada <code>getLabelValue</code> nos três arquivos.</li>
-<li>Descartar comentários, declarações de protótipo e chamadas usadas exclusivamente para verificações booleanas ou métricas sem inserção no DOM, obtendo o conjunto de trechos válidos ($P_t$).</li>
+<li>Pesquisar todas as ocorrências de <code>getLabelValue</code> nos três arquivos.</li>
+<li>Aplicar o critério de contagem: contabiliza-se cada ponto de chamada onde o retorno é inserido ou avaliado no DOM (incluindo <code>Format.js:5683</code> em <code>canConvertHtmlToSvg</code>, que atribui o rótulo ao <code>.innerHTML</code>); exclui-se a própria definição do método base (<code>Graph.js:976</code>), comentários e checagens puramente lógicas sem manipulação de DOM, obtendo-se o conjunto de trechos válidos ($P_t$).</li>
 <li>Rastrear o fluxo de dados de cada trecho válido até a renderização/medição HTML, verificando a aplicação de <code>Graph.sanitizeHtml</code> (via <code>sanitizeLabel</code>/DOMPurify) ou <code>mxUtils.htmlEntities</code> antes do uso no DOM, contabilizando os trechos protegidos ($P_p$).</li>
 </ol>
 <p><strong>Bloco B: Testes dinâmicos base — importação e rótulos (M1.1 / Q1.1 e Q1.2)</strong></p>
 <ol>
-<li>Iniciar o contêiner <code>drawio-teste</code> e abrir <code>http://localhost:8080</code> em janela anônima.</li>
-<li>Acionar <strong>Arquivo &gt; Importar de &gt; Dispositivo</strong>, selecionar <code>teste_q1_1.drawio</code> e observar se há execução de alerta ou renderização limpa da forma.</li>
-<li>Acionar <strong>Arquivo &gt; Abrir de &gt; Dispositivo</strong>, descartar o diagrama anterior, selecionar <code>teste_q1_2.drawio</code> e verificar se o evento <code>onerror</code> é neutralizado.</li>
+<li>Iniciar o contêiner estático e abrir a aplicação em janela anônima.</li>
+<li>Acionar <strong>Arquivo &gt; Importar de &gt; Dispositivo</strong>, selecionar o caso <code>TD-01</code> e observar se há execução de script ou renderização limpa da forma.</li>
+<li>Acionar <strong>Arquivo &gt; Abrir de &gt; Dispositivo</strong>, descartar o diagrama anterior, selecionar o caso <code>TD-02</code> e verificar se o manipulador de evento inline é neutralizado.</li>
 </ol>
 <p><strong>Bloco C: Testes dinâmicos base — proxy e Path Traversal (M1.1 / Q1.3)</strong></p>
 <ol>
-<li>No PowerShell, executar <code>curl.exe -i</code> contra os dois endpoints de teste (<code>TD-03</code> e <code>TD-04</code>).</li>
-<li>Registrar o código de status HTTP retornado (esperando <code>400</code>, <code>403</code> ou <code>404</code> sem corpo de arquivo interno) e confirmar o registro no servidor via <code>docker logs drawio-teste</code>.</li>
+<li>Iniciar o contêiner oficial com servidor Java/Tomcat (<code>jgraph/drawio:32.6.10</code>) vinculado estritamente a <code>127.0.0.1:8080:8080</code>.</li>
+<li>No PowerShell, executar <code>curl.exe -i</code> contra o endpoint <code>/proxy</code> para os cenários <code>TD-03</code> e <code>TD-04</code>.</li>
+<li>Registrar o código de status HTTP retornado e confirmar no código-fonte (<code>WEB-INF/web.xml</code> e <code>ProxyServlet.java</code>) o comportamento do <em>servlet</em> implantado, encerrando o contêiner em seguida.</li>
 </ol>
 <p><strong>Bloco D: Testes de resistência e variações de bypass (M1.3 / Q1.5)</strong></p>
 <ol>
-<li>Na janela anônima do draw.io, acionar <strong>Arquivo &gt; Abrir de &gt; Dispositivo</strong> e carregar <code>teste_m1_3_bypasses.drawio</code>.</li>
-<li>Verificar a ausência de execução automática das células 1 (<code>&lt;svg onload&gt;</code>) e 3 (<code>&lt;iframe&gt;</code>).</li>
-<li>Clicar diretamente sobre o rótulo <code>"Clique"</code> da célula 2 para confirmar a remoção do esquema <code>javascript:</code>.</li>
+<li>Na janela anônima do draw.io, acionar <strong>Arquivo &gt; Abrir de &gt; Dispositivo</strong> e carregar o diagrama com os cenários <code>TD-05</code> a <code>TD-07</code>.</li>
+<li>Verificar a ausência de execução automática das células com elemento SVG e quadro embutido.</li>
+<li>Clicar diretamente sobre o rótulo da célula não editável (<code>editable=0</code>) para confirmar a remoção do esquema de script.</li>
 <li>Excluir o diretório temporário contendo os arquivos <code>.drawio</code> de teste e encerrar o contêiner.</li>
 </ol>
 <h3 id="criterios-de-leitura-e-registro-das-medidas">Critérios de leitura e registro das medidas<a class="headerlink" href="#criterios-de-leitura-e-registro-das-medidas" title="Permanent link">&para;</a></h3>
+<p>Conforme a estrutura GQM da Fase 2, a métrica <strong>M1.1</strong> é calculada individualmente por componente avaliado (sem agregação somada entre superfícies distintas):</p>
 <table>
 <thead>
 <tr>
-<th>Métrica</th>
+<th>Métrica / Componente</th>
 <th>Entrada / Escopo</th>
 <th>Critério de Sucesso (Protegido / Bloqueado)</th>
 <th>Valor Registrado</th>
@@ -2479,27 +2481,39 @@
 </thead>
 <tbody>
 <tr>
-<td><strong>M1.1</strong></td>
-<td>$C_t = 4$ casos base (<code>TD-01</code> a <code>TD-04</code>).</td>
-<td>Ausência de disparo de <code>alert()</code>, ausência de injeção de script ativo no DOM e rejeição HTTP (<code>403</code>/<code>404</code>) sem vazamento de arquivos.</td>
-<td>$M1.1 = (C_b / C_t) \times 100$, em $\%$.</td>
+<td><strong>M1.1 — Q1.1 (Importação)</strong></td>
+<td>$C_{t,1} = 1$ caso (<code>TD-01</code>).</td>
+<td>Ausência de disparo de alerta e remoção de tags de script na importação XML.</td>
+<td>$M1.1_{Q1.1} = (C_{b,1} / C_{t,1}) \times 100$, em $\%$.</td>
 </tr>
 <tr>
-<td><strong>M1.2</strong></td>
-<td>$P_t$ trechos válidos de renderização/medição HTML em <code>Format.js</code>, <code>Graph.js</code> e <code>Editor.js</code>.</td>
-<td>Presença comprovada de sanitização (<code>DOMPurify</code>) ou escape (<code>mxUtils.htmlEntities</code>) em todos os ramos antes da inserção no DOM.</td>
+<td><strong>M1.1 — Q1.2 (Rótulos HTML)</strong></td>
+<td>$C_{t,2} = 1$ caso (<code>TD-02</code>).</td>
+<td>Neutralização de manipuladores de evento inline em rótulos HTML.</td>
+<td>$M1.1_{Q1.2} = (C_{b,2} / C_{t,2}) \times 100$, em $\%$.</td>
+</tr>
+<tr>
+<td><strong>M1.1 — Q1.3 (Proxy / Servidor)</strong></td>
+<td>$C_{t,3} = 2$ casos (<code>TD-03</code> e <code>TD-04</code>).</td>
+<td>Rejeição ativa pelo <code>ProxyServlet</code> no servidor Tomcat sem vazamento de arquivos internos.</td>
+<td>$M1.1_{Q1.3} = (C_{b,3} / C_{t,3}) \times 100$, em $\%$.</td>
+</tr>
+<tr>
+<td><strong>M1.2 — Q1.4 (Sanitização)</strong></td>
+<td>$P_t = 4$ pontos de chamada válidos em <code>Format.js</code> e <code>Graph.js</code>.</td>
+<td>Presença comprovada de sanitização (<code>DOMPurify</code>) ou escape (<code>mxUtils.htmlEntities</code>) antes da inserção no DOM.</td>
 <td>$M1.2 = (P_p / P_t) \times 100$, em $\%$.</td>
 </tr>
 <tr>
-<td><strong>M1.3</strong></td>
+<td><strong>M1.3 — Q1.5 (Resistência)</strong></td>
 <td>$W_t = 3$ variações de evasão (<code>TD-05</code> a <code>TD-07</code>).</td>
-<td>Neutralização integral das tags/atributos ofuscados ou combinados com estilos (<code>editable=0</code>), sem execução de código.</td>
+<td>Neutralização integral das tags/atributos ofuscados ou combinados com estilos (<code>editable=0</code>).</td>
 <td>$M1.3 = (W_b / W_t) \times 100$, em $\%$.</td>
 </tr>
 </tbody>
 </table>
 <h3 id="criterios-de-bloqueio-falhas-e-descartes">Critérios de bloqueio, falhas e descartes<a class="headerlink" href="#criterios-de-bloqueio-falhas-e-descartes" title="Permanent link">&para;</a></h3>
-<p>Cada caso dinâmico é classificado como <strong>bloqueado</strong> quando o vetor é removido ou escapado pela aplicação sem execução de JavaScript e sem exposição de recursos locais. Considera-se <strong>falha de segurança</strong> (vulnerabilidade explorável) qualquer execução de caixa de diálogo (<code>alert</code>), injeção de elemento ativo malicioso no DOM ou retorno <code>HTTP 200</code> com conteúdo de arquivo do sistema/servidor. Caso ocorra erro operacional externo ao sistema avaliado (como falha de inicialização do contêiner ou cache residual de sessão), o teste é <strong>descartado</strong>, o ambiente é reiniciado e a execução é repetida.</p>
+<p>Cada caso dinâmico é classificado como <strong>bloqueado</strong> quando o vetor é removido ou escapado pela aplicação sem execução de JavaScript e sem exposição de recursos locais. Considera-se <strong>falha de segurança</strong> (vulnerabilidade explorável) qualquer execução de script no navegador, injeção de elemento ativo no DOM ou retorno <code>HTTP 200</code> com conteúdo de arquivo do sistema/servidor. Caso ocorra erro operacional externo ao sistema avaliado (como falha de inicialização do contêiner, ausência do <em>servlet</em> alvo ou cache residual de sessão), o teste é <strong>descartado</strong>, o ambiente é ajustado e a execução é repetida.</p>
 <h3 id="registro-dos-dados">Registro dos dados<a class="headerlink" href="#registro-dos-dados" title="Permanent link">&para;</a></h3>
 <p>Os registros da coleta ficam armazenados em <code>dados/avaliacao/seguranca/</code>:</p>
 <table>
@@ -2511,26 +2525,22 @@
 </thead>
 <tbody>
 <tr>
-<td><code>brutos/resultados_dinamicos.csv</code></td>
-<td>Registro de cada vetor executado (<code>TD-01</code> a <code>TD-07</code>) com status e comportamento observado.</td>
+<td><code>resultados_dinamicos.csv</code></td>
+<td>Registro de cada caso executado (<code>TD-01</code> a <code>TD-07</code>) com status e comportamento observado.</td>
 </tr>
 <tr>
-<td><code>brutos/inspecao_estatica.csv</code></td>
+<td><code>inspecao_estatica.csv</code></td>
 <td>Mapeamento das ocorrências de <code>getLabelValue</code> por arquivo, linha, classificação ($P_t$) e proteção ($P_p$).</td>
-</tr>
-<tr>
-<td><code>brutos/evidencias_seguranca_G1.txt</code></td>
-<td>Saída consolidada do terminal contendo versão, inspeção do Docker, respostas HTTP do <code>curl</code> e logs do Apache.</td>
 </tr>
 </tbody>
 </table>
-<p>Colunas de <code>resultados_dinamicos.csv</code>: <code>data</code>, <code>id_teste</code>, <code>questao</code>, <code>metrica</code>, <code>vetor</code>, <code>tipo_analise</code>, <code>status_http_ou_visual</code>, <code>resultado</code> (<code>bloqueado</code>, <code>falha</code> ou <code>descartado</code>), <code>observacao</code>.</p>
+<p>Colunas de <code>resultados_dinamicos.csv</code>: <code>data</code>, <code>id_teste</code>, <code>questao</code>, <code>metrica</code>, <code>descricao_caso</code>, <code>tipo_analise</code>, <code>comportamento_observado</code>, <code>status</code>.</p>
 <h3 id="verificacao-previa-piloto">Verificação prévia (Piloto)<a class="headerlink" href="#verificacao-previa-piloto" title="Permanent link">&para;</a></h3>
-<p>Antes da execução formal dos vetores, realiza-se uma verificação prévia do ambiente para:</p>
+<p>Antes da execução formal dos casos, realiza-se uma verificação prévia do ambiente para:</p>
 <ul>
-<li>confirmar a leitura do arquivo <code>VERSION</code> (<code>32.6.10</code>) e o mapeamento do volume <code>src/main/webapp</code> no contêiner <code>drawio-teste</code>;</li>
-<li>validar o carregamento da interface web em <code>http://localhost:8080</code> sem dependências externas;</li>
-<li>confirmar a arquitetura estática da implantação (servidor Apache sem <em>servlet</em> Java <code>/proxy</code> ativo) e a sintaxe de busca no VS Code.</li>
+<li>confirmar a leitura do arquivo <code>VERSION</code> (<code>32.6.10</code>) e o mapeamento do volume <code>src/main/webapp</code> no contêiner estático;</li>
+<li>validar o carregamento da interface web sem dependências externas;</li>
+<li>verificar a presença do mapeamento <code>/proxy</code> (<code>ProxyServlet</code>) na imagem oficial com servidor Java/Tomcat (<code>jgraph/drawio:32.6.10</code>) para a coleta de <code>Q1.3</code>.</li>
 </ul>
 
 
@@ -2552,7 +2562,7 @@
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="14 de novembro de 2026 19:56:18 UTC">14 de novembro de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="15 de novembro de 2026 00:30:10 UTC">15 de novembro de 2026</span>
   </span>
 
     

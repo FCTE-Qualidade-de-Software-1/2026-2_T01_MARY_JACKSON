@@ -2118,21 +2118,21 @@
 
 
 <h1 id="coleta-de-dados">Coleta de dados<a class="headerlink" href="#coleta-de-dados" title="Permanent link">&para;</a></h1>
-<p>Esta página documenta a execução prática e a coleta de dados brutos realizados na versão <code>32.6.10</code> do draw.io (repositório <code>H3ytt0r10/drawio</code>).</p>
+<p>Esta página documenta a execução prática e a coleta de dados brutos realizados na versão <code>32.6.10</code> do draw.io (repositório <code>H3ytt0r10/drawio</code> e imagem oficial <code>jgraph/drawio:32.6.10</code>).</p>
 <h2 id="seguranca-dupla-1-objetivo-g1">Segurança (Dupla 1 — Objetivo G1)<a class="headerlink" href="#seguranca-dupla-1-objetivo-g1" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Versão avaliada:</strong> draw.io release <code>32.6.10</code> (repositório <code>H3ytt0r10/drawio</code>)</li>
-<li><strong>Ambiente de execução:</strong> Contêiner Docker isolado (<code>httpd:alpine</code> em <code>localhost:8080</code>), sessão anônima sem acesso à rede externa, VS Code e <code>curl</code>.</li>
+<li><strong>Versão avaliada:</strong> draw.io release <code>32.6.10</code> (<code>H3ytt0r10/drawio</code>, commit <code>c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3</code>, e imagem oficial <code>jgraph/drawio:32.6.10</code>).</li>
+<li><strong>Ambiente de execução e limitação:</strong> Contêiner Docker estático (<code>httpd:alpine</code>) para os testes de cliente (<code>Q1.1</code>, <code>Q1.2</code> e <code>Q1.5</code>) — registrando-se como limitação da coleta inicial o vínculo padrão em <code>0.0.0.0:8080</code> — e contêiner oficial com servidor Java/Tomcat (<code>jgraph/drawio:32.6.10</code>) vinculado estritamente ao <em>loopback</em> (<code>127.0.0.1:8080:8080</code>) para validação do <em>servlet</em> <code>/proxy</code> (<code>Q1.3</code>), além de sessão anônima sem rede externa, VS Code e <code>curl.exe</code>.</li>
 <li><strong>Dados brutos (CSV):</strong> armazenados em <code>dados/avaliacao/seguranca/</code> (<code>resultados_dinamicos.csv</code> e <code>inspecao_estatica.csv</code>).</li>
 </ul>
 <h3 id="testes-dinamicos-de-penetracao-m11-e-m13">Testes dinâmicos de penetração (M1.1 e M1.3)<a class="headerlink" href="#testes-dinamicos-de-penetracao-m11-e-m13" title="Permanent link">&para;</a></h3>
-<p>Em conformidade com as diretrizes de divulgação responsável, os arquivos XML utilizados nos testes foram executados exclusivamente em ambiente local isolado e descartados após a coleta, sem publicação no repositório.</p>
+<p>Em conformidade com as diretrizes de divulgação responsável (protocolo 5.2.4), os arquivos XML utilizados nos testes foram executados exclusivamente em diretório temporário local e descartados imediatamente após a coleta. Nenhum <em>payload</em> literal ou comando de ataque é publicado neste repositório, registrando-se apenas a descrição funcional de cada cenário e o resultado observado.</p>
 <table>
 <thead>
 <tr>
 <th>ID</th>
 <th>Questão / Métrica</th>
-<th>Vetor / Caso de Teste Executado</th>
+<th>Descrição Funcional do Caso de Teste</th>
 <th>Comportamento Observado</th>
 <th>Status</th>
 </tr>
@@ -2141,65 +2141,62 @@
 <tr>
 <td><strong>TD-01</strong></td>
 <td>Q1.1 (M1.1) — Importação XML</td>
-<td>Arquivo <code>.drawio</code> contendo tag <code>&lt;script&gt;</code> no atributo <code>value</code> de um <code>&lt;mxCell&gt;</code> importado via dispositivo.</td>
-<td>Forma importada sem conteúdo textual; tag <code>&lt;script&gt;</code> removida durante o <em>parsing</em> sem disparo de alerta.</td>
+<td>Importação de diagrama <code>.drawio</code> contendo tag de script embutida no atributo de texto de uma célula (<code>html=1</code>).</td>
+<td>Forma importada sem conteúdo textual; tag de script removida durante o <em>parsing</em> sem disparo de alerta.</td>
 <td><strong>Bloqueado</strong></td>
 </tr>
 <tr>
 <td><strong>TD-02</strong></td>
 <td>Q1.2 (M1.1) — Rótulos HTML <em>(ref. CVE-2026-46642)</em></td>
-<td>Célula com estilo <code>html=1</code> e rótulo contendo <code>&lt;img src=x onerror=...&gt;</code>.</td>
-<td>Exibição apenas do ícone nativo de imagem quebrada; manipulador <code>onerror</code> neutralizado pela sanitização.</td>
+<td>Abertura de diagrama com célula <code>html=1</code> contendo tag de imagem e manipulador de evento de erro inline.</td>
+<td>Exibição apenas do ícone nativo de imagem quebrada; manipulador de evento inline neutralizado pela sanitização.</td>
 <td><strong>Bloqueado</strong></td>
 </tr>
 <tr>
 <td><strong>TD-03</strong></td>
-<td>Q1.3 (M1.1) — Proxy / Path Traversal</td>
-<td>Requisição HTTP <code>GET /proxy?url=file:///etc/passwd</code> enviada via <code>curl</code>.</td>
-<td>Resposta <code>HTTP/1.1 404 Not Found</code> sem leitura de arquivos do sistema operacional.</td>
+<td>Q1.3 (M1.1) — Proxy / Servidor Java</td>
+<td>Requisição HTTP <code>GET</code> ao endpoint <code>/proxy</code> no servidor Tomcat tentando acessar arquivo local do sistema operacional via esquema de arquivo.</td>
+<td><code>ProxyServlet</code> ativo retornou <code>HTTP/1.1 404</code> com <code>Content-Length: 0</code> por bloqueio preventivo padrão (<code>ENABLE_DRAWIO_PROXY</code> desabilitado em <code>ProxyServlet.java:74-76</code>).</td>
 <td><strong>Bloqueado</strong></td>
 </tr>
 <tr>
 <td><strong>TD-04</strong></td>
-<td>Q1.3 (M1.1) — Proxy / Path Traversal</td>
-<td>Requisição HTTP <code>GET /proxy?url=http://127.0.0.1:8080/../../WEB-INF/web.xml</code> via <code>curl</code>.</td>
-<td>Resposta <code>HTTP/1.1 404 Not Found</code> sem exposição de configurações internas.</td>
+<td>Q1.3 (M1.1) — Proxy / Servidor Java</td>
+<td>Requisição HTTP <code>GET</code> ao endpoint <code>/proxy</code> no servidor Tomcat tentando acessar o descritor interno <code>WEB-INF/web.xml</code> via endereço local.</td>
+<td><code>ProxyServlet</code> ativo retornou <code>HTTP/1.1 404</code> com <code>Content-Length: 0</code> sem exposição de configurações internas do servidor.</td>
 <td><strong>Bloqueado</strong></td>
 </tr>
 <tr>
 <td><strong>TD-05</strong></td>
 <td>Q1.5 (M1.3) — Bypass 1 <em>(ref. CVE-2026-58504)</em></td>
-<td>Célula com <code>html=1</code> contendo tag <code>&lt;svg onload=...&gt;</code>.</td>
-<td>Tag <code>&lt;svg&gt;</code> e evento <code>onload</code> removidos; célula renderizada em branco.</td>
+<td>Célula com <code>html=1</code> contendo elemento vetorial SVG aninhado e manipulador de evento de carregamento inline.</td>
+<td>Elemento SVG e evento inline removidos; célula renderizada em branco.</td>
 <td><strong>Bloqueado</strong></td>
 </tr>
 <tr>
 <td><strong>TD-06</strong></td>
 <td>Q1.5 (M1.3) — Bypass 2 <em>(ref. CVE-2026-58504)</em></td>
-<td>Célula com <code>html=1;editable=0</code> contendo âncora <code>&lt;a href="javascript:..."&gt;Clique&lt;/a&gt;</code>.</td>
-<td>Esquema <code>javascript:</code> removido; preservado apenas o texto seguro <code>"Clique"</code> bloqueado para edição.</td>
+<td>Célula bloqueada para edição (<code>html=1;editable=0</code>) contendo âncora com URI de execução de script.</td>
+<td>Esquema de script removido; preservado apenas o texto seguro do rótulo bloqueado para edição.</td>
 <td><strong>Bloqueado</strong></td>
 </tr>
 <tr>
 <td><strong>TD-07</strong></td>
 <td>Q1.5 (M1.3) — Bypass 3 <em>(ref. CVE-2026-58504)</em></td>
-<td>Célula com <code>html=1</code> contendo quadro embutido <code>&lt;iframe src="javascript:..."&gt;</code>.</td>
-<td>Elemento <code>&lt;iframe&gt;</code> integralmente removido na renderização.</td>
+<td>Célula com <code>html=1</code> contendo quadro embutido apontando para URI de execução de script.</td>
+<td>Elemento de quadro embutido integralmente removido na renderização.</td>
 <td><strong>Bloqueado</strong></td>
 </tr>
 </tbody>
 </table>
 <h3 id="inspecao-estatica-de-sanitizacao-m12-q14">Inspeção estática de sanitização (M1.2 / Q1.4)<a class="headerlink" href="#inspecao-estatica-de-sanitizacao-m12-q14" title="Permanent link">&para;</a></h3>
-<p>A varredura pela chamada <code>getLabelValue</code> nos arquivos <code>Format.js</code>, <code>Graph.js</code> e <code>Editor.js</code> identificou <strong>9 ocorrências totais</strong>. Após triagem de fluxo de dados até o DOM:</p>
+<p>A varredura por <code>getLabelValue</code> nos arquivos <code>Format.js</code>, <code>Graph.js</code> e <code>Editor.js</code> identificou <strong>9 ocorrências totais</strong>. Adotou-se como critério de contagem contabilizar cada ponto de chamada onde o valor retornado é inserido ou avaliado no DOM, excluindo-se a definição base do método (<code>Graph.js:976</code>), que corresponde ao local onde a proteção é implementada, bem como comentários e verificações puramente lógicas sem manipulação de DOM:</p>
 <ul>
-<li><strong>6 ocorrências descartadas:</strong><ul>
+<li><strong>5 ocorrências descartadas:</strong></li>
 <li><code>Format.js</code> (linha <code>5678</code>): comentário explicativo de código.</li>
-<li><code>Format.js</code> (linha <code>5683</code>): verificação booleana via <code>mxUtils.canConvertHtmlToSvg</code> sem inserção no DOM.</li>
-<li><code>Graph.js</code> (linhas <code>976</code> e <code>978</code>): definição base de <code>this.cellRenderer.getLabelValue</code> e chamada ao protótipo pai (que aplica <code>mxUtils.htmlEntities</code> ou <code>sanitizeLabel</code>/<code>DOMPurify</code> quando <code>isHtmlLabel</code> está ativo).</li>
-<li><code>Editor.js</code> (linhas <code>5374</code> e <code>5494</code>): verificações booleanas via <code>Editor.containsMath</code> para cálculo de dimensões.</li>
-</ul>
-</li>
-<li><strong>3 trechos válidos (<code>Pt = 3</code>) e protegidos (<code>Pp = 3</code>):</strong></li>
+<li><code>Graph.js</code> (linhas <code>976</code> e <code>978</code>): definição base de <code>this.cellRenderer.getLabelValue</code> e chamada interna ao protótipo pai (onde <code>mxUtils.htmlEntities</code> ou <code>sanitizeLabel</code>/<code>DOMPurify</code> é aplicado conforme <code>isHtmlLabel</code>).</li>
+<li><code>Editor.js</code> (linhas <code>5374</code> e <code>5494</code>): verificações booleanas via <code>Editor.containsMath</code> para cálculo de dimensões sem inserção no DOM.</li>
+<li><strong>4 trechos válidos (<code>Pt = 4</code>) e protegidos (<code>Pp = 4</code>):</strong></li>
 </ul>
 <table>
 <thead>
@@ -2213,6 +2210,13 @@
 </thead>
 <tbody>
 <tr>
+<td><code>Format.js</code></td>
+<td><code>5683</code></td>
+<td>Atribuição do rótulo ao <code>.innerHTML</code> em <code>canConvertHtmlToSvg</code> <em>(vetor central da CVE-2026-58504)</em></td>
+<td>Executa exclusivamente quando <code>html=1</code> está ativo, garantindo passagem prévia pelo <code>DOMPurify</code> dentro de <code>getLabelValue</code>.</td>
+<td><strong>Protegido</strong></td>
+</tr>
+<tr>
 <td><code>Graph.js</code></td>
 <td><code>36334</code></td>
 <td>Medição de fluxo de texto como HTML</td>
@@ -2222,7 +2226,7 @@
 <tr>
 <td><code>Graph.js</code></td>
 <td><code>36601</code></td>
-<td>Preparação de rótulo com <code>&lt;br&gt;</code> para cálculo de fonte (<code>computeAutosizeTextFontSize</code>)</td>
+<td>Preparação de rótulo com quebras de linha HTML para cálculo de fonte (<code>computeAutosizeTextFontSize</code>)</td>
 <td>Aplica <code>mxUtils.htmlEntities(value, false)</code> quando <code>!this.isHtmlLabel(cell)</code>.</td>
 <td><strong>Protegido</strong></td>
 </tr>
@@ -2259,7 +2263,7 @@
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="14 de novembro de 2026 19:57:47 UTC">14 de novembro de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="15 de novembro de 2026 00:30:10 UTC">15 de novembro de 2026</span>
   </span>
 
     
