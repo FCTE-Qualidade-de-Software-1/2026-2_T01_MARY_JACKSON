@@ -32,7 +32,7 @@ Conforme definido na árvore GQM da Fase 2, a métrica **M1.1** é calculada ind
 
 <div class="mj-resultados-eficiencia" markdown="1">
 
-A análise de Thiago Gomes Pereira de Abreu utiliza as **125 tentativas oficiais** coletadas por Pedro Ian Guedes de Carvalho em 14/11/2026: cinco portes, cinco operações e cinco repetições.
+A análise de Thiago Gomes Pereira de Abreu utiliza as 125 tentativas oficiais coletadas por Pedro Ian Guedes de Carvalho em 14/11/2026: cinco portes, cinco operações e cinco repetições.
 
 Foram conferidos cenários, medidas obrigatórias e consistência entre duração e instantes registrados. Os pilotos não entram nos cálculos e o CSV original foi preservado.
 
@@ -40,7 +40,7 @@ Foram conferidos cenários, medidas obrigatórias e consistência entre duraçã
 
 ### Tratamento das tentativas
 
-Pelo [protocolo](index.md#tentativas-validas-falhas-e-interrupcoes), uma operação acima de `2L` é falha temporal. A mediana exige quatro ou cinco sucessos; falhas são excluídas tanto do tempo quanto do heap da operação, sem receber valores artificiais. A classificação resulta em **119 sucessos e 6 falhas temporais**. As 125 operações concluíram na automação; a diferença é a aplicação posterior do critério temporal.
+Pelo [protocolo](index.md#tentativas-validas-falhas-e-interrupcoes), uma operação acima de `2L` é falha temporal. A mediana temporal exige quatro ou cinco sucessos. Pela [revisão pós-coleta de 15/11/2026](../fase-2/niveis-e-julgamento.md#revisao-pos-coleta-do-julgamento-15112026), menos de quatro sucessos por falha temporal do produto recebe nota 1, sem inventar uma mediana de sucessos. A memória é julgada separadamente, com as medidas completas das operações concluídas. Dados ausentes ou inválidos continuam não conclusivos. A classificação resulta em 119 sucessos e 6 falhas temporais. As 125 operações concluíram na automação; a diferença é a aplicação posterior do critério temporal.
 
 | Porte | Tentativa SVG | Tempo (ms) | 2L (ms) |
 | --- | --- | --- | --- |
@@ -51,11 +51,11 @@ Pelo [protocolo](index.md#tentativas-validas-falhas-e-interrupcoes), uma operaç
 | 5.000 | 4 | 126.107,8 | 80.000 |
 | 5.000 | 5 | 113.646,1 | 80.000 |
 
-No SVG de 2.000 formas, a exclusão da tentativa 4 altera as medianas de 29.471,8 para **29.082,5 ms** e de 120,74 para **116,305 MiB**. Em 5.000 formas, nenhum SVG atende a `2L`: M2.4 e M2.5 ficam **não conclusivas (NC)**. As medianas brutas de 113.646,1 ms e 381,90 MiB permanecem na auditoria, sem nota. Pela regra vigente, NC não é convertido automaticamente em nota 1.
+No SVG de 2.000 formas, a exclusão temporal da tentativa 4 altera a mediana dos sucessos de 29.471,8 para 29.082,5 ms. As cinco medidas de memória completas são mantidas: mediana de 120,74 MiB. Em 5.000 formas, o SVG recebe nota temporal 1 pelas cinco falhas; não há mediana de sucessos. O tempo mediano bruto de 113.646,1 ms permanece descritivo. As cinco operações concluíram e forneceram heap válido, cuja mediana é 381,90 MiB e nota 5 (`381,90 / 1.050 ≈ 0,364`). A nota de memória não transforma a falha temporal em sucesso. O julgamento anterior foi preservado para auditoria; a revisão foi adotada após a coleta e não altera L.
 
 ### Medianas e notas por porte
 
-Colunas indicam o número de formas; células mostram **mediana / nota exploratória**. São cinco sucessos por célula, exceto SVG de 2.000 formas (quatro). `NC / —` indica ausência de mediana julgável e nota. Os cálculos usam valores sem arredondamento.
+Colunas indicam o número de formas; células mostram mediana / nota exploratória. Tempo usa cinco sucessos, exceto SVG de 2.000 formas (quatro); memória usa cinco medidas completas por cenário. `— / 1` indica falha temporal sem mediana de sucessos. Os cálculos usam valores sem arredondamento.
 
 **Tempo, em ms:**
 
@@ -67,7 +67,7 @@ Colunas indicam o número de formas; células mostram **mediana / nota explorat�
 | M2.3 — Rótulo | 37,7 / 5 | 40,1 / 5 | 64,3 / 5 | 77,1 / 5 | 171,0 / 5 |
 | M2.4 — PNG | 92,7 / 5 | 231,1 / 5 | 592,3 / 5 | 1.055,2 / 5 | 2.843,0 / 5 |
 | M2.4 — PDF | 177,6 / 5 | 355,3 / 5 | 966,1 / 5 | 2.019,2 / 5 | 6.946,4 / 5 |
-| M2.4 — SVG | 442,2 / 5 | 1.930,7 / 5 | 11.911,4 / 3 | 29.082,5 / 2 | NC / — |
+| M2.4 — SVG | 442,2 / 5 | 1.930,7 / 5 | 11.911,4 / 3 | 29.082,5 / 2 | — / 1 |
 
 </div>
 
@@ -80,11 +80,11 @@ Colunas indicam o número de formas; células mostram **mediana / nota explorat�
 | M2.2 — Após abrir | 42,36 / 5 | 45,53 / 5 | 55,12 / 5 | 51,25 / 5 | 85,89 / 5 |
 | M2.5 — PNG | 38,09 / 5 | 40,93 / 5 | 52,45 / 5 | 63,92 / 5 | 90,87 / 5 |
 | M2.5 — PDF | 38,66 / 5 | 43,77 / 5 | 62,65 / 5 | 91,89 / 5 | 134,77 / 5 |
-| M2.5 — SVG | 40,36 / 5 | 48,92 / 5 | 120,62 / 5 | 116,31 / 5 | NC / — |
+| M2.5 — SVG | 40,36 / 5 | 48,92 / 5 | 120,62 / 5 | 120,74 / 5 | 381,90 / 5 |
 
 </div>
 
-A pontuação usa `r = mediana / L`: notas **5, 4, 3, 2 e 1** nas faixas `r ≤ 0,5`, `≤ 1`, `≤ 1,5`, `≤ 2` e `> 2`, respectivamente. No SVG, `11.911,4 / 9.000 ≈ 1,32349` resulta em nota 3; `29.082,5 / 17.000 ≈ 1,71074`, em nota 2.
+A pontuação usa `r = mediana / L`: notas 5, 4, 3, 2 e 1 nas faixas `r ≤ 0,5`, `≤ 1`, `≤ 1,5`, `≤ 2` e `> 2`, respectivamente. No SVG, `11.911,4 / 9.000 ≈ 1,32349` resulta em nota 3; `29.082,5 / 17.000 ≈ 1,71074`, em nota 2.
 
 ### Capacidade e consolidação
 
@@ -98,19 +98,19 @@ A pontuação usa `r = mediana / L`: notas **5, 4, 3, 2 e 1** nas faixas `r ≤ 
 
 *Demais operações: abrir, editar rótulo, exportar PNG e preparar a impressão de PDF. Cada uma obteve 5/5 sucessos em todos os portes.*
 
-**M2.6 = 2.000 formas, nota exploratória 4:** maior porte ensaiado com pelo menos quatro sucessos em cada operação até `2L`. Isso não significa atendimento a `L`: o SVG de 2.000 formas recebe nota temporal 2. **300 formas** é o maior porte ensaiado com todas as medianas de tempo e memória dentro de `L`.
+**M2.6 = 2.000 formas, nota exploratória 4:** maior porte ensaiado com pelo menos quatro sucessos em cada operação até `2L`. Isso não significa atendimento a `L`: o SVG de 2.000 formas recebe nota temporal 2. 300 formas é o maior porte ensaiado com todas as medianas de tempo e memória dentro de `L`.
 
 | Métrica ou questão | Resultado exploratório | Condição |
 | --- | --- | --- |
 | M2.1, M2.2 e M2.3 | 5 em cada métrica | Todos os cenários têm nota 5. |
-| M2.4 | Parcial; menor nota = 2 | SVG de 5.000 formas é NC. |
-| M2.5 | Parcial; notas calculáveis = 5 | SVG de 5.000 formas é NC. |
+| M2.4 | 1 | SVG de 5.000 formas: 0/5 sucessos temporais. |
+| M2.5 | 5 | Medidas de memória completas, inclusive nas operações lentas. |
 | M2.6 / Q2.4 | 4 | Capacidade instrumentada de 2.000 formas. |
 | Q2.1 / Q2.2 | 5 em cada questão | Abertura/memória e edição de rótulos. |
-| Q2.3 | NC | Exportação sem todas as métricas conclusivas. |
-| G2 | **Não emitido** | Q2.3 incompleto e limites não aprovados. |
+| Q2.3 | 1 | Mínimo entre M2.4 = 1 e M2.5 = 5. |
+| G2 | 1 exploratório | Julgamento definitivo pendente de critérios aprovados e exportação completa. |
 
-A consolidação segue o mínimo entre cenários, métricas e questões, conforme a Fase 2. Cenários NC não são omitidos. A aprovação dos mesmos limites, por si só, não resolveria a ausência de julgamento do SVG em 5.000 formas.
+A consolidação segue o mínimo entre cenários, métricas e questões: `G2 = mínimo(5, 5, 1, 4) = 1`, de forma exploratória. A lacuna das 5.000 formas foi fechada pela regra pós-coleta; continuam pendentes a aprovação dos limites e a validação da exportação completa. Dados ausentes ou inválidos, caso existissem, não seriam omitidos nem receberiam nota artificial.
 
 ### Hipóteses e interpretação
 
@@ -118,21 +118,21 @@ A consolidação segue o mínimo entre cenários, métricas e questões, conform
 | --- | --- | --- |
 | Q2.1 / H2.1 | Parcialmente corroborada | Tempo cresce de 74,0 a 1.397,9 ms; heap de 42,36 a 85,89 MiB, mas cai entre 1.000 e 2.000 formas. Todos atendem aos limites; o heap não cresce continuamente. |
 | Q2.2 / H2.2 | Corroborada | Latência cresce de 37,7 a 171,0 ms, com nota 5 em todos os portes. |
-| Q2.3 / H2.3 | Não corroborada | SVG recebe notas 3 e 2 em cenários conclusivos, contrariando a hipótese de notas 4 ou 5 em todos os formatos. |
+| Q2.3 / H2.3 | Não corroborada | SVG recebe notas 3, 2 e 1 em 1.000, 2.000 e 5.000 formas, contrariando a hipótese de notas 4 ou 5 em todos os formatos. |
 | Q2.4 / H2.4 | Não corroborada | SVG tem 0/5 sucessos temporais em 5.000 formas; maior porte repetível instrumentado é 2.000. |
 
-Abertura e rótulos ficam abaixo da metade dos limites candidatos. **SVG é a principal restrição:** a mediana bruta cresce cerca de 257 vezes para um aumento de 100 vezes nas formas. A conversão de rótulos HTML em imagens, descrita na [coleta](coleta-de-dados.md#observacoes-da-coleta), é uma pista de investigação, não uma causa comprovada por esta análise.
+Abertura e rótulos ficam abaixo da metade dos limites candidatos. SVG é a principal restrição: a mediana bruta cresce cerca de 257 vezes para um aumento de 100 vezes nas formas. A conversão de rótulos HTML em imagens, descrita na [coleta](coleta-de-dados.md#observacoes-da-coleta), é uma pista de investigação, não uma causa comprovada por esta análise.
 
-**PNG e preparação de PDF** atendem aos limites. A variação do PNG em 5.000 formas (1.716,5–3.588,8 ms) foi preservada, sem exclusão arbitrária.
+PNG e preparação de PDF atendem aos limites. A variação do PNG em 5.000 formas (1.716,5–3.588,8 ms) foi preservada, sem exclusão arbitrária.
 
-**Memória:** o máximo bruto de heap, 418,30 MiB, pertence a um SVG que falhou temporalmente e não recebe nota. A oscilação pode envolver coleta de lixo, sem evidência suficiente para isolar essa causa.
+**Memória:** o máximo bruto de heap, 418,30 MiB, pertence a um SVG que falhou temporalmente. A nota 5 de memória resulta da mediana de 381,90 MiB das cinco operações concluídas, não desse máximo isolado. A oscilação pode envolver coleta de lixo, sem evidência suficiente para isolar essa causa.
 
 ### Limitações da avaliação
 
 - **Ambiente e amostra:** draw.io 32.6.10, Chrome 157.0.8103.79, Windows 11 e Intel Core i5-1235U com 16 GB. São cinco repetições por cenário e cargas sintéticas de retângulos sem conectores. Não houve inferência estatística nem estimativa de capacidade absoluta.
 - **Memória:** o heap JavaScript amostrado não representa RAM total e pode omitir picos entre amostras.
-- **Automação e PDF:** o seletor de arquivos é alternativo e o salvamento não é medido. **PDF mede somente preparação de impressão**; a integridade final de todas as exportações não foi comprovada. A capacidade apresentada se restringe ao fluxo instrumentado.
-- **Base da análise e critérios:** foi conferido o CSV extraído, sem revalidar independentemente todos os traces. Os limites permanecem candidatos, e o cenário NC impede fechar o julgamento da exportação.
+- **Automação e PDF:** o seletor de arquivos é alternativo e o salvamento não é medido. PDF mede somente preparação de impressão; a integridade final de todas as exportações não foi comprovada. A capacidade apresentada se restringe ao fluxo instrumentado.
+- **Base da análise e critérios:** foi conferido o CSV extraído, sem revalidar independentemente todos os traces. Os limites permanecem candidatos. A regra de falha temporal foi revisada após observar os dados, e o julgamento anterior está preservado para comparação.
 
 ### Sugestões de melhoria
 
@@ -142,9 +142,9 @@ Abertura e rótulos ficam abaixo da metade dos limites candidatos. **SVG é a pr
 
 ### Conclusão
 
-Abertura e edição apresentam desempenho favorável nas cargas testadas. **SVG é a principal restrição do fluxo:** a repetibilidade exploratória alcança **2.000 formas**, mas todas as medianas atendem a `L` somente até **300 formas**. Os resultados sustentam uma avaliação parcial de adoção, **sem nota global G2 ou recomendação irrestrita**.
+Abertura e edição apresentam desempenho favorável nas cargas testadas. SVG é a principal restrição do fluxo: a repetibilidade exploratória alcança 2.000 formas, mas todas as medianas atendem a `L` somente até 300 formas. O julgamento exploratório G2 = 1 indica restrição de desempenho do fluxo completo sob os critérios adotados, principalmente por SVG, sem uma recomendação definitiva de adoção.
 
-**Para concluir a avaliação:** aprovar os critérios, formalizar o tratamento do cenário NC e medir/validar os arquivos finais, especialmente PDF. Essas pendências dizem respeito ao fechamento da avaliação; as sugestões acima se destinam à melhoria do produto.
+**Pendências para o julgamento definitivo:** registrar a aprovação dos [limites candidatos](../fase-2/niveis-e-julgamento.md#eficiencia-de-desempenho-dupla-2) e medir/validar os arquivos exportados, especialmente o PDF final. A análise dos dados disponíveis está apresentada acima. Essas pendências limitam uma decisão definitiva de adoção e não se confundem com melhorias do produto.
 
 ### Reprodução e auditoria
 
@@ -154,9 +154,10 @@ python dados/avaliacao/eficiencia/analisar.py
 
 O script preserva os dados brutos, lê os limites da Fase 2 e atualiza apenas esta seção. Em `dados/avaliacao/eficiencia/analise/`, gera:
 
-- `tentativas-classificadas.csv`: **125 tentativas**, com classificação e identificação das falhas;
-- `metricas-por-cenario.csv`: **45 resultados**, com medidas, limites, razões e notas;
-- `resumo.json`: consolidação e hashes SHA-256 dos insumos normalizados para LF.
+- `tentativas-classificadas.csv`: 125 tentativas, com classificação e identificação das falhas;
+- `metricas-por-cenario.csv`: 45 resultados, com medidas, limites, razões e notas;
+- `resumo.json`: consolidação e hashes SHA-256 dos insumos normalizados para LF;
+- `revisao-criterios.json`: regra adotada em 15/11/2026, julgamento anterior e resultados alterados.
 
 Os hashes vinculam o relato à coleta e aos critérios utilizados; mudanças exigem revisão. As medidas brutas permanecem nesses arquivos. Traces e manifesto estão na [pasta de evidências](https://drive.google.com/drive/folders/1jwootYRyhx7-tQTW6iViqpkXdaKxO7FM?usp=sharing).
 

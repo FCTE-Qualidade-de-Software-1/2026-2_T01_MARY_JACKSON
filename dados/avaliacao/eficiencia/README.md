@@ -71,4 +71,4 @@ A saída usa um arquivo separado para preservar `brutos/tentativas.csv`. As tabe
 
 Execute `python dados/avaliacao/eficiencia/analisar.py` na raiz do repositório para reproduzir a análise. O script preserva os dados brutos e gera `analise/tentativas-classificadas.csv`, `analise/metricas-por-cenario.csv` e `analise/resumo.json`, além de atualizar apenas a seção de eficiência da página de resultados.
 
-As notas são exploratórias, pois os limites ainda constam como candidatos. Cenários com menos de quatro sucessos são não conclusivos e impedem uma nota global completa. O script verifica os hashes dos insumos normalizados para LF e exige revisão se os dados ou critérios mudarem.
+As notas são exploratórias, pois os limites ainda constam como candidatos. A revisão pós-coleta de 15/11/2026 atribui nota temporal 1 a cenários com menos de quatro sucessos por falha do produto e julga memória por medidas completas das operações concluídas. Dados ausentes ou inválidos continuam não conclusivos. O histórico dessa revisão está em `analise/revisao-criterios.json`. O script verifica os hashes dos insumos normalizados para LF e exige revisão se os dados ou critérios mudarem.

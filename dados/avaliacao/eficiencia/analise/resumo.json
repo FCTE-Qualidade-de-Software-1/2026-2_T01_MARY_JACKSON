@@ -1,6 +1,6 @@
 {
   "entrada_sha256_lf": "b7d51d18d2e57c6841d3e8e690dd1a545bc594b23c446c6a5fd7df7a9c813324",
-  "criterios_sha256_lf": "89c73498ce70227af961e945498c272fdecb48c0b765eba02ff687acdadb1ea3",
+  "criterios_sha256_lf": "5716a4837968cf08b163de72c1c2e97c4a4408b1c890e6d75f65e83bb9d07582",
   "limites_aprovados": false,
   "registros": 125,
   "sucessos": 119,
@@ -22,19 +22,31 @@
       "cenarios_nao_conclusivos": 0
     },
     "M2.4": {
-      "nota": null,
-      "menor_nota_cenarios_conclusivos": 2,
-      "cenarios_nao_conclusivos": 1
+      "nota": 1,
+      "menor_nota_cenarios_conclusivos": 1,
+      "cenarios_nao_conclusivos": 0
     },
     "M2.5": {
-      "nota": null,
+      "nota": 5,
       "menor_nota_cenarios_conclusivos": 5,
-      "cenarios_nao_conclusivos": 1
+      "cenarios_nao_conclusivos": 0
     }
   },
   "capacidade_automatizada": 2000,
   "nota_capacidade_exploratoria": 4,
   "G2": null,
+  "G2_exploratorio": 1,
+  "questoes_exploratorias": {
+    "Q2.1": 5,
+    "Q2.2": 5,
+    "Q2.3": 1,
+    "Q2.4": 4
+  },
+  "pendencias": [
+    "Aprovacao documentada dos limites",
+    "Medicao e validacao dos arquivos finais, especialmente PDF"
+  ],
+  "revisao_pos_coleta": "2026-11-15",
   "capacidade_por_porte": [
     {
       "porte": 50,
