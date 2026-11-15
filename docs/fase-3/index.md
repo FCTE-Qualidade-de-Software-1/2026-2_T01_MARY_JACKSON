@@ -157,7 +157,7 @@ Se o Chrome for atualizado durante a coleta, a nova versão é registrada a part
 
 | Ferramenta | Uso |
 | --- | --- |
-| Sonarclaude | Para a avaliação das funções escolhidas dentro do trabalho |
+| SonarCloud | Análise estática do código selecionado para coletar a complexidade cognitiva (M3.1) e o percentual de código duplicado (M3.2). |
 
 ### Condições de execução
 
@@ -172,11 +172,35 @@ Se o Chrome for atualizado durante a coleta, a nova versão é registrada a part
 
 ### Observações encontradas
 
+A análise de manutenibilidade utiliza duas medidas: a complexidade cognitiva média por função, calculada separadamente para importação de arquivos e edição de rótulos, e o percentual de código duplicado no conjunto de exportação PNG, PDF e SVG. Os resultados se restringem ao código selecionado, conforme o [escopo da avaliação](../fase-1/escopo.md).
+
+Segundo o relato da dupla, houve uma única falha na configuração do SonarCloud; após a correção, as demais execuções ocorreram sem problemas. <!-- Falar aqui sobre observações encontradas sobre os dados brutos do sonarclolud, se houver. -->
+
 ### Procedimento
 
+O procedimento segue as [fichas das métricas](../fase-2/metricas.md#manutenibilidade-dupla-3), com análise estática pelo SonarCloud e julgamento separado para cada questão do GQM.
+
+**Preparação da análise**
+
+1. Utilizar o código do fork `H3ytt0r10/drawio`, versão `32.6.10`, no commit `c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3`.
+2. Identificar e registrar os arquivos e as funções de importação de arquivos, edição de rótulos e exportação PNG, PDF e SVG que compõem o recorte avaliado.
+3. Configurar o projeto no SonarCloud, conferir o escopo e as exclusões da análise e registrar a configuração utilizada, a identificação da execução e o commit analisado.
+4. Executar a análise e conferir sua conclusão e a presença das medidas necessárias no relatório. Corrigir eventuais erros de configuração e repetir a execução antes de utilizar os resultados.
+
+**Coleta e cálculo das métricas**
+
+1. Para a **M3.1**, registrar a complexidade cognitiva total (`C`) e a quantidade de funções (`F`) pertencentes a cada componente. Calcular `M3.1 = C / F` separadamente para importação (**Q3.1**) e edição de rótulos (**Q3.2**), considerando todas as funções do recorte, inclusive as que não geram alertas.
+2. Para a **M3.2**, analisar conjuntamente o código de exportação PNG, PDF e SVG e registrar as linhas duplicadas (`Ld`) e o total de linhas analisadas (`Lt`). Calcular `M3.2 = (Ld / Lt) × 100`, respondendo à **Q3.3**, sem fazer a média dos percentuais individuais dos arquivos.
+3. Registrar os valores brutos, os arquivos e funções considerados e a referência ao relatório na [coleta de dados](coleta-de-dados.md#manutenibilidade-dupla-3), permitindo conferir os cálculos.
+4. Comparar os resultados com os [níveis de julgamento da Fase 2](../fase-2/niveis-e-julgamento.md#manutenibilidade-dupla-3): para M3.1, adequado até 10, atenção acima de 10 até 15 e crítico acima de 15; para M3.2, adequado até 5%, atenção acima de 5% até 10% e crítico acima de 10%. Registrar o julgamento de cada questão na [análise dos resultados](resultados.md#manutenibilidade-dupla-3).
 
 ### Tentativas válidas, falhas e interrupções
 
+Uma execução é considerada **válida** quando a análise do SonarCloud termina com sucesso, corresponde ao commit e ao escopo definidos e fornece os dados necessários ao cálculo da métrica. Para M3.1, é necessário `F > 0`; para M3.2, `Lt > 0`. A ausência de dados não é registrada como valor zero: o resultado permanece pendente até que a coleta seja completada.
+
+Segundo o relato da dupla, ocorreu **uma única tentativa com falha**, causada por erro na configuração do SonarCloud. Essa tentativa foi desconsiderada para o cálculo das métricas e a análise foi executada novamente após a correção. As demais execuções ocorreram normalmente, sem outras falhas ou interrupções relatadas. O incidente é registrado como falha da configuração da coleta, sem atribuí-lo à qualidade do código do draw.io.
+
+Como a coleta é feita por análise estática, não se aplica a repetição de cinco tentativas nem o cálculo de medianas adotados pela Dupla 2. Uma nova execução é necessária quando houver falha, dados incompletos ou alteração do commit, do escopo ou da configuração; nesse último caso, os resultados devem ser identificados separadamente.
 
 ### Registro dos dados
 
