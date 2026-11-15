@@ -1,0 +1,38 @@
+{
+  "data": "2026-11-15",
+  "ratificacao_limites": {
+    "responsavel": "Dupla 2 (Thiago e Pedro)",
+    "data": "2026-11-15",
+    "momento": "ratificacao pos-coleta, valores mantidos",
+    "aprovacao_externa_comprovada": false
+  },
+  "validacao_pr": 57,
+  "validacao_commits": [
+    "48d9f76",
+    "e913192"
+  ],
+  "validacao_sha256_lf": "b6d5fc14b46e6fa54b62a5ea0dbce28a453b0ed7169e0950509f309a802169e1",
+  "validacao_resultados": {
+    "png": {
+      "portes": 5,
+      "arquivos_abrem": 5,
+      "checagem_completo": 5
+    },
+    "svg": {
+      "portes": 5,
+      "arquivos_abrem": 4,
+      "checagem_completo": 4
+    },
+    "pdf": {
+      "portes": 5,
+      "arquivos_abrem": 5,
+      "checagem_completo": 0
+    }
+  },
+  "validacao_temporal_complementar": false,
+  "arquivos_finais_aprovados": false,
+  "analise_concluida": true,
+  "G2": 1,
+  "escopo_G2": "fluxo instrumentado; PDF mede preparacao de impressao",
+  "observacao": "Verificacao executada com achados negativos: PDFs incompletos e SVG de 5000 nao gerado. Os resultados nao sao uma aprovacao funcional do fluxo completo. O pacote de exportacoes ja esta disponivel no Drive."
+}

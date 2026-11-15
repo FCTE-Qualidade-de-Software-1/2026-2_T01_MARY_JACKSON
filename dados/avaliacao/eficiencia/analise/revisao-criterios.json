@@ -155,7 +155,7 @@
       }
     ]
   },
-  "criterios_revisados_sha256_lf": "5716a4837968cf08b163de72c1c2e97c4a4408b1c890e6d75f65e83bb9d07582",
+  "criterios_revisados_sha256_lf": "6929f1a5535764744dcaa8a016a59dff7a4fcb5196de7f8032dbdea00f979379",
   "resultados_revisados": [
     {
       "metrica": "M2.5",
@@ -173,7 +173,7 @@
       "limite": "620",
       "razao": "0.1947419354838709677419354839",
       "nota": 5,
-      "estado": "exploratorio",
+      "estado": "julgado_criterios_dupla",
       "criterio_nota": "mediana",
       "mediana_descritiva_todas": "120.74"
     },
@@ -213,15 +213,21 @@
       "limite": "1050",
       "razao": "0.3637142857142857142857142857",
       "nota": 5,
-      "estado": "exploratorio",
+      "estado": "julgado_criterios_dupla",
       "criterio_nota": "mediana",
       "mediana_descritiva_todas": "381.9"
     }
   ],
   "resumo_revisado": {
     "entrada_sha256_lf": "b7d51d18d2e57c6841d3e8e690dd1a545bc594b23c446c6a5fd7df7a9c813324",
-    "criterios_sha256_lf": "5716a4837968cf08b163de72c1c2e97c4a4408b1c890e6d75f65e83bb9d07582",
-    "limites_aprovados": false,
+    "criterios_sha256_lf": "6929f1a5535764744dcaa8a016a59dff7a4fcb5196de7f8032dbdea00f979379",
+    "limites_aprovados": true,
+    "aprovacao_limites": {
+      "responsavel": "Dupla 2 (Thiago e Pedro)",
+      "data": "2026-11-15",
+      "momento": "ratificacao pos-coleta, valores mantidos",
+      "aprovacao_externa_comprovada": false
+    },
     "registros": 125,
     "sucessos": 119,
     "falhas": 6,
@@ -253,19 +259,35 @@
       }
     },
     "capacidade_automatizada": 2000,
-    "nota_capacidade_exploratoria": 4,
-    "G2": null,
-    "G2_exploratorio": 1,
-    "questoes_exploratorias": {
+    "nota_capacidade": 4,
+    "G2": 1,
+    "questoes": {
       "Q2.1": 5,
       "Q2.2": 5,
       "Q2.3": 1,
       "Q2.4": 4
     },
-    "pendencias": [
-      "Aprovacao documentada dos limites",
-      "Medicao e validacao dos arquivos finais, especialmente PDF"
-    ],
+    "escopo_G2": "fluxo instrumentado; PDF mede preparacao de impressao",
+    "validacao_exportacoes": {
+      "png": {
+        "portes": 5,
+        "arquivos_abrem": 5,
+        "checagem_completo": 5
+      },
+      "svg": {
+        "portes": 5,
+        "arquivos_abrem": 4,
+        "checagem_completo": 4
+      },
+      "pdf": {
+        "portes": 5,
+        "arquivos_abrem": 5,
+        "checagem_completo": 0
+      }
+    },
+    "validacao_sha256_lf": "b6d5fc14b46e6fa54b62a5ea0dbce28a453b0ed7169e0950509f309a802169e1",
+    "capacidade_fluxo_integral": "nao demonstrada na validacao complementar",
+    "pendencias": [],
     "revisao_pos_coleta": "2026-11-15",
     "capacidade_por_porte": [
       {

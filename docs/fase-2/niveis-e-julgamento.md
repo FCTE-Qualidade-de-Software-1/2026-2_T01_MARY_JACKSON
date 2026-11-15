@@ -31,7 +31,7 @@ Os limites e níveis apresentados são decisões da equipe, não critérios norm
 
 ## Eficiência de desempenho (Dupla 2)
 
-Os valores de M2.1 a M2.5 são comparados a um limite L, definido por métrica, porte e formato, e julgados pela razão `r = x / L`, em que `x` é a mediana observada. Os limites abaixo são candidatos, ainda não aprovados; a tolerância crescente por porte e a distinção por formato serão avaliadas no piloto e aprovadas pelo requisitante antes da coleta.
+Os valores de M2.1 a M2.5 são comparados a um limite L, definido por métrica, porte e formato, e julgados pela razão `r = x / L`, em que `x` é a mediana observada.
 
 | Métrica/unidade            | 50    | 300    | 1.000  | 2.000  | 5.000  |
 | -------------------------- | ----- | ------ | ------ | ------ | ------ |
