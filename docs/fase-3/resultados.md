@@ -30,7 +30,98 @@ Conforme definido na árvore GQM da Fase 2, a métrica **M1.1** é calculada ind
 
 ## Eficiência de desempenho (Dupla 2)
 
-*Espaço reservado para a análise e resultados da Dupla 2.*
+<div class="mj-resultados-eficiencia" markdown="1">
+
+A análise de Thiago Gomes Pereira de Abreu utiliza as 125 tentativas oficiais coletadas por Pedro Ian Guedes de Carvalho em 14/11/2026: cinco portes, cinco operações e cinco repetições. Foram conferidos cenários e medidas, excluindo os pilotos e preservando os dados brutos.
+
+### Cálculo das métricas e julgamento
+
+Conforme o [protocolo](index.md#tentativas-validas-falhas-e-interrupcoes) e a [revisão do julgamento](../fase-2/niveis-e-julgamento.md#revisao-pos-coleta-do-julgamento-15112026), tempos acima de `2L` são falhas. A mediana temporal exige pelo menos quatro sucessos; menos sucessos por falha temporal recebem nota 1. Memória usa as cinco medidas completas, inclusive de operações lentas; dados ausentes ou inválidos permanecem não conclusivos.
+
+As 125 operações concluíram na automação, mas o critério temporal resulta em 119 sucessos e 6 falhas, todas no SVG: uma em 2.000 formas (tentativa 4, 40.056,2 ms > 34.000 ms) e cinco em 5.000 formas (> 80.000 ms).
+
+As células mostram mediana / nota, calculada sem arredondamento por `r = mediana / L`: notas 5, 4, 3, 2 e 1 para `r ≤ 0,5`, `≤ 1`, `≤ 1,5`, `≤ 2` e `> 2`. SVG de 2.000 formas usa quatro sucessos temporais; `— / 1` indica falha temporal sem mediana de sucessos.
+
+**Tempo, em ms:**
+
+<div class="mj-eficiencia-medidas" markdown="1">
+
+| Métrica / operação (ms) | 50 | 300 | 1.000 | 2.000 | 5.000 |
+| --- | --- | --- | --- | --- | --- |
+| M2.1 — Abrir | 74,0 / 5 | 159,6 / 5 | 337,4 / 5 | 580,0 / 5 | 1.397,9 / 5 |
+| M2.3 — Rótulo | 37,7 / 5 | 40,1 / 5 | 64,3 / 5 | 77,1 / 5 | 171,0 / 5 |
+| M2.4 — PNG | 92,7 / 5 | 231,1 / 5 | 592,3 / 5 | 1.055,2 / 5 | 2.843,0 / 5 |
+| M2.4 — PDF | 177,6 / 5 | 355,3 / 5 | 966,1 / 5 | 2.019,2 / 5 | 6.946,4 / 5 |
+| M2.4 — SVG | 442,2 / 5 | 1.930,7 / 5 | 11.911,4 / 3 | 29.082,5 / 2 | — / 1 |
+
+</div>
+
+**Heap JavaScript, em MiB:**
+
+<div class="mj-eficiencia-medidas" markdown="1">
+
+| Métrica / operação (MiB) | 50 | 300 | 1.000 | 2.000 | 5.000 |
+| --- | --- | --- | --- | --- | --- |
+| M2.2 — Após abrir | 42,36 / 5 | 45,53 / 5 | 55,12 / 5 | 51,25 / 5 | 85,89 / 5 |
+| M2.5 — PNG | 38,09 / 5 | 40,93 / 5 | 52,45 / 5 | 63,92 / 5 | 90,87 / 5 |
+| M2.5 — PDF | 38,66 / 5 | 43,77 / 5 | 62,65 / 5 | 91,89 / 5 | 134,77 / 5 |
+| M2.5 — SVG | 40,36 / 5 | 48,92 / 5 | 120,62 / 5 | 120,74 / 5 | 381,90 / 5 |
+
+</div>
+
+### Pontuação e interpretação das hipóteses
+
+<div class="mj-eficiencia-sintese" markdown="1">
+
+| Questão / métricas | Nota | Hipótese | Interpretação |
+| --- | --- | --- | --- |
+| Q2.1 / M2.1 e M2.2 | 5 em ambas | H2.1 parcialmente corroborada | Abertura e heap atendem aos limites, mas o heap cai de 55,12 para 51,25 MiB entre 1.000 e 2.000 formas; não há crescimento contínuo. |
+| Q2.2 / M2.3 | 5 | H2.2 corroborada | Latência de rótulo entre 37,7 e 171,0 ms, sempre abaixo de metade de L. |
+| Q2.3 / M2.4 e M2.5 | 1 | H2.3 não corroborada | Tempo de SVG recebe notas 3, 2 e 1 nos três maiores portes, contrariando a hipótese de notas 4 ou 5. M2.4 = 1 e M2.5 = 5; memória adequada não compensa falha temporal. |
+| Q2.4 / M2.6 | 4 | H2.4 não corroborada | SVG tem 4/5 sucessos temporais em 2.000 formas e 0/5 em 5.000; demais operações têm 5/5 em todos os portes. |
+
+</div>
+
+A capacidade temporal instrumentada é de 2.000 formas, com pelo menos quatro sucessos por operação até `2L`. O maior porte ensaiado com todas as medianas dentro de `L` é 300 formas. A capacidade temporal não comprova integridade dos arquivos finais.
+
+A agregação utiliza o mínimo entre cenários, métricas e questões: `G2 = mínimo(5, 5, 1, 4) = 1`, restrito ao fluxo instrumentado.
+
+### Validação dos arquivos exportados
+
+A campanha complementar de Pedro ([PR #57](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/pull/57)) verificou 15 combinações de porte/formato, com 14 arquivos gerados. Os resultados de `brutos/exportados/validacao.csv` são funcionais, sem medição de tempo e separados das 125 tentativas oficiais.
+
+<div class="mj-eficiencia-sintese" markdown="1">
+
+| Formato | Portes que passaram na checagem | Resultado |
+| --- | --- | --- |
+| PNG | 5/5 | Assinatura e dimensões esperadas nos cinco portes. |
+| SVG | 4/5 | Rótulos completos até 2.000 formas; arquivo de 5.000 não gerado. |
+| PDF | 0/5 | Os cinco abrem, mas a contagem encontrou 94% dos rótulos inteiros em cada porte. |
+
+</div>
+
+Nos SVGs gerados, a checagem cobre XML e contagem de rótulos; em PNG, assinatura e dimensões, sem inspeção exaustiva dos elementos. O SVG de 5.000 formas não foi obtido em quatro execuções complementares, com timeouts e condições de salvamento diferentes da coleta original; a causa não foi isolada. Os PDFs abrem, mas nenhum preserva todos os rótulos inteiros nas opções testadas.
+
+### Sugestões de melhoria
+
+- **Otimizar SVG:** investigar conversão de rótulos HTML em imagens e serialização, medindo suas etapas e verificando a saída; a causa da lentidão não foi comprovada.
+- **Investigar a saída PDF:** revisar paginação e recorte de rótulos nas opções testadas, verificando a integridade dos diagramas exportados.
+- **Melhorar a resposta durante exportações:** oferecer progresso e cancelamento e avaliar processamento em etapas.
+- **Prevenir regressões:** acompanhar tempos, heap, integridade e falhas com as cinco cargas nas próximas versões.
+
+### Conclusão e limitações
+
+Abertura e edição apresentam desempenho favorável nas cargas testadas. G2 = 1 indica restrição de desempenho, principalmente por SVG. Os PDFs incompletos e a ausência do SVG de 5.000 formas também impedem recomendar adoção irrestrita do fluxo completo nas opções testadas. PNG é a alternativa funcional melhor sustentada pelas checagens realizadas.
+
+**Limitações:**
+
+- **Ambiente e amostra:** draw.io 32.6.10, Chrome 157.0.8103.79, Windows 11 e Intel Core i5-1235U com 16 GB. Cinco repetições por cenário, cargas sintéticas sem conectores e ausência de inferência estatística não permitem generalizar capacidade absoluta ou uso com diagramas reais.
+- **Instrumentação:** heap amostrado não equivale à RAM total e pode omitir picos. O salvamento não é cronometrado; PDF mede somente preparação de impressão, sem tempo de geração do arquivo final.
+- **Base e critérios:** a análise conferiu os CSVs, sem revalidar todos os traces ou reabrir independentemente os arquivos externos. A Dupla 2 ratificou os [limites](../fase-2/niveis-e-julgamento.md#eficiencia-de-desempenho-dupla-2) em 15/11/2026, após a coleta, mantendo os valores, sem aceite externo demonstrado. A revisão do julgamento também é pós-coleta e mantém o resultado anterior para auditoria.
+
+**Reprodução e evidências:** o [README da coleta](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/blob/main/dados/avaliacao/eficiencia/README.md) reúne o comando, os arquivos derivados e os detalhes de auditoria. O pacote `eficiencia-exportacoes-2026-11-15.zip`, os traces e o manifesto estão na [pasta do Drive](https://drive.google.com/drive/folders/1jwootYRyhx7-tQTW6iViqpkXdaKxO7FM?usp=sharing).
+
+</div>
 
 ## Manutenibilidade (Dupla 3)
 

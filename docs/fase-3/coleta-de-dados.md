@@ -82,7 +82,7 @@ Heap JavaScript usado, mediana das cinco tentativas, em MiB, com o menor e o mai
 
 ### Validação dos arquivos exportados
 
-Em 15/11/2026, o script `validar_exportacoes.py` exportou e salvou um arquivo de cada formato por porte e verificou cada um, conforme a [validação das exportações](index.md#validacao-das-exportacoes) do plano. O resultado está em `dados/avaliacao/eficiencia/brutos/exportados/validacao.csv`, e os arquivos, no pacote `eficiencia-exportacoes-2026-11-15.zip` da [pasta de evidências](https://drive.google.com/drive/folders/1jwootYRyhx7-tQTW6iViqpkXdaKxO7FM?usp=sharing).
+Em 15/11/2026, o script `validar_exportacoes.py` exportou e salvou um arquivo de cada formato por porte e verificou cada um, conforme a [validação das exportações](index.md#validacao-das-exportacoes) do plano. O resultado está em `dados/avaliacao/eficiencia/brutos/exportados/validacao.csv`, e os arquivos, no pacote `eficiencia-exportacoes-2026-11-15.zip`, com publicação pelo grupo na [pasta de evidências](https://drive.google.com/drive/folders/1jwootYRyhx7-tQTW6iViqpkXdaKxO7FM?usp=sharing).
 
 | Porte | PNG | SVG | PDF |
 | --- | --- | --- | --- |
