@@ -5,7 +5,7 @@ Esta página documenta a execução prática e a coleta de dados brutos realizad
 ## Segurança (Dupla 1 — Objetivo G1)
 
 - **Versão avaliada:** draw.io release `32.6.10` (`H3ytt0r10/drawio`, commit `c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3`, e imagem oficial `jgraph/drawio:32.6.10`).
-- **Ambiente de execução e limitação:** Contêiner Docker estático (`httpd:alpine`) para os testes de cliente (`Q1.1`, `Q1.2` e `Q1.5`) — registrando-se como limitação da coleta inicial o vínculo padrão em `0.0.0.0:8080` — e contêiner oficial com servidor Java/Tomcat (`jgraph/drawio:32.6.10`) vinculado estritamente ao *loopback* (`127.0.0.1:8080:8080`) para validação do *servlet* `/proxy` (`Q1.3`), além de sessão anônima sem rede externa, VS Code e `curl.exe`.
+- **Ambiente de execução e limitação:** Contêiner Docker estático (`httpd:alpine`) para os testes de cliente (`Q1.1`, `Q1.2` e `Q1.5`) — registrando-se como limitação da primeira rodada o vínculo padrão em `0.0.0.0:8080`, corrigido para `127.0.0.1:8080` nos casos complementares (`TD-08` e `TD-09`) — e contêiner oficial com servidor Java/Tomcat (`jgraph/drawio:32.6.10`) vinculado estritamente ao *loopback* (`127.0.0.1:8080:8080`) para validação do *servlet* `/proxy` (`Q1.3`), além de sessão anônima sem rede externa, VS Code e `curl.exe`.
 - **Dados brutos (CSV):** armazenados em `dados/avaliacao/seguranca/` (`resultados_dinamicos.csv` e `inspecao_estatica.csv`).
 
 ### Testes dinâmicos de penetração (M1.1 e M1.3)
@@ -21,6 +21,8 @@ Em conformidade com as diretrizes de divulgação responsável (protocolo 5.2.4)
 | **TD-05** | Q1.5 (M1.3) — Bypass 1 *(ref. CVE-2026-58504)* | Célula com `html=1` contendo elemento vetorial SVG aninhado e manipulador de evento de carregamento inline. | Elemento SVG e evento inline removidos; célula renderizada em branco. | **Bloqueado** |
 | **TD-06** | Q1.5 (M1.3) — Bypass 2 *(ref. CVE-2026-58504)* | Célula bloqueada para edição (`html=1;editable=0`) contendo âncora com URI de execução de script. | Esquema de script removido; preservado apenas o texto seguro do rótulo bloqueado para edição. | **Bloqueado** |
 | **TD-07** | Q1.5 (M1.3) — Bypass 3 *(ref. CVE-2026-58504)* | Célula com `html=1` contendo quadro embutido apontando para URI de execução de script. | Elemento de quadro embutido integralmente removido na renderização. | **Bloqueado** |
+| **TD-08** | Q1.1 (M1.1) — Importação XML | Importação de diagrama `.drawio` contendo elemento vetorial SVG com manipulador de evento de carregamento inline (`html=1`). | Forma importada vazia sem disparo de alerta; elemento SVG removido durante o *parsing* de importação. | **Bloqueado** |
+| **TD-09** | Q1.2 (M1.1) — Rótulos HTML *(ref. CVE-2026-46642 / 58504)* | Abertura de diagrama contendo célula irmã regular e célula não editável (`html=1;editable=0`) com imagem e manipulador de evento de erro inline. | Célula irmã renderizada normalmente e célula `editable=0` exibindo apenas o ícone de imagem quebrada, sem execução de script. | **Bloqueado** |
 
 ### Inspeção estática de sanitização (M1.2 / Q1.4)
 
