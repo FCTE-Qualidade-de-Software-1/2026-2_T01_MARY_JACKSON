@@ -50,7 +50,7 @@
   --mj-shadow: 0 0.45rem 1.5rem rgb(0 0 0 / 14%);
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: auto; }
 body { background: var(--mj-canvas); }
 .md-grid { max-width: 74rem; }
 .md-header__inner.md-grid,
@@ -192,7 +192,11 @@ label[tabindex]:focus-visible {
   outline: 3px solid var(--md-accent-fg-color);
   outline-offset: 3px;
 }
-.md-typeset :is(h1, h2, h3, h4)[id] { scroll-margin-top: 8rem; }
+/* Alinhar destinos ao cabecalho sem ativar a secao anterior no indice. */
+.md-typeset :is(h1, h2, h3, h4)[id] { scroll-margin-top: 6.5rem; }
+@media screen and (max-width: 59.984375em) {
+  .md-typeset :is(h1, h2, h3, h4)[id] { scroll-margin-top: 3.5rem; }
+}
 
 /* Índice e menu lateral, inclusive o menu recolhido no celular. */
 .md-sidebar { padding-top: 0.6rem; }
@@ -533,3 +537,53 @@ label[tabindex]:focus-visible {
   .md-typeset .mj-hero :is(h1, .mj-chamada, .mj-sobretitulo) { color: #000; }
   .mj-hero::before { display: none; }
 }
+
+/* Resultados de eficiencia: compactar somente esta secao e rolar tabelas largas. */
+.md-typeset .mj-resultados-eficiencia { min-width: 0; }
+.md-typeset .mj-resultados-eficiencia .md-typeset__scrollwrap {
+  max-width: 100%;
+  margin-inline: 0;
+  overflow-x: auto;
+}
+.md-typeset .mj-resultados-eficiencia .md-typeset__table {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+}
+.md-typeset .mj-resultados-eficiencia table:not([class]) {
+  display: table;
+  min-width: 0;
+  width: 100%;
+  overflow: visible;
+  font-size: 0.66rem;
+  line-height: 1.5;
+}
+.md-typeset .mj-resultados-eficiencia table:not([class]) :is(th, td) {
+  min-width: 0;
+  padding: 0.5rem 0.55rem;
+  overflow-wrap: anywhere;
+}
+.md-typeset .mj-resultados-eficiencia .mj-eficiencia-medidas {
+  max-width: 100%;
+  overflow-x: auto;
+}
+.md-typeset .mj-resultados-eficiencia .mj-eficiencia-medidas table { min-width: 29rem; }
+.md-typeset .mj-resultados-eficiencia .mj-eficiencia-medidas :is(th, td):not(:first-child) {
+  white-space: nowrap;
+  text-align: right;
+}
+.md-typeset .mj-resultados-eficiencia .mj-eficiencia-sintese {
+  max-width: 100%;
+  overflow-x: auto;
+}
+.md-typeset .mj-resultados-eficiencia .mj-eficiencia-sintese table:not([class]) { min-width: 34rem; }
+.md-typeset .mj-resultados-eficiencia .mj-eficiencia-sintese table:not([class]) :is(th, td) {
+  overflow-wrap: normal;
+  word-break: normal;
+}
+@media print {
+  .md-typeset .mj-resultados-eficiencia :is(.mj-eficiencia-medidas, .mj-eficiencia-sintese) table { min-width: 0; }
+}
+
+.md-typeset .mj-resultados-eficiencia table thead th:first-child { border-top-left-radius: 0.55rem; }
+.md-typeset .mj-resultados-eficiencia table thead th:last-child { border-top-right-radius: 0.55rem; }
