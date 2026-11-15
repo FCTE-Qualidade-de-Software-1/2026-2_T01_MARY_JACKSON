@@ -45,4 +45,42 @@ A varredura por `getLabelValue` nos arquivos `Format.js`, `Graph.js` e `Editor.j
 
 ## Manutenibilidade (Dupla 3)
 
-*Espaço reservado para os dados coletados pela Dupla 3.*
+- **Versão avaliada:** draw.io release `32.6.10` (`H3ytt0r10/drawio`, commit `c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3`).
+- **Ambiente de execução e limitação:**  — Foi utilizado o sonarcloud dentro de um fork do projeto original, como descrito na versão utilizada para responder todas as questões relacionadas a manutenibilidade (Q3.1 a Q3.3).
+- **Dados brutos (CSV):** armazenados em `dados/avaliacao/manutenibilidade/` (`resultados_dinamicos.csv` e `inspecao_estatica.csv`).
+
+
+### Verificação de duplicidade entre dos códigos ( Q3.3 e M3.2)
+
+Foi feito um relátorio encima dos arquivos EditorUI.js(src/main/webapp/js/diagramly/EditorUi.js),  Editor.js (src/main/webapp/js/diagramly/Editor.js), Graph (src/main/webapp/js/grapheditor/Graph.js) e  Menus.js (src/main/webapp/js/diagramly/Menus.js), para o calculo da porcentagem foi feita a razão entre o número de linhas duplicadas e o numero total de linhas do arquivo, o resultado encontrado foi: 
+
+| Arquivo | Número de linhas duplicadas | Número total | Porcentagem | Status |
+| --- | --- | --- | --- | --- |
+|EditorUI.js| 0 |  43510   |  0%  |  Adequado  |
+|Editor.js| 0  | 15362 | 0% | Adequado |
+|Graph|  0 |  54775 |   0% | Adequado |
+| Menus.js|  0 |  7421    |  0%|  Adequado|
+
+
+### Verificação da complexidade cognitiva das funcções ( Q3.1, Q3.2 e M3.2)
+
+
+Foi feito um relátorio encima dos arquivos relacionados as funções de Rótulos: edição de texto e tratamento HTML: EditorUI.js(src/main/webapp/js/diagramly/EditorUi.js),  mxCellEditor.js (src/main/webapp/mxgraph/src/view/mxCellEditor.js), Graph (src/main/webapp/js/grapheditor/Graph.js) e  purify.min.js (src/main/webapp/js/sanitizer/purify.min.js). Foi feita tambem a análise dos codigos relacionados as funções de Importação: abrir arquivos locais .drawio e .xml: EditorUI.js(src/main/webapp/js/diagramly/EditorUi.js), App.js (src/main/webapp/js/diagramly/App.js),Editor.js (src/main/webapp/js/grapheditor/Editor.js) e mxCodec.js (src/main/webapp/mxgraph/src/io/mxCodec.js). O resultado encontrado foi:
+
+**Para as funções de Rótulos: edição de texto e tratamento HTML**
+
+| Arquivo | Complexidade cognitiva |  Status |
+| --- | --- | --- |
+|EditorUI.js| 0 |    Adequado  |
+| mxCellEditor| 197  | Crítico |
+|Graph|  0 | Adequado |
+| purify.min.js|  0 | Adequado|
+
+**Para as funções de  Importação: abrir arquivos locais**
+
+| Arquivo | Complexidade cognitiva |  Status |
+| --- | --- | --- |
+|EditorUI.js| 0 |    Adequado  |
+| App.js| 3547 | Crítico |
+|Editor.js|  1116 | Crítico  |
+| mxCodec.js  |  119 | Crítico |
