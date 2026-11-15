@@ -1,7 +1,7 @@
 ﻿arquivo,linha,trecho_codigo,valido_pt,protegido_pp,mecanismo_ou_justificativa
 Format.js,5678,"// assigns to innerHTML): getLabelValue runs DOMPurify only for html=1",nao,nao,"Comentario explicativo descartado"
-Format.js,5683,"var label = graph.cellRenderer.getLabelValue(cellState);",nao,nao,"Checagem booleana em canConvertHtmlToSvg sem insercao no DOM"
-Graph.js,976,"this.cellRenderer.getLabelValue = function(state)",nao,nao,"Definicao base do metodo (aplica htmlEntities ou sanitizeLabel/DOMPurify)"
+Format.js,5683,"var label = graph.cellRenderer.getLabelValue(cellState);",sim,sim,"Atribui rotulo ao innerHTML em canConvertHtmlToSvg (vetor da CVE-2026-58504); executa apenas para html=1 apos sanitizacao via DOMPurify em getLabelValue"
+Graph.js,976,"this.cellRenderer.getLabelValue = function(state)",nao,nao,"Definicao base do metodo excluida pelo criterio de contagem (conta-se cada ponto de chamada; a definicao e onde a protecao e implementada)"
 Graph.js,978,"var result = mxCellRenderer.prototype.getLabelValue.apply(this, arguments);",nao,nao,"Chamada interna ao prototipo pai dentro da definicao base"
 Graph.js,36334,"var value = this.cellRenderer.getLabelValue(state);",sim,sim,"Aplica mxUtils.htmlEntities(value, false) quando !this.isHtmlLabel(cell)"
 Graph.js,36601,"var value = this.cellRenderer.getLabelValue(state);",sim,sim,"Aplica mxUtils.htmlEntities(value, false) antes de medir fluxo HTML com quebra de linha"
