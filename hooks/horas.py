@@ -441,6 +441,47 @@ def _ficha(o_que_mede, formula, fonte, limite, referencia):
             f"- **Referência:** {referencia}", ""]
 
 
+def _periodo_sprint(lista, issues):
+    """Início e fim da sprint (datetimes UTC) a partir da milestone; None quando não há prazo."""
+    marco = lista[0].get("milestone") or {}
+    prazo = marco.get("due_on")
+    if not prazo:
+        return None, None
+    fim_dia = _data(prazo)
+    fim = datetime(fim_dia.year, fim_dia.month, fim_dia.day, 3, tzinfo=timezone.utc) + timedelta(days=1)  # fim do dia em Brasília
+    m = re.match(r"\s*(\d{1,2})/(\d{1,2})", marco.get("description") or "")
+    if m:
+        return datetime(fim_dia.year, int(m.group(2)), int(m.group(1)), 3, tzinfo=timezone.utc), fim
+    anteriores = sorted({(i.get("milestone") or {}).get("due_on") for i in issues
+                         if (i.get("milestone") or {}).get("due_on") and (i.get("milestone") or {}).get("due_on") < prazo})
+    if anteriores:
+        a = _data(anteriores[-1])
+        return datetime(a.year, a.month, a.day, 3, tzinfo=timezone.utc) + timedelta(days=1), fim
+    inicio = min(_data(i["created_at"]) for i in lista)
+    return inicio, fim
+
+
+def _situacao_progresso(pct, inicio, fim, agora, lim_concluido):
+    """Aplica o critério do Plano de medição conforme o momento da sprint (Tabela 1).
+
+    Até a metade da sprint vale o critério da equipe (menos de 50% concluído: redistribuir tarefas).
+    Da metade em diante, e depois do fim, vale o do guia (PSM/CID Parte 2, p. 17): diferença entre o
+    planejado e o concluído acima de 5%, investigar; acima de 10%, ação corretiva.
+    """
+    if inicio is None:
+        return "sem prazo", "—"
+    if agora < inicio + (fim - inicio) / 2:
+        criterio = "metade da sprint (equipe)"
+        return ("abaixo do limite: redistribuir tarefas" if pct < lim_concluido else "dentro do limite"), criterio
+    criterio = "fim da sprint (guia)" if agora >= fim else "segunda metade (guia)"
+    falta = 100 - pct
+    if falta > 10:
+        return f"fora do limite: ação corretiva (faltam {_fmt(falta)}%)", criterio
+    if falta > 5:
+        return f"investigar (faltam {_fmt(falta)}%)", criterio
+    return "dentro do limite", criterio
+
+
 def _painel_psm(markdown, config):
 
     extra = config.get("extra", {}) or {}
@@ -492,9 +533,12 @@ def _painel_psm(markdown, config):
                     "Issues concluídas da sprint ÷ issues da sprint × 100. Issues fechadas como \"não planejada\" "
                     "contam como planejadas, mas não como concluídas.",
                     "Milestone (sprint), situação e motivo do fechamento de cada issue.",
-                    f"Menos de {_fmt(lim_concluido, 0)}% concluído na metade da sprint: redistribuir tarefas.",
+                    f"Até a metade da sprint (equipe): menos de {_fmt(lim_concluido, 0)}% concluído, redistribuir "
+                    "tarefas. Da metade ao fim (guia): diferença entre planejado e concluído acima de 5%, investigar; "
+                    "acima de 10%, ação corretiva. A coluna \"Critério\" mostra qual foi aplicado na data desta publicação.",
                     "PSM/CID, Parte 1, Tabela 5, linha 1; Parte 2, seção 8.3.")
-    saida += ["| Sprint | Planejadas | Concluídas | Não planejadas | Concluído | Situação |", "|---|---|---|---|---|---|"]
+    saida += ["| Sprint | Planejadas | Concluídas | Não planejadas | Concluído | Critério | Situação |",
+              "|---|---|---|---|---|---|---|"]
     pcts, canceladas = [], []
     for nome, lista in sprints.items():
         feitas = sum(1 for i in lista if _concluida(i))
@@ -502,15 +546,17 @@ def _painel_psm(markdown, config):
         canceladas += canc
         pct = feitas / len(lista) * 100
         pcts.append(pct)
-        alerta = "abaixo do limite" if pct < lim_concluido else "dentro do limite"
-        saida.append(f"| {nome} | {len(lista)} | {feitas} | {len(canc) or '—'} | {_fmt(pct)}% | {alerta} |")
+        inicio, fim = _periodo_sprint(lista, issues)
+        alerta, criterio = _situacao_progresso(pct, inicio, fim, agora, lim_concluido)
+        saida.append(f"| {nome} | {len(lista)} | {feitas} | {len(canc) or '—'} | {_fmt(pct)}% | {criterio} | {alerta} |")
     saida += [""]
     if canceladas:
         saida += ["Issues fechadas como \"não planejada\" (replanejadas ou descartadas): "
                   + ", ".join(link(i["number"]) for i in canceladas) + ".", ""]
     saida += _grafico(rotulos, pcts, "% concluído", [lim_concluido] * len(pcts), maximo=100,
                       legenda=f"Figura 2. Percentual de issues concluídas por sprint. Barras lilás: "
-                              f"percentual concluído; linha azul: limite de decisão ({_fmt(lim_concluido, 0)}%). "
+                              f"percentual concluído; linha azul: critério da metade da sprint ({_fmt(lim_concluido, 0)}%). "
+                              f"No fim da sprint vale a diferença de até 10% (ver a coluna Critério). "
                               f"Fonte: issues e milestones do GitHub, em {data_hoje}.")
 
     # 2. Recursos e Custos
