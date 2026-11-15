@@ -153,6 +153,10 @@ As tarefas da Sprint 5 entram em 17/11, quando as issues forem criadas (ação C
 
 - Em 19/10 a professora pediu o GQM no ponto de controle de 21/10. O GQM completo das três características foi antecipado para 21/10; metodologia, piloto do SonarCloud e Medição 2 ficaram em 22/10.
 
+**Sprint 3**
+
+- E1 entregue em 26/10 (release v1.0-E1), com 9 de 17 issues da sprint concluídas na Medição 3. A #22 e a #30 não foram concluídas, e a #26 foi concluída na entrega, mas só fechada em 10/11.
+
 **Sprint 4**
 
 - A sprint começou em 07/11, mas as issues só foram criadas em 11/11. As horas de 07 a 10/11 foram registradas retroativamente nas issues, e o tempo de ciclo da Sprint 4 conta a partir de 11/11.
