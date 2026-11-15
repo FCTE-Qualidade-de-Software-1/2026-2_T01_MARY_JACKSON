@@ -1273,6 +1273,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Manutenibilidade (Dupla 3)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#verificacao-de-duplicidade-entre-dos-codigos-q33-e-m32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificação de duplicidade entre dos códigos ( Q3.3 e M3.2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verificacao-da-complexidade-cognitiva-das-funccoes-q31-q32-e-m32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificação da complexidade cognitiva das funcções ( Q3.1, Q3.2 e M3.2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -2168,6 +2196,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Manutenibilidade (Dupla 3)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#verificacao-de-duplicidade-entre-dos-codigos-q33-e-m32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificação de duplicidade entre dos códigos ( Q3.3 e M3.2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verificacao-da-complexidade-cognitiva-das-funccoes-q31-q32-e-m32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificação da complexidade cognitiva das funcções ( Q3.1, Q3.2 e M3.2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -2439,7 +2495,120 @@
 </ul>
 <p>O julgamento das medidas pelos níveis da Fase 2 está em <a href="../resultados/">Análise dos dados e resultados</a>.</p>
 <h2 id="manutenibilidade-dupla-3">Manutenibilidade (Dupla 3)<a class="headerlink" href="#manutenibilidade-dupla-3" title="Permanent link">&para;</a></h2>
-<p><em>Espaço reservado para os dados coletados pela Dupla 3.</em></p>
+<ul>
+<li><strong>Versão avaliada:</strong> draw.io release <code>32.6.10</code> (<code>H3ytt0r10/drawio</code>, commit <code>c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3</code>).</li>
+<li><strong>Ambiente de execução e limitação:</strong>  — Foi utilizado o sonarcloud dentro de um fork do projeto original, como descrito na versão utilizada para responder todas as questões relacionadas a manutenibilidade (Q3.1 a Q3.3).</li>
+<li><strong>Dados brutos (CSV):</strong> armazenados em <code>dados/avaliacao/manutenibilidade/</code> (<code>resultados_dinamicos.csv</code> e <code>inspecao_estatica.csv</code>).</li>
+</ul>
+<h3 id="verificacao-de-duplicidade-entre-dos-codigos-q33-e-m32">Verificação de duplicidade entre dos códigos ( Q3.3 e M3.2)<a class="headerlink" href="#verificacao-de-duplicidade-entre-dos-codigos-q33-e-m32" title="Permanent link">&para;</a></h3>
+<p>Foi feito um relátorio encima dos arquivos EditorUI.js(src/main/webapp/js/diagramly/EditorUi.js),  Editor.js (src/main/webapp/js/diagramly/Editor.js), Graph (src/main/webapp/js/grapheditor/Graph.js) e  Menus.js (src/main/webapp/js/diagramly/Menus.js), para o calculo da porcentagem foi feita a razão entre o número de linhas duplicadas e o numero total de linhas do arquivo, o resultado encontrado foi: </p>
+<table>
+<thead>
+<tr>
+<th>Arquivo</th>
+<th>Número de linhas duplicadas</th>
+<th>Número total</th>
+<th>Porcentagem</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EditorUI.js</td>
+<td>0</td>
+<td>43510</td>
+<td>0%</td>
+<td>Adequado</td>
+</tr>
+<tr>
+<td>Editor.js</td>
+<td>0</td>
+<td>15362</td>
+<td>0%</td>
+<td>Adequado</td>
+</tr>
+<tr>
+<td>Graph</td>
+<td>0</td>
+<td>54775</td>
+<td>0%</td>
+<td>Adequado</td>
+</tr>
+<tr>
+<td>Menus.js</td>
+<td>0</td>
+<td>7421</td>
+<td>0%</td>
+<td>Adequado</td>
+</tr>
+</tbody>
+</table>
+<h3 id="verificacao-da-complexidade-cognitiva-das-funccoes-q31-q32-e-m32">Verificação da complexidade cognitiva das funcções ( Q3.1, Q3.2 e M3.2)<a class="headerlink" href="#verificacao-da-complexidade-cognitiva-das-funccoes-q31-q32-e-m32" title="Permanent link">&para;</a></h3>
+<p>Foi feito um relátorio encima dos arquivos relacionados as funções de Rótulos: edição de texto e tratamento HTML: EditorUI.js(src/main/webapp/js/diagramly/EditorUi.js),  mxCellEditor.js (src/main/webapp/mxgraph/src/view/mxCellEditor.js), Graph (src/main/webapp/js/grapheditor/Graph.js) e  purify.min.js (src/main/webapp/js/sanitizer/purify.min.js). Foi feita tambem a análise dos codigos relacionados as funções de Importação: abrir arquivos locais .drawio e .xml: EditorUI.js(src/main/webapp/js/diagramly/EditorUi.js), App.js (src/main/webapp/js/diagramly/App.js),Editor.js (src/main/webapp/js/grapheditor/Editor.js) e mxCodec.js (src/main/webapp/mxgraph/src/io/mxCodec.js). O resultado encontrado foi:</p>
+<p><strong>Para as funções de Rótulos: edição de texto e tratamento HTML</strong></p>
+<table>
+<thead>
+<tr>
+<th>Arquivo</th>
+<th>Complexidade cognitiva</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EditorUI.js</td>
+<td>0</td>
+<td>Adequado</td>
+</tr>
+<tr>
+<td>mxCellEditor</td>
+<td>197</td>
+<td>Crítico</td>
+</tr>
+<tr>
+<td>Graph</td>
+<td>0</td>
+<td>Adequado</td>
+</tr>
+<tr>
+<td>purify.min.js</td>
+<td>0</td>
+<td>Adequado</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Para as funções de  Importação: abrir arquivos locais</strong></p>
+<table>
+<thead>
+<tr>
+<th>Arquivo</th>
+<th>Complexidade cognitiva</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EditorUI.js</td>
+<td>0</td>
+<td>Adequado</td>
+</tr>
+<tr>
+<td>App.js</td>
+<td>3547</td>
+<td>Crítico</td>
+</tr>
+<tr>
+<td>Editor.js</td>
+<td>1116</td>
+<td>Crítico</td>
+</tr>
+<tr>
+<td>mxCodec.js</td>
+<td>119</td>
+<td>Crítico</td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -2460,7 +2629,7 @@
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="15 de novembro de 2026 01:10:18 UTC">15 de novembro de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="15 de novembro de 2026 02:48:02 UTC">15 de novembro de 2026</span>
   </span>
 
     
