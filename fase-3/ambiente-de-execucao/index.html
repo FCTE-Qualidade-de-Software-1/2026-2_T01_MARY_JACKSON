@@ -2363,7 +2363,7 @@
 </tr>
 <tr>
 <td>Exposição de rede e vínculo de porta (limitação)</td>
-<td>Na coleta inicial com <code>httpd:alpine</code>, a publicação padrão <code>-p 8080:80</code> vinculou o serviço em <code>0.0.0.0:8080</code> (acessível na rede local), o que fica registrado como limitação desta coleta. Na execução complementar com <code>jgraph/drawio:32.6.10</code> e nos próximos testes, o mapeamento foi restrito exclusivamente à interface de <em>loopback</em> (<code>127.0.0.1:8080:8080</code> / <code>127.0.0.1:8080:80</code>).</td>
+<td>Na primeira rodada com <code>httpd:alpine</code> (<code>TD-01</code>, <code>TD-02</code> e <code>TD-05</code> a <code>TD-07</code>), a publicação padrão <code>-p 8080:80</code> vinculou o serviço em <code>0.0.0.0:8080</code> (acessível na rede local), o que fica registrado como limitação da coleta inicial. Na validação do servidor Java (<code>TD-03</code> e <code>TD-04</code>) e nos casos complementares (<code>TD-08</code> e <code>TD-09</code>), o mapeamento foi restrito exclusivamente à interface de <em>loopback</em> (<code>127.0.0.1:8080:8080</code> / <code>127.0.0.1:8080:80</code>).</td>
 </tr>
 <tr>
 <td>Limpeza de estado</td>
@@ -2376,7 +2376,7 @@
 </tbody>
 </table>
 <h3 id="artefatos-e-casos-de-teste">Artefatos e casos de teste<a class="headerlink" href="#artefatos-e-casos-de-teste" title="Permanent link">&para;</a></h3>
-<p>Os testes dinâmicos baseiam-se em cenários de vulnerabilidades históricas documentadas para o draw.io (injeção de script via importação XML, XSS em rótulos HTML — ref. CVE-2026-46642, <em>Path Traversal</em>/SSRF no <em>servlet</em> <code>/proxy</code> e variações de evasão em elementos não editáveis — ref. CVE-2026-58504).</p>
+<p>Os testes dinâmicos baseiam-se em cenários de vulnerabilidades históricas documentadas para o draw.io (injeção de script via importação XML, XSS em rótulos HTML — ref. CVE-2026-46642, <em>Path Traversal</em>/SSRF no <em>servlet</em> <code>/proxy</code> e variações de evasão em elementos não editáveis — ref. CVE-2026-58504), totalizando <strong>9 casos dinâmicos</strong> (ao menos 2 casos por componente em <code>M1.1</code> e 3 variações em <code>M1.3</code>).</p>
 <table>
 <thead>
 <tr>
@@ -2437,6 +2437,20 @@
 <td>Rótulo HTML contendo quadro embutido apontando para URI de execução de script.</td>
 <td>Remoção de elementos de quadro embutido na renderização.</td>
 </tr>
+<tr>
+<td><strong>TD-08</strong></td>
+<td>Q1.1 (M1.1)</td>
+<td>Arquivo <code>.drawio</code> temporário</td>
+<td>Importação de diagrama contendo elemento vetorial SVG com evento de carregamento inline no atributo de texto (<code>html=1</code>).</td>
+<td>Remoção de elementos vetoriais e eventos ativos durante a importação XML.</td>
+</tr>
+<tr>
+<td><strong>TD-09</strong></td>
+<td>Q1.2 (M1.1)</td>
+<td>Arquivo <code>.drawio</code> temporário</td>
+<td>Abertura de diagrama contendo célula irmã regular acompanhada de célula bloqueada (<code>html=1;editable=0</code>) com imagem e manipulador de erro inline.</td>
+<td>Isolamento de renderização e sanitização de rótulos HTML em células não editáveis.</td>
+</tr>
 </tbody>
 </table>
 <h3 id="procedimento">Procedimento<a class="headerlink" href="#procedimento" title="Permanent link">&para;</a></h3>
@@ -2452,8 +2466,8 @@
 <p><strong>Bloco B: Testes dinâmicos base — importação e rótulos (M1.1 / Q1.1 e Q1.2)</strong></p>
 <ol>
 <li>Iniciar o contêiner estático e abrir a aplicação em janela anônima.</li>
-<li>Acionar <strong>Arquivo &gt; Importar de &gt; Dispositivo</strong>, selecionar o caso <code>TD-01</code> e observar se há execução de script ou renderização limpa da forma.</li>
-<li>Acionar <strong>Arquivo &gt; Abrir de &gt; Dispositivo</strong>, descartar o diagrama anterior, selecionar o caso <code>TD-02</code> e verificar se o manipulador de evento inline é neutralizado.</li>
+<li>Acionar <strong>Arquivo &gt; Importar de &gt; Dispositivo</strong>, executar os casos <code>TD-01</code> e <code>TD-08</code> (descartando o diagrama entre execuções) e observar se há execução de script ou renderização limpa da forma.</li>
+<li>Acionar <strong>Arquivo &gt; Abrir de &gt; Dispositivo</strong>, executar os casos <code>TD-02</code> e <code>TD-09</code> (incluindo o cenário com célula irmã e célula <code>editable=0</code>) e verificar se os manipuladores de evento inline são neutralizados.</li>
 </ol>
 <p><strong>Bloco C: Testes dinâmicos base — proxy e Path Traversal (M1.1 / Q1.3)</strong></p>
 <ol>
@@ -2482,14 +2496,14 @@
 <tbody>
 <tr>
 <td><strong>M1.1 — Q1.1 (Importação)</strong></td>
-<td>$C_{t,1} = 1$ caso (<code>TD-01</code>).</td>
-<td>Ausência de disparo de alerta e remoção de tags de script na importação XML.</td>
+<td>$C_{t,1} = 2$ casos (<code>TD-01</code> e <code>TD-08</code>).</td>
+<td>Ausência de disparo de alerta e remoção de tags/elementos ativos na importação XML.</td>
 <td>$M1.1_{Q1.1} = (C_{b,1} / C_{t,1}) \times 100$, em $\%$.</td>
 </tr>
 <tr>
 <td><strong>M1.1 — Q1.2 (Rótulos HTML)</strong></td>
-<td>$C_{t,2} = 1$ caso (<code>TD-02</code>).</td>
-<td>Neutralização de manipuladores de evento inline em rótulos HTML.</td>
+<td>$C_{t,2} = 2$ casos (<code>TD-02</code> e <code>TD-09</code>).</td>
+<td>Neutralização de manipuladores de evento inline em rótulos HTML (incluindo células <code>editable=0</code>).</td>
 <td>$M1.1_{Q1.2} = (C_{b,2} / C_{t,2}) \times 100$, em $\%$.</td>
 </tr>
 <tr>
@@ -2526,7 +2540,7 @@
 <tbody>
 <tr>
 <td><code>resultados_dinamicos.csv</code></td>
-<td>Registro de cada caso executado (<code>TD-01</code> a <code>TD-07</code>) com status e comportamento observado.</td>
+<td>Registro de cada caso executado (<code>TD-01</code> a <code>TD-09</code>) com status e comportamento observado.</td>
 </tr>
 <tr>
 <td><code>inspecao_estatica.csv</code></td>
@@ -2562,7 +2576,7 @@
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="15 de novembro de 2026 00:30:10 UTC">15 de novembro de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="15 de novembro de 2026 15:22:23 UTC">15 de novembro de 2026</span>
   </span>
 
     
