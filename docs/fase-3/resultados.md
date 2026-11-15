@@ -38,26 +38,45 @@ Conforme definido na árvore GQM da Fase 2, a métrica **M1.1** é calculada ind
 
 A revisão de 15/11/2026 apresenta inspeção qualitativa e correções do procedimento. **Ainda não há métricas SonarCloud para os sete arquivos completos; o novo escopo permanece sem julgamento quantitativo.** Consulte o [relatório fornecido](evidencias/resultados-das-analises.md) e o [inventário da coleta](coleta-de-dados.md#manutenibilidade-dupla-3).
 
-### Métricas históricas — outro escopo
+### Cálculo das métricas, notas e julgamento
 
-A coleta de 08/11/2026, versão `32.6.10`, commit `c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3`, mediu recortes de funções. Estes valores são preservados para rastreabilidade e não representam os sete arquivos completos.
+A coleta de 08/11/2026, versão `32.6.10`, commit `c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3`, mediu recortes de funções. A comparação abaixo utiliza as [fórmulas da Fase 2](../fase-2/metricas.md#manutenibilidade-dupla-3) e os [critérios de julgamento e pontuação](../fase-2/niveis-e-julgamento.md#manutenibilidade-dupla-3). **As notas se restringem aos recortes históricos; não representam os sete arquivos completos.** A correspondência Adequado = 5, Atenção = 3 e Crítico = 1 e a regra de agregação de G3 foram acrescentadas após essa coleta, para completar a pontuação, mantendo as faixas originais.
 
-| Questão / Métrica | Dados registrados | Cálculo | Resultado | Julgamento histórico |
-| --- | --- | --- | ---: | --- |
-| Q3.1 — Importação / M3.1 | Complexidade 275; 25 funções | `275 / 25` | 11,000000 | Atenção |
-| Q3.2 — Rótulos / M3.1 | Complexidade 1057; 116 funções | `1057 / 116` | 9,112069 | Adequado |
-| Q3.3 — Exportação / M3.2 | 28 linhas duplicadas; 2846 linhas totais | `100 × 28 / 2846` | 0,983837% | Adequado |
+| Questão / Métrica | Fórmula aplicada | Resultado | Critério atingido da Fase 2 | Nota (1–5) |
+| --- | --- | ---: | --- | ---: |
+| **Q3.1 — Importação / M3.1** | `C / F = 275 / 25` | **11,000000** | **Atenção:** `10 < M3.1 <= 15` | **3** |
+| **Q3.2 — Rótulos / M3.1** | `C / F = 1057 / 116` | **9,112069** | **Adequado:** `M3.1 <= 10` | **5** |
+| **Q3.3 — Exportação / M3.2** | `100 × Ld / Lt = 100 × 28 / 2846` | **0,983837%** | **Adequado:** `M3.2 <= 5%` | **5** |
 
-A média original de rótulos, `9,512820512820513`, foi invalidada por sobreposição de trechos. O valor corrigido é `9,112069`. Os IDs históricos constam no relatório preservado.
+A média original de rótulos, `9,512820512820513`, foi invalidada por sobreposição de trechos. O valor corrigido é `9,112069`. Os IDs das análises históricas constam no relatório preservado. A complexidade total de um arquivo não pode ser comparada diretamente às faixas da média por função.
 
-Os critérios da equipe são: M3.1 adequado até 10, atenção acima de 10 até 15 e crítico acima de 15; M3.2 adequado até 5%, atenção acima de 5% até 10% e crítico acima de 10%. A complexidade total de um arquivo não pode ser comparada diretamente às faixas da média por função.
+### Pontuação do objetivo de Manutenibilidade (G3)
 
-### Achados, melhorias e conclusão
+> **Nota de G3 nos recortes históricos = `mínimo(Q3.1, Q3.2, Q3.3) = mínimo(3, 5, 5) = 3` — Atenção.**
 
-A inspeção relatada identificou responsabilidades distribuídas entre aplicação, interface, editor e codecs. A edição de rótulos exige acompanhar a implementação base e as redefinições em `Graph.js`; a sanitização envolve a biblioteca e sua integração. O tamanho dos arquivos, isoladamente, não prova baixa manutenibilidade.
+A importação determina a nota do objetivo: sua média de 11 supera o limite adequado de 10. As médias dos rótulos e a duplicação do recorte de exportação atendem às faixas adequadas. Essa agregação apoia **adoção com ressalvas no escopo histórico avaliado**, com atenção à compreensão e manutenção da importação. A nota 3 é uma avaliação parcial; **G3 permanece sem nota para o novo conjunto de sete arquivos completos**, por ausência de medidas SonarCloud.
 
-Recomenda-se medir a complexidade por função e as dependências antes de escolher refatorações. A nova conclusão depende de coleta conjunta, confirmação do inventário remoto, preservação de parâmetros e inspeção dos blocos duplicados. Para M3.1, calcular `C / F` com `F > 0`; para M3.2, calcular `100 × Ld / Lt` com `Lt > 0`, delimitando o código de exportação e sem calcular média simples dos percentuais por arquivo.
+### Interpretação das questões e hipóteses
 
-**Não há evidência quantitativa suficiente para classificar os sete arquivos completos nem confirmar H3.3 no novo escopo.** Os resultados históricos se limitam aos recortes medidos, com cobertura parcial de PDF; não sustentam conclusões sobre todo o produto ou sobre a versão de referência `32.2.0`. A inspeção do cliente não cobre a implementação do servidor externo de PDF.
+| Questão | Interpretação dos resultados históricos | Situação da hipótese no recorte histórico |
+| --- | --- | --- |
+| **Q3.1** | A média de 11 indica atenção à compreensão do código de leitura e conversão. A média não identifica quais funções concentram a complexidade. | **H3.1 não confirmada:** o resultado supera 10. |
+| **Q3.2** | A média de 9,112069 atende ao limite adequado, sem demonstrar que todas as funções são simples. A inspeção relata dependência entre implementação base e redefinições. | **H3.2 confirmada no recorte medido:** resultado inferior a 10. |
+| **Q3.3** | A duplicação de 0,983837% atende ao limite de 5%, com cobertura parcial do fluxo de PDF. Não representa todos os caminhos de exportação. | **H3.3 atendida apenas no recorte histórico:** resultado inferior a 5%; sem confirmação para o novo escopo. |
 
-Se uma coleta válida retornar 0%, registrar apenas que não foi detectada duplicação nas condições medidas. A validação do detector com duplicação conhecida em campanha piloto separada ainda não foi executada.
+No novo conjunto de arquivos completos, as três hipóteses permanecem sem verificação quantitativa. Os dados iniciais pareciam estranhos e motivaram a nova análise do procedimento e do escopo, conforme as [observações e falhas da coleta](coleta-de-dados.md#observacoes-e-falhas-da-coleta).
+
+### Sugestões de melhoria ao draw.io
+
+- **Priorizar a compreensão da importação:** mapear a cadeia entre `App.js`, `EditorUi.js`, `grapheditor/Editor.js` e `mxCodec.js`, documentando responsabilidades e despacho para codecs. Medir a complexidade por função para selecionar as funções que justificam simplificação de condicionais e extração de responsabilidades; a média de 11 não permite escolher uma função específica.
+- **Documentar as redefinições na edição de rótulos:** explicitar a relação entre `mxCellEditor.js` e as redefinições em `Graph.js`, incluindo aplicação do texto e integração da sanitização. Isso facilita acompanhar o comportamento efetivo observado na inspeção.
+- **Proteger os fluxos durante refatorações:** incluir testes de regressão para leitura e conversão XML, confirmação e cancelamento de rótulos e geração de PNG, PDF e SVG nos caminhos efetivamente implementados. A proposta visa reduzir o risco de alterações nas responsabilidades distribuídas entre camadas.
+- **Investigar duplicação antes de consolidar exportações:** inspecionar os blocos duplicados e suas diferenças por formato antes de extrair rotinas compartilhadas. O percentual histórico baixo não justifica uma refatoração ampla por duplicação.
+
+### Conclusão inicial e limites
+
+**Nos recortes históricos avaliados, a Manutenibilidade recebe nota 3 (Atenção), apoiando adoção com ressalvas sob essa característica.** A principal prioridade é investigar a complexidade das funções de importação; rótulos e duplicação de exportação atingem os critérios adequados nesse recorte. Essa conclusão é parcial, não constitui recomendação global de adoção do produto e não se estende à versão de referência `32.2.0`.
+
+**Ainda não há evidência quantitativa suficiente para classificar os sete arquivos completos ou atribuir nota a G3 nesse novo escopo.** A inspeção qualitativa mostra responsabilidades distribuídas e redefinições entre camadas; o tamanho dos arquivos, isoladamente, não comprova baixa manutenibilidade. A cobertura histórica de PDF é parcial, e a inspeção do cliente não cobre a implementação do servidor externo de PDF.
+
+Para concluir a avaliação atual, é necessário executar a coleta conjunta, confirmar o inventário remoto, preservar os parâmetros e medidas e delimitar o código de exportação e seu denominador. Ausência de coleta não equivale a zero. Se uma coleta válida retornar 0%, registrar apenas que não foi detectada duplicação nas condições medidas. A validação do detector com duplicação conhecida em campanha piloto separada ainda não foi executada.
