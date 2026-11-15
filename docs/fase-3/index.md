@@ -111,16 +111,17 @@ Para cada porte e operação são realizadas cinco tentativas válidas. Uma tent
 
 ### Registro dos dados
 
-Os dados ficam em `dados/avaliacao/eficiencia/`:
+Os CSVs, scripts e cargas são versionados em `dados/avaliacao/eficiencia/`. Os traces são preservados em pacotes externos e podem ser restaurados nos caminhos abaixo. O acesso aos pacotes, as instruções de restauração e a conferência dos hashes estão em `dados/avaliacao/eficiencia/README.md`. Os pacotes estão disponíveis na [pasta de evidências no Google Drive](https://drive.google.com/drive/folders/1jwootYRyhx7-tQTW6iViqpkXdaKxO7FM?usp=sharing).
 
 | Caminho | Conteúdo |
 | --- | --- |
 | `cargas/` | As cinco cargas e o script `gerar_cargas.py`. |
 | `coletar.py` e `ler_traces.py` | Scripts de coleta e de leitura dos traces. |
 | `brutos/tentativas.csv` | Uma linha por operação medida na coleta oficial. |
-| `brutos/traces/` | Traces da coleta oficial (`.json.gz`), nomeados por porte, operação, formato e tentativa, como `p05000_exportar-svg_t3.json.gz`. URLs do tipo `data:` (imagens geradas durante a exportação) são truncadas em 200 caracteres para reduzir o tamanho; o restante do trace não é alterado. |
-| `brutos/piloto/` | Traces e CSV do piloto automatizado. |
-| `brutos/piloto/manual/` | Traces e CSV do piloto manual. |
+| `brutos/traces/` | Caminho local dos 125 traces da coleta oficial (`.json.gz`), restaurados do pacote externo e ignorados pelo Git. São nomeados por porte, operação, formato e tentativa, como `p05000_exportar-svg_t3.json.gz`. Na coleta, URLs do tipo `data:` (imagens geradas durante a exportação) são truncadas em 200 caracteres para reduzir o tamanho; o restante do trace não é alterado. |
+| `brutos/piloto/` | CSV versionado e caminho local dos 10 traces do piloto automatizado, restaurados do pacote externo. |
+| `brutos/piloto/manual/` | CSV versionado e caminho local dos 4 traces do piloto manual, restaurados do pacote externo. |
+| `README.md` e `SHA256SUMS.txt` | Orientações de acesso e restauração das evidências e manifesto de integridade. |
 
 Colunas de `tentativas.csv`: `data`, `tentativa`, `porte`, `operacao`, `formato`, `versao_chrome`, `memoria_em_uso_pct`, `tempo_ms`, `heap_mib`, `resultado` (sucesso, falha, descartada ou verificar), `observacao`, `trace`, `ti_ms` e `tf_ms` (instantes de início e fim em ms desde o começo do trace, para conferência no DevTools).
 
