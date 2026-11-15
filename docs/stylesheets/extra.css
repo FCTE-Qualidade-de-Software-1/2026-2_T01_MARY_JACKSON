@@ -533,3 +533,44 @@ label[tabindex]:focus-visible {
   .md-typeset .mj-hero :is(h1, .mj-chamada, .mj-sobretitulo) { color: #000; }
   .mj-hero::before { display: none; }
 }
+
+/* Resultados de eficiencia: compactar somente esta secao e rolar tabelas largas. */
+.md-typeset .mj-resultados-eficiencia { min-width: 0; }
+.md-typeset .mj-resultados-eficiencia .md-typeset__scrollwrap {
+  max-width: 100%;
+  margin-inline: 0;
+  overflow-x: auto;
+}
+.md-typeset .mj-resultados-eficiencia .md-typeset__table {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+}
+.md-typeset .mj-resultados-eficiencia table:not([class]) {
+  display: table;
+  min-width: 0;
+  width: 100%;
+  overflow: visible;
+  font-size: 0.66rem;
+  line-height: 1.5;
+}
+.md-typeset .mj-resultados-eficiencia table:not([class]) :is(th, td) {
+  min-width: 0;
+  padding: 0.5rem 0.55rem;
+  overflow-wrap: anywhere;
+}
+.md-typeset .mj-resultados-eficiencia .mj-eficiencia-medidas {
+  max-width: 100%;
+  overflow-x: auto;
+}
+.md-typeset .mj-resultados-eficiencia .mj-eficiencia-medidas table { min-width: 29rem; }
+.md-typeset .mj-resultados-eficiencia .mj-eficiencia-medidas :is(th, td):not(:first-child) {
+  white-space: nowrap;
+  text-align: right;
+}
+@media print {
+  .md-typeset .mj-resultados-eficiencia .mj-eficiencia-medidas table { min-width: 0; }
+}
+
+.md-typeset .mj-resultados-eficiencia table thead th:first-child { border-top-left-radius: 0.55rem; }
+.md-typeset .mj-resultados-eficiencia table thead th:last-child { border-top-right-radius: 0.55rem; }
