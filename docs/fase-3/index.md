@@ -143,12 +143,12 @@ Esta seção define como serão coletadas as métricas M3.1 e M3.2 da [Fase 2](.
 
 | Item | Configuração |
 | --- | --- |
-| Processador | Intel Core i5-1135G (11ª geração), 10 núcleos, 12 processadores lógicos, 1,38 GHz de base. |
-| Memória RAM | 16 GB (15,7 GB utilizáveis). |
-| Armazenamento | SSD NVMe. |
-| Placa de vídeo | Intel Iris Xe (integrada). |
-| Sistema operacional | Windows 11, versão 25H2 (build 26200.9974). |
-| Navegador | Google Chrome 157.0.8103.79, 64 bits (V8 15.7.112.43). |
+| Processador | Intel Core Ultra 7 155H, 16 núcleos e 22 processadores lógicos. |
+| Memória RAM | 16 GB (15,5 GB utilizáveis). |
+| Armazenamento | SSD NVMe Samsung MZVL4512HBLU-00B, 512 GB. |
+| Placa de vídeo | Intel Arc Graphics (integrada). |
+| Sistema operacional | Windows 11 Home Single Language, versão 26H2 (build 26300.9974), 64 bits. |
+| Navegador | Google Chrome 157.0.8103.79, 64 bits. |
 | Avaliador | Lucas Gabriel (Dupla 3). |
 
 Se o Chrome for atualizado durante a coleta, a nova versão é registrada a partir da tentativa em que passou a valer.
