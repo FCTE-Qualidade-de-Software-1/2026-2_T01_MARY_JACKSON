@@ -109,30 +109,20 @@ def main():
         return [f'{(fmt(lookup[m,n,f]["mediana"],2 if m in ("M2.2","M2.5") else 1) if lookup[m,n,f]["mediana"] != "" else "—" if lookup[m,n,f]["nota"]==1 else "NC")} / {lookup[m,n,f]["nota"] or "—"}' for n in PORTES]
     times=table(["Métrica / operação (ms)"]+[fmt(n,0) for n in PORTES],[["M2.1 — Abrir"]+cells("M2.1"),["M2.3 — Rótulo"]+cells("M2.3")]+[["M2.4 — "+f.upper()]+cells("M2.4",f) for f in ("png","pdf","svg")])
     memory=table(["Métrica / operação (MiB)"]+[fmt(n,0) for n in PORTES],[["M2.2 — Após abrir"]+cells("M2.2")]+[["M2.5 — "+f.upper()]+cells("M2.5",f) for f in ("png","pdf","svg")])
-    fails=table(["Porte","Tentativa SVG","Tempo (ms)","2L (ms)"],[[fmt(r["porte"],0),r["tentativa"],fmt(r["tempo_ms"]),fmt(r["duas_vezes_limite_ms"],0)] for r in classified if r["resultado_analise"]=="falha"])
-    cap=table(["Porte","Demais operações*","SVG","Fluxo repetível?"],[[fmt(r["porte"],0),"5/5 em cada",str(r["sucessos"][-1])+"/5","Sim" if r["repetivel"] else "Não"] for r in capacity])
     validation_table=table(["Formato","Portes que passaram na checagem","Resultado"],[["PNG","5/5","Assinatura e dimensões esperadas nos cinco portes."],["SVG","4/5","Rótulos completos até 2.000 formas; arquivo de 5.000 não gerado."],["PDF","0/5","Os cinco abrem, mas a contagem encontrou 94% dos rótulos inteiros em cada porte."]])
     report=f"""## Eficiência de desempenho (Dupla 2)
 
 <div class="mj-resultados-eficiencia" markdown="1">
 
-A análise de Thiago Gomes Pereira de Abreu utiliza as 125 tentativas oficiais coletadas por Pedro Ian Guedes de Carvalho em 14/11/2026: cinco portes, cinco operações e cinco repetições.
+A análise de Thiago Gomes Pereira de Abreu utiliza as 125 tentativas oficiais coletadas por Pedro Ian Guedes de Carvalho em 14/11/2026: cinco portes, cinco operações e cinco repetições. Foram conferidos cenários e medidas, excluindo os pilotos e preservando os dados brutos.
 
-Foram conferidos cenários, medidas obrigatórias e consistência entre duração e instantes registrados. Os pilotos não entram nos cálculos e o CSV original foi preservado.
+### Cálculo das métricas e julgamento
 
-**Critérios adotados:** a Dupla 2 ratificou os [limites da Fase 2](../fase-2/niveis-e-julgamento.md#eficiencia-de-desempenho-dupla-2) em 15/11/2026, após a coleta, mantendo os valores. Trata-se de decisão da dupla, não de aprovação prévia ou aceite externo. As notas julgam o fluxo instrumentado; a validação funcional complementar é apresentada separadamente.
+Conforme o [protocolo](index.md#tentativas-validas-falhas-e-interrupcoes) e a [revisão do julgamento](../fase-2/niveis-e-julgamento.md#revisao-pos-coleta-do-julgamento-15112026), tempos acima de `2L` são falhas. A mediana temporal exige pelo menos quatro sucessos; menos sucessos por falha temporal recebem nota 1. Memória usa as cinco medidas completas, inclusive de operações lentas; dados ausentes ou inválidos permanecem não conclusivos.
 
-### Tratamento das tentativas
+As 125 operações concluíram na automação, mas o critério temporal resulta em {data['sucessos']} sucessos e {data['falhas']} falhas, todas no SVG: uma em 2.000 formas (tentativa 4, 40.056,2 ms > 34.000 ms) e cinco em 5.000 formas (> 80.000 ms).
 
-Pelo [protocolo](index.md#tentativas-validas-falhas-e-interrupcoes), uma operação acima de `2L` é falha temporal. A mediana temporal exige quatro ou cinco sucessos. Pela [revisão pós-coleta de 15/11/2026](../fase-2/niveis-e-julgamento.md#revisao-pos-coleta-do-julgamento-15112026), menos de quatro sucessos por falha temporal do produto recebe nota 1, sem inventar uma mediana de sucessos. A memória é julgada separadamente, com as medidas completas das operações concluídas. Dados ausentes ou inválidos continuam não conclusivos. A classificação resulta em {data['sucessos']} sucessos e {data['falhas']} falhas temporais. As 125 operações concluíram na automação; a diferença é a aplicação posterior do critério temporal.
-
-{fails}
-
-No SVG de 2.000 formas, a exclusão temporal da tentativa 4 altera a mediana dos sucessos de 29.471,8 para 29.082,5 ms. As cinco medidas de memória completas são mantidas: mediana de 120,74 MiB. Em 5.000 formas, o SVG recebe nota temporal 1 pelas cinco falhas; não há mediana de sucessos. O tempo mediano bruto de 113.646,1 ms permanece descritivo. As cinco operações concluíram e forneceram heap válido, cuja mediana é 381,90 MiB e nota 5 (`381,90 / 1.050 ≈ 0,364`). A nota de memória não transforma a falha temporal em sucesso. O julgamento anterior foi preservado para auditoria; a revisão foi adotada após a coleta e não altera L.
-
-### Medianas e notas por porte
-
-Colunas indicam o número de formas; células mostram mediana / nota. Tempo usa cinco sucessos, exceto SVG de 2.000 formas (quatro); memória usa cinco medidas completas por cenário. `— / 1` indica falha temporal sem mediana de sucessos. Os cálculos usam valores sem arredondamento.
+As células mostram mediana / nota, calculada sem arredondamento por `r = mediana / L`: notas 5, 4, 3, 2 e 1 para `r ≤ 0,5`, `≤ 1`, `≤ 1,5`, `≤ 2` e `> 2`. SVG de 2.000 formas usa quatro sucessos temporais; `— / 1` indica falha temporal sem mediana de sucessos.
 
 **Tempo, em ms:**
 
@@ -150,88 +140,53 @@ Colunas indicam o número de formas; células mostram mediana / nota. Tempo usa 
 
 </div>
 
-A pontuação usa `r = mediana / L`: notas 5, 4, 3, 2 e 1 nas faixas `r ≤ 0,5`, `≤ 1`, `≤ 1,5`, `≤ 2` e `> 2`, respectivamente. No SVG, `11.911,4 / 9.000 ≈ 1,32349` resulta em nota 3; `29.082,5 / 17.000 ≈ 1,71074`, em nota 2.
+### Pontuação e interpretação das hipóteses
 
-### Capacidade e consolidação
+<div class="mj-eficiencia-sintese" markdown="1">
 
-{cap}
+| Questão / métricas | Nota | Hipótese | Interpretação |
+| --- | --- | --- | --- |
+| Q2.1 / M2.1 e M2.2 | 5 em ambas | H2.1 parcialmente corroborada | Abertura e heap atendem aos limites, mas o heap cai de 55,12 para 51,25 MiB entre 1.000 e 2.000 formas; não há crescimento contínuo. |
+| Q2.2 / M2.3 | 5 | H2.2 corroborada | Latência de rótulo entre 37,7 e 171,0 ms, sempre abaixo de metade de L. |
+| Q2.3 / M2.4 e M2.5 | 1 | H2.3 não corroborada | Tempo de SVG recebe notas 3, 2 e 1 nos três maiores portes, contrariando a hipótese de notas 4 ou 5. M2.4 = 1 e M2.5 = 5; memória adequada não compensa falha temporal. |
+| Q2.4 / M2.6 | {cap_note} | H2.4 não corroborada | SVG tem 4/5 sucessos temporais em 2.000 formas e 0/5 em 5.000; demais operações têm 5/5 em todos os portes. |
 
-*Demais operações: abrir, editar rótulo, exportar PNG e preparar a impressão de PDF. Cada uma obteve 5/5 sucessos temporais em todos os portes. A contagem não demonstra integridade dos arquivos finais.*
+</div>
 
-**M2.6 = {fmt(largest,0)} formas, nota {cap_note} no fluxo instrumentado:** maior porte ensaiado com pelo menos quatro sucessos em cada operação até `2L`. Isso não significa atendimento a `L`: o SVG de 2.000 formas recebe nota temporal 2. 300 formas é o maior porte ensaiado com todas as medianas de tempo e memória dentro de `L`.
+A capacidade temporal instrumentada é de {fmt(largest,0)} formas, com pelo menos quatro sucessos por operação até `2L`. O maior porte ensaiado com todas as medianas dentro de `L` é 300 formas. A capacidade temporal não comprova integridade dos arquivos finais.
 
-| Métrica ou questão | Resultado | Condição |
-| --- | --- | --- |
-| M2.1, M2.2 e M2.3 | 5 em cada métrica | Todos os cenários têm nota 5. |
-| M2.4 | 1 | SVG de 5.000 formas: 0/5 sucessos temporais. |
-| M2.5 | 5 | Medidas de memória completas, inclusive nas operações lentas. |
-| M2.6 / Q2.4 | 4 | Capacidade instrumentada de 2.000 formas. |
-| Q2.1 / Q2.2 | 5 em cada questão | Abertura/memória e edição de rótulos. |
-| Q2.3 | 1 | Mínimo entre M2.4 = 1 e M2.5 = 5. |
-| G2 | 1 | Critérios ratificados pela dupla, no escopo temporal instrumentado. |
+A agregação utiliza o mínimo entre cenários, métricas e questões: `G2 = mínimo(5, 5, 1, 4) = {data['G2']}`, restrito ao fluxo instrumentado.
 
-A consolidação segue o mínimo entre cenários, métricas e questões: `G2 = mínimo(5, 5, 1, 4) = 1`, conforme os critérios ratificados pela dupla. A revisão é pós-coleta e permanece identificada como tal. Dados ausentes ou inválidos não seriam omitidos nem receberiam nota artificial. A validação complementar abaixo não é incorporada como se fosse uma nova série de cinco medições.
+### Validação dos arquivos exportados
 
-### Validação complementar dos arquivos
+A campanha complementar de Pedro ([PR #57](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/pull/57)) verificou 15 combinações de porte/formato, com 14 arquivos gerados. Os resultados de `brutos/exportados/validacao.csv` são funcionais, sem medição de tempo e separados das 125 tentativas oficiais.
 
-O [PR #57](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/pull/57), integrado em 15/11/2026, registra a verificação realizada por Pedro em `brutos/exportados/validacao.csv`: 15 combinações de porte/formato, com 14 arquivos gerados. A análise utiliza esse CSV e o procedimento documentado, sem alegar reabertura independente dos arquivos externos. Trata-se de campanha funcional separada, sem nova medição de tempo.
+<div class="mj-eficiencia-sintese" markdown="1">
 
 {validation_table}
 
-No PNG, a checagem cobre assinatura e dimensões, não inspeção exaustiva de cada elemento. No SVG gerado, cobre XML e quantidade de rótulos. Nos PDFs, há 10, 10, 20, 40 e 100 páginas nos cinco portes, com 47/50, 282/300, 940/1.000, 1.880/2.000 e 4.700/5.000 rótulos inteiros encontrados. Abrir o arquivo não equivale a preservar todo o diagrama.
+</div>
 
-O SVG de 5.000 formas não foi obtido nas quatro execuções complementares documentadas, incluindo erros de timeout. Como o caminho de salvamento e as condições diferem da coleta original, esses resultados não são somados às 125 tentativas nem usados para inventar tempos ou reclassificar retroativamente cada tentativa de PDF. A causa do comportamento distinto não foi isolada.
-
-A capacidade temporal de 2.000 formas não demonstra capacidade funcional integral: a amostra complementar não apresenta PDF completo em nenhum porte. O pacote `eficiencia-exportacoes-2026-11-15.zip` já está disponível no Drive; o CSV e o manifesto já estão versionados.
-
-### Hipóteses e interpretação
-
-| Questão / hipótese | Situação no escopo medido | Evidência |
-| --- | --- | --- |
-| Q2.1 / H2.1 | Parcialmente corroborada | Tempo cresce de 74,0 a 1.397,9 ms; heap de 42,36 a 85,89 MiB, mas cai entre 1.000 e 2.000 formas. Todos atendem aos limites; o heap não cresce continuamente. |
-| Q2.2 / H2.2 | Corroborada | Latência cresce de 37,7 a 171,0 ms, com nota 5 em todos os portes. |
-| Q2.3 / H2.3 | Não corroborada | SVG recebe notas 3, 2 e 1 em 1.000, 2.000 e 5.000 formas, contrariando a hipótese de notas 4 ou 5 em todos os formatos. |
-| Q2.4 / H2.4 | Não corroborada | SVG tem 0/5 sucessos temporais em 5.000 formas; maior porte repetível instrumentado é 2.000. |
-
-Abertura e rótulos ficam abaixo da metade dos limites candidatos. SVG é a principal restrição: a mediana bruta cresce cerca de 257 vezes para um aumento de 100 vezes nas formas. A conversão de rótulos HTML em imagens, descrita na [coleta](coleta-de-dados.md#observacoes-da-coleta), é uma pista de investigação, não uma causa comprovada por esta análise.
-
-PNG e preparação de PDF atendem aos limites. A variação do PNG em 5.000 formas (1.716,5–3.588,8 ms) foi preservada, sem exclusão arbitrária.
-
-**Memória:** o máximo bruto de heap, 418,30 MiB, pertence a um SVG que falhou temporalmente. A nota 5 de memória resulta da mediana de 381,90 MiB das cinco operações concluídas, não desse máximo isolado. A oscilação pode envolver coleta de lixo, sem evidência suficiente para isolar essa causa.
-
-### Limitações da avaliação
-
-- **Ambiente e amostra:** draw.io 32.6.10, Chrome 157.0.8103.79, Windows 11 e Intel Core i5-1235U com 16 GB. São cinco repetições por cenário e cargas sintéticas de retângulos sem conectores. Não houve inferência estatística nem estimativa de capacidade absoluta.
-- **Memória:** o heap JavaScript amostrado não representa RAM total e pode omitir picos entre amostras.
-- **Automação e PDF:** o seletor de arquivos é alternativo e o salvamento não é medido. PDF mede somente preparação de impressão. A validação posterior verificou arquivos finais, mas não mediu seu tempo de geração. M2.6 continua restrita à repetibilidade temporal instrumentada, sem equivaler a capacidade funcional completa.
-- **Base da análise e critérios:** foi conferido o CSV extraído, sem revalidar independentemente todos os traces. Os limites foram ratificados pela dupla após a coleta; não há aceite externo demonstrado. A regra de falha temporal também é posterior aos dados, e o julgamento anterior está preservado para comparação.
+Nos SVGs gerados, a checagem cobre XML e contagem de rótulos; em PNG, assinatura e dimensões, sem inspeção exaustiva dos elementos. O SVG de 5.000 formas não foi obtido em quatro execuções complementares, com timeouts e condições de salvamento diferentes da coleta original; a causa não foi isolada. Os PDFs abrem, mas nenhum preserva todos os rótulos inteiros nas opções testadas.
 
 ### Sugestões de melhoria
 
-1. **Otimizar a exportação SVG:** investigar trabalho repetido e medir separadamente conversão de rótulos HTML em imagens e serialização, verificando a correção da saída.
-2. **Dar retorno durante exportações demoradas:** oferecer progresso e cancelamento, avaliando processamento em etapas que preserve a resposta da interface.
-3. **Prevenir regressões de desempenho:** acompanhar tempos, heap e falhas com as cinco cargas em versões futuras, mantendo ambiente e critérios documentados.
+- **Otimizar SVG:** investigar conversão de rótulos HTML em imagens e serialização, medindo suas etapas e verificando a saída; a causa da lentidão não foi comprovada.
+- **Investigar a saída PDF:** revisar paginação e recorte de rótulos nas opções testadas, verificando a integridade dos diagramas exportados.
+- **Melhorar a resposta durante exportações:** oferecer progresso e cancelamento e avaliar processamento em etapas.
+- **Prevenir regressões:** acompanhar tempos, heap, integridade e falhas com as cinco cargas nas próximas versões.
 
-### Conclusão
+### Conclusão e limitações
 
-Abertura e edição apresentam desempenho favorável nas cargas testadas. SVG é a principal restrição do fluxo: a repetibilidade temporal instrumentada alcança 2.000 formas, mas todas as medianas atendem a `L` somente até 300 formas. G2 = 1 indica restrição de desempenho no fluxo instrumentado, principalmente por SVG. A verificação complementar identificou ainda PDFs incompletos em todos os portes e ausência do SVG de 5.000 formas. Não se recomenda a adoção irrestrita do fluxo completo com as opções testadas. PNG é a alternativa funcional melhor sustentada pelas checagens realizadas; a validação não substitui testes com diagramas reais.
+Abertura e edição apresentam desempenho favorável nas cargas testadas. G2 = {data['G2']} indica restrição de desempenho, principalmente por SVG. Os PDFs incompletos e a ausência do SVG de 5.000 formas também impedem recomendar adoção irrestrita do fluxo completo nas opções testadas. PNG é a alternativa funcional melhor sustentada pelas checagens realizadas.
 
+**Limitações:**
 
-### Reprodução e auditoria
+- **Ambiente e amostra:** draw.io 32.6.10, Chrome 157.0.8103.79, Windows 11 e Intel Core i5-1235U com 16 GB. Cinco repetições por cenário, cargas sintéticas sem conectores e ausência de inferência estatística não permitem generalizar capacidade absoluta ou uso com diagramas reais.
+- **Instrumentação:** heap amostrado não equivale à RAM total e pode omitir picos. O salvamento não é cronometrado; PDF mede somente preparação de impressão, sem tempo de geração do arquivo final.
+- **Base e critérios:** a análise conferiu os CSVs, sem revalidar todos os traces ou reabrir independentemente os arquivos externos. A Dupla 2 ratificou os [limites](../fase-2/niveis-e-julgamento.md#eficiencia-de-desempenho-dupla-2) em 15/11/2026, após a coleta, mantendo os valores, sem aceite externo demonstrado. A revisão do julgamento também é pós-coleta e mantém o resultado anterior para auditoria.
 
-```powershell
-python dados/avaliacao/eficiencia/analisar.py
-```
-
-O script preserva os dados brutos, lê os limites da Fase 2 e atualiza apenas esta seção. Em `dados/avaliacao/eficiencia/analise/`, gera:
-
-- `tentativas-classificadas.csv`: 125 tentativas, com classificação e identificação das falhas;
-- `metricas-por-cenario.csv`: 45 resultados, com medidas, limites, razões e notas;
-- `resumo.json`: consolidação e hashes SHA-256 dos insumos normalizados para LF;
-- `revisao-criterios.json`: regra adotada em 15/11/2026, julgamento anterior e resultados alterados;
-- `encerramento-pendencias.json`: ratificação dos limites, origem e hash da validação complementar e alcance da conclusão.
-
-Os hashes vinculam o relato à coleta e aos critérios utilizados; mudanças exigem revisão. As medidas brutas permanecem nesses arquivos. Traces e manifesto estão na [pasta de evidências](https://drive.google.com/drive/folders/1jwootYRyhx7-tQTW6iViqpkXdaKxO7FM?usp=sharing).
+**Reprodução e evidências:** o [README da coleta](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/blob/main/dados/avaliacao/eficiencia/README.md) reúne o comando, os arquivos derivados e os detalhes de auditoria. O pacote `eficiencia-exportacoes-2026-11-15.zip`, os traces e o manifesto estão na [pasta do Drive](https://drive.google.com/drive/folders/1jwootYRyhx7-tQTW6iViqpkXdaKxO7FM?usp=sharing).
 
 </div>
 

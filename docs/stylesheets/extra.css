@@ -572,8 +572,17 @@ label[tabindex]:focus-visible {
   white-space: nowrap;
   text-align: right;
 }
+.md-typeset .mj-resultados-eficiencia .mj-eficiencia-sintese {
+  max-width: 100%;
+  overflow-x: auto;
+}
+.md-typeset .mj-resultados-eficiencia .mj-eficiencia-sintese table:not([class]) { min-width: 34rem; }
+.md-typeset .mj-resultados-eficiencia .mj-eficiencia-sintese table:not([class]) :is(th, td) {
+  overflow-wrap: normal;
+  word-break: normal;
+}
 @media print {
-  .md-typeset .mj-resultados-eficiencia .mj-eficiencia-medidas table { min-width: 0; }
+  .md-typeset .mj-resultados-eficiencia :is(.mj-eficiencia-medidas, .mj-eficiencia-sintese) table { min-width: 0; }
 }
 
 .md-typeset .mj-resultados-eficiencia table thead th:first-child { border-top-left-radius: 0.55rem; }
