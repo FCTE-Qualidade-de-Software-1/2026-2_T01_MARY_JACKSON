@@ -125,12 +125,14 @@ def _tabela_horas(markdown, config):
         saida.append(f"| {nome} | {_fmt_h(h)} | {pct:.0f}% | {_fmt_r(h * custo_hora)} |")
     saida.append(f"| **Total** | **{_fmt_h(total)}** | **100%** | **{_fmt_r(total * custo_hora)}** |")
     saida += ["", f"Custo da hora usado: {_fmt_r(custo_hora)}.", "",
-              "## Registro de horas no horas.csv", "",
-              "Registro oficial até 22/10 (Ata 04); depois, as horas passaram ao campo \"Horas reais\" das issues.", "",
-              "| Data | Integrante | Atividade | Issue | Horas |", "|---|---|---|---|---|"]
+              "??? info \"Registro de horas no horas.csv (histórico até 22/10)\"", "",
+              "    Registro oficial até 22/10 (Ata 04); depois, as horas passaram ao campo \"Horas reais\" das issues.", "",
+              "    | Data | Integrante | Atividade | Issue | Horas |",
+              "    |---|---|---|---|---|"]
     for l in linhas:
-        saida.append(f"| {_fmt_data(l.get('data', ''))} | {l['membro'].strip()} | {l.get('atividade', '')} | "
+        saida.append(f"    | {_fmt_data(l.get('data', ''))} | {l['membro'].strip()} | {l.get('atividade', '')} | "
                      f"{_link_issue(l.get('issue', ''), repo_url)} | {_fmt_h(l['_horas'])} |")
+    saida.append("")
 
     return markdown.replace(MARCADOR_HORAS, "\n".join(saida))
 
@@ -394,10 +396,15 @@ def _dados(config):
 
 
 def _resumo_entregas(dados, config):
-    """Totais de cada entrega nas três categorias de informação."""
+    """Totais de cada entrega nas três categorias de informação.
+
+    Usa horas_estimadas do mkdocs.yml quando definida (> 0); caso contrário,
+    calcula a linha de base automaticamente pela soma das estimativas das issues.
+    """
     entregas = _entregas(config)
     custo_hora = float((config.get("extra", {}) or {}).get("custo_hora", 0))
-    resumo = OrderedDict((e["nome"], {"base": e["horas"], "planejadas": 0, "concluidas": 0, "canceladas": 0,
+    resumo = OrderedDict((e["nome"], {"base": e["horas"], "base_auto": e["horas"] <= 0,
+                                      "planejadas": 0, "concluidas": 0, "canceladas": 0,
                                       "est_issues": 0.0, "real": 0.0, "dias": []}) for e in entregas)
     for nome, lista in dados["sprints"].items():
         for i in lista:
@@ -412,10 +419,11 @@ def _resumo_entregas(dados, config):
         if lista:
             resumo[_entrega_de(lista[0], entregas)]["real"] += dados["horas_sprint"].get(nome, 0)
     for r in resumo.values():
+        if r["base_auto"]:
+            r["base"] = r["est_issues"]
         r["custo_base"] = r["base"] * custo_hora
         r["custo_real"] = r["real"] * custo_hora
     return resumo
-
 
 def _tabela_entregas_horas(dados, config):
     """Tabela de horas e custo por entrega (linha de base vs. realizado)."""
@@ -424,11 +432,13 @@ def _tabela_entregas_horas(dados, config):
              "|---|---|---|---|---|---|"]
     for nome, r in _resumo_entregas(dados, config).items():
         razao = _fmt(r["real"] / r["base"], 2) if r["base"] else "—"
-        base = _fmt_h(r["base"]) if r["base"] else "a definir"
+        sufixo = " *(issues)*" if r.get("base_auto") and r["base"] else ""
+        base = (_fmt_h(r["base"]) + sufixo) if r["base"] else "a definir"
         saida.append(f"| {nome} | {base} | {_fmt_r(r['custo_base']) if r['base'] else '—'} | "
                      f"{_fmt_h(r['real'])} | {_fmt_r(r['custo_real'])} | {razao} |")
-    saida += ["", "A linha de base é a soma das estimativas do planejamento de cada entrega (extra.entregas no "
-              "mkdocs.yml). Os detalhes por sprint estão no [Painel do PSM](painel-psm.md).", ""]
+    saida += ["", "Na E1, a linha de base vem do planejamento fixado em `extra.entregas` no `mkdocs.yml`; "
+              "na E2, ela é somada automaticamente a partir do campo \"Estimativa (horas)\" das issues da entrega. "
+              "Os detalhes por sprint estão no [Painel do PSM](painel-psm.md).", ""]
     return saida
 
 
