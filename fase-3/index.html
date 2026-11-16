@@ -331,17 +331,20 @@
   
   
   
-    <li class="md-tabs__item">
-      <a href="../fase-4/" class="md-tabs__link">
-        
+    
+    
+      <li class="md-tabs__item">
+        <a href="../fase-4/" class="md-tabs__link">
+          
   
   
     
   
   Fase 4
 
-      </a>
-    </li>
+        </a>
+      </li>
+    
   
 
       
@@ -1020,10 +1023,6 @@
       
         
       
-        
-      
-        
-      
     
     
     
@@ -1116,62 +1115,6 @@
   
   
     <li class="md-nav__item">
-      <a href="coleta-de-dados/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Coleta de dados
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="resultados/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Análise dos dados e resultados
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="ambiente-de-execucao/" class="md-nav__link">
         
   
@@ -1206,9 +1149,36 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../fase-4/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../fase-4/" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -1222,7 +1192,87 @@
   
   
 
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fase 4
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fase-4/coleta-de-dados/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coleta de dados
+  
+
+    
+  </span>
+  
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fase-4/resultados/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Análise dos dados e resultados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -2118,17 +2168,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#observacoes-encontradas" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Observações encontradas
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#procedimento_1" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2205,6 +2244,8 @@
 <h1 id="fase-3-projetar-a-avaliacao">Fase 3: Projetar a avaliação<a class="headerlink" href="#fase-3-projetar-a-avaliacao" title="Permanent link">&para;</a></h1>
 <!-- O que entra aqui: plano de avaliação: método, instruções para o avaliador, recursos e cronograma (Aula 07, págs. 18 e 19). Entrega 2. -->
 
+<p>Esta fase apresenta o plano: métodos, recursos, ambiente e instruções. A <a href="../fase-4/">execução, as medidas e os resultados</a> pertencem à Fase 4.</p>
+<p>Consulte o <a href="ambiente-de-execucao/">protocolo de segurança</a> e o <a href="../gestao/planejamento/">cronograma</a>: Sprint 4 (07/11 a 16/11), projeto e coleta; Sprint 5 (17/11 a 22/11), conclusão, revisão e entrega.</p>
 <p>O ambiente de execução previsto para a avaliação é o draw.io web 32.6.10 localmente por meio de um fork feito pelo membro Heyttor Augusto. Consulte o <a href="ambiente-drawio/">guia do ambiente local</a> para iniciar e operar o contêiner.</p>
 <h2 id="eficiencia-de-desempenho-dupla-2">Eficiência de desempenho (Dupla 2)<a class="headerlink" href="#eficiencia-de-desempenho-dupla-2" title="Permanent link">&para;</a></h2>
 <p>Esta seção define como são coletadas as métricas M2.1 a M2.6 da <a href="../fase-2/metricas/">Fase 2</a>. Toda a coleta é feita em uma única máquina e em um único navegador, para que os resultados dos cinco portes sejam comparáveis entre si. A coleta oficial é automatizada por script, depois de um <a href="#piloto">piloto</a> manual que validou o procedimento no DevTools e de um piloto automatizado. Conforme os <a href="../fase-1/escopo/">limites de validade</a> da Fase 1, as conclusões ficam vinculadas a essa versão, máquina, navegador e cargas.</p>
@@ -2227,7 +2268,7 @@
 </tr>
 <tr>
 <td>Commit</td>
-<td><code>c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3</code>, o mesmo usado pelas três duplas.</td>
+<td><code>c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3</code>, referência da campanha histórica das três duplas.</td>
 </tr>
 <tr>
 <td>Execução</td>
@@ -2534,50 +2575,7 @@
 </table>
 <p>Colunas de <code>tentativas.csv</code>: <code>data</code>, <code>tentativa</code>, <code>porte</code>, <code>operacao</code>, <code>formato</code>, <code>versao_chrome</code>, <code>memoria_em_uso_pct</code>, <code>tempo_ms</code>, <code>heap_mib</code>, <code>resultado</code> (sucesso, falha, descartada ou verificar), <code>observacao</code>, <code>trace</code>, <code>ti_ms</code> e <code>tf_ms</code> (instantes de início e fim em ms desde o começo do trace, para conferência no DevTools).</p>
 <h3 id="piloto">Piloto<a class="headerlink" href="#piloto" title="Permanent link">&para;</a></h3>
-<p>O piloto foi feito em duas etapas, e seus resultados não entram no cálculo das métricas.</p>
-<p><strong>Piloto manual (13 e 14/11/2026).</strong> Gravações no painel Performance do DevTools com a carga de 50 formas: abertura, rótulo e exportação em PNG e PDF. Achados:</p>
-<ul>
-<li>Na abertura, o draw.io usa o seletor nativo da API File System Access, e não há evento <code>change</code>; o início da medida foi redefinido.</li>
-<li>Na exportação PNG e SVG há dois diálogos depois de <strong>Export</strong>: o "Save as" do draw.io e o seletor do Windows. O fim da medida foi fixado no "Save as".</li>
-<li>No PDF, o draw.io abre uma página de impressão, e o arquivo é gerado pela impressão do Chrome. O arquivo obtido sai com cabeçalho do navegador (data e título), dividido em 10 páginas e com formas cortadas na borda da página.</li>
-<li>A opção "Include a copy of my diagram" vem marcada por padrão e foi mantida.</li>
-<li>Ao abrir um arquivo pelo seletor nativo, o draw.io pode gravar as alterações de volta nesse arquivo. Durante o piloto, a edição do rótulo foi gravada na carga de 50 formas, que passou a ter um trecho de HTML no rótulo da forma <code>v0001</code>. A carga foi restaurada a partir do repositório e conferida antes da coleta oficial desse porte; a automação não grava as cargas.</li>
-<li>A leitura manual de cada gravação é demorada e varia conforme o avaliador; para 125 gravações, optou-se pela automação.</li>
-</ul>
-<p><strong>Piloto automatizado (14/11/2026).</strong> Uma tentativa nos portes extremos (50 e 5.000 formas), suficiente para validar o procedimento e verificar a capacidade; os portes intermediários são cobertos pela coleta oficial. Todas as operações foram concluídas. A exportação SVG com 5.000 formas levou cerca de 118 s, quase três vezes o limite candidato (40 s); as demais operações ficaram muito abaixo dos limites candidatos, o que indica que esses limites são folgados para esta máquina. Eventuais ajustes são decisão do grupo com o requisitante.</p>
-<p><strong>Comparação entre piloto manual e automatizado (50 formas).</strong></p>
-<table>
-<thead>
-<tr>
-<th>Operação</th>
-<th>Manual (ms)</th>
-<th>Automatizado (ms)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Abrir</td>
-<td>288,7</td>
-<td>73,9</td>
-</tr>
-<tr>
-<td>Rótulo</td>
-<td>118,4</td>
-<td>39,7</td>
-</tr>
-<tr>
-<td>Exportar PNG</td>
-<td>269,6</td>
-<td>101,5</td>
-</tr>
-<tr>
-<td>Exportar PDF</td>
-<td>235,8</td>
-<td>175,6</td>
-</tr>
-</tbody>
-</table>
-<p>Os valores manuais são sistematicamente maiores, mas da mesma ordem de grandeza. A gravação manual mantém o DevTools aberto e liga a amostragem de JavaScript (eventos <code>ProfileChunk</code> presentes no trace manual), o que acrescenta custo à página; a gravação automatizada não liga essa amostragem. Na abertura, a medida manual inclui ainda a entrega do arquivo pelo seletor nativo. Por medir com menor interferência do instrumento e de forma repetível, adota-se a coleta automatizada.</p>
+<p>Antes da coleta oficial, validar o procedimento manualmente e por automação, conferir as cargas e os marcos de início e fim das operações. Os dados do piloto devem ser registrados separadamente e excluídos das métricas oficiais. Os <a href="../fase-4/coleta-de-dados/#resultados-do-piloto-de-eficiencia">resultados do piloto</a> documentam os achados e as adaptações adotadas.</p>
 <h2 id="manutenibilidade-dupla-3">Manutenibilidade (Dupla 3)<a class="headerlink" href="#manutenibilidade-dupla-3" title="Permanent link">&para;</a></h2>
 <p>Esta seção define como serão coletadas as métricas M3.1 e M3.2 da <a href="../fase-2/metricas/">Fase 2</a>. Toda a coleta é feita e avaliada pela dupla, utilizando a mesma versão do programa de avaliação e do programa avaliado. Conforme os <a href="../fase-1/escopo/">limites de validade</a> da Fase 1, as conclusões ficam vinculadas a essa versão.</p>
 <h3 id="versao-avaliada_1">Versão avaliada<a class="headerlink" href="#versao-avaliada_1" title="Permanent link">&para;</a></h3>
@@ -2599,7 +2597,7 @@
 </tr>
 <tr>
 <td>Commit</td>
-<td><code>c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3</code>, o mesmo usado pelas três duplas.</td>
+<td><code>c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3</code>, referência da campanha histórica das três duplas.</td>
 </tr>
 <tr>
 <td>Execução</td>
@@ -2672,34 +2670,27 @@
 </thead>
 <tbody>
 <tr>
-<td>Perfil do navegador</td>
-<td>Janela de convidado do Chrome, sem extensões, sem histórico e sem outras abas abertas.</td>
+<td>Objeto analisado</td>
+<td>Fixar o commit e registrar os caminhos dos arquivos e funções de cada componente. Campanhas com outro commit ou escopo devem ser identificadas separadamente.</td>
 </tr>
 <tr>
-<td>DevTools</td>
-<td>Aberto em janela separada, sem limitação de CPU ou de rede.</td>
-</tr>
-<tr>
-<td>Sessão limpa</td>
-<td>Antes de cada sessão, recarregar a página com <code>Ctrl+Shift+R</code> e acionar <strong>Coletar lixo</strong> no painel Performance.</td>
-</tr>
-<tr>
-<td>Máquina</td>
-<td>Conectada à energia, modo de energia equilibrado, outros programas fechados e notificações do Windows silenciadas. O percentual de memória em uso no início de cada sessão é registrado.</td>
+<td>Ferramenta</td>
+<td>Registrar a configuração do SonarCloud, inclusões, exclusões, versão do analisador quando disponível e ID da análise.</td>
 </tr>
 <tr>
 <td>Rede</td>
-<td>Instância local com <code>offline=1</code>. Sem acesso a serviços em nuvem.</td>
+<td>A coleta remota exige acesso ao SonarCloud. A restrição offline dos testes de desempenho não se aplica a essa análise estática.</td>
 </tr>
 <tr>
-<td>Ordem</td>
-<td>Portes do menor para o maior; dentro de cada porte, as cinco tentativas são feitas em sequência.</td>
+<td>Validade</td>
+<td>Conferir o inventário efetivamente processado e a presença dos numeradores e denominadores. Ausência de dados não equivale a zero.</td>
+</tr>
+<tr>
+<td>Repetição</td>
+<td>Reexecutar em caso de falha ou mudança de configuração, commit ou escopo. Não se aplicam cinco tentativas por porte, medianas nem coleta de lixo do navegador.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="observacoes-encontradas">Observações encontradas<a class="headerlink" href="#observacoes-encontradas" title="Permanent link">&para;</a></h3>
-<p>A análise de manutenibilidade utiliza duas medidas: a complexidade cognitiva média por função, calculada separadamente para importação de arquivos e edição de rótulos, e o percentual de código duplicado no conjunto de exportação PNG, PDF e SVG. Os resultados se restringem ao código selecionado, conforme o <a href="../fase-1/escopo/">escopo da avaliação</a>.</p>
-<p>Os dados iniciais pareciam estranhos, especialmente os zeros de complexidade e duplicação em arquivos extensos. Por isso, foi necessário realizar uma nova análise. A revisão de 15/11/2026 identificou diferenças de escopo, confusão entre <code>diagramly/Editor.js</code> e <code>grapheditor/Editor.js</code> e risco de exclusão dos arquivos maiores. A <a href="coleta-de-dados/#manutenibilidade-dupla-3">coleta atualizada</a> distingue o inventário dos sete arquivos completos das métricas históricas de recortes de funções. Ainda não há medidas SonarCloud para o novo escopo.</p>
 <h3 id="procedimento_1">Procedimento<a class="headerlink" href="#procedimento_1" title="Permanent link">&para;</a></h3>
 <p>O procedimento segue as <a href="../fase-2/metricas/#manutenibilidade-dupla-3">fichas das métricas</a>, com análise estática pelo SonarCloud e julgamento separado para cada questão do GQM.</p>
 <p><strong>Preparação da análise</strong></p>
@@ -2713,25 +2704,16 @@
 <ol>
 <li>Para a <strong>M3.1</strong>, registrar a complexidade cognitiva total (<code>C</code>) e a quantidade de funções (<code>F</code>) pertencentes a cada componente. Calcular <code>M3.1 = C / F</code> separadamente para importação (<strong>Q3.1</strong>) e edição de rótulos (<strong>Q3.2</strong>), considerando todas as funções do recorte, inclusive as que não geram alertas.</li>
 <li>Para a <strong>M3.2</strong>, analisar conjuntamente o código de exportação PNG, PDF e SVG e registrar as linhas duplicadas (<code>Ld</code>) e o total de linhas analisadas (<code>Lt</code>). Calcular <code>M3.2 = (Ld / Lt) × 100</code>, respondendo à <strong>Q3.3</strong>, sem fazer a média dos percentuais individuais dos arquivos.</li>
-<li>Registrar os valores brutos, os arquivos e funções considerados e a referência ao relatório na <a href="coleta-de-dados/#manutenibilidade-dupla-3">coleta de dados</a>, permitindo conferir os cálculos.</li>
-<li>Comparar os resultados com os <a href="../fase-2/niveis-e-julgamento/#manutenibilidade-dupla-3">níveis de julgamento da Fase 2</a>: para M3.1, adequado até 10, atenção acima de 10 até 15 e crítico acima de 15; para M3.2, adequado até 5%, atenção acima de 5% até 10% e crítico acima de 10%. Registrar o julgamento de cada questão na <a href="resultados/#manutenibilidade-dupla-3">análise dos resultados</a>.</li>
+<li>Registrar os valores brutos, os arquivos e funções considerados e a referência ao relatório na <a href="../fase-4/coleta-de-dados/#manutenibilidade-dupla-3">coleta de dados</a>, permitindo conferir os cálculos.</li>
+<li>Comparar os resultados com os <a href="../fase-2/niveis-e-julgamento/#manutenibilidade-dupla-3">níveis de julgamento da Fase 2</a>: para M3.1, adequado até 10, atenção acima de 10 até 15 e crítico acima de 15; para M3.2, adequado até 5%, atenção acima de 5% até 10% e crítico acima de 10%. Registrar o julgamento de cada questão na <a href="../fase-4/resultados/#manutenibilidade-dupla-3">análise dos resultados</a>.</li>
 </ol>
 <h3 id="tentativas-validas-falhas-e-interrupcoes_1">Tentativas válidas, falhas e interrupções<a class="headerlink" href="#tentativas-validas-falhas-e-interrupcoes_1" title="Permanent link">&para;</a></h3>
 <p>Uma execução é considerada <strong>válida</strong> quando a análise do SonarCloud termina com sucesso, corresponde ao commit e ao escopo definidos e fornece os dados necessários ao cálculo da métrica. Para M3.1, é necessário <code>F &gt; 0</code>; para M3.2, <code>Lt &gt; 0</code>. A ausência de dados não é registrada como valor zero: o resultado permanece pendente até que a coleta seja completada.</p>
-<p>Segundo o relato da dupla, ocorreu uma única tentativa com falha, causada por erro na configuração do SonarCloud. Essa tentativa foi desconsiderada para o cálculo das métricas e a análise foi executada novamente após a correção. As demais execuções ocorreram normalmente, sem outras falhas ou interrupções relatadas. O incidente é registrado como falha da configuração da coleta, sem atribuí-lo à qualidade do código do draw.io.</p>
-<p>Além disso, durante a avaliação dos resultados obtidos, foram identificados dados inconsistentes e valores que não refletiam adequadamente o escopo definido nas fases anteriores do estudo. Após essa verificação, foi realizada uma nova análise dos dados, aplicando um filtro para considerar exclusivamente os arquivos que continham as funções previamente selecionadas e descritas nas etapas anteriores. Esse refinamento teve como objetivo garantir maior aderência entre as métricas coletadas e o conjunto de funcionalidades efetivamente analisadas, evitando que arquivos não relacionados influenciassem os resultados apresentados.</p>
 <p>Como a coleta é feita por análise estática, não se aplica a repetição de cinco tentativas nem o cálculo de medianas adotados pela Dupla 2. Uma nova execução é necessária quando houver falha, dados incompletos ou alteração do commit, do escopo ou da configuração; nesse último caso, os resultados devem ser identificados separadamente.</p>
 <h3 id="registro-dos-dados_1">Registro dos dados<a class="headerlink" href="#registro-dos-dados_1" title="Permanent link">&para;</a></h3>
-<p>O <a href="evidencias/resultados-das-analises/">relatório consolidado fornecido</a> foi preservado neste repositório. A <a href="coleta-de-dados/#manutenibilidade-dupla-3">coleta</a> registra o inventário e a situação das medidas; os <a href="resultados/#manutenibilidade-dupla-3">resultados</a> apresentam os cálculos históricos e seus limites. Os demais artefatos citados no relatório são referências ao ambiente de origem e não foram fornecidos aqui.</p>
+<p>O <a href="../fase-4/evidencias/resultados-das-analises/">relatório consolidado fornecido</a> foi preservado neste repositório. A <a href="../fase-4/coleta-de-dados/#manutenibilidade-dupla-3">coleta</a> registra o inventário e a situação das medidas; os <a href="../fase-4/resultados/#manutenibilidade-dupla-3">resultados</a> apresentam os cálculos históricos e seus limites. Os demais artefatos citados no relatório são referências ao ambiente de origem e não foram fornecidos aqui.</p>
 <h3 id="piloto_1">Piloto<a class="headerlink" href="#piloto_1" title="Permanent link">&para;</a></h3>
-<p>Antes da coleta oficial é feita uma rodada piloto, com uma tentativa por porte e operação, para:</p>
-<ul>
-<li>confirmar os comandos de abertura e exportação na versão fixada;</li>
-<li>identificar, na aba <strong>Rede</strong> do DevTools, se cada formato é gerado no navegador ou depende de um serviço de exportação, como exige o escopo da Fase 1;</li>
-<li>verificar se os limites candidatos da Fase 2 são plausíveis nesta máquina e submeter eventuais ajustes à aprovação do requisitante;</li>
-<li>estimar a duração total da coleta.</li>
-</ul>
-<p>Os resultados do piloto são registrados à parte e não entram no cálculo das métricas.</p>
+<p>Antes da coleta, executar uma análise de verificação para conferir o processamento dos arquivos incluídos, os limites de tamanho, as exclusões e as medidas retornadas. Validar o detector de duplicação com código de duplicação conhecida em campanha separada. Esse código de controle não integra o denominador da avaliação real. Preservar os registros do piloto separadamente das medidas oficiais.</p>
 
 
 
@@ -2752,7 +2734,7 @@
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="15 de novembro de 2026 19:53:48 UTC">15 de novembro de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="16 de novembro de 2026 01:23:56 UTC">16 de novembro de 2026</span>
   </span>
 
     
@@ -2828,7 +2810,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      FGA0315 Qualidade de Software 1 - 2026.2 - T01 - Grupo Mary Jackson | E1 | Versão 1.0 - 26/10/2026 | Logo gerada por IA (OpenAI)
+      FGA0315 Qualidade de Software 1 - 2026.2 - T01 - Grupo Mary Jackson | E2 em andamento | Versão 1.1 - 15/11/2026 | Logo gerada por IA (OpenAI)
     </div>
   
   
