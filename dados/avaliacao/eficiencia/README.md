@@ -63,7 +63,7 @@ Compare cada resultado com a entrada do mesmo nome no manifesto. Para conferir u
 
 ## Conferir a extração das medidas
 
-Os critérios de leitura estão no [plano de avaliação](../../../docs/fase-3/index.md). Para executar novamente o leitor sobre a coleta oficial, a partir da raiz do repositório:
+Os critérios de leitura estão no [plano de avaliação](../../../docs/fase-3/ambiente-de-execucao.md#leitura-das-medidas). Para executar novamente o leitor sobre a coleta oficial, a partir da raiz do repositório:
 
 ```powershell
 python dados/avaliacao/eficiencia/ler_traces.py dados/avaliacao/eficiencia/brutos/traces "$env:TEMP\tentativas-eficiencia-conferencia.csv"

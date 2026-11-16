@@ -27,7 +27,7 @@ Esse commit corresponde à versão 32.6.10 documentada para a campanha históric
 
 ## Execução local
 
-Após fixar o commit, seguir o [protocolo de segurança](ambiente-de-execucao.md) ou o [plano de eficiência](index.md#eficiencia-de-desempenho-dupla-2), conforme a característica. Esses protocolos especificam ambientes distintos. A manutenibilidade utiliza análise estática do código, sem exigir que a interface web esteja em execução.
+Após fixar o commit, seguir o [protocolo de segurança](ambiente-de-execucao.md#seguranca-dupla-1) ou o [plano de eficiência](ambiente-de-execucao.md#eficiencia-de-desempenho-dupla-2), conforme a característica. Esses protocolos especificam ambientes distintos. A manutenibilidade utiliza análise estática do código, sem exigir que a interface web esteja em execução.
 
 ## Atualização do código-fonte
 

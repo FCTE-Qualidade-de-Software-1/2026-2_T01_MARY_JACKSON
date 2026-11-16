@@ -106,6 +106,10 @@ markdown_extensions:
           base_path: ["."]
           check_paths: true
 
+# Paginas acessadas por links, mantidas fora do menu de proposito.
+not_in_nav: |
+    fase-4/evidencias/*
+
 nav:
     - Início: index.md
     - Metodologia : metodologia/index.md
@@ -127,8 +131,8 @@ nav:
           - Rastreabilidade: fase-2/rastreabilidade.md
     - Fase 3:
           - fase-3/index.md
-          - Ambiente Docker do draw.io: fase-3/ambiente-drawio.md
-          - Ambiente de execução: fase-3/ambiente-de-execucao.md
+          - Plano de avaliação: fase-3/ambiente-de-execucao.md
+          - Ambiente do draw.io: fase-3/ambiente-drawio.md
     - Fase 4:
           - fase-4/index.md
           - Coleta de dados: fase-4/coleta-de-dados.md

@@ -44,9 +44,9 @@ A varredura por `getLabelValue` nos arquivos `Format.js`, `Graph.js` e `Editor.j
 ## Eficiência de desempenho (Dupla 2)
 
 - **Versão avaliada:** draw.io release `32.6.10` (repositório `H3ytt0r10/drawio`, commit `c72c9a9`).
-- **Ambiente de execução:** servidor HTTP estático local (`python -m http.server`) servindo `src/main/webapp`, Google Chrome 157.0.8103.79 em Windows 11, Intel Core i5-1235U e 16 GB de RAM, conforme o [plano de avaliação](../fase-3/index.md#eficiencia-de-desempenho-dupla-2).
+- **Ambiente de execução:** servidor HTTP estático local (`python -m http.server`) servindo `src/main/webapp`, Google Chrome 157.0.8103.79 em Windows 11, Intel Core i5-1235U e 16 GB de RAM, conforme o [plano de avaliação](../fase-3/ambiente-de-execucao.md#eficiencia-de-desempenho-dupla-2).
 - **Execução:** coleta automatizada pelo script `coletar.py` em 14/11/2026, das 19h06 às 19h47, com 52% da memória em uso no início. O porte de 50 formas foi coletado novamente das 20h18 às 20h21, nas mesmas condições, depois que se constatou que a carga desse porte havia sido alterada durante o piloto manual (ver [Piloto](#resultados-do-piloto-de-eficiencia)); os valores abaixo são os da nova coleta. No total, são 125 gravações (5 portes, 5 operações e 5 tentativas), sem nenhuma falha de execução e sem tentativas descartadas.
-- **Dados brutos (CSV):** `dados/avaliacao/eficiencia/brutos/tentativas.csv`, mantido no Git, com uma linha por gravação. Os valores foram extraídos pelo script `ler_traces.py`, segundo a [leitura das medidas](../fase-3/index.md#leitura-das-medidas).
+- **Dados brutos (CSV):** `dados/avaliacao/eficiencia/brutos/tentativas.csv`, mantido no Git, com uma linha por gravação. Os valores foram extraídos pelo script `ler_traces.py`, segundo a [leitura das medidas](../fase-3/ambiente-de-execucao.md#leitura-das-medidas).
 - **Traces e integridade:** os 125 traces oficiais e os 14 dos pilotos são preservados em dois pacotes externos, com os caminhos originais de `dados/avaliacao/eficiencia/brutos/`. O acesso e a restauração estão documentados em `dados/avaliacao/eficiencia/README.md`, e os hashes, em `dados/avaliacao/eficiencia/SHA256SUMS.txt`. Os pacotes estão disponíveis na [pasta de evidências no Google Drive](https://drive.google.com/drive/folders/1jwootYRyhx7-tQTW6iViqpkXdaKxO7FM?usp=sharing).
 
 ### Tempo das operações (M2.1, M2.3 e M2.4)
@@ -82,7 +82,7 @@ Heap JavaScript usado, mediana das cinco tentativas, em MiB, com o menor e o mai
 
 ### Validação dos arquivos exportados
 
-Em 15/11/2026, o script `validar_exportacoes.py` exportou e salvou um arquivo de cada formato por porte e verificou cada um, conforme a [validação das exportações](../fase-3/index.md#validacao-das-exportacoes) do plano. O resultado está em `dados/avaliacao/eficiencia/brutos/exportados/validacao.csv`, e os arquivos, no pacote `eficiencia-exportacoes-2026-11-15.zip`, com publicação pelo grupo na [pasta de evidências](https://drive.google.com/drive/folders/1jwootYRyhx7-tQTW6iViqpkXdaKxO7FM?usp=sharing).
+Em 15/11/2026, o script `validar_exportacoes.py` exportou e salvou um arquivo de cada formato por porte e verificou cada um, conforme a [validação das exportações](../fase-3/ambiente-de-execucao.md#validacao-das-exportacoes) do plano. O resultado está em `dados/avaliacao/eficiencia/brutos/exportados/validacao.csv`, e os arquivos, no pacote `eficiencia-exportacoes-2026-11-15.zip`, com publicação pelo grupo na [pasta de evidências](https://drive.google.com/drive/folders/1jwootYRyhx7-tQTW6iViqpkXdaKxO7FM?usp=sharing).
 
 | Porte | PNG | SVG | PDF |
 | --- | --- | --- | --- |
