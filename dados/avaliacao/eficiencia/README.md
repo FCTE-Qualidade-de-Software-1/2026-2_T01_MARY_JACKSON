@@ -5,7 +5,7 @@ Dados da coleta de 14/11/2026, realizada no draw.io 32.6.10. A coleta oficial co
 ## Responsáveis
 
 - **Coleta:** Pedro Ian Guedes de Carvalho.
-- **Análise dos dados e resultados:** Thiago Gomes Pereira de Abreu. A análise está na seção de eficiência de [Análise dos dados e resultados](../../../docs/fase-3/resultados.md).
+- **Análise dos dados e resultados:** Thiago Gomes Pereira de Abreu. A análise está na seção de eficiência de [Análise dos dados e resultados](../../../docs/fase-4/resultados.md).
 
 ## Acesso às evidências
 
@@ -19,7 +19,7 @@ Dados da coleta de 14/11/2026, realizada no draw.io 32.6.10. A coleta oficial co
 
 Os pacotes conservam os nomes dos arquivos e os caminhos a partir da raiz do repositório. Os traces `.json.gz` ficam fora do versionamento Git; as cópias locais restauradas são ignoradas pelo `.gitignore`. Os arquivos exportados na validação também ficam fora do Git, exceto o relatório `validacao.csv`. O arquivo [SHA256SUMS.txt](SHA256SUMS.txt) permite conferir a integridade dos três ZIPs, dos 139 traces e dos 14 arquivos exportados.
 
-O contexto de execução e os registros das medidas estão na seção de eficiência da página [Coleta de dados](../../../docs/fase-3/coleta-de-dados.md).
+O contexto de execução e os registros das medidas estão na seção de eficiência da página [Coleta de dados](../../../docs/fase-4/coleta-de-dados.md).
 
 ## Arquivos mantidos no Git
 
@@ -88,7 +88,7 @@ Na raiz do repositório:
 python dados/avaliacao/eficiencia/analisar.py
 ```
 
-O script atualiza os arquivos de `analise/` e substitui somente a seção de eficiência em `docs/fase-3/resultados.md`. Alterações no texto dessa seção também devem ser refletidas no gerador para não serem sobrescritas. Os dados brutos e as seções das outras duplas são preservados.
+O script atualiza os arquivos de `analise/` e substitui somente a seção de eficiência em `docs/fase-4/resultados.md`. Alterações no texto dessa seção também devem ser refletidas no gerador para não serem sobrescritas. Os dados brutos e as seções das outras duplas são preservados.
 
 Arquivos derivados em `analise/`:
 

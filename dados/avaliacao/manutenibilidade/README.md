@@ -1,6 +1,6 @@
 # Dados de Manutenibilidade
 
-O arquivo `metricas-historicas.csv` transcreve os dados agregados da seção 5 do [relatório fornecido](../../../docs/fase-3/evidencias/resultados-das-analises.md), consolidado em 15/11/2026. Não é uma exportação bruta do SonarCloud nem uma nova coleta. Os IDs das análises são os informados pela fonte; não foram consultados remotamente nesta conferência.
+O arquivo `metricas-historicas.csv` transcreve os dados agregados da seção 5 do [relatório fornecido](../../../docs/fase-4/evidencias/resultados-das-analises.md), consolidado em 15/11/2026. Não é uma exportação bruta do SonarCloud nem uma nova coleta. Os IDs das análises são os informados pela fonte; não foram consultados remotamente nesta conferência.
 
 Cada linha identifica a campanha de 08/11/2026, seu componente, numerador, denominador e análise de origem. O resultado é `fator × numerador / denominador`, arredondado para seis casas decimais. Para M3.1, os campos correspondem à complexidade cognitiva total e à quantidade de funções; para M3.2, às linhas duplicadas e às linhas totais do recorte de exportação.
 

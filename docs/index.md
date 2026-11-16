@@ -33,8 +33,8 @@ Este projeto usou ferramentas de IA (Claude, Gemini e ChatGPT/Codex) como apoio 
 <div class="mj-painel">
 <a class="mj-item" href="fase-1/"><small>E1 · 26/10/2026 · Concluída</small><span>Fase 1: Estabelecer os requisitos</span></a>
 <a class="mj-item" href="fase-2/"><small>E1 · 26/10/2026 · Concluída</small><span>Fase 2: Especificar a avaliação</span></a>
-<a class="mj-item" href="fase-3/"><small>E2 · Não iniciada</small><span>Fase 3: Projetar a avaliação</span></a>
-<a class="mj-item" href="fase-4/"><small>E2 · Não iniciada</small><span>Fase 4: Executar a avaliação</span></a>
+<a class="mj-item" href="fase-3/"><small>E2 · Em andamento</small><span>Fase 3: Projetar a avaliação</span></a>
+<a class="mj-item" href="fase-4/"><small>E2 · Em andamento</small><span>Fase 4: Executar a avaliação</span></a>
 </div>
 </div>
 <div class="mj-coluna">

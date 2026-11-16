@@ -2,6 +2,10 @@
 
 <!-- O que entra aqui: plano de avaliação: método, instruções para o avaliador, recursos e cronograma (Aula 07, págs. 18 e 19). Entrega 2. -->
 
+Esta fase apresenta o plano: métodos, recursos, ambiente e instruções. A [execução, as medidas e os resultados](../fase-4/index.md) pertencem à Fase 4.
+
+Consulte o [protocolo de segurança](ambiente-de-execucao.md) e o [cronograma](../gestao/planejamento.md): Sprint 4 (07/11 a 16/11), projeto e coleta; Sprint 5 (17/11 a 22/11), conclusão, revisão e entrega.
+
 O ambiente de execução previsto para a avaliação é o draw.io web 32.6.10 localmente por meio de um fork feito pelo membro Heyttor Augusto. Consulte o [guia do ambiente local](ambiente-drawio.md) para iniciar e operar o contêiner.
 
 
@@ -15,7 +19,7 @@ Esta seção define como são coletadas as métricas M2.1 a M2.6 da [Fase 2](../
 | --- | --- |
 | Produto | draw.io web, a partir do fork [`H3ytt0r10/drawio`](https://github.com/H3ytt0r10/drawio). |
 | Versão | 32.6.10 (arquivo `VERSION` do fork). |
-| Commit | `c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3`, o mesmo usado pelas três duplas. |
+| Commit | `c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3`, referência da campanha histórica das três duplas. |
 | Execução | Servidor HTTP estático local (`python -m http.server 8080`) servindo a pasta `src/main/webapp` do fork, acessado em `http://localhost:8080/?offline=1`. Não há servidor de exportação. |
 
 ### Máquina cliente e navegador
@@ -141,29 +145,7 @@ Colunas de `tentativas.csv`: `data`, `tentativa`, `porte`, `operacao`, `formato`
 
 ### Piloto
 
-O piloto foi feito em duas etapas, e seus resultados não entram no cálculo das métricas.
-
-**Piloto manual (13 e 14/11/2026).** Gravações no painel Performance do DevTools com a carga de 50 formas: abertura, rótulo e exportação em PNG e PDF. Achados:
-
-- Na abertura, o draw.io usa o seletor nativo da API File System Access, e não há evento `change`; o início da medida foi redefinido.
-- Na exportação PNG e SVG há dois diálogos depois de **Export**: o "Save as" do draw.io e o seletor do Windows. O fim da medida foi fixado no "Save as".
-- No PDF, o draw.io abre uma página de impressão, e o arquivo é gerado pela impressão do Chrome. O arquivo obtido sai com cabeçalho do navegador (data e título), dividido em 10 páginas e com formas cortadas na borda da página.
-- A opção "Include a copy of my diagram" vem marcada por padrão e foi mantida.
-- Ao abrir um arquivo pelo seletor nativo, o draw.io pode gravar as alterações de volta nesse arquivo. Durante o piloto, a edição do rótulo foi gravada na carga de 50 formas, que passou a ter um trecho de HTML no rótulo da forma `v0001`. A carga foi restaurada a partir do repositório e conferida antes da coleta oficial desse porte; a automação não grava as cargas.
-- A leitura manual de cada gravação é demorada e varia conforme o avaliador; para 125 gravações, optou-se pela automação.
-
-**Piloto automatizado (14/11/2026).** Uma tentativa nos portes extremos (50 e 5.000 formas), suficiente para validar o procedimento e verificar a capacidade; os portes intermediários são cobertos pela coleta oficial. Todas as operações foram concluídas. A exportação SVG com 5.000 formas levou cerca de 118 s, quase três vezes o limite candidato (40 s); as demais operações ficaram muito abaixo dos limites candidatos, o que indica que esses limites são folgados para esta máquina. Eventuais ajustes são decisão do grupo com o requisitante.
-
-**Comparação entre piloto manual e automatizado (50 formas).**
-
-| Operação | Manual (ms) | Automatizado (ms) |
-| --- | --- | --- |
-| Abrir | 288,7 | 73,9 |
-| Rótulo | 118,4 | 39,7 |
-| Exportar PNG | 269,6 | 101,5 |
-| Exportar PDF | 235,8 | 175,6 |
-
-Os valores manuais são sistematicamente maiores, mas da mesma ordem de grandeza. A gravação manual mantém o DevTools aberto e liga a amostragem de JavaScript (eventos `ProfileChunk` presentes no trace manual), o que acrescenta custo à página; a gravação automatizada não liga essa amostragem. Na abertura, a medida manual inclui ainda a entrega do arquivo pelo seletor nativo. Por medir com menor interferência do instrumento e de forma repetível, adota-se a coleta automatizada.
+Antes da coleta oficial, validar o procedimento manualmente e por automação, conferir as cargas e os marcos de início e fim das operações. Os dados do piloto devem ser registrados separadamente e excluídos das métricas oficiais. Os [resultados do piloto](../fase-4/coleta-de-dados.md#resultados-do-piloto-de-eficiencia) documentam os achados e as adaptações adotadas.
 
 ## Manutenibilidade (Dupla 3)
 
@@ -175,7 +157,7 @@ Esta seção define como serão coletadas as métricas M3.1 e M3.2 da [Fase 2](.
 | --- | --- |
 | Produto | draw.io web, a partir do fork [`H3ytt0r10/drawio`](https://github.com/H3ytt0r10/drawio). |
 | Versão | 32.6.10 (arquivo `VERSION` do fork). |
-| Commit | `c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3`, o mesmo usado pelas três duplas. |
+| Commit | `c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3`, referência da campanha histórica das três duplas. |
 | Execução | localmente, conforme o [guia do ambiente](ambiente-drawio.md). |
 
 ### Máquina cliente e navegador
@@ -202,18 +184,11 @@ Se o Chrome for atualizado durante a coleta, a nova versão é registrada a part
 
 | Condição | Regra |
 | --- | --- |
-| Perfil do navegador | Janela de convidado do Chrome, sem extensões, sem histórico e sem outras abas abertas. |
-| DevTools | Aberto em janela separada, sem limitação de CPU ou de rede. |
-| Sessão limpa | Antes de cada sessão, recarregar a página com `Ctrl+Shift+R` e acionar **Coletar lixo** no painel Performance. |
-| Máquina | Conectada à energia, modo de energia equilibrado, outros programas fechados e notificações do Windows silenciadas. O percentual de memória em uso no início de cada sessão é registrado. |
-| Rede | Instância local com `offline=1`. Sem acesso a serviços em nuvem. |
-| Ordem | Portes do menor para o maior; dentro de cada porte, as cinco tentativas são feitas em sequência. |
-
-### Observações encontradas
-
-A análise de manutenibilidade utiliza duas medidas: a complexidade cognitiva média por função, calculada separadamente para importação de arquivos e edição de rótulos, e o percentual de código duplicado no conjunto de exportação PNG, PDF e SVG. Os resultados se restringem ao código selecionado, conforme o [escopo da avaliação](../fase-1/escopo.md).
-
-Os dados iniciais pareciam estranhos, especialmente os zeros de complexidade e duplicação em arquivos extensos. Por isso, foi necessário realizar uma nova análise. A revisão de 15/11/2026 identificou diferenças de escopo, confusão entre `diagramly/Editor.js` e `grapheditor/Editor.js` e risco de exclusão dos arquivos maiores. A [coleta atualizada](coleta-de-dados.md#manutenibilidade-dupla-3) distingue o inventário dos sete arquivos completos das métricas históricas de recortes de funções. Ainda não há medidas SonarCloud para o novo escopo.
+| Objeto analisado | Fixar o commit e registrar os caminhos dos arquivos e funções de cada componente. Campanhas com outro commit ou escopo devem ser identificadas separadamente. |
+| Ferramenta | Registrar a configuração do SonarCloud, inclusões, exclusões, versão do analisador quando disponível e ID da análise. |
+| Rede | A coleta remota exige acesso ao SonarCloud. A restrição offline dos testes de desempenho não se aplica a essa análise estática. |
+| Validade | Conferir o inventário efetivamente processado e a presença dos numeradores e denominadores. Ausência de dados não equivale a zero. |
+| Repetição | Reexecutar em caso de falha ou mudança de configuração, commit ou escopo. Não se aplicam cinco tentativas por porte, medianas nem coleta de lixo do navegador. |
 
 ### Procedimento
 
@@ -230,30 +205,19 @@ O procedimento segue as [fichas das métricas](../fase-2/metricas.md#manutenibil
 
 1. Para a **M3.1**, registrar a complexidade cognitiva total (`C`) e a quantidade de funções (`F`) pertencentes a cada componente. Calcular `M3.1 = C / F` separadamente para importação (**Q3.1**) e edição de rótulos (**Q3.2**), considerando todas as funções do recorte, inclusive as que não geram alertas.
 2. Para a **M3.2**, analisar conjuntamente o código de exportação PNG, PDF e SVG e registrar as linhas duplicadas (`Ld`) e o total de linhas analisadas (`Lt`). Calcular `M3.2 = (Ld / Lt) × 100`, respondendo à **Q3.3**, sem fazer a média dos percentuais individuais dos arquivos.
-3. Registrar os valores brutos, os arquivos e funções considerados e a referência ao relatório na [coleta de dados](coleta-de-dados.md#manutenibilidade-dupla-3), permitindo conferir os cálculos.
-4. Comparar os resultados com os [níveis de julgamento da Fase 2](../fase-2/niveis-e-julgamento.md#manutenibilidade-dupla-3): para M3.1, adequado até 10, atenção acima de 10 até 15 e crítico acima de 15; para M3.2, adequado até 5%, atenção acima de 5% até 10% e crítico acima de 10%. Registrar o julgamento de cada questão na [análise dos resultados](resultados.md#manutenibilidade-dupla-3).
+3. Registrar os valores brutos, os arquivos e funções considerados e a referência ao relatório na [coleta de dados](../fase-4/coleta-de-dados.md#manutenibilidade-dupla-3), permitindo conferir os cálculos.
+4. Comparar os resultados com os [níveis de julgamento da Fase 2](../fase-2/niveis-e-julgamento.md#manutenibilidade-dupla-3): para M3.1, adequado até 10, atenção acima de 10 até 15 e crítico acima de 15; para M3.2, adequado até 5%, atenção acima de 5% até 10% e crítico acima de 10%. Registrar o julgamento de cada questão na [análise dos resultados](../fase-4/resultados.md#manutenibilidade-dupla-3).
 
 ### Tentativas válidas, falhas e interrupções
 
 Uma execução é considerada **válida** quando a análise do SonarCloud termina com sucesso, corresponde ao commit e ao escopo definidos e fornece os dados necessários ao cálculo da métrica. Para M3.1, é necessário `F > 0`; para M3.2, `Lt > 0`. A ausência de dados não é registrada como valor zero: o resultado permanece pendente até que a coleta seja completada.
 
-Segundo o relato da dupla, ocorreu uma única tentativa com falha, causada por erro na configuração do SonarCloud. Essa tentativa foi desconsiderada para o cálculo das métricas e a análise foi executada novamente após a correção. As demais execuções ocorreram normalmente, sem outras falhas ou interrupções relatadas. O incidente é registrado como falha da configuração da coleta, sem atribuí-lo à qualidade do código do draw.io.
-
-Além disso, durante a avaliação dos resultados obtidos, foram identificados dados inconsistentes e valores que não refletiam adequadamente o escopo definido nas fases anteriores do estudo. Após essa verificação, foi realizada uma nova análise dos dados, aplicando um filtro para considerar exclusivamente os arquivos que continham as funções previamente selecionadas e descritas nas etapas anteriores. Esse refinamento teve como objetivo garantir maior aderência entre as métricas coletadas e o conjunto de funcionalidades efetivamente analisadas, evitando que arquivos não relacionados influenciassem os resultados apresentados.
-
 Como a coleta é feita por análise estática, não se aplica a repetição de cinco tentativas nem o cálculo de medianas adotados pela Dupla 2. Uma nova execução é necessária quando houver falha, dados incompletos ou alteração do commit, do escopo ou da configuração; nesse último caso, os resultados devem ser identificados separadamente.
 
 ### Registro dos dados
 
-O [relatório consolidado fornecido](evidencias/resultados-das-analises.md) foi preservado neste repositório. A [coleta](coleta-de-dados.md#manutenibilidade-dupla-3) registra o inventário e a situação das medidas; os [resultados](resultados.md#manutenibilidade-dupla-3) apresentam os cálculos históricos e seus limites. Os demais artefatos citados no relatório são referências ao ambiente de origem e não foram fornecidos aqui.
+O [relatório consolidado fornecido](../fase-4/evidencias/resultados-das-analises.md) foi preservado neste repositório. A [coleta](../fase-4/coleta-de-dados.md#manutenibilidade-dupla-3) registra o inventário e a situação das medidas; os [resultados](../fase-4/resultados.md#manutenibilidade-dupla-3) apresentam os cálculos históricos e seus limites. Os demais artefatos citados no relatório são referências ao ambiente de origem e não foram fornecidos aqui.
 
 ### Piloto
 
-Antes da coleta oficial é feita uma rodada piloto, com uma tentativa por porte e operação, para:
-
-- confirmar os comandos de abertura e exportação na versão fixada;
-- identificar, na aba **Rede** do DevTools, se cada formato é gerado no navegador ou depende de um serviço de exportação, como exige o escopo da Fase 1;
-- verificar se os limites candidatos da Fase 2 são plausíveis nesta máquina e submeter eventuais ajustes à aprovação do requisitante;
-- estimar a duração total da coleta.
-
-Os resultados do piloto são registrados à parte e não entram no cálculo das métricas.
+Antes da coleta, executar uma análise de verificação para conferir o processamento dos arquivos incluídos, os limites de tamanho, as exclusões e as medidas retornadas. Validar o detector de duplicação com código de duplicação conhecida em campanha separada. Esse código de controle não integra o denominador da avaliação real. Preservar os registros do piloto separadamente das medidas oficiais.

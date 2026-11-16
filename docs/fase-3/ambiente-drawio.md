@@ -17,25 +17,24 @@ cd drawio
 ```
 
 Para garantir que todos utilizem a mesma versão do código, será
-utilizada a branch `dev` do fork, no commit definido para a avaliação.
+utilizado o commit da campanha histórica, registrado no plano de avaliação.
 
 ``` bash
-git checkout <HASH_DO_COMMIT>
+git checkout c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3
 ```
 
-O identificador do commit deverá ser disponibilizado aos integrantes
-para garantir a padronização do ambiente.
+Esse commit corresponde à versão 32.6.10 documentada para a campanha histórica. A inspeção posterior de manutenibilidade informa outro commit base, `aacddaf44e6b4db468ef3f4f3e3bb56863f1d581`; seus registros devem permanecer separados, conforme a [coleta](../fase-4/coleta-de-dados.md#manutenibilidade-dupla-3).
 
 ## Execução local
 
-Com o repositório clonado, cada integrante poderá executar a avaliação descrita na documentação com uma versão fixa definida. 
+Após fixar o commit, seguir o [protocolo de segurança](ambiente-de-execucao.md) ou o [plano de eficiência](index.md#eficiencia-de-desempenho-dupla-2), conforme a característica. Esses protocolos especificam ambientes distintos. A manutenibilidade utiliza análise estática do código, sem exigir que a interface web esteja em execução.
 
 ## Atualização do código-fonte
 
-Caso seja necessário atualizar a cópia local, execute:
+Para obter as referências remotas sem alterar o código da campanha, execute:
 
 ``` bash
-git pull origin dev
+git fetch origin
 ```
 
 Entretanto, durante o período de avaliação, os integrantes deverão
