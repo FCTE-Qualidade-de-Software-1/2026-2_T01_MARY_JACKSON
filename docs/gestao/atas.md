@@ -7,3 +7,5 @@
 | 19 e 20/10/2026 | [Ata 03](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/blob/main/atas/2026-10-20-ata-03.md) | Preparação para o Ponto de Controle 1 |
 | 21/10/2026 | [Ata 04](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/blob/main/atas/2026-10-21-ata-04.md) | Feedback do Ponto de Controle 1 |
 | 24 e 25/10/2026 | [Ata 05](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/blob/main/atas/2026-10-25-ata-05.md) | Decisões da Medição 2 e acompanhamento da Sprint 3 |
+| 07 e 15/11/2026 | [Ata 06](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/blob/main/atas/2026-11-07-ata-06.md) | Decisões da Medição 4 e acompanhamento da Sprint 4 |
+
