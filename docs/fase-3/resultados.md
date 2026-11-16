@@ -129,7 +129,7 @@ Abertura e edição apresentam desempenho favorável nas cargas testadas. G2 = 1
 
 A revisão de 15/11/2026 apresenta inspeção qualitativa e correções do procedimento. **Ainda não há métricas SonarCloud para os sete arquivos completos; o novo escopo permanece sem julgamento quantitativo.** Consulte o [relatório fornecido](evidencias/resultados-das-analises.md) e o [inventário da coleta](coleta-de-dados.md#manutenibilidade-dupla-3).
 
-### Conferência das entregas da tarefa #47
+### Conferência das entregas da tarefa
 
 A tarefa solicita comparar os dados com a Fase 2, pontuar as questões e o objetivo e registrar interpretação, sugestões e conclusão inicial. Essas entregas estão apresentadas abaixo para os dados quantitativos disponíveis na seção 5 do relatório fornecido, referentes à campanha de 08/11/2026. Os numeradores, denominadores e IDs foram preservados também em [CSV de agregados históricos](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/blob/main/dados/avaliacao/manutenibilidade/metricas-historicas.csv); os cálculos foram conferidos a partir desses valores.
 
