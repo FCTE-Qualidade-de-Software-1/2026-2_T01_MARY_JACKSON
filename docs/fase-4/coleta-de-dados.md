@@ -138,7 +138,7 @@ A métrica utiliza a razão entre as linhas duplicadas e o total de linhas do re
 | --- | ---: | ---: | ---: | --- |
 | Exportação PNG/PDF/SVG — recorte de 08/11/2026 | 28 | 2.846 | 0,983837% | Adequado |
 
-Para o novo escopo, as linhas duplicadas e o percentual de duplicação ainda não foram coletados no SonarCloud. Assim, os zeros e os julgamentos anteriormente apresentados por arquivo foram retirados. O total dos sete arquivos inclui outras funcionalidades e não pode ser utilizado automaticamente como denominador da exportação. Também não se deve calcular a média simples dos percentuais individuais dos arquivos.
+
 
 ### Verificação da complexidade cognitiva das funções (Q3.1, Q3.2 e M3.1)
 
@@ -148,27 +148,28 @@ A complexidade cognitiva média deve ser calculada pela divisão da complexidade
 
 O escopo inclui `src/main/webapp/js/diagramly/EditorUi.js`, `src/main/webapp/mxgraph/src/view/mxCellEditor.js`, `src/main/webapp/js/grapheditor/Graph.js` e `src/main/webapp/js/sanitizer/purify.min.js`.
 
-| Arquivo | Complexidade cognitiva | Status |
+| Arquivo | Complexidade cognitiva | Funções   | Média    | Status |
 | --- | --- | --- |
-| `EditorUi.js` | Não coletada no novo escopo | Sem julgamento |
-| `mxCellEditor.js` | Não coletada no novo escopo | Sem julgamento |
-| `Graph.js` | Não coletada no novo escopo | Sem julgamento |
-| `purify.min.js` | Não coletada no novo escopo | Sem julgamento |
+| `EditorUi.js` | 18937 | 1754 | 10,796465 | Adequado |
+| `mxCellEditor.js` | 197 | 37 |5,324324 | Adequado |
+| `Graph.js` |19959 | 1873| 10,656167 | Adequado |
+| `purify.min.js` | 898 | 120| 7,483333 | Adequado |
 
-O recorte histórico corrigido de rótulos registrou complexidade total de **1.057** e **116 funções**, com média de **9,112069 (Adequado)**. A média original de `9,512820512820513` foi invalidada por sobreposição de trechos. Esses números não representam os quatro arquivos completos.
+Como uma complexidade média para a função como um todo foi registrado o numero 8,5650715, sendo um resultado adequado de acordo com as metricas definidas pelos estudantes.
 
 **Para as funções de importação: abertura de arquivos locais `.drawio` e `.xml`**
 
 O escopo inclui `src/main/webapp/js/diagramly/EditorUi.js`, `src/main/webapp/js/diagramly/App.js`, `src/main/webapp/js/grapheditor/Editor.js` e `src/main/webapp/mxgraph/src/io/mxCodec.js`. O caminho correto é `grapheditor/Editor.js`, distinto de `diagramly/Editor.js` utilizado anteriormente.
 
-| Arquivo | Complexidade cognitiva | Status |
+| Arquivo | Complexidade cognitiva | Funções   | Média  | Status |
 | --- | --- | --- |
-| `EditorUi.js` | Não coletada no novo escopo | Sem julgamento |
-| `App.js` | Não coletada no novo escopo | Sem julgamento |
-| `Editor.js` (`grapheditor`) | Não coletada no novo escopo | Sem julgamento |
-| `mxCodec.js` | Não coletada no novo escopo | Sem julgamento |
+| `EditorUi.js` | 19959 | 1873 | 10,796465 | Adequado  |
+| `App.js` | 3547 | 504 | 7,037698 | Adequado  |
+| `Editor.js` (`grapheditor`) | 1116 | 215| 5,190698 | Adequado  |
+| `mxCodec.js` | 109 | 20 | 5,450000  | Adequado |
 
-O recorte histórico de importação registrou complexidade total de **275** e **25 funções**, com média de **11,000000 (Atenção)**. Esses números não representam os quatro arquivos completos.
+Como uma complexidade média para a função como um todo foi registrado o numero 7,11871525, sendo um resultado adequado de acordo com as metricas definidas pelos estudantes.
+
 
 ### Observações e falhas da coleta
 
