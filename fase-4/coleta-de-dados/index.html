@@ -2802,77 +2802,26 @@
 </tr>
 </tbody>
 </table>
-<p>Para o novo escopo, as linhas duplicadas e o percentual de duplicação ainda não foram coletados no SonarCloud. Assim, os zeros e os julgamentos anteriormente apresentados por arquivo foram retirados. O total dos sete arquivos inclui outras funcionalidades e não pode ser utilizado automaticamente como denominador da exportação. Também não se deve calcular a média simples dos percentuais individuais dos arquivos.</p>
 <h3 id="verificacao-da-complexidade-cognitiva-das-funcoes-q31-q32-e-m31">Verificação da complexidade cognitiva das funções (Q3.1, Q3.2 e M3.1)<a class="headerlink" href="#verificacao-da-complexidade-cognitiva-das-funcoes-q31-q32-e-m31" title="Permanent link">&para;</a></h3>
 <p>A complexidade cognitiva média deve ser calculada pela divisão da complexidade cognitiva total pela quantidade de funções de cada componente. A complexidade total de um arquivo não pode ser comparada diretamente às faixas de julgamento da média por função.</p>
 <p><strong>Para as funções de rótulos: edição de texto e tratamento HTML</strong></p>
 <p>O escopo inclui <code>src/main/webapp/js/diagramly/EditorUi.js</code>, <code>src/main/webapp/mxgraph/src/view/mxCellEditor.js</code>, <code>src/main/webapp/js/grapheditor/Graph.js</code> e <code>src/main/webapp/js/sanitizer/purify.min.js</code>.</p>
-<table>
-<thead>
-<tr>
-<th>Arquivo</th>
-<th>Complexidade cognitiva</th>
-<th>Status</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>EditorUi.js</code></td>
-<td>Não coletada no novo escopo</td>
-<td>Sem julgamento</td>
-</tr>
-<tr>
-<td><code>mxCellEditor.js</code></td>
-<td>Não coletada no novo escopo</td>
-<td>Sem julgamento</td>
-</tr>
-<tr>
-<td><code>Graph.js</code></td>
-<td>Não coletada no novo escopo</td>
-<td>Sem julgamento</td>
-</tr>
-<tr>
-<td><code>purify.min.js</code></td>
-<td>Não coletada no novo escopo</td>
-<td>Sem julgamento</td>
-</tr>
-</tbody>
-</table>
-<p>O recorte histórico corrigido de rótulos registrou complexidade total de <strong>1.057</strong> e <strong>116 funções</strong>, com média de <strong>9,112069 (Adequado)</strong>. A média original de <code>9,512820512820513</code> foi invalidada por sobreposição de trechos. Esses números não representam os quatro arquivos completos.</p>
+<p>| Arquivo | Complexidade cognitiva | Funções   | Média    | Status |
+| --- | --- | --- |
+| <code>EditorUi.js</code> | 18937 | 1754 | 10,796465 | Adequado |
+| <code>mxCellEditor.js</code> | 197 | 37 |5,324324 | Adequado |
+| <code>Graph.js</code> |19959 | 1873| 10,656167 | Adequado |
+| <code>purify.min.js</code> | 898 | 120| 7,483333 | Adequado |</p>
+<p>Como uma complexidade média para a função como um todo foi registrado o numero 8,5650715, sendo um resultado adequado de acordo com as metricas definidas pelos estudantes.</p>
 <p><strong>Para as funções de importação: abertura de arquivos locais <code>.drawio</code> e <code>.xml</code></strong></p>
 <p>O escopo inclui <code>src/main/webapp/js/diagramly/EditorUi.js</code>, <code>src/main/webapp/js/diagramly/App.js</code>, <code>src/main/webapp/js/grapheditor/Editor.js</code> e <code>src/main/webapp/mxgraph/src/io/mxCodec.js</code>. O caminho correto é <code>grapheditor/Editor.js</code>, distinto de <code>diagramly/Editor.js</code> utilizado anteriormente.</p>
-<table>
-<thead>
-<tr>
-<th>Arquivo</th>
-<th>Complexidade cognitiva</th>
-<th>Status</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>EditorUi.js</code></td>
-<td>Não coletada no novo escopo</td>
-<td>Sem julgamento</td>
-</tr>
-<tr>
-<td><code>App.js</code></td>
-<td>Não coletada no novo escopo</td>
-<td>Sem julgamento</td>
-</tr>
-<tr>
-<td><code>Editor.js</code> (<code>grapheditor</code>)</td>
-<td>Não coletada no novo escopo</td>
-<td>Sem julgamento</td>
-</tr>
-<tr>
-<td><code>mxCodec.js</code></td>
-<td>Não coletada no novo escopo</td>
-<td>Sem julgamento</td>
-</tr>
-</tbody>
-</table>
-<p>O recorte histórico de importação registrou complexidade total de <strong>275</strong> e <strong>25 funções</strong>, com média de <strong>11,000000 (Atenção)</strong>. Esses números não representam os quatro arquivos completos.</p>
+<p>| Arquivo | Complexidade cognitiva | Funções   | Média  | Status |
+| --- | --- | --- |
+| <code>EditorUi.js</code> | 19959 | 1873 | 10,796465 | Adequado  |
+| <code>App.js</code> | 3547 | 504 | 7,037698 | Adequado  |
+| <code>Editor.js</code> (<code>grapheditor</code>) | 1116 | 215| 5,190698 | Adequado  |
+| <code>mxCodec.js</code> | 109 | 20 | 5,450000  | Adequado |</p>
+<p>Como uma complexidade média para a função como um todo foi registrado o numero 7,11871525, sendo um resultado adequado de acordo com as metricas definidas pelos estudantes.</p>
 <h3 id="observacoes-e-falhas-da-coleta">Observações e falhas da coleta<a class="headerlink" href="#observacoes-e-falhas-da-coleta" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Necessidade de nova análise.</strong> Os dados iniciais pareciam estranhos, especialmente os zeros de complexidade e duplicação em arquivos extensos. Por isso, foi necessário realizar uma nova análise do escopo e do procedimento.</li>
@@ -2908,7 +2857,7 @@
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="16 de novembro de 2026 01:41:13 UTC">16 de novembro de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="21 de novembro de 2026 03:51:34 UTC">21 de novembro de 2026</span>
   </span>
 
     
