@@ -89,7 +89,7 @@ Os limites apresentados são critérios preliminares propostos para esta avalia�
 
 ### Notas por questão e pelo objetivo G3
 
-Para completar a pontuação solicitada na Fase 3, adota-se a correspondência abaixo, preservando as faixas já definidas. Esta regra numérica e de agregação foi acrescentada após a coleta histórica; não fazia parte do protocolo original e não altera os valores medidos.
+Para completar a pontuação aplicada na Fase 4, adota-se a correspondência abaixo, preservando as faixas já definidas. Esta regra numérica e de agregação foi acrescentada após a coleta histórica; não fazia parte do protocolo original e não altera os valores medidos.
 
 | Julgamento | Nota | Decisão apoiada |
 | --- | ---: | --- |

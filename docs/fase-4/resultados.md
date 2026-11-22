@@ -36,7 +36,7 @@ A análise de Thiago Gomes Pereira de Abreu utiliza as 125 tentativas oficiais c
 
 ### Cálculo das métricas e julgamento
 
-Conforme o [protocolo](index.md#tentativas-validas-falhas-e-interrupcoes) e a [revisão do julgamento](../fase-2/niveis-e-julgamento.md#revisao-pos-coleta-do-julgamento-15112026), tempos acima de `2L` são falhas. A mediana temporal exige pelo menos quatro sucessos; menos sucessos por falha temporal recebem nota 1. Memória usa as cinco medidas completas, inclusive de operações lentas; dados ausentes ou inválidos permanecem não conclusivos.
+Conforme o [protocolo](../fase-3/ambiente-de-execucao.md#tentativas-validas-falhas-e-interrupcoes-eficiencia) e a [revisão do julgamento](../fase-2/niveis-e-julgamento.md#revisao-pos-coleta-do-julgamento-15112026), tempos acima de `2L` são falhas. A mediana temporal exige pelo menos quatro sucessos; menos sucessos por falha temporal recebem nota 1. Memória usa as cinco medidas completas, inclusive de operações lentas; dados ausentes ou inválidos permanecem não conclusivos.
 
 As 125 operações concluíram na automação, mas o critério temporal resulta em 119 sucessos e 6 falhas, todas no SVG: uma em 2.000 formas (tentativa 4, 40.056,2 ms > 34.000 ms) e cinco em 5.000 formas (> 80.000 ms).
 
@@ -127,61 +127,52 @@ Abertura e edição apresentam desempenho favorável nas cargas testadas. G2 = 1
 
 ### Resultado atualizado
 
-A revisão de 15/11/2026 apresenta inspeção qualitativa e correções do procedimento. **Ainda não há métricas SonarCloud para os sete arquivos completos; o novo escopo permanece sem julgamento quantitativo.** Consulte o [relatório fornecido](evidencias/resultados-das-analises.md) e o [inventário da coleta](coleta-de-dados.md#manutenibilidade-dupla-3).
+A revisão realizada em 15/11/2026 apresentava uma inspeção qualitativa e correções no procedimento de avaliação. Naquele momento, ainda não havia métricas do SonarCloud disponíveis para os sete arquivos completos, portanto, essa característica permanecia sem um julgamento conclusivo.
 
-### Conferência das entregas da tarefa #47
-
-A tarefa solicita comparar os dados com a Fase 2, pontuar as questões e o objetivo e registrar interpretação, sugestões e conclusão inicial. Essas entregas estão apresentadas abaixo para os dados quantitativos disponíveis na seção 5 do relatório fornecido, referentes à campanha de 08/11/2026. Os numeradores, denominadores e IDs foram preservados também em [CSV de agregados históricos](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/blob/main/dados/avaliacao/manutenibilidade/metricas-historicas.csv); os cálculos foram conferidos a partir desses valores.
-
-| Entrega solicitada | Registro nesta página | Alcance |
-| --- | --- | --- |
-| Comparação com métricas e critérios da Fase 2 | Fórmulas, resultados e faixas na tabela de julgamento | Recortes históricos |
-| Nota de cada questão | Q3.1 = 3; Q3.2 = 5; Q3.3 = 5 | Recortes históricos |
-| Nota do objetivo de Manutenibilidade | G3 = mínimo(3, 5, 5) = 3 (Atenção) | Recortes históricos |
-| Interpretação e sugestões ao draw.io | Interpretação das hipóteses e quatro sugestões fundamentadas | Dados históricos e inspeção qualitativa, com limites explícitos |
-| Conclusão inicial | Adoção com ressalvas sob a perspectiva de Manutenibilidade | Avaliação parcial |
-
-**Situação:** análise documental dos dados históricos registrada; avaliação quantitativa do escopo revisado pendente. O anexo não fornece novas medidas dos sete arquivos completos. A conclusão da análise histórica não demonstra a conclusão dessa nova coleta nem confirma, por si só, a publicação desta página na GitPage.
+Entretanto, com a nova coleta realizada em 20/11/2026, foi possível reunir dados suficientes para estabelecer uma conclusão sobre a manutenibilidade do software. Os resultados obtidos estão disponíveis na aba [Coleta de Dados](../fase-4/coleta-de-dados.md).
 
 ### Cálculo das métricas, notas e julgamento
 
-A coleta de 08/11/2026, versão `32.6.10`, commit `c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3`, mediu recortes de funções. A comparação abaixo utiliza as [fórmulas da Fase 2](../fase-2/metricas.md#manutenibilidade-dupla-3) e os [critérios de julgamento e pontuação](../fase-2/niveis-e-julgamento.md#manutenibilidade-dupla-3). **As notas se restringem aos recortes históricos; não representam os sete arquivos completos.** A correspondência Adequado = 5, Atenção = 3 e Crítico = 1 e a regra de agregação de G3 foram acrescentadas após essa coleta, para completar a pontuação, mantendo as faixas originais.
+A coleta realizada em 20/11/2026, referente à versão `32.6.10` e ao commit `c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3`, avaliou recortes específicos de funções. A comparação apresentada a seguir utiliza as [fórmulas definidas na Fase 2](../fase-2/metricas.md#manutenibilidade-dupla-3) e os [critérios de julgamento e pontuação](../fase-2/niveis-e-julgamento.md#manutenibilidade-dupla-3).
+
+A correspondência entre os níveis de julgamento e as notas foi estabelecida da seguinte forma: Adequado = 5, Atenção = 3 e Crítico = 1. Além disso, a regra de agregação do objetivo G3 foi acrescentada após a coleta, com o propósito de completar a pontuação, preservando as faixas de classificação originalmente estabelecidas.
 
 | Questão / Métrica | Fórmula aplicada | Resultado | Critério atingido da Fase 2 | Nota (1–5) |
 | --- | --- | ---: | --- | ---: |
-| **Q3.1 — Importação / M3.1** | `C / F = 275 / 25` | **11,000000** | **Atenção:** `10 < M3.1 <= 15` | **3** |
-| **Q3.2 — Rótulos / M3.1** | `C / F = 1057 / 116` | **9,112069** | **Adequado:** `M3.1 <= 10` | **5** |
+| **Q3.1 — Importação / M3.1** | `C / F = 28,474861 / 4` | **7,11871525** | **Adequado:** `M3.1 <= 10` | **5** |
+| **Q3.2 — Rótulos / M3.1** | `C / F = 34,260286 / 4` | **8,5650715** | **Adequado:** `M3.1 <= 10` | **5** |
 | **Q3.3 — Exportação / M3.2** | `100 × Ld / Lt = 100 × 28 / 2846` | **0,983837%** | **Adequado:** `M3.2 <= 5%` | **5** |
-
-A média original de rótulos, `9,512820512820513`, foi invalidada por sobreposição de trechos. O valor corrigido é `9,112069`. Os IDs das análises históricas constam no relatório preservado. A complexidade total de um arquivo não pode ser comparada diretamente às faixas da média por função.
 
 ### Pontuação do objetivo de Manutenibilidade (G3)
 
-> **Nota de G3 nos recortes históricos = `mínimo(Q3.1, Q3.2, Q3.3) = mínimo(3, 5, 5) = 3` — Atenção.**
+> **Nota de G3 nos recortes históricos = `mínimo(Q3.1, Q3.2, Q3.3) = mínimo(5, 5, 5) = 5` — Adequado.**
 
-A importação determina a nota do objetivo: sua média de 11 supera o limite adequado de 10. As médias dos rótulos e a duplicação do recorte de exportação atendem às faixas adequadas. Essa agregação apoia **adoção com ressalvas no escopo histórico avaliado**, com atenção à compreensão e manutenção da importação. A nota 3 é uma avaliação parcial; **G3 permanece sem nota para o novo conjunto de sete arquivos completos**, por ausência de medidas SonarCloud.
+Essa agregação indica que todos os recortes avaliados atenderam aos critérios estabelecidos para o nível adequado de manutenibilidade. Entretanto, é importante destacar que os resultados representam apenas as funções selecionadas para análise, não sendo possível generalizar essa classificação para todo o código-fonte do draw.io.
+
+Além disso, embora os resultados estejam dentro dos limites estabelecidos, a complexidade observada na edição de rótulos foi a maior entre os recortes avaliados. Esse aspecto merece atenção em futuras manutenções, especialmente devido à relação entre a implementação-base e suas redefinições.
 
 ### Interpretação das questões e hipóteses
 
 | Questão | Interpretação dos resultados históricos | Situação da hipótese no recorte histórico |
 | --- | --- | --- |
-| **Q3.1** | A média de 11 indica atenção à compreensão do código de leitura e conversão. A média não identifica quais funções concentram a complexidade. | **H3.1 não confirmada:** o resultado supera 10. |
-| **Q3.2** | A média de 9,112069 atende ao limite adequado, sem demonstrar que todas as funções são simples. A inspeção relata dependência entre implementação base e redefinições. | **H3.2 confirmada no recorte medido:** resultado inferior a 10. |
-| **Q3.3** | A duplicação de 0,983837% atende ao limite de 5%, com cobertura parcial do fluxo de PDF. Não representa todos os caminhos de exportação. | **H3.3 atendida apenas no recorte histórico:** resultado inferior a 5%; sem confirmação para o novo escopo. |
-
-No novo conjunto de arquivos completos, as três hipóteses permanecem sem verificação quantitativa. Os dados iniciais pareciam estranhos e motivaram a nova análise do procedimento e do escopo, conforme as [observações e falhas da coleta](coleta-de-dados.md#observacoes-e-falhas-da-coleta).
+| **Q3.1** | O resultado de 7,11871525 indica um nível de complexidade dentro dos limites estabelecidos como adequados pelas métricas. Entretanto, esse resultado não garante que todas as funções de importação apresentem baixa complexidade. | **H3.1 confirmada:** o resultado é inferior a 10. |
+| **Q3.2** | O resultado de 8,5650715 atende ao limite estabelecido para o nível adequado, embora represente a maior complexidade entre os recortes analisados. A inspeção qualitativa também identificou dependências entre a implementação-base e suas redefinições. | **H3.2 confirmada no recorte medido:** o resultado é inferior a 10. |
+| **Q3.3** | O percentual de duplicação de 0,983837% demonstra que a quantidade de código duplicado no recorte avaliado está abaixo do limite de 5%, atendendo ao critério estabelecido. | **H3.3 atendida:** o resultado é inferior a 5%. |
 
 ### Sugestões de melhoria ao draw.io
 
-- **Priorizar a compreensão da importação:** mapear a cadeia entre `App.js`, `EditorUi.js`, `grapheditor/Editor.js` e `mxCodec.js`, documentando responsabilidades e despacho para codecs. Medir a complexidade por função para selecionar as funções que justificam simplificação de condicionais e extração de responsabilidades; a média de 11 não permite escolher uma função específica.
-- **Documentar as redefinições na edição de rótulos:** explicitar a relação entre `mxCellEditor.js` e as redefinições em `Graph.js`, incluindo aplicação do texto e integração da sanitização. Isso facilita acompanhar o comportamento efetivo observado na inspeção.
-- **Proteger os fluxos durante refatorações:** incluir testes de regressão para leitura e conversão XML, confirmação e cancelamento de rótulos e geração de PNG, PDF e SVG nos caminhos efetivamente implementados. A proposta visa reduzir o risco de alterações nas responsabilidades distribuídas entre camadas.
-- **Investigar duplicação antes de consolidar exportações:** inspecionar os blocos duplicados e suas diferenças por formato antes de extrair rotinas compartilhadas. O percentual histórico baixo não justifica uma refatoração ampla por duplicação.
+- **Documentar as redefinições na edição de rótulos:** explicitar a relação entre `mxCellEditor.js` e as redefinições presentes em `Graph.js`, incluindo a aplicação do texto e a integração da sanitização. Essa documentação facilitaria a compreensão do comportamento efetivo do sistema e o acompanhamento das responsabilidades distribuídas entre os arquivos.
 
-### Conclusão inicial e limites
+- **Proteger os fluxos durante refatorações:** implementar testes de regressão para os processos de leitura e conversão XML, confirmação e cancelamento de rótulos e geração de arquivos PNG, PDF e SVG, considerando os caminhos efetivamente implementados. Essa medida visa reduzir o risco de introdução de falhas durante alterações nas responsabilidades distribuídas entre as diferentes camadas do sistema.
 
-**Nos recortes históricos avaliados, a Manutenibilidade recebe nota 3 (Atenção), apoiando adoção com ressalvas sob essa característica.** A principal prioridade é investigar a complexidade das funções de importação; rótulos e duplicação de exportação atingem os critérios adequados nesse recorte. Essa conclusão é parcial, não constitui recomendação global de adoção do produto e não se estende à versão de referência `32.2.0`.
+- **Investigar a duplicação antes de consolidar as exportações:** inspecionar os blocos identificados como duplicados e analisar suas diferenças de implementação entre os formatos de exportação antes de considerar a extração de rotinas compartilhadas. O baixo percentual de duplicação observado historicamente não justifica, isoladamente, uma refatoração ampla.
 
-**Ainda não há evidência quantitativa suficiente para classificar os sete arquivos completos ou atribuir nota a G3 nesse novo escopo.** A inspeção qualitativa mostra responsabilidades distribuídas e redefinições entre camadas; o tamanho dos arquivos, isoladamente, não comprova baixa manutenibilidade. A cobertura histórica de PDF é parcial, e a inspeção do cliente não cobre a implementação do servidor externo de PDF.
+### Conclusão
 
-Para concluir a avaliação atual, é necessário executar a coleta conjunta, confirmar o inventário remoto, preservar os parâmetros e medidas e delimitar o código de exportação e seu denominador. Ausência de coleta não equivale a zero. Se uma coleta válida retornar 0%, registrar apenas que não foi detectada duplicação nas condições medidas. A validação do detector com duplicação conhecida em campanha piloto separada ainda não foi executada.
+Com base nos resultados obtidos na coleta de 20/11/2026, a característica de **Manutenibilidade recebeu nota 5 (Adequado)** nos recortes históricos avaliados. Os resultados demonstram que as funções selecionadas para análise atenderam aos limites estabelecidos na Fase 2, tanto em relação à complexidade cognitiva quanto à duplicidade de código.
+
+Entre os aspectos avaliados, a edição de rótulos apresentou o maior índice de complexidade, embora ainda esteja dentro do limite considerado adequado. Esse resultado, associado à inspeção qualitativa, evidencia a importância de documentar melhor as relações entre a implementação-base e suas redefinições, facilitando futuras intervenções e reduzindo o esforço necessário para compreender o comportamento do código.
+
+Em relação à exportação, o percentual de duplicidade encontrado foi consideravelmente inferior ao limite estabelecido, indicando que não há, nos recortes analisados, evidências quantitativas que justifiquem uma refatoração ampla com o objetivo exclusivo de eliminar código duplicado. Ainda assim, recomenda-se a investigação dos blocos identificados e a adoção de testes de regressão para preservar o comportamento existente durante futuras modificações.
+
+Portanto, **os resultados sustentam uma avaliação adequada da manutenibilidade nos recortes selecionados**, indicando que o software apresenta condições satisfatórias para manutenção sob os critérios adotados neste estudo. Contudo, essa conclusão deve ser interpretada considerando as limitações do escopo da coleta, uma vez que a análise foi realizada sobre funções específicas e não representa uma avaliação integral de todo o código-fonte do draw.io. 

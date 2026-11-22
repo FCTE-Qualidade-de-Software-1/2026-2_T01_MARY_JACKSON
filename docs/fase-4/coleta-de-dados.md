@@ -44,9 +44,9 @@ A varredura por `getLabelValue` nos arquivos `Format.js`, `Graph.js` e `Editor.j
 ## Eficiência de desempenho (Dupla 2)
 
 - **Versão avaliada:** draw.io release `32.6.10` (repositório `H3ytt0r10/drawio`, commit `c72c9a9`).
-- **Ambiente de execução:** servidor HTTP estático local (`python -m http.server`) servindo `src/main/webapp`, Google Chrome 157.0.8103.79 em Windows 11, Intel Core i5-1235U e 16 GB de RAM, conforme o [plano de avaliação](index.md#eficiencia-de-desempenho-dupla-2).
-- **Execução:** coleta automatizada pelo script `coletar.py` em 14/11/2026, das 19h06 às 19h47, com 52% da memória em uso no início. O porte de 50 formas foi coletado novamente das 20h18 às 20h21, nas mesmas condições, depois que se constatou que a carga desse porte havia sido alterada durante o piloto manual (ver [Piloto](index.md#piloto)); os valores abaixo são os da nova coleta. No total, são 125 gravações (5 portes, 5 operações e 5 tentativas), sem nenhuma falha de execução e sem tentativas descartadas.
-- **Dados brutos (CSV):** `dados/avaliacao/eficiencia/brutos/tentativas.csv`, mantido no Git, com uma linha por gravação. Os valores foram extraídos pelo script `ler_traces.py`, segundo a [leitura das medidas](index.md#leitura-das-medidas).
+- **Ambiente de execução:** servidor HTTP estático local (`python -m http.server`) servindo `src/main/webapp`, Google Chrome 157.0.8103.79 em Windows 11, Intel Core i5-1235U e 16 GB de RAM, conforme o [plano de avaliação](../fase-3/ambiente-de-execucao.md#eficiencia-de-desempenho-dupla-2).
+- **Execução:** coleta automatizada pelo script `coletar.py` em 14/11/2026, das 19h06 às 19h47, com 52% da memória em uso no início. O porte de 50 formas foi coletado novamente das 20h18 às 20h21, nas mesmas condições, depois que se constatou que a carga desse porte havia sido alterada durante o piloto manual (ver [Piloto](#resultados-do-piloto-de-eficiencia)); os valores abaixo são os da nova coleta. No total, são 125 gravações (5 portes, 5 operações e 5 tentativas), sem nenhuma falha de execução e sem tentativas descartadas.
+- **Dados brutos (CSV):** `dados/avaliacao/eficiencia/brutos/tentativas.csv`, mantido no Git, com uma linha por gravação. Os valores foram extraídos pelo script `ler_traces.py`, segundo a [leitura das medidas](../fase-3/ambiente-de-execucao.md#leitura-das-medidas).
 - **Traces e integridade:** os 125 traces oficiais e os 14 dos pilotos são preservados em dois pacotes externos, com os caminhos originais de `dados/avaliacao/eficiencia/brutos/`. O acesso e a restauração estão documentados em `dados/avaliacao/eficiencia/README.md`, e os hashes, em `dados/avaliacao/eficiencia/SHA256SUMS.txt`. Os pacotes estão disponíveis na [pasta de evidências no Google Drive](https://drive.google.com/drive/folders/1jwootYRyhx7-tQTW6iViqpkXdaKxO7FM?usp=sharing).
 
 ### Tempo das operações (M2.1, M2.3 e M2.4)
@@ -82,7 +82,7 @@ Heap JavaScript usado, mediana das cinco tentativas, em MiB, com o menor e o mai
 
 ### Validação dos arquivos exportados
 
-Em 15/11/2026, o script `validar_exportacoes.py` exportou e salvou um arquivo de cada formato por porte e verificou cada um, conforme a [validação das exportações](index.md#validacao-das-exportacoes) do plano. O resultado está em `dados/avaliacao/eficiencia/brutos/exportados/validacao.csv`, e os arquivos, no pacote `eficiencia-exportacoes-2026-11-15.zip`, com publicação pelo grupo na [pasta de evidências](https://drive.google.com/drive/folders/1jwootYRyhx7-tQTW6iViqpkXdaKxO7FM?usp=sharing).
+Em 15/11/2026, o script `validar_exportacoes.py` exportou e salvou um arquivo de cada formato por porte e verificou cada um, conforme a [validação das exportações](../fase-3/ambiente-de-execucao.md#validacao-das-exportacoes) do plano. O resultado está em `dados/avaliacao/eficiencia/brutos/exportados/validacao.csv`, e os arquivos, no pacote `eficiencia-exportacoes-2026-11-15.zip`, com publicação pelo grupo na [pasta de evidências](https://drive.google.com/drive/folders/1jwootYRyhx7-tQTW6iViqpkXdaKxO7FM?usp=sharing).
 
 | Porte | PNG | SVG | PDF |
 | --- | --- | --- | --- |
@@ -98,6 +98,32 @@ Em 15/11/2026, o script `validar_exportacoes.py` exportou e salvou um arquivo de
 
 O julgamento das medidas pelos níveis da Fase 2 está em [Análise dos dados e resultados](resultados.md).
 
+### Resultados do piloto de eficiência
+
+O piloto foi feito em duas etapas, e seus resultados não entram no cálculo das métricas.
+
+**Piloto manual (13 e 14/11/2026).** Gravações no painel Performance do DevTools com a carga de 50 formas: abertura, rótulo e exportação em PNG e PDF. Achados:
+
+- Na abertura, o draw.io usa o seletor nativo da API File System Access, e não há evento `change`; o início da medida foi redefinido.
+- Na exportação PNG e SVG há dois diálogos depois de **Export**: o "Save as" do draw.io e o seletor do Windows. O fim da medida foi fixado no "Save as".
+- No PDF, o draw.io abre uma página de impressão, e o arquivo é gerado pela impressão do Chrome. O arquivo obtido sai com cabeçalho do navegador (data e título), dividido em 10 páginas e com formas cortadas na borda da página.
+- A opção "Include a copy of my diagram" vem marcada por padrão e foi mantida.
+- Ao abrir um arquivo pelo seletor nativo, o draw.io pode gravar as alterações de volta nesse arquivo. Durante o piloto, a edição do rótulo foi gravada na carga de 50 formas, que passou a ter um trecho de HTML no rótulo da forma `v0001`. A carga foi restaurada a partir do repositório e conferida antes da coleta oficial desse porte; a automação não grava as cargas.
+- A leitura manual de cada gravação é demorada e varia conforme o avaliador; para 125 gravações, optou-se pela automação.
+
+**Piloto automatizado (14/11/2026).** Uma tentativa nos portes extremos (50 e 5.000 formas), suficiente para validar o procedimento e verificar a capacidade; os portes intermediários são cobertos pela coleta oficial. Todas as operações foram concluídas. A exportação SVG com 5.000 formas levou cerca de 118 s, quase três vezes o limite candidato (40 s); as demais operações ficaram muito abaixo dos limites candidatos, o que indica que esses limites são folgados para esta máquina. Eventuais ajustes são decisão do grupo com o requisitante.
+
+**Comparação entre piloto manual e automatizado (50 formas).**
+
+| Operação | Manual (ms) | Automatizado (ms) |
+| --- | --- | --- |
+| Abrir | 288,7 | 73,9 |
+| Rótulo | 118,4 | 39,7 |
+| Exportar PNG | 269,6 | 101,5 |
+| Exportar PDF | 235,8 | 175,6 |
+
+Os valores manuais são sistematicamente maiores, mas da mesma ordem de grandeza. A gravação manual mantém o DevTools aberto e liga a amostragem de JavaScript (eventos `ProfileChunk` presentes no trace manual), o que acrescenta custo à página; a gravação automatizada não liga essa amostragem. Na abertura, a medida manual inclui ainda a entrega do arquivo pelo seletor nativo. Por medir com menor interferência do instrumento e de forma repetível, adota-se a coleta automatizada.
+
 ## Manutenibilidade (Dupla 3)
 
 - **Versão avaliada:** draw.io release `32.6.10` (`H3ytt0r10/drawio`). A campanha histórica utilizou o commit `c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3`; a nova inspeção informa o commit base `aacddaf44e6b4db468ef3f4f3e3bb56863f1d581`.
@@ -112,7 +138,7 @@ A métrica utiliza a razão entre as linhas duplicadas e o total de linhas do re
 | --- | ---: | ---: | ---: | --- |
 | Exportação PNG/PDF/SVG — recorte de 08/11/2026 | 28 | 2.846 | 0,983837% | Adequado |
 
-Para o novo escopo, as linhas duplicadas e o percentual de duplicação ainda não foram coletados no SonarCloud. Assim, os zeros e os julgamentos anteriormente apresentados por arquivo foram retirados. O total dos sete arquivos inclui outras funcionalidades e não pode ser utilizado automaticamente como denominador da exportação. Também não se deve calcular a média simples dos percentuais individuais dos arquivos.
+
 
 ### Verificação da complexidade cognitiva das funções (Q3.1, Q3.2 e M3.1)
 
@@ -122,27 +148,28 @@ A complexidade cognitiva média deve ser calculada pela divisão da complexidade
 
 O escopo inclui `src/main/webapp/js/diagramly/EditorUi.js`, `src/main/webapp/mxgraph/src/view/mxCellEditor.js`, `src/main/webapp/js/grapheditor/Graph.js` e `src/main/webapp/js/sanitizer/purify.min.js`.
 
-| Arquivo | Complexidade cognitiva | Status |
+| Arquivo | Complexidade cognitiva | Funções   | Média    | Status |
 | --- | --- | --- |
-| `EditorUi.js` | Não coletada no novo escopo | Sem julgamento |
-| `mxCellEditor.js` | Não coletada no novo escopo | Sem julgamento |
-| `Graph.js` | Não coletada no novo escopo | Sem julgamento |
-| `purify.min.js` | Não coletada no novo escopo | Sem julgamento |
+| `EditorUi.js` | 18937 | 1754 | 10,796465 | Adequado |
+| `mxCellEditor.js` | 197 | 37 |5,324324 | Adequado |
+| `Graph.js` |19959 | 1873| 10,656167 | Adequado |
+| `purify.min.js` | 898 | 120| 7,483333 | Adequado |
 
-O recorte histórico corrigido de rótulos registrou complexidade total de **1.057** e **116 funções**, com média de **9,112069 (Adequado)**. A média original de `9,512820512820513` foi invalidada por sobreposição de trechos. Esses números não representam os quatro arquivos completos.
+Como uma complexidade média para a função como um todo foi registrado o numero 8,5650715, sendo um resultado adequado de acordo com as metricas definidas pelos estudantes.
 
 **Para as funções de importação: abertura de arquivos locais `.drawio` e `.xml`**
 
 O escopo inclui `src/main/webapp/js/diagramly/EditorUi.js`, `src/main/webapp/js/diagramly/App.js`, `src/main/webapp/js/grapheditor/Editor.js` e `src/main/webapp/mxgraph/src/io/mxCodec.js`. O caminho correto é `grapheditor/Editor.js`, distinto de `diagramly/Editor.js` utilizado anteriormente.
 
-| Arquivo | Complexidade cognitiva | Status |
+| Arquivo | Complexidade cognitiva | Funções   | Média  | Status |
 | --- | --- | --- |
-| `EditorUi.js` | Não coletada no novo escopo | Sem julgamento |
-| `App.js` | Não coletada no novo escopo | Sem julgamento |
-| `Editor.js` (`grapheditor`) | Não coletada no novo escopo | Sem julgamento |
-| `mxCodec.js` | Não coletada no novo escopo | Sem julgamento |
+| `EditorUi.js` | 19959 | 1873 | 10,796465 | Adequado  |
+| `App.js` | 3547 | 504 | 7,037698 | Adequado  |
+| `Editor.js` (`grapheditor`) | 1116 | 215| 5,190698 | Adequado  |
+| `mxCodec.js` | 109 | 20 | 5,450000  | Adequado |
 
-O recorte histórico de importação registrou complexidade total de **275** e **25 funções**, com média de **11,000000 (Atenção)**. Esses números não representam os quatro arquivos completos.
+Como uma complexidade média para a função como um todo foi registrado o numero 7,11871525, sendo um resultado adequado de acordo com as metricas definidas pelos estudantes.
+
 
 ### Observações e falhas da coleta
 
@@ -153,3 +180,16 @@ O recorte histórico de importação registrou complexidade total de **275** e *
 - **Limites dos dados.** Ausência de coleta não equivale a zero. Os valores históricos pertencem aos recortes de 08/11/2026 e não classificam os sete arquivos completos. O novo escopo permanece sem julgamento quantitativo.
 
 Os cálculos, os critérios de julgamento e os limites das conclusões estão em [Análise dos dados e resultados](resultados.md#manutenibilidade-dupla-3).
+
+## Histórico da revisão da coleta de manutenibilidade
+
+### Observações encontradas
+
+A análise de manutenibilidade utiliza duas medidas: a complexidade cognitiva média por função, calculada separadamente para importação de arquivos e edição de rótulos, e o percentual de código duplicado no conjunto de exportação PNG, PDF e SVG. Os resultados se restringem ao código selecionado, conforme o [escopo da avaliação](../fase-1/escopo.md).
+
+Os dados iniciais pareciam estranhos, especialmente os zeros de complexidade e duplicação em arquivos extensos. Por isso, foi necessário realizar uma nova análise. A revisão de 15/11/2026 identificou diferenças de escopo, confusão entre `diagramly/Editor.js` e `grapheditor/Editor.js` e risco de exclusão dos arquivos maiores. A [coleta atualizada](../fase-4/coleta-de-dados.md#manutenibilidade-dupla-3) distingue o inventário dos sete arquivos completos das métricas históricas de recortes de funções. Ainda não há medidas SonarCloud para o novo escopo.
+
+Segundo o relato da dupla, ocorreu uma única tentativa com falha, causada por erro na configuração do SonarCloud. Essa tentativa foi desconsiderada para o cálculo das métricas e a análise foi executada novamente após a correção. As demais execuções ocorreram normalmente, sem outras falhas ou interrupções relatadas. O incidente é registrado como falha da configuração da coleta, sem atribuí-lo à qualidade do código do draw.io.
+
+Além disso, durante a avaliação dos resultados obtidos, foram identificados dados inconsistentes e valores que não refletiam adequadamente o escopo definido nas fases anteriores do estudo. Após essa verificação, foi realizada uma nova análise dos dados, aplicando um filtro para considerar exclusivamente os arquivos que continham as funções previamente selecionadas e descritas nas etapas anteriores. Esse refinamento teve como objetivo garantir maior aderência entre as métricas coletadas e o conjunto de funcionalidades efetivamente analisadas, evitando que arquivos não relacionados influenciassem os resultados apresentados.
+

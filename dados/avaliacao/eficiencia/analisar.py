@@ -118,7 +118,7 @@ A análise de Thiago Gomes Pereira de Abreu utiliza as 125 tentativas oficiais c
 
 ### Cálculo das métricas e julgamento
 
-Conforme o [protocolo](index.md#tentativas-validas-falhas-e-interrupcoes) e a [revisão do julgamento](../fase-2/niveis-e-julgamento.md#revisao-pos-coleta-do-julgamento-15112026), tempos acima de `2L` são falhas. A mediana temporal exige pelo menos quatro sucessos; menos sucessos por falha temporal recebem nota 1. Memória usa as cinco medidas completas, inclusive de operações lentas; dados ausentes ou inválidos permanecem não conclusivos.
+Conforme o [protocolo](../fase-3/ambiente-de-execucao.md#tentativas-validas-falhas-e-interrupcoes-eficiencia) e a [revisão do julgamento](../fase-2/niveis-e-julgamento.md#revisao-pos-coleta-do-julgamento-15112026), tempos acima de `2L` são falhas. A mediana temporal exige pelo menos quatro sucessos; menos sucessos por falha temporal recebem nota 1. Memória usa as cinco medidas completas, inclusive de operações lentas; dados ausentes ou inválidos permanecem não conclusivos.
 
 As 125 operações concluíram na automação, mas o critério temporal resulta em {data['sucessos']} sucessos e {data['falhas']} falhas, todas no SVG: uma em 2.000 formas (tentativa 4, 40.056,2 ms > 34.000 ms) e cinco em 5.000 formas (> 80.000 ms).
 
@@ -191,7 +191,7 @@ Abertura e edição apresentam desempenho favorável nas cargas testadas. G2 = {
 </div>
 
 """
-    target=REPO/"docs/fase-3/resultados.md"
+    target=REPO/"docs/fase-4/resultados.md"
     old=target.read_text(encoding="utf-8")
     start=old.index("## Eficiência de desempenho (Dupla 2)")
     end=old.index("## Manutenibilidade (Dupla 3)",start)
