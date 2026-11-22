@@ -1,8 +1,15 @@
 # Registro de medições
 
-Cada medição segue o [Plano de medição](plano-de-medicao.md): valor, interpretação e a decisão tomada, que também fica registrada nas [Atas](atas.md).
+Cada medição segue o [Plano de medição](plano-de-medicao.md): valor, interpretação e a decisão tomada, que também fica registrada nas [Atas](atas.md). A Entrega 2 vem primeiro; a Entrega 1 está abaixo, com o detalhe de cada medição recolhido.
 
-## Medição 4 (fim da Sprint 4, 15/11/2026)
+## Entrega 2
+
+| Medição | Data | Planejado vs. concluído | Estimado vs. realizado | Tempo de ciclo | Principal decisão |
+|---|---|---|---|---|---|
+| Consulta | 12/11 | Não realizada (issues criadas em 11/11) | — | — | — |
+| 4 | 15/11 | Sprint 4: 8 de 16 (50,0%) | Sprint 4: 38,0 h de 35,5 h (razão 1,07) | Sprint 4: média 3,7, mediana 3,6; nenhuma issue parada | Estimar cada issue na abertura |
+
+### Medição 4 (fim da Sprint 4, 15/11/2026)
 
 **Fonte:** [Painel do PSM](painel-psm.md) publicado em 15/11/2026 às 19h55 (horário de Brasília; versão `d16f12b` da branch `gh-pages`), um dia antes do fim da sprint (16/11), para o Ponto de Controle 2. As figuras abaixo são recortes dessa publicação. Issues abertas nesse momento contam como planejadas e não concluídas.
 
@@ -12,7 +19,7 @@ _Figura 15. Topo do Painel do PSM na publicação usada nesta medição. Fonte: 
 
 **Consulta da metade da sprint (12/11):** não realizada. As tarefas da Sprint 4 estavam distribuídas no [Planejamento](planejamento.md) desde 07/11, mas as issues só foram criadas pela gestão em 11/11, após as correções do painel. Sem issues, não havia estimativas, horas nem datas para medir em 12/11. A medição foi adiada de 14/11 para 15/11 porque, até 14/11, parte das horas e dos fechamentos ainda não estava registrada no formato lido pelo painel.
 
-### Calendário e Progresso: planejado vs. concluído
+#### Calendário e Progresso: planejado vs. concluído
 
 ![Gráfico de barras do percentual concluído por sprint, com a linha em 50%](../imagens/medicao4/medicao4-planejado-concluido-grafico.png){ width="420" }
 
@@ -20,20 +27,20 @@ _Figura 16. Percentual concluído por sprint. Barras lilás: percentual de issue
 
 - **Valor:** Sprint 4 com **8 de 16 issues concluídas (50,0%)** no corte das 19h55.
 - **Issues não concluídas no corte:** `#41` (Plano de avaliação), `#47` (Análise de Manutenibilidade), `#48` (Resultados e conclusão inicial no artigo), `#49` (Planejamento da E2 e linha de base), `#50` (Medição 4) e `#52` (Revisão das horas da Sprint 4), além de 2 issues fechadas logo após a publicação das 19h55.
-- **Interpretação:** a diferença de 50 pontos percentuais entre o planejado e o concluído ultrapassa o critério de fim de sprint do guia (10%, PSM/CID Parte 2, p. 17). A causa principal é o início tardio do rastreamento: as issues foram abertas apenas em 11/11 e o trabalho concentrado após 12/11. Entre as pendências restantes, parte depende do fechamento próprio da sprint (`#49`, `#50` e `#52`). *(Nota: a coluna "Situação" do painel na versão `d16f12b` ainda aplicava o limite de metade de sprint [50%]; o ajuste para o critério dinâmico por fase da sprint foi aplicado logo após a coleta).*
+- **Interpretação:** a diferença de 50 pontos percentuais entre o planejado e o concluído ultrapassa o critério de fim de sprint do guia (10%, PSM/CID Parte 2, p. 17). A causa principal é o início tardio do rastreamento: as issues foram abertas apenas em 11/11, e o trabalho se concentrou depois de 12/11. Parte das pendências depende do próprio fechamento da sprint (`#49`, `#50` e `#52`). A coluna "Situação" do painel na versão `d16f12b` ainda aplicava o critério de metade de sprint (50%); o critério por momento da sprint foi aplicado logo após a coleta.
 - **Decisão (ação corretiva):** as issues abertas da Sprint 4 seguem para a Sprint 5 como issues novas, mantendo a estimativa original, e as antigas são fechadas como não planejadas. As issues da Sprint 5 serão criadas em 17/11, no primeiro dia da sprint.
 
-### Recursos e Custos: estimado vs. realizado
+#### Recursos e Custos: estimado vs. realizado
 
 ![Gráfico de horas estimadas (barras) e horas reais (linha) por sprint](../imagens/medicao4/medicao4-estimado-realizado-grafico.png){ width="420" }
 
 _Figura 17. Estimado vs. realizado por sprint. Barras lilás: horas estimadas; linha azul: horas reais. Fonte: Painel do PSM, versão `d16f12b`._
 
 - **Valor:** Sprint 4 com **38,0 h realizadas de 35,5 h estimadas (razão 1,07)**, totalizando **R$ 561,26**.
-- **Interpretação:** a razão de 1,07 ficou dentro do limite de decisão (1,5) e abaixo das sprints da E1. Contudo, como as estimativas foram registradas em 11/11 — quando parte do trabalho já havia começado — e a issue `#48` ficou sem estimativa, o indicador reflete parcialmente um ajuste retroativo.
-- **Decisão:** na Sprint 5, toda estimativa será registrada na abertura da issue (17/11), antes do início da execução. A linha de base da E2 e a previsão calibrada ficam para após o fechamento das estimativas da Sprint 5 (`#49`).
+- **Interpretação:** a razão de 1,07 ficou dentro do limite de decisão (1,5) e abaixo das sprints da E1. Mas as estimativas foram registradas em 11/11, quando parte do trabalho já tinha começado, e a issue `#48` ficou sem estimativa no corte; por isso, o indicador reflete em parte um ajuste retroativo.
+- **Decisão:** na Sprint 5, toda estimativa será registrada na abertura da issue (17/11), antes do início da execução. A linha de base da E2 e a previsão calibrada ficam para depois do fechamento das estimativas da Sprint 5 (`#49`).
 
-### Desempenho dos Processos: tempo de ciclo
+#### Desempenho dos Processos: tempo de ciclo
 
 ![Gráfico de barras do tempo de ciclo médio por sprint, em dias](../imagens/medicao4/medicao4-tempo-de-ciclo-grafico.png){ width="420" }
 
@@ -44,36 +51,32 @@ _Figura 18. Tempo de ciclo médio por sprint. Barras lilás: média de dias entr
 _Figura 19. Issues paradas no fim da Sprint 4: nenhuma, pelo limite de 1 dia sem atualização. Fonte: Painel do PSM, versão `d16f12b`._
 
 - **Valor:** Sprint 4 com **média de 3,7 dias** e **mediana de 3,6 dias** (nas 8 issues concluídas); **4 issues fora da faixa de ±10%**; **nenhuma issue parada**.
-- **Interpretação:** média e mediana próximas indicam estabilidade no fluxo das tarefas concluídas, embora o cálculo considere apenas a partir de 11/11 (ignorando o trabalho executado entre 07 e 10/11). Pelo critério do guia (Parte 2, p. 26), ficaram fora da faixa: `#38` (+30%), `#46` (+16%) e `#51` (+18%), que são atividades contínuas da sprint (painel, análise e atas), e `#53` (−46%), que foi uma correção pontual.
-- **Decisão:** nenhuma ação corretiva necessária, pois os desvios refletem a natureza esperada de cada tipo de tarefa.
+- **Interpretação:** média e mediana próximas indicam estabilidade no fluxo das tarefas concluídas, embora o cálculo comece em 11/11 e não inclua o trabalho feito entre 07 e 10/11. Pelo critério do guia (Parte 2, p. 26), ficaram fora da faixa `#38` (+30%), `#46` (+16%) e `#51` (+18%), que são atividades contínuas da sprint (painel, análise e atas), e `#53` (−46%), que foi uma correção pontual.
+- **Decisão:** nenhuma ação corretiva, porque os desvios refletem o tipo de cada tarefa.
 
-### Situação da avaliação
+#### Situação da avaliação
 
 - **Segurança:** o Q1.3 testou o `/proxy` (desligado por padrão) em vez do proxy de exportação, onde está a correção da `CVE-2026-63416`. Até a reavaliação, o G1 permanece sem nota global (`#45`).
 
-### Decisões
+#### Decisões
 
-| Decisão | Responsável | Verificação |
-| :--- | :--- | :--- |
-| Issues abertas da Sprint 4 viram issues novas na Sprint 5; as originais fecham como não planejadas | Yasmin | Painel em 17/11 |
-| Issues da Sprint 5 criadas em 17/11, com estimativa | Yasmin (criação); todos (estimativa) | Painel em 17/11 |
-| Na consulta da metade da Sprint 5 (19/11), publicar lista de horas fora do formato e issues paradas | Yasmin | Painel em 19/11 |
-| Issue concluída é fechada no mesmo dia | Todos | Painel em 19/11 |
-| Q1.3 no proxy de exportação ou registrado como não avaliado dinamicamente | Miquéias | `#45` até 18/11 |
+| Decisão | Responsável | Verificação | Situação em 21/11 |
+| :--- | :--- | :--- | :--- |
+| Issues abertas da Sprint 4 viram issues novas na Sprint 5; as originais fecham como não planejadas | Yasmin | Painel em 17/11 | Cancelada: as issues foram fechadas conforme o que cada responsável concluiu |
+| Issues da Sprint 5 criadas em 17/11, com estimativa | Yasmin (criação); todos (estimativa) | Painel em 17/11 | Cancelada: Sprint 5 sem tarefas planejadas |
+| Na consulta da metade da Sprint 5 (19/11), publicar lista de horas fora do formato e issues paradas | Yasmin | Painel em 19/11 | Cancelada: Sprint 5 sem tarefas planejadas |
+| Issue concluída é fechada no mesmo dia | Todos | Painel em 19/11 | Não verificada |
+| Q1.3 no proxy de exportação ou registrado como não avaliado dinamicamente | Miquéias | `#45` até 18/11 | Ver Fase 4 (Segurança) |
 
-### Decisões
+### Encerramento da E2 (21/11/2026)
 
-| Decisão | Responsável | Verificação |
-| :--- | :--- | :--- |
-| Issues abertas da Sprint 4 viram issues novas na Sprint 5; as originais fecham como não planejadas | Yasmin | Painel em 17/11 |
-| Issues da Sprint 5 criadas em 17/11, com estimativa | Yasmin (criação); todos (estimativa) | Painel em 17/11 |
-| Na consulta da metade da Sprint 5 (19/11), publicar lista de horas fora do formato e issues paradas | Yasmin | Painel em 19/11 |
-| Issue concluída é fechada no mesmo dia | Todos | Painel em 19/11 |
-| Q1.3 no proxy de exportação ou registrado como não avaliado dinamicamente | Miquéias | `#45` até 18/11 |
+Após o Ponto de Controle 2 (16/11), em que a professora considerou o trabalho encaminhado, a Sprint 5 não teve tarefas planejadas. As decisões que dependiam de issues da Sprint 5 foram canceladas, e as issues abertas da Sprint 4 foram fechadas conforme o que cada responsável concluiu. A previsão calibrada, prevista na Medição 3, não foi aplicada. Não houve Medição 5. A única decisão nova da Sprint 5 foi elaborar o relatório para uma auditoria de TI real ([Planejamento](planejamento.md)).
 
-## Entrega 1: resumo
+## Entrega 1
 
-Valores de cada medição na data em que foi feita; o detalhe, com os recortes do painel usados como evidência, está no fim da página.
+### Resumo
+
+Valores de cada medição na data em que foi feita; o detalhe de cada uma, com os recortes do painel usados como evidência, está nas seções abaixo do resumo.
 
 | Medição | Data | Planejado vs. concluído | Estimado vs. realizado | Tempo de ciclo | Principal decisão |
 |---|---|---|---|---|---|
@@ -107,10 +110,12 @@ Próximos passos para a E2:
 
 **Aprovação das decisões:** propostas pela gestão em 26/10/2026, a validar com a equipe no início da E2.
 
-## Entrega 1: detalhe das medições
+### Medição 1 (Sprint 1: 14/10 a 19/10/2026)
+
+Registrada retroativamente.
 
 <details markdown="1">
-<summary>Medição 1 (Sprint 1: 14/10 a 19/10/2026), registrada retroativamente</summary>
+<summary>Abrir o detalhe da Medição 1</summary>
 
 **Linha de base:** as tarefas e estimativas da Sprint 1 no [Planejamento](planejamento.md) (versão 0.6, de 18/10). As issues foram criadas depois da execução das tarefas; por isso, a conclusão foi verificada pela data do commit no repositório (incluindo os commits do PR #13) ou, para o relatório, pelo histórico de versões do Overleaf. As horas vêm de [`dados/gestao/horas.csv`](horas.md).
 
@@ -178,8 +183,10 @@ Data em que cada tarefa planejada ficou completa (12 tarefas com evidência):
 
 </details>
 
+### Medição parcial (meio da Sprint 2, 20/10/2026)
+
 <details markdown="1">
-<summary>Medição parcial (20/10/2026, meio da Sprint 2)</summary>
+<summary>Abrir o detalhe da medição parcial</summary>
 
 | Indicador | Valor | Interpretação | Decisão |
 |---|---|---|---|
@@ -189,8 +196,10 @@ Data em que cada tarefa planejada ficou completa (12 tarefas com evidência):
 
 </details>
 
+### Medição 2 (fim da Sprint 2, 22/10/2026)
+
 <details markdown="1">
-<summary>Medição 2 (fim da Sprint 2, 22/10/2026)</summary>
+<summary>Abrir o detalhe da Medição 2</summary>
 
 **Fonte:** [Painel do PSM](painel-psm.md) na última publicação do fim da Sprint 2, em 22/10/2026 às 22h07 (versão `51b6cff` da branch `gh-pages`, que guarda cada publicação do site). As figuras abaixo são recortes dessa publicação; o painel mostra 23/10, 01h07, porque o GitHub gera o site no horário UTC.
 
@@ -238,8 +247,10 @@ _Figura 5. Issues paradas no fim da Sprint 2: nenhuma issue aberta estava sem at
 
 </details>
 
+### Consulta da metade da Sprint 3 (24/10/2026)
+
 <details markdown="1">
-<summary>Consulta da metade da Sprint 3 (24/10/2026)</summary>
+<summary>Abrir o detalhe da consulta</summary>
 
 **Fonte:** [Painel do PSM](painel-psm.md) publicado em 24/10/2026 às 14h16 (versão `1aba800` da branch `gh-pages`; o painel dessa versão mostra 17:16 porque ainda usava o horário UTC). Decisões e verificação de 25/10 registradas na [Ata 05](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/blob/main/atas/2026-10-25-ata-05.md).
 
@@ -251,7 +262,7 @@ _Figura 5. Issues paradas no fim da Sprint 2: nenhuma issue aberta estava sem at
 
 </details>
 
-## Medição 3 (fim da Sprint 3, 26/10/2026)
+### Medição 3 (fim da Sprint 3, 26/10/2026)
 
 <details markdown="1">
 <summary>Abrir o detalhe da Medição 3</summary>
