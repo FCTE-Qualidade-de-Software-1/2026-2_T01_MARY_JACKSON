@@ -2490,15 +2490,18 @@
 <blockquote>
 <p><strong>Nota Global (G1) = <code>min(Q1.1, Q1.2, Q1.3, Q1.4, Q1.5) = min(5, 5, 5, 5, 5) = 5</code></strong></p>
 </blockquote>
+<p><strong>Análise</strong></p>
 <ul>
-<li><strong>Análise:</strong></li>
 <li><strong>Cliente web e inspeção estática (<code>Q1.1</code>, <code>Q1.2</code>, <code>Q1.4</code> e <code>Q1.5</code>):</strong> A versão <code>32.6.10</code> centraliza a sanitização de rótulos HTML no método sobrescrito <code>cellRenderer.getLabelValue</code> (aplicando <code>DOMPurify</code> via <code>sanitizeLabel</code> quando <code>html=1</code>) e aplica escape explícito por <code>mxUtils.htmlEntities</code> nos pontos de medição de texto plano renderizados como HTML. O ponto principal de validação da hipótese <code>H1.4</code> encontra-se em <code>Format.js:5683</code> (<code>canConvertHtmlToSvg</code>), onde o rótulo é atribuído ao <code>.innerHTML</code> — vetor explorado anteriormente na CVE-2026-58504 mediante células não editáveis (<code>editable=0</code>) — mas que na <code>32.6.10</code> executa exclusivamente sob <code>html=1</code> após sanitização completa, comportamento confirmado dinamicamente nos cenários com <code>editable=0</code> (<code>TD-06</code> e <code>TD-09</code>).</li>
-<li><strong>Servidor Java e <em>servlet</em> <code>/proxy</code> (<code>Q1.3</code>):</strong> Na execução complementar sobre a imagem oficial com servidor Tomcat (<code>jgraph/drawio:32.6.10</code>), confirmou-se que o <code>ProxyServlet</code> está mapeado (<code>WEB-INF/web.xml:11-18</code>) e aplica defesa <em>secure by default</em> (<code>ProxyServlet.java:74-76</code>), recusando imediatamente qualquer requisição com <code>HTTP 404</code> vazio quando a variável de ambiente <code>ENABLE_DRAWIO_PROXY</code> não está explicitamente habilitada, além de validar esquemas e bloquear endereços locais/privados via <code>Utils.validatedAddress</code> quando ativo.</li>
-<li><strong>Sugestões de melhoria ao draw.io:</strong></li>
+<li><strong>Servidor Java e <em>servlet</em> de exportação (<code>Q1.3</code>):</strong> Na execução sobre a imagem oficial com servidor Tomcat (<code>jgraph/drawio:32.6.10</code>) com a variável <code>EXPORT_URL</code> configurada, avaliou-se o <code>ExportProxyServlet</code> mapeado nas rotas <code>/export</code> e <code>/service/*</code> (<code>WEB-INF/web.xml</code>) contra vetores de travessia de diretório (<code>TD-03</code> e <code>TD-04</code>, ref. CVE-2026-63416). Confirmou-se uma arquitetura de defesa em profundidade: o Apache Tomcat 9.0.123 rejeita URIs contendo sequências de travessia e barras codificadas diretamente na camada HTTP (<code>HTTP/1.1 400 Bad Request</code>) antes mesmo de acionar o <em>servlet</em>, complementando a verificação explícita de <em>Path Traversal</em> (<code>..</code>) implementada em <code>ExportProxyServlet.java</code> (linhas 99–113).</li>
+</ul>
+<p><strong>Sugestões de melhoria ao draw.io</strong></p>
+<ul>
 <li><strong>Testes automatizados de regressão de sanitização:</strong> Incluir na suíte de testes automatizados do cliente web casos cobrindo variações de evasão com elementos vetoriais SVG, quadros embutidos e esquemas de URI de script em células com <code>editable=0</code> (incluindo o fluxo de <code>canConvertHtmlToSvg</code>), prevenindo regressões em futuras atualizações da biblioteca de sanitização.</li>
 <li><strong>Cabeçalhos de <em>Content Security Policy</em> (CSP) no deploy estático:</strong> Recomendar na documentação oficial de implantação estática (Apache, Nginx e Docker) uma política CSP restritiva (bloqueando scripts inline e URIs de execução de script) como camada complementar de defesa em profundidade ao <code>DOMPurify</code>.</li>
-<li><strong>Conclusão inicial:</strong> Todas as hipóteses de segurança (<code>H1.1</code> a <code>H1.5</code>) foram confirmadas. Recomenda-se a <strong>adoção</strong> da versão <code>32.6.10</code> sob a perspectiva da característica de Segurança, registrando-se como limitação metodológica que a primeira rodada de testes do cliente web utilizou vínculo de porta aberto na rede local (<code>0.0.0.0:8080</code>), corrigido para <code>127.0.0.1:8080</code> na validação do servidor Java e nos casos complementares (<code>TD-08</code> e <code>TD-09</code>), adotado como padrão para as próximas coletas.</li>
 </ul>
+<p><strong>Conclusão inicial</strong></p>
+<p>Todas as hipóteses de segurança (<code>H1.1</code> a <code>H1.5</code>) foram confirmadas. Recomenda-se a <strong>adoção</strong> da versão <code>32.6.10</code> sob a perspectiva da característica de Segurança, registrando-se como limitação metodológica que a primeira rodada de testes do cliente web utilizou vínculo de porta aberto na rede local (<code>0.0.0.0:8080</code>), corrigido para <code>127.0.0.1:8080</code> na validação do servidor Java e nos casos complementares (<code>TD-08</code> e <code>TD-09</code>), adotado como padrão para as próximas coletas.</p>
 <h2 id="eficiencia-de-desempenho-dupla-2">Eficiência de desempenho (Dupla 2)<a class="headerlink" href="#eficiencia-de-desempenho-dupla-2" title="Permanent link">&para;</a></h2>
 <div class="mj-resultados-eficiencia">
 <p>A análise de Thiago Gomes Pereira de Abreu utiliza as 125 tentativas oficiais coletadas por Pedro Ian Guedes de Carvalho em 14/11/2026: cinco portes, cinco operações e cinco repetições. Foram conferidos cenários e medidas, excluindo os pilotos e preservando os dados brutos.</p>
@@ -2812,7 +2815,7 @@
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="21 de novembro de 2026 03:51:34 UTC">21 de novembro de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="23 de novembro de 2026 00:43:03 UTC">23 de novembro de 2026</span>
   </span>
 
     

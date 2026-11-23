@@ -2812,7 +2812,7 @@
 </tr>
 <tr>
 <td>Execução</td>
-<td>Contêiner Docker estático (<code>httpd:alpine</code>) montando <code>src/main/webapp</code> para os testes de interface web (<code>Q1.1</code>, <code>Q1.2</code> e <code>Q1.5</code>), e contêiner oficial com servidor Java/Tomcat (<code>jgraph/drawio:32.6.10</code>) vinculado estritamente a <code>127.0.0.1:8080:8080</code> para o teste do <em>servlet</em> <code>/proxy</code> (<code>Q1.3</code>).</td>
+<td>Contêiner Docker estático (<code>httpd:alpine</code>) montando <code>src/main/webapp</code> para os testes de interface web (<code>Q1.1</code>, <code>Q1.2</code> e <code>Q1.5</code>), e contêiner oficial com servidor Java/Tomcat (<code>jgraph/drawio:32.6.10</code>) vinculado estritamente a <code>127.0.0.1:8080:8080</code> com <code>EXPORT_URL</code> configurado para o teste do <em>servlet</em> de exportação <code>ExportProxyServlet</code> (<code>/export</code> e <code>/service/*</code>, <code>Q1.3</code>).</td>
 </tr>
 </tbody>
 </table>
@@ -2870,11 +2870,11 @@
 <tbody>
 <tr>
 <td>Docker (<code>httpd:alpine</code> e <code>jgraph/drawio:32.6.10</code>)</td>
-<td>Hospedagem local da interface web (<code>src/main/webapp</code>) para os testes de cliente e execução do servidor Java (Tomcat) com <code>ProxyServlet</code> ativo para validação do endpoint <code>/proxy</code>.</td>
+<td>Hospedagem local da interface web (<code>src/main/webapp</code>) para os testes de cliente e execução do servidor Java (Tomcat) com <code>EXPORT_URL</code> configurado para validação do <code>ExportProxyServlet</code> (<code>/export</code> e <code>/service/*</code>).</td>
 </tr>
 <tr>
 <td>Visual Studio Code (VS Code)</td>
-<td>Busca e rastreamento de fluxo de dados no código-fonte (<code>Format.js</code>, <code>Graph.js</code>, <code>Editor.js</code> e <code>ProxyServlet.java</code>) para M1.2 e auditoria de servidor, além da criação temporária dos arquivos <code>.drawio</code> de teste.</td>
+<td>Busca e rastreamento de fluxo de dados no código-fonte (<code>Format.js</code>, <code>Graph.js</code>, <code>Editor.js</code> e <code>ExportProxyServlet.java</code>) para M1.2 e auditoria de servidor, além da criação temporária dos arquivos <code>.drawio</code> de teste.</td>
 </tr>
 <tr>
 <td>Git</td>
@@ -2886,7 +2886,7 @@
 </tr>
 <tr>
 <td><code>curl.exe</code> (PowerShell)</td>
-<td>Envio de requisições HTTP de teste contra o endpoint <code>/proxy</code> no servidor Tomcat para validação de <em>Path Traversal</em> e SSRF (M1.1 / Q1.3).</td>
+<td>Envio de requisições HTTP de teste (<code>--path-as-is</code>) contra as rotas <code>/service/*</code> e <code>/export</code> no servidor Tomcat para validação de <em>Path Traversal</em> no <code>ExportProxyServlet</code> (M1.1 / Q1.3).</td>
 </tr>
 </tbody>
 </table>
@@ -2918,7 +2918,7 @@
 </tbody>
 </table>
 <h3 id="artefatos-e-casos-de-teste">Artefatos e casos de teste<a class="headerlink" href="#artefatos-e-casos-de-teste" title="Permanent link">&para;</a></h3>
-<p>Os testes dinâmicos baseiam-se em cenários de vulnerabilidades históricas documentadas para o draw.io (injeção de script via importação XML, XSS em rótulos HTML — ref. CVE-2026-46642, <em>Path Traversal</em>/SSRF no <em>servlet</em> <code>/proxy</code> e variações de evasão em elementos não editáveis — ref. CVE-2026-58504), totalizando <strong>9 casos dinâmicos</strong> (ao menos 2 casos por componente em <code>M1.1</code> e 3 variações em <code>M1.3</code>).</p>
+<p>Os testes dinâmicos baseiam-se em cenários de vulnerabilidades históricas documentadas para o draw.io (injeção de script via importação XML, XSS em rótulos HTML — ref. CVE-2026-46642, <em>Path Traversal</em> no proxy de exportação <code>ExportProxyServlet</code> — ref. CVE-2026-63416 e variações de evasão em elementos não editáveis — ref. CVE-2026-58504), totalizando <strong>9 casos dinâmicos</strong> (ao menos 2 casos por componente em <code>M1.1</code> e 3 variações em <code>M1.3</code>).</p>
 <table>
 <thead>
 <tr>
@@ -2947,16 +2947,16 @@
 <tr>
 <td><strong>TD-03</strong></td>
 <td>Q1.3 (M1.1)</td>
-<td>Requisição HTTP <code>GET</code> (<code>/proxy</code>)</td>
-<td>Solicitação ao <em>servlet</em> <code>/proxy</code> no servidor Tomcat apontando para caminho de arquivo local do sistema operacional.</td>
-<td>Bloqueio de leitura de arquivos locais e esquemas não HTTP no <code>ProxyServlet</code>.</td>
+<td>Requisição HTTP <code>GET</code> (<code>/service/*</code>)</td>
+<td>Solicitação à rota <code>/service/*</code> no servidor Tomcat (<code>EXPORT_URL</code> configurado) tentando travessia de diretório até <code>WEB-INF/web.xml</code> (ref. CVE-2026-63416).</td>
+<td>Bloqueio de travessia de diretório na camada HTTP (Tomcat) e no <code>ExportProxyServlet</code>.</td>
 </tr>
 <tr>
 <td><strong>TD-04</strong></td>
 <td>Q1.3 (M1.1)</td>
-<td>Requisição HTTP <code>GET</code> (<code>/proxy</code>)</td>
-<td>Solicitação ao <em>servlet</em> <code>/proxy</code> no servidor Tomcat tentando acessar descritor interno da aplicação (<code>WEB-INF/web.xml</code>).</td>
-<td>Bloqueio de acesso a recursos internos e endereços locais no <code>ProxyServlet</code>.</td>
+<td>Requisição HTTP <code>GET</code> (<code>/export</code>)</td>
+<td>Solicitação à rota <code>/export</code> no servidor Tomcat (<code>EXPORT_URL</code> configurado) tentando travessia de diretório com barras codificadas até <code>WEB-INF/web.xml</code> (ref. CVE-2026-63416).</td>
+<td>Bloqueio de barras codificadas e travessia de caminho no Tomcat e no <code>ExportProxyServlet</code>.</td>
 </tr>
 <tr>
 <td><strong>TD-05</strong></td>
@@ -3002,8 +3002,8 @@
 <li>Abrir o diretório do repositório <code>H3ytt0r10/drawio</code> (versão <code>32.6.10</code>) no VS Code.</li>
 <li>Localizar os arquivos <code>Format.js</code>, <code>Graph.js</code> e <code>Editor.js</code> dentro de <code>src/main/webapp/js/</code>.</li>
 <li>Pesquisar todas as ocorrências de <code>getLabelValue</code> nos três arquivos.</li>
-<li>Aplicar o critério de contagem: contabiliza-se cada ponto de chamada onde o retorno é inserido ou avaliado no DOM (incluindo <code>Format.js:5683</code> em <code>canConvertHtmlToSvg</code>, que atribui o rótulo ao <code>.innerHTML</code>); exclui-se a própria definição do método base (<code>Graph.js:976</code>), comentários e checagens puramente lógicas sem manipulação de DOM, obtendo-se o conjunto de trechos válidos ($P_t$).</li>
-<li>Rastrear o fluxo de dados de cada trecho válido até a renderização/medição HTML, verificando a aplicação de <code>Graph.sanitizeHtml</code> (via <code>sanitizeLabel</code>/DOMPurify) ou <code>mxUtils.htmlEntities</code> antes do uso no DOM, contabilizando os trechos protegidos ($P_p$).</li>
+<li>Aplicar o critério de contagem: contabiliza-se cada ponto de chamada onde o retorno é inserido ou avaliado no DOM (incluindo <code>Format.js:5683</code> em <code>canConvertHtmlToSvg</code>, que atribui o rótulo ao <code>.innerHTML</code>); exclui-se a própria definição do método base (<code>Graph.js:976</code>), comentários e checagens puramente lógicas sem manipulação de DOM, obtendo-se o conjunto de trechos válidos (P<sub>t</sub>).</li>
+<li>Rastrear o fluxo de dados de cada trecho válido até a renderização/medição HTML, verificando a aplicação de <code>Graph.sanitizeHtml</code> (via <code>sanitizeLabel</code>/DOMPurify) ou <code>mxUtils.htmlEntities</code> antes do uso no DOM, contabilizando os trechos protegidos (P<sub>p</sub>).</li>
 </ol>
 <p><strong>Bloco B: Testes dinâmicos base — importação e rótulos (M1.1 / Q1.1 e Q1.2)</strong></p>
 <ol>
@@ -3011,11 +3011,11 @@
 <li>Acionar <strong>Arquivo &gt; Importar de &gt; Dispositivo</strong>, executar os casos <code>TD-01</code> e <code>TD-08</code> (descartando o diagrama entre execuções) e observar se há execução de script ou renderização limpa da forma.</li>
 <li>Acionar <strong>Arquivo &gt; Abrir de &gt; Dispositivo</strong>, executar os casos <code>TD-02</code> e <code>TD-09</code> (incluindo o cenário com célula irmã e célula <code>editable=0</code>) e verificar se os manipuladores de evento inline são neutralizados.</li>
 </ol>
-<p><strong>Bloco C: Testes dinâmicos base — proxy e Path Traversal (M1.1 / Q1.3)</strong></p>
+<p><strong>Bloco C: Testes dinâmicos base — proxy de exportação e Path Traversal (M1.1 / Q1.3)</strong></p>
 <ol>
-<li>Iniciar o contêiner oficial com servidor Java/Tomcat (<code>jgraph/drawio:32.6.10</code>) vinculado estritamente a <code>127.0.0.1:8080:8080</code>.</li>
-<li>No PowerShell, executar <code>curl.exe -i</code> contra o endpoint <code>/proxy</code> para os cenários <code>TD-03</code> e <code>TD-04</code>.</li>
-<li>Registrar o código de status HTTP retornado e confirmar no código-fonte (<code>WEB-INF/web.xml</code> e <code>ProxyServlet.java</code>) o comportamento do <em>servlet</em> implantado, encerrando o contêiner em seguida.</li>
+<li>Iniciar o contêiner oficial com servidor Java/Tomcat (<code>jgraph/drawio:32.6.10</code>) vinculado estritamente a <code>127.0.0.1:8080:8080</code> com a variável de ambiente <code>EXPORT_URL</code> apontando para um serviço HTTP local de teste.</li>
+<li>No PowerShell, executar <code>curl.exe -i --path-as-is</code> contra as rotas <code>/service/*</code> e <code>/export</code> para os cenários <code>TD-03</code> e <code>TD-04</code>.</li>
+<li>Registrar o código de status HTTP retornado (<code>400 Bad Request</code> no Tomcat) e confirmar no código-fonte (<code>WEB-INF/web.xml</code> e <code>ExportProxyServlet.java</code>, linhas 99–113) a proteção contra <em>Path Traversal</em>, encerrando o contêiner em seguida.</li>
 </ol>
 <p><strong>Bloco D: Testes de resistência e variações de bypass (M1.3 / Q1.5)</strong></p>
 <ol>
@@ -3038,33 +3038,33 @@
 <tbody>
 <tr>
 <td><strong>M1.1 — Q1.1 (Importação)</strong></td>
-<td>$C_{t,1} = 2$ casos (<code>TD-01</code> e <code>TD-08</code>).</td>
+<td>C<sub>t,1</sub> = 2 casos (<code>TD-01</code> e <code>TD-08</code>).</td>
 <td>Ausência de disparo de alerta e remoção de tags/elementos ativos na importação XML.</td>
-<td>$M1.1_{Q1.1} = (C_{b,1} / C_{t,1}) \times 100$, em $\%$.</td>
+<td>M1.1<sub>Q1.1</sub> = (C<sub>b,1</sub> / C<sub>t,1</sub>) × 100, em %.</td>
 </tr>
 <tr>
 <td><strong>M1.1 — Q1.2 (Rótulos HTML)</strong></td>
-<td>$C_{t,2} = 2$ casos (<code>TD-02</code> e <code>TD-09</code>).</td>
+<td>C<sub>t,2</sub> = 2 casos (<code>TD-02</code> e <code>TD-09</code>).</td>
 <td>Neutralização de manipuladores de evento inline em rótulos HTML (incluindo células <code>editable=0</code>).</td>
-<td>$M1.1_{Q1.2} = (C_{b,2} / C_{t,2}) \times 100$, em $\%$.</td>
+<td>M1.1<sub>Q1.2</sub> = (C<sub>b,2</sub> / C<sub>t,2</sub>) × 100, em %.</td>
 </tr>
 <tr>
 <td><strong>M1.1 — Q1.3 (Proxy / Servidor)</strong></td>
-<td>$C_{t,3} = 2$ casos (<code>TD-03</code> e <code>TD-04</code>).</td>
-<td>Rejeição ativa pelo <code>ProxyServlet</code> no servidor Tomcat sem vazamento de arquivos internos.</td>
-<td>$M1.1_{Q1.3} = (C_{b,3} / C_{t,3}) \times 100$, em $\%$.</td>
+<td>C<sub>t,3</sub> = 2 casos (<code>TD-03</code> e <code>TD-04</code>).</td>
+<td>Rejeição ativa na camada HTTP do servidor Tomcat e no <code>ExportProxyServlet</code> sem vazamento de arquivos internos.</td>
+<td>M1.1<sub>Q1.3</sub> = (C<sub>b,3</sub> / C<sub>t,3</sub>) × 100, em %.</td>
 </tr>
 <tr>
 <td><strong>M1.2 — Q1.4 (Sanitização)</strong></td>
-<td>$P_t = 4$ pontos de chamada válidos em <code>Format.js</code> e <code>Graph.js</code>.</td>
+<td>P<sub>t</sub> = 4 pontos de chamada válidos em <code>Format.js</code> e <code>Graph.js</code>.</td>
 <td>Presença comprovada de sanitização (<code>DOMPurify</code>) ou escape (<code>mxUtils.htmlEntities</code>) antes da inserção no DOM.</td>
-<td>$M1.2 = (P_p / P_t) \times 100$, em $\%$.</td>
+<td>M1.2 = (P<sub>p</sub> / P<sub>t</sub>) × 100, em %.</td>
 </tr>
 <tr>
 <td><strong>M1.3 — Q1.5 (Resistência)</strong></td>
-<td>$W_t = 3$ variações de evasão (<code>TD-05</code> a <code>TD-07</code>).</td>
+<td>W<sub>t</sub> = 3 variações de evasão (<code>TD-05</code> a <code>TD-07</code>).</td>
 <td>Neutralização integral das tags/atributos ofuscados ou combinados com estilos (<code>editable=0</code>).</td>
-<td>$M1.3 = (W_b / W_t) \times 100$, em $\%$.</td>
+<td>M1.3 = (W<sub>b</sub> / W<sub>t</sub>) × 100, em %.</td>
 </tr>
 </tbody>
 </table>
@@ -3086,7 +3086,7 @@
 </tr>
 <tr>
 <td><code>inspecao_estatica.csv</code></td>
-<td>Mapeamento das ocorrências de <code>getLabelValue</code> por arquivo, linha, classificação ($P_t$) e proteção ($P_p$).</td>
+<td>Mapeamento das ocorrências de <code>getLabelValue</code> por arquivo, linha, classificação (P<sub>t</sub>) e proteção (P<sub>p</sub>).</td>
 </tr>
 </tbody>
 </table>
@@ -3096,7 +3096,7 @@
 <ul>
 <li>confirmar a leitura do arquivo <code>VERSION</code> (<code>32.6.10</code>) e o mapeamento do volume <code>src/main/webapp</code> no contêiner estático;</li>
 <li>validar o carregamento da interface web sem dependências externas;</li>
-<li>verificar a presença do mapeamento <code>/proxy</code> (<code>ProxyServlet</code>) na imagem oficial com servidor Java/Tomcat (<code>jgraph/drawio:32.6.10</code>) para a coleta de <code>Q1.3</code>.</li>
+<li>verificar a presença do mapeamento <code>/export</code> e <code>/service/*</code> (<code>ExportProxyServlet</code>) na imagem oficial com servidor Java/Tomcat (<code>jgraph/drawio:32.6.10</code>) com <code>EXPORT_URL</code> configurado para a coleta de <code>Q1.3</code>.</li>
 </ul>
 <h2 id="eficiencia-de-desempenho-dupla-2">Eficiência de desempenho (Dupla 2)<a class="headerlink" href="#eficiencia-de-desempenho-dupla-2" title="Permanent link">&para;</a></h2>
 <p>Esta seção define como são coletadas as métricas M2.1 a M2.6 da <a href="../../fase-2/metricas/">Fase 2</a>. Toda a coleta é feita em uma única máquina e em um único navegador, para que os resultados dos cinco portes sejam comparáveis entre si. A coleta oficial é automatizada por script, depois de um <a href="#piloto-eficiencia">piloto</a> manual que validou o procedimento no DevTools e de um piloto automatizado. Conforme os <a href="../../fase-1/escopo/">limites de validade</a> da Fase 1, as conclusões ficam vinculadas a essa versão, máquina, navegador e cargas.</p>
@@ -3585,7 +3585,7 @@
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="16 de novembro de 2026 01:41:13 UTC">16 de novembro de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="23 de novembro de 2026 00:43:03 UTC">23 de novembro de 2026</span>
   </span>
 
     
