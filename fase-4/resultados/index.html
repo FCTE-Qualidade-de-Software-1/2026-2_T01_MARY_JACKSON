@@ -1342,6 +1342,34 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#mitigacao-complementar-aplicacao-de-content-security-policy-antes-depois" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mitigação Complementar: Aplicação de Content Security Policy (Antes × Depois)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mitigação Complementar: Aplicação de Content Security Policy (Antes × Depois)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#evidencia-dos-cabecalhos-http-curlexe-i-http1270018080" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evidência dos Cabeçalhos HTTP (curl.exe -I http://127.0.0.1:8080)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2248,6 +2276,34 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#mitigacao-complementar-aplicacao-de-content-security-policy-antes-depois" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mitigação Complementar: Aplicação de Content Security Policy (Antes × Depois)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mitigação Complementar: Aplicação de Content Security Policy (Antes × Depois)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#evidencia-dos-cabecalhos-http-curlexe-i-http1270018080" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evidência dos Cabeçalhos HTTP (curl.exe -I http://127.0.0.1:8080)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2502,6 +2558,66 @@
 </ul>
 <p><strong>Conclusão inicial</strong></p>
 <p>Todas as hipóteses de segurança (<code>H1.1</code> a <code>H1.5</code>) foram confirmadas. Recomenda-se a <strong>adoção</strong> da versão <code>32.6.10</code> sob a perspectiva da característica de Segurança, registrando-se como limitação metodológica que a primeira rodada de testes do cliente web utilizou vínculo de porta aberto na rede local (<code>0.0.0.0:8080</code>), corrigido para <code>127.0.0.1:8080</code> na validação do servidor Java e nos casos complementares (<code>TD-08</code> e <code>TD-09</code>), adotado como padrão para as próximas coletas.</p>
+<h3 id="mitigacao-complementar-aplicacao-de-content-security-policy-antes-depois">Mitigação Complementar: Aplicação de Content Security Policy (Antes × Depois)<a class="headerlink" href="#mitigacao-complementar-aplicacao-de-content-security-policy-antes-depois" title="Permanent link">&para;</a></h3>
+<p>Como camada adicional de defesa em profundidade (<em>defense-in-depth</em>) para implantações <em>self-hosted</em>, validou-se o impacto da aplicação de uma política CSP restritiva sobre a funcionalidade do editor e sobre a neutralização de vetores de XSS:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Critério Avaliado</th>
+<th style="text-align: left;">Antes (Configuração Padrão)</th>
+<th style="text-align: left;">Depois (Com CSP via <code>mod_headers</code>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Cabeçalho <code>Content-Security-Policy</code></strong></td>
+<td style="text-align: left;">Ausente na resposta HTTP (<code>HTTP/1.1 200 OK</code> apenas com cabeçalhos padrão do Apache).</td>
+<td style="text-align: left;">Presente em todas as respostas (<code>default-src 'self'; script-src 'self' 'unsafe-eval'; object-src 'none'; ...</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Carregamento e Edição (<code>?offline=1</code>)</strong></td>
+<td style="text-align: left;">Funcional; dependente exclusivamente da sanitização DOM no cliente.</td>
+<td style="text-align: left;">Funcional; criação de formas, edição de rótulos e renderização do canvas operam sem erros de CSP.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Exportação Local (PNG)</strong></td>
+<td style="text-align: left;">Funcional.</td>
+<td style="text-align: left;">Funcional (<code>Untitled Diagram.drawio.png</code> gerado sem bloqueios para <code>blob:</code>/<code>data:</code> em <code>img-src</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Scripts Externos de Terceiros</strong></td>
+<td style="text-align: left;">Carregamento permitido se houver acesso à rede.</td>
+<td style="text-align: left;">Bloqueado ativamente (<code>bootstrap.js:209</code> — tentativa de carregar <code>https://apis.google.com/js/api.js</code> barrada por <code>script-src 'self'</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Manipuladores Inline (<code>onerror</code> / <code>onload</code>)</strong></td>
+<td style="text-align: left;">Mitigados apenas pela sanitização do cliente.</td>
+<td style="text-align: left;">Dupla camada: mesmo quando nós HTML (<code>&lt;img src="x"&gt;</code>) alcançam o DOM do rótulo, o navegador bloqueia a execução em <code>app.min.js:7</code> por violação de <code>script-src 'self' 'unsafe-eval'</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="evidencia-dos-cabecalhos-http-curlexe-i-http1270018080">Evidência dos Cabeçalhos HTTP (<code>curl.exe -I http://127.0.0.1:8080</code>)<a class="headerlink" href="#evidencia-dos-cabecalhos-http-curlexe-i-http1270018080" title="Permanent link">&para;</a></h4>
+<p><strong>Antes (sem CSP):</strong>
+<div class="highlight"><pre><span></span><code><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Date</span><span class="o">:</span> <span class="l">Mon, 23 Nov 2026 01:37:12 GMT</span>
+<span class="na">Server</span><span class="o">:</span> <span class="l">Apache/2.4.71 (Unix)</span>
+<span class="na">Last-Modified</span><span class="o">:</span> <span class="l">Fri, 13 Nov 2026 21:46:14 GMT</span>
+<span class="na">ETag</span><span class="o">:</span> <span class="l">"1082-6602f5b754af7"</span>
+<span class="na">Accept-Ranges</span><span class="o">:</span> <span class="l">bytes</span>
+<span class="na">Content-Length</span><span class="o">:</span> <span class="l">4226</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/html</span>
+</code></pre></div></p>
+<p><strong>Depois (com CSP ativa):</strong>
+<div class="highlight"><pre><span></span><code><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Date</span><span class="o">:</span> <span class="l">Mon, 23 Nov 2026 01:37:15 GMT</span>
+<span class="na">Server</span><span class="o">:</span> <span class="l">Apache/2.4.71 (Unix)</span>
+<span class="na">Content-Security-Policy</span><span class="o">:</span> <span class="l">default-src 'self'; script-src 'self' 'unsafe-eval' ; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'self';</span>
+<span class="na">Last-Modified</span><span class="o">:</span> <span class="l">Fri, 13 Nov 2026 21:46:14 GMT</span>
+<span class="na">ETag</span><span class="o">:</span> <span class="l">"1082-6602f5b754af7"</span>
+<span class="na">Accept-Ranges</span><span class="o">:</span> <span class="l">bytes</span>
+<span class="na">Content-Length</span><span class="o">:</span> <span class="l">4226</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/html</span>
+</code></pre></div></p>
 <h2 id="eficiencia-de-desempenho-dupla-2">Eficiência de desempenho (Dupla 2)<a class="headerlink" href="#eficiencia-de-desempenho-dupla-2" title="Permanent link">&para;</a></h2>
 <div class="mj-resultados-eficiencia">
 <p>A análise de Thiago Gomes Pereira de Abreu utiliza as 125 tentativas oficiais coletadas por Pedro Ian Guedes de Carvalho em 14/11/2026: cinco portes, cinco operações e cinco repetições. Foram conferidos cenários e medidas, excluindo os pilotos e preservando os dados brutos.</p>
@@ -2815,7 +2931,7 @@
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="23 de novembro de 2026 00:43:03 UTC">23 de novembro de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="23 de novembro de 2026 02:21:04 UTC">23 de novembro de 2026</span>
   </span>
 
     
