@@ -129,6 +129,20 @@ Antes da execução formal dos casos, realiza-se uma verificação prévia do am
 - validar o carregamento da interface web sem dependências externas;
 - verificar a presença do mapeamento `/export` e `/service/*` (`ExportProxyServlet`) na imagem oficial com servidor Java/Tomcat (`jgraph/drawio:32.6.10`) com `EXPORT_URL` configurado para a coleta de `Q1.3`.
 
+### Ambiente Complementar — Validação de Defense-in-Depth com CSP
+
+Para avaliar a viabilidade de mitigação complementar contra XSS via cabeçalhos HTTP sem alterar o código-fonte da release `32.6.10`, configurou-se um servidor estático baseado em `httpd:alpine` (`Apache/2.4.71`) servindo o diretório `src/main/webapp` em `http://127.0.0.1:8080`:
+
+- **Cenário Base (Antes):** Contêiner padrão sem configuração de cabeçalhos de segurança:
+  ```powershell
+  docker run -d --name drawio-sem-csp -p 127.0.0.1:8080:80 -v "${DRAWIO_WEBAPP}:/usr/local/apache2/htdocs:ro" httpd:alpine
+  ```
+- **Cenário Endurecido (Depois):** Contêiner com `mod_headers` habilitado e injeção da diretiva `Content-Security-Policy` via `csp.conf`:
+  ```apache
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'self';"
+  ```
+- **Verificação de Scripts Inline:** A inspeção do `index.html` da release `32.6.10` confirmou a ausência de blocos `<script>` *inline*, permitindo omitir `'unsafe-inline'`, `'unsafe-hashes'` e exceções por hash (`sha256-...`) em `script-src`.
+
 ## Eficiência de desempenho (Dupla 2)
 
 Esta seção define como são coletadas as métricas M2.1 a M2.6 da [Fase 2](../fase-2/metricas.md). Toda a coleta é feita em uma única máquina e em um único navegador, para que os resultados dos cinco portes sejam comparáveis entre si. A coleta oficial é automatizada por script, depois de um [piloto](#piloto-eficiencia) manual que validou o procedimento no DevTools e de um piloto automatizado. Conforme os [limites de validade](../fase-1/escopo.md) da Fase 1, as conclusões ficam vinculadas a essa versão, máquina, navegador e cargas.

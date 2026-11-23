@@ -34,6 +34,45 @@ Conforme definido na árvore GQM da Fase 2, a métrica **M1.1** é calculada ind
 
 Todas as hipóteses de segurança (`H1.1` a `H1.5`) foram confirmadas. Recomenda-se a **adoção** da versão `32.6.10` sob a perspectiva da característica de Segurança, registrando-se como limitação metodológica que a primeira rodada de testes do cliente web utilizou vínculo de porta aberto na rede local (`0.0.0.0:8080`), corrigido para `127.0.0.1:8080` na validação do servidor Java e nos casos complementares (`TD-08` e `TD-09`), adotado como padrão para as próximas coletas.
 
+### Mitigação Complementar: Aplicação de Content Security Policy (Antes × Depois)
+
+Como camada adicional de defesa em profundidade (*defense-in-depth*) para implantações *self-hosted*, validou-se o impacto da aplicação de uma política CSP restritiva sobre a funcionalidade do editor e sobre a neutralização de vetores de XSS:
+
+| Critério Avaliado | Antes (Configuração Padrão) | Depois (Com CSP via `mod_headers`) |
+| :--- | :--- | :--- |
+| **Cabeçalho `Content-Security-Policy`** | Ausente na resposta HTTP (`HTTP/1.1 200 OK` apenas com cabeçalhos padrão do Apache). | Presente em todas as respostas (`default-src 'self'; script-src 'self' 'unsafe-eval'; object-src 'none'; ...`). |
+| **Carregamento e Edição (`?offline=1`)** | Funcional; dependente exclusivamente da sanitização DOM no cliente. | Funcional; criação de formas, edição de rótulos e renderização do canvas operam sem erros de CSP. |
+| **Exportação Local (PNG)** | Funcional. | Funcional (`Untitled Diagram.drawio.png` gerado sem bloqueios para `blob:`/`data:` em `img-src`). |
+| **Scripts Externos de Terceiros** | Carregamento permitido se houver acesso à rede. | Bloqueado ativamente (`bootstrap.js:209` — tentativa de carregar `https://apis.google.com/js/api.js` barrada por `script-src 'self'`). |
+| **Manipuladores Inline (`onerror` / `onload`)** | Mitigados apenas pela sanitização do cliente. | Dupla camada: mesmo quando nós HTML (`<img src="x">`) alcançam o DOM do rótulo, o navegador bloqueia a execução em `app.min.js:7` por violação de `script-src 'self' 'unsafe-eval'`. |
+
+#### Evidência dos Cabeçalhos HTTP (`curl.exe -I http://127.0.0.1:8080`)
+
+**Antes (sem CSP):**
+```http
+HTTP/1.1 200 OK
+Date: Mon, 23 Nov 2026 01:37:12 GMT
+Server: Apache/2.4.71 (Unix)
+Last-Modified: Fri, 13 Nov 2026 21:46:14 GMT
+ETag: "1082-6602f5b754af7"
+Accept-Ranges: bytes
+Content-Length: 4226
+Content-Type: text/html
+```
+
+**Depois (com CSP ativa):**
+```http
+HTTP/1.1 200 OK
+Date: Mon, 23 Nov 2026 01:37:15 GMT
+Server: Apache/2.4.71 (Unix)
+Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-eval' ; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'self';
+Last-Modified: Fri, 13 Nov 2026 21:46:14 GMT
+ETag: "1082-6602f5b754af7"
+Accept-Ranges: bytes
+Content-Length: 4226
+Content-Type: text/html
+```
+
 ## Eficiência de desempenho (Dupla 2)
 
 <div class="mj-resultados-eficiencia" markdown="1">
