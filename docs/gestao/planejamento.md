@@ -2,13 +2,11 @@
 
 > Este documento registra o **planejado**. O realizado (responsáveis, horas reais e datas de conclusão) está nas [issues por sprint](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_MARY_JACKSON/milestones), a comparação entre os dois no [Registro de medições](registro-de-medicoes.md) e os gráficos no [Dashboard do PSM](dashboard.md).
 
-**Entrega atual: E2 (07/11 a 22/11/2026), Fases 3 e 4.** Sprint 4 (projetar e executar a avaliação) até o ponto de controle de 16/11; Sprint 5 (feedback, conclusão da Fase 4, revisão e entrega) de 17/11 a 22/11.
-
 ## Visão geral
 
 - **Projeto:** Avaliação da Qualidade de Componentes do draw.io
 - **Período:** 07/10/2026 a 22/11/2026 (Entrega 1 em 26/10; Entrega 2 em 22/11)
-- **Objetivo geral:** avaliar a segurança, a eficiência de desempenho e a manutenibilidade dos componentes de importação de arquivos, rótulos e exportação do draw.io (versão 32.2.0), seguindo o processo de avaliação da ISO/IEC 25040, o método GQM e o acompanhamento do projeto com PSM/CID.
+- **Objetivo geral:** avaliar a segurança, a eficiência de desempenho e a manutenibilidade dos componentes de importação de arquivos, rótulos e exportação do draw.io (versão 32.6.10, commit c72c9a9), seguindo o processo de avaliação da ISO/IEC 25040, o método GQM e o acompanhamento do projeto com PSM/CID.
 - **Equipe:** três duplas, que dividem integralmente as responsabilidades da dupla.
 
 | Dupla | Integrantes | Responsabilidades |
@@ -25,7 +23,7 @@
 | 2 - Fase 2 | 20/10 a 22/10 | Derivar objetivos, questões, hipóteses e métricas (GQM) | Fase 2 no relatório e na GitPage; diagrama GQM; rastreabilidade Fase 1 → Fase 2 |
 | 3 - Entrega 1 | 23/10 a 26/10 | Integrar e revisar o relatório e a GitPage e publicar a E1 | Relatório (1ª versão); GitPage até a Fase 2; tabela de contribuição; release E1 |
 | 4 - Fases 3 e 4 | 07/11 a 16/11 | Projetar a avaliação (Fase 3) e executá-la: coleta dos dados brutos e análise parcial (Fase 4) | Plano de avaliação na Fase 3; medidas e análise parcial na Fase 4; resultados no artigo; Medição 4 |
-| 5 - Entrega 2 | 17/11 a 22/11 | Incorporar o feedback da professora, concluir a Fase 4, revisar e publicar a E2 | Relatório final com as Fases 3 e 4 e as conclusões; GitPage atualizada; release E2 |
+| 5 - Entrega 2 | 17/11 a 22/11 | Revisar e publicar a E2 | Relatório final com as Fases 3 e 4; GitPage atualizada; release E2 |
 
 ## Estimativa de horas
 
@@ -37,10 +35,11 @@ As estimativas são definidas por cada integrante para as próprias tarefas e fo
 | E1 | 2 | 7 | 14 | 7,5 | 28,5 |
 | E1 | 3 | 6,5 | 9 | 3 | 18,5 |
 | **E1** | **Total** | **20,5** | **36** | **14** | **70,5** |
-| E2 | 4 | a definir | a definir | a definir | a definir |
-| E2 | 5 | a definir | a definir | a definir | a definir |
+| E2 | 4 | 20,5 | 9 | 12 | 41,5 |
+| E2 | 5 | — | — | — | sem tarefas planejadas |
+| **E2** | **Total** | **20,5** | **9** | **12** | **41,5** |
 
-**Previsão calibrada para a E2:** na E1, as horas reais foram de 1,34 a 1,82 vezes as estimadas ([Registro de medições](registro-de-medicoes.md), Medição 3). Com a linha de base da E2 fechada, a previsão de horas e de custo (R$ 14,77 por hora) é registrada aqui em três cenários: otimista (× 1,34), provável (× 1,62) e pessimista (× 1,82).
+**Previsão calibrada para a E2:** prevista na Medição 3 (multiplicar a linha de base da E2 pela razão da E1, de 1,34 a 1,82), mas não aplicada: as estimativas da Sprint 4 só foram registradas a partir de 11/11, com parte do trabalho já feita, e a Sprint 5 não teve tarefas planejadas. A comparação entre estimado e realizado da E2 está na [Medição 4](registro-de-medicoes.md).
 
 As tarefas e horas de cada integrante estão abaixo (clique para abrir).
 
@@ -116,28 +115,29 @@ Fonte: estimativas dos integrantes da Dupla 3.
 </details>
 
 <details markdown="1">
-<summary>E2 · Sprint 4: tarefas por dupla</summary>
+<summary>E2 · Sprint 4: tarefas por dupla (41,5 h)</summary>
 
 | Sprint | Tarefa | Dupla | Horas estimadas |
 |---|---|---|---|
-| 4 | Preparar o ambiente local de coleta | Dupla 3 | a definir |
-| 4 | Configurar o SonarCloud (substitui a #22) | Dupla 3 | a definir |
-| 4 | Plano de avaliação (Fase 3) no artigo e na GitPage | Todas | a definir |
-| 4 | Coleta dos dados brutos de Segurança | Dupla 1 | a definir |
-| 4 | Coleta dos dados brutos de Eficiência de Desempenho | Dupla 2 | a definir |
-| 4 | Coleta dos dados brutos de Manutenibilidade | Dupla 3 | a definir |
-| 4 | Análise dos dados de Segurança | Dupla 1 | a definir |
-| 4 | Análise dos dados de Eficiência de Desempenho | Dupla 2 | a definir |
-| 4 | Análise dos dados de Manutenibilidade | Dupla 3 | a definir |
-| 4 | Resultados e conclusão inicial no artigo | Todas | a definir |
-| 4 | Planejamento da E2 e linha de base | Dupla 1 | a definir |
-| 4 | Melhorias do painel e Dashboard do PSM (#38) | Dupla 1 | a definir |
-| 4 | Consulta da metade da Sprint 4 e Medição 4 | Dupla 1 | a definir |
-| 4 | Atas da Sprint 4 | Dupla 1 | a definir |
-| 4 | Revisão das horas da Sprint 4 | Todas | a definir |
-| | **Total** | | **a definir** |
+| 4 | Melhorias do painel e Dashboard do PSM (#38) | Dupla 1 | 3 |
+| 4 | Preparar o ambiente local de coleta (#39) | Dupla 3 | 1 |
+| 4 | Configurar o SonarCloud (#40, substitui a #22) | Dupla 3 | 2 |
+| 4 | Plano de avaliação (Fase 3) no artigo e na GitPage (#41) | Todas (D1 1; D2 1; D3 1,5) | 3,5 |
+| 4 | Coleta dos dados brutos de Segurança (#42) | Dupla 1 | 4 |
+| 4 | Coleta dos dados brutos de Eficiência de Desempenho (#43) | Dupla 2 | 3 |
+| 4 | Coleta dos dados brutos de Manutenibilidade (#44) | Dupla 3 | 2 |
+| 4 | Análise dos dados de Segurança (#45) | Dupla 1 | 5 |
+| 4 | Análise dos dados de Eficiência de Desempenho (#46) | Dupla 2 | 2 |
+| 4 | Análise dos dados de Manutenibilidade (#47) | Dupla 3 | 2 |
+| 4 | Resultados e conclusão inicial no artigo (#48) | Todas (2 cada) | 6 |
+| 4 | Planejamento da E2 e linha de base (#49) | Dupla 1 | 2 |
+| 4 | Consulta da metade da Sprint 4 e Medição 4 (#50) | Dupla 1 | 1 |
+| 4 | Atas da Sprint 4 (#51) | Dupla 1 | 2 |
+| 4 | Revisão das horas da Sprint 4 (#52) | Todas (D1 0,5; D2 1; D3 1) | 2,5 |
+| 4 | Fixar a versão avaliada no Pages e no relatório (#53) | Dupla 3 | 0,5 |
+| | **Total** (Dupla 1: 20,5 h; Dupla 2: 9 h; Dupla 3: 12 h) | | **41,5** |
 
-As tarefas da Sprint 5 entram em 17/11, quando as issues forem criadas (ação C2 da Medição 3).
+Fonte: campo "Estimativa (horas)" de cada issue; nas issues de todas as duplas, a divisão registrada nos comentários. A estimativa da #48 foi registrada depois da Medição 4. A Sprint 5 não teve tarefas planejadas (ver Ocorrências por sprint).
 
 </details>
 
@@ -160,11 +160,12 @@ As tarefas da Sprint 5 entram em 17/11, quando as issues forem criadas (ação C
 **Sprint 4**
 
 - A sprint começou em 07/11, mas as issues só foram criadas em 11/11. As horas de 07 a 10/11 foram registradas retroativamente nas issues, e o tempo de ciclo da Sprint 4 conta a partir de 11/11.
-- A #22 (Piloto do SonarCloud) e a #30 (Revisão cruzada final) não foram concluídas na E1 e foram fechadas como não planejadas. A #22 foi substituída pela issue de configuração do SonarCloud da Sprint 4, e a revisão cruzada volta na Sprint 5.
+- A #22 (Piloto do SonarCloud) e a #30 (Revisão cruzada final) não foram concluídas na E1 e foram fechadas como não planejadas. A #22 foi substituída pela issue de configuração do SonarCloud da Sprint 4 (#40); a revisão cruzada não foi replanejada, porque a Sprint 5 não teve tarefas planejadas.
 
 **Sprint 5**
 
-- Tarefas definidas em 17/11, a partir do feedback do ponto de controle. Já previstas: revisão cruzada final (todas as duplas); consolidação do PSM da E2, tabela de contribuição e declaração de uso de IA, release E2 e envio no Moodle (Dupla 1).
+- No Ponto de Controle 2 (16/11), a professora considerou o trabalho encaminhado e não pediu correções no artigo nem na GitPage. Por isso, a Sprint 5 não teve tarefas planejadas nem issues criadas: cada integrante concluiu e revisou a própria parte conforme a disponibilidade, sem linha de base de horas.
+- A equipe decidiu elaborar um relatório de auditoria de TI real com os resultados da avaliação, voltado à diretoria de TI do cenário do G1.
 
 ---
 ## Histórico de versão 
@@ -180,3 +181,4 @@ As tarefas da Sprint 5 entram em 17/11, quando as issues forem criadas (ação C
 | 0.8 | 21/10/2026 | Correção das horas estimadas por sprint das Duplas 2 e 3 e da origem das estimativas | Yasmin |
 | 0.9 | 22/10/2026 | Registro dos responsáveis das tarefas da Dupla 1 marcadas como "a definir", conforme a divisão combinada entre Yasmin e Miquéias | Yasmin |
 | 1.0 | 11/11/2026 | Inclusão da Entrega 2 conforme as issues criadas em 11/11 e reorganização da página: cronograma e estimativas resumidos em tabelas, tarefas por integrante recolhidas e ocorrências por sprint | Yasmin |
+| 1.1 | 21/11/2026 | Encerramento do planejamento: estimativas da Sprint 4 conforme as issues, Sprint 5 sem tarefas planejadas após o Ponto de Controle 2 e decisão de elaborar o relatório de auditoria de TI | Yasmin |
