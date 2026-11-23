@@ -23,6 +23,8 @@
 | 10 a 15/11/2026 | Claude | Trechos iniciais do aviso de horas e do critério de progresso (`hooks/horas.py`) e base dos gráficos do Dashboard do PSM (`hooks/dashboard_psm.py`, `.js` e `.css`). | Critérios definidos, aviso de horas ignoradas nas issues corrigido (a IA assumiu que ele já existia), layout e cores refeitos e totais validados com as issues via `mkdocs serve` pela Yasmin. | Yasmin (Dupla 1) |
 | 12 a 16/11/2026 | Claude | Apoio na revisão da coleta e da análise de Segurança (Fase 4), incluindo a inconsistência do Q1.3. | Afirmações conferidas pela Yasmin nos avisos de segurança do GitHub e no código-fonte do fork (versão 32.6.10); correção alinhada com o Miquéias. | Yasmin (Dupla 1) |
 | 21/11/2026 | Claude | Reorganização do Registro de medições (E1 e E2) e encerramento do planejamento da E2. | Estimativas conferidas com as issues da Sprint 4 e textos revisados pela Yasmin antes dos commits. | Yasmin (Dupla 1) |
+| 12 a 15/11/2026 | Chat GPT |Configurar sonar claude para a análise | Revisão do relatorio gerado pelo Sonar Claude | Heyttor (Dupla 3) |
+| 20/11/2026 | Chat GPT |Correção gramátical de textos escritos pelo aluno | Revisão do texto corrigido| Heyttor (Dupla 3) |
 
 ## Identidade visual e créditos
 
