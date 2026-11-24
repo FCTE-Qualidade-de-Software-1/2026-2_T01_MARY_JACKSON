@@ -70,9 +70,11 @@ https://fcte-qualidade-de-software-1.github.io/2026-2_T01_MARY_JACKSON/
 
 - [Fase 1: Estabelecer os requisitos da avaliação](https://fcte-qualidade-de-software-1.github.io/2026-2_T01_MARY_JACKSON/fase-1/)
 - [Fase 2: Especificar a avaliação](https://fcte-qualidade-de-software-1.github.io/2026-2_T01_MARY_JACKSON/fase-2/)
+- [Fase 3: Projetar a avaliação](https://fcte-qualidade-de-software-1.github.io/2026-2_T01_MARY_JACKSON/fase-3/)
+- [Fase 4: Executar a avaliação ](https://fcte-qualidade-de-software-1.github.io/2026-2_T01_MARY_JACKSON/fase-4/)
 - [Gestão do projeto (PSM/CID)](https://fcte-qualidade-de-software-1.github.io/2026-2_T01_MARY_JACKSON/gestao/)
 - [Planejamento das sprints](docs/gestao/planejamento.md)
-- [Ambiente Docker do draw.io 32.2.0](docs/fase-3/ambiente-drawio.md)
+- [Ambiente Docker do draw.io 32.6.10](docs/fase-3/ambiente-drawio.md)
 - [Atas das reuniões](atas/)
 - [Dados](dados/)
 

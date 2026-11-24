@@ -182,6 +182,8 @@ A coleta realizada em 20/11/2026, referente à versão `32.6.10` e ao commit `c7
 
 A correspondência entre os níveis de julgamento e as notas foi estabelecida da seguinte forma: Adequado = 5, Atenção = 3 e Crítico = 1. Além disso, a regra de agregação do objetivo G3 foi acrescentada após a coleta, com o propósito de completar a pontuação, preservando as faixas de classificação originalmente estabelecidas.
 
+Para as Q3.1 e Q3.2, para ter uma nota geral para cada parte do escopo, foi feita uma média de complexidade cognitiva para cada função relacionada ao escopo e um média das médias. 
+
 | Questão / Métrica | Fórmula aplicada | Resultado | Critério atingido da Fase 2 | Nota (1–5) |
 | --- | --- | ---: | --- | ---: |
 | **Q3.1 — Importação / M3.1** | `C / F = 28,474861 / 4` | **7,11871525** | **Adequado:** `M3.1 <= 10` | **5** |
