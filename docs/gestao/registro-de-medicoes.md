@@ -70,7 +70,7 @@ _Figura 19. Issues paradas no fim da Sprint 4: nenhuma, pelo limite de 1 dia sem
 
 ### Encerramento da E2 (21/11/2026)
 
-Após o Ponto de Controle 2 (16/11), em que a professora considerou o trabalho encaminhado, a Sprint 5 não teve tarefas planejadas. As decisões que dependiam de issues da Sprint 5 foram canceladas, e as issues abertas da Sprint 4 foram fechadas conforme o que cada responsável concluiu. A previsão calibrada, prevista na Medição 3, não foi aplicada. Não houve Medição 5. A única decisão nova da Sprint 5 foi elaborar o relatório para uma auditoria de TI real ([Planejamento](planejamento.md)).
+Após o Ponto de Controle 2 (16/11), em que a professora considerou o trabalho encaminhado, a Sprint 5 não teve tarefas planejadas. As decisões que dependiam de issues da Sprint 5 foram canceladas, e as issues abertas da Sprint 4 foram fechadas conforme o que cada responsável concluiu. A previsão calibrada, prevista na Medição 3, não foi aplicada. Não houve Medição 5. A única decisão nova da Sprint 5 foi elaborar o relatório para uma auditoria de TI real, que não foi concluído até a entrega e fica como trabalho futuro ([Planejamento](planejamento.md)).
 
 ## Entrega 1
 
