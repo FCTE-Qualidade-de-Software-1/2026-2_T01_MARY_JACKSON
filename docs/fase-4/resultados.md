@@ -20,13 +20,58 @@ Conforme definido na árvore GQM da Fase 2, a métrica **M1.1** é calculada ind
 
 > **Nota Global (G1) = `min(Q1.1, Q1.2, Q1.3, Q1.4, Q1.5) = min(5, 5, 5, 5, 5) = 5`**
 
-- **Análise:**
-  * **Cliente web e inspeção estática (`Q1.1`, `Q1.2`, `Q1.4` e `Q1.5`):** A versão `32.6.10` centraliza a sanitização de rótulos HTML no método sobrescrito `cellRenderer.getLabelValue` (aplicando `DOMPurify` via `sanitizeLabel` quando `html=1`) e aplica escape explícito por `mxUtils.htmlEntities` nos pontos de medição de texto plano renderizados como HTML. O ponto principal de validação da hipótese `H1.4` encontra-se em `Format.js:5683` (`canConvertHtmlToSvg`), onde o rótulo é atribuído ao `.innerHTML` — vetor explorado anteriormente na CVE-2026-58504 mediante células não editáveis (`editable=0`) — mas que na `32.6.10` executa exclusivamente sob `html=1` após sanitização completa, comportamento confirmado dinamicamente nos cenários com `editable=0` (`TD-06` e `TD-09`).
-  * **Servidor Java e *servlet* `/proxy` (`Q1.3`):** Na execução complementar sobre a imagem oficial com servidor Tomcat (`jgraph/drawio:32.6.10`), confirmou-se que o `ProxyServlet` está mapeado (`WEB-INF/web.xml:11-18`) e aplica defesa *secure by default* (`ProxyServlet.java:74-76`), recusando imediatamente qualquer requisição com `HTTP 404` vazio quando a variável de ambiente `ENABLE_DRAWIO_PROXY` não está explicitamente habilitada, além de validar esquemas e bloquear endereços locais/privados via `Utils.validatedAddress` quando ativo.
-- **Sugestões de melhoria ao draw.io:**
-  * **Testes automatizados de regressão de sanitização:** Incluir na suíte de testes automatizados do cliente web casos cobrindo variações de evasão com elementos vetoriais SVG, quadros embutidos e esquemas de URI de script em células com `editable=0` (incluindo o fluxo de `canConvertHtmlToSvg`), prevenindo regressões em futuras atualizações da biblioteca de sanitização.
-  * **Cabeçalhos de *Content Security Policy* (CSP) no deploy estático:** Recomendar na documentação oficial de implantação estática (Apache, Nginx e Docker) uma política CSP restritiva (bloqueando scripts inline e URIs de execução de script) como camada complementar de defesa em profundidade ao `DOMPurify`.
-- **Conclusão inicial:** Todas as hipóteses de segurança (`H1.1` a `H1.5`) foram confirmadas. Recomenda-se a **adoção** da versão `32.6.10` sob a perspectiva da característica de Segurança, registrando-se como limitação metodológica que a primeira rodada de testes do cliente web utilizou vínculo de porta aberto na rede local (`0.0.0.0:8080`), corrigido para `127.0.0.1:8080` na validação do servidor Java e nos casos complementares (`TD-08` e `TD-09`), adotado como padrão para as próximas coletas.
+**Análise**
+
+- **Cliente web e inspeção estática (`Q1.1`, `Q1.2`, `Q1.4` e `Q1.5`):** A versão `32.6.10` centraliza a sanitização de rótulos HTML no método sobrescrito `cellRenderer.getLabelValue` (aplicando `DOMPurify` via `sanitizeLabel` quando `html=1`) e aplica escape explícito por `mxUtils.htmlEntities` nos pontos de medição de texto plano renderizados como HTML. O ponto principal de validação da hipótese `H1.4` encontra-se em `Format.js:5683` (`canConvertHtmlToSvg`), onde o rótulo é atribuído ao `.innerHTML` — vetor explorado anteriormente na CVE-2026-58504 mediante células não editáveis (`editable=0`) — mas que na `32.6.10` executa exclusivamente sob `html=1` após sanitização completa, comportamento confirmado dinamicamente nos cenários com `editable=0` (`TD-06` e `TD-09`).
+- **Servidor Java e *servlet* de exportação (`Q1.3`):** Na execução sobre a imagem oficial com servidor Tomcat (`jgraph/drawio:32.6.10`) com a variável `EXPORT_URL` configurada, avaliou-se o `ExportProxyServlet` mapeado nas rotas `/export` e `/service/*` (`WEB-INF/web.xml`) contra vetores de travessia de diretório (`TD-03` e `TD-04`, ref. CVE-2026-63416). Confirmou-se uma arquitetura de defesa em profundidade: o Apache Tomcat 9.0.123 rejeita URIs contendo sequências de travessia e barras codificadas diretamente na camada HTTP (`HTTP/1.1 400 Bad Request`) antes mesmo de acionar o *servlet*, complementando a verificação explícita de *Path Traversal* (`..`) implementada em `ExportProxyServlet.java` (linhas 99–113).
+
+**Sugestões de melhoria ao draw.io**
+
+- **Testes automatizados de regressão de sanitização:** Incluir na suíte de testes automatizados do cliente web casos cobrindo variações de evasão com elementos vetoriais SVG, quadros embutidos e esquemas de URI de script em células com `editable=0` (incluindo o fluxo de `canConvertHtmlToSvg`), prevenindo regressões em futuras atualizações da biblioteca de sanitização.
+- **Cabeçalhos de *Content Security Policy* (CSP) no deploy estático:** Recomendar na documentação oficial de implantação estática (Apache, Nginx e Docker) uma política CSP restritiva (bloqueando scripts inline e URIs de execução de script) como camada complementar de defesa em profundidade ao `DOMPurify`.
+
+**Conclusão inicial**
+
+Todas as hipóteses de segurança (`H1.1` a `H1.5`) foram confirmadas. Recomenda-se a **adoção** da versão `32.6.10` sob a perspectiva da característica de Segurança, registrando-se como limitação metodológica que a primeira rodada de testes do cliente web utilizou vínculo de porta aberto na rede local (`0.0.0.0:8080`), corrigido para `127.0.0.1:8080` na validação do servidor Java e nos casos complementares (`TD-08` e `TD-09`), adotado como padrão para as próximas coletas.
+
+### Mitigação Complementar: Aplicação de Content Security Policy (Antes × Depois)
+
+Como camada adicional de defesa em profundidade (*defense-in-depth*) para implantações *self-hosted*, validou-se o impacto da aplicação de uma política CSP restritiva sobre a funcionalidade do editor e sobre a neutralização de vetores de XSS:
+
+| Critério Avaliado | Antes (Configuração Padrão) | Depois (Com CSP via `mod_headers`) |
+| :--- | :--- | :--- |
+| **Cabeçalho `Content-Security-Policy`** | Ausente na resposta HTTP (`HTTP/1.1 200 OK` apenas com cabeçalhos padrão do Apache). | Presente em todas as respostas (`default-src 'self'; script-src 'self' 'unsafe-eval'; object-src 'none'; ...`). |
+| **Carregamento e Edição (`?offline=1`)** | Funcional; dependente exclusivamente da sanitização DOM no cliente. | Funcional; criação de formas, edição de rótulos e renderização do canvas operam sem erros de CSP. |
+| **Exportação Local (PNG)** | Funcional. | Funcional (`Untitled Diagram.drawio.png` gerado sem bloqueios para `blob:`/`data:` em `img-src`). |
+| **Scripts Externos de Terceiros** | Carregamento permitido se houver acesso à rede. | Bloqueado ativamente (`bootstrap.js:209` — tentativa de carregar `https://apis.google.com/js/api.js` barrada por `script-src 'self'`). |
+| **Manipuladores Inline (`onerror` / `onload`)** | Mitigados apenas pela sanitização do cliente. | Dupla camada: mesmo quando nós HTML (`<img src="x">`) alcançam o DOM do rótulo, o navegador bloqueia a execução em `app.min.js:7` por violação de `script-src 'self' 'unsafe-eval'`. |
+
+#### Evidência dos Cabeçalhos HTTP (`curl.exe -I http://127.0.0.1:8080`)
+
+**Antes (sem CSP):**
+```http
+HTTP/1.1 200 OK
+Date: Mon, 23 Nov 2026 01:37:12 GMT
+Server: Apache/2.4.71 (Unix)
+Last-Modified: Fri, 13 Nov 2026 21:46:14 GMT
+ETag: "1082-6602f5b754af7"
+Accept-Ranges: bytes
+Content-Length: 4226
+Content-Type: text/html
+```
+
+**Depois (com CSP ativa):**
+```http
+HTTP/1.1 200 OK
+Date: Mon, 23 Nov 2026 01:37:15 GMT
+Server: Apache/2.4.71 (Unix)
+Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-eval' ; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'self';
+Last-Modified: Fri, 13 Nov 2026 21:46:14 GMT
+ETag: "1082-6602f5b754af7"
+Accept-Ranges: bytes
+Content-Length: 4226
+Content-Type: text/html
+```
 
 ## Eficiência de desempenho (Dupla 2)
 
@@ -136,6 +181,8 @@ Entretanto, com a nova coleta realizada em 20/11/2026, foi possível reunir dado
 A coleta realizada em 20/11/2026, referente à versão `32.6.10` e ao commit `c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3`, avaliou recortes específicos de funções. A comparação apresentada a seguir utiliza as [fórmulas definidas na Fase 2](../fase-2/metricas.md#manutenibilidade-dupla-3) e os [critérios de julgamento e pontuação](../fase-2/niveis-e-julgamento.md#manutenibilidade-dupla-3).
 
 A correspondência entre os níveis de julgamento e as notas foi estabelecida da seguinte forma: Adequado = 5, Atenção = 3 e Crítico = 1. Além disso, a regra de agregação do objetivo G3 foi acrescentada após a coleta, com o propósito de completar a pontuação, preservando as faixas de classificação originalmente estabelecidas.
+
+Para as Q3.1 e Q3.2, para ter uma nota geral para cada parte do escopo, foi feita uma média de complexidade cognitiva para cada função relacionada ao escopo e um média das médias. 
 
 | Questão / Métrica | Fórmula aplicada | Resultado | Critério atingido da Fase 2 | Nota (1–5) |
 | --- | --- | ---: | --- | ---: |
