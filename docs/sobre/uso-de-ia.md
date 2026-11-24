@@ -28,6 +28,7 @@
 | 13 a 18/11/2026 | Gemini | Segurança (Fases 3 e 4): apoio na montagem do ambiente Docker, casos de teste dinâmicos (`TD-01` a `TD-09`) e revisão dos slides. | Testes executados manualmente no navegador com DevTools; linhas de código (`Format.js:5683`) e métricas do SonarCloud conferidas no repositório. | Miquéias Ezequiel (Dupla 1) |
 | 22/11/2026 | Gemini | Segurança (Fase 4 e Artigo): atualização da análise do `ExportProxyServlet` (`Q1.3`) nos arquivos da GitPage e na subseção em LaTeX. | Contêiner Docker com `EXPORT_URL` testado localmente (`400 Bad Request` via `curl`); trechos de `ExportProxyServlet.java` conferidos no código-fonte antes do commit. | Miquéias Ezequiel (Dupla 1) |
 | 22/11/2026 | Gemini | Segurança (CSP): roteiro de teste *Antes × Depois* com `Content-Security-Policy` no Apache (`httpd:alpine`) e redação para GitPage e LaTeX. | Comandos PowerShell/Python ajustados manualmente após erro de escape; cabeçalhos validados com `curl -I` e bloqueios de CSP conferidos no DevTools. | Miquéias Ezequiel (Dupla 1) |
+| 21/11/2026 | ChatGPT / Codex | Apoio na coleta dos dados de manutenibilidade e na elaboração de um resumo dos resultados coletados. | A documentação da Fase 4 e o CSV de métricas históricas servem de referência para a conferência do resumo. Revisão pelo integrante pendente. | Lucas Gabriel (Dupla 3) |
 
 ## Identidade visual e créditos
 
