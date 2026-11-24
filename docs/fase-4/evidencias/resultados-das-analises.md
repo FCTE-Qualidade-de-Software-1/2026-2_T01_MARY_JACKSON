@@ -6,7 +6,7 @@ Este documento reúne os resultados disponíveis da inspeção dos sete arquivos
 
 ## 1. Objeto da análise atual
 
-As oito imagens identificam sete arquivos únicos, pois `EditorUi.js` aparece duas vezes. O conteúdo local foi inventariado integralmente, sem extração de funções, com hashes SHA-256 registrados em `manifesto.json`. O commit base registrado é `aacddaf44e6b4db468ef3f4f3e3bb56863f1d581`; os hashes identificam o conteúdo efetivamente inspecionado.
+As oito imagens identificam sete arquivos únicos, pois `EditorUi.js` aparece duas vezes. O conteúdo local foi inventariado integralmente, sem extração de funções, com hashes SHA-256 registrados em `manifesto.json`. O commit base registrado é `c72c9a98b7a6ce392556ed04c05e0ff19f43f5c3`; os hashes identificam o conteúdo efetivamente inspecionado.
 
 | Arquivo | Linhas físicas | Tamanho em bytes | Verificação de sintaxe |
 | --- | ---: | ---: | --- |
