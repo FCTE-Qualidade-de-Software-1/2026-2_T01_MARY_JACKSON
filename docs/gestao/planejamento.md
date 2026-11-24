@@ -166,6 +166,7 @@ Fonte: campo "Estimativa (horas)" de cada issue; nas issues de todas as duplas, 
 
 - No Ponto de Controle 2 (16/11), a professora considerou o trabalho encaminhado e não pediu correções no artigo nem na GitPage. Por isso, a Sprint 5 não teve tarefas planejadas nem issues criadas: cada integrante concluiu e revisou a própria parte conforme a disponibilidade, sem linha de base de horas.
 - A equipe decidiu elaborar um relatório de auditoria de TI real com os resultados da avaliação, voltado à diretoria de TI do cenário do G1.
+- O relatório não foi concluído até a entrega da E2 (24/11/2026) e fica registrado como trabalho futuro no artigo.
 
 ---
 ## Histórico de versão 
@@ -182,3 +183,4 @@ Fonte: campo "Estimativa (horas)" de cada issue; nas issues de todas as duplas, 
 | 0.9 | 22/10/2026 | Registro dos responsáveis das tarefas da Dupla 1 marcadas como "a definir", conforme a divisão combinada entre Yasmin e Miquéias | Yasmin |
 | 1.0 | 11/11/2026 | Inclusão da Entrega 2 conforme as issues criadas em 11/11 e reorganização da página: cronograma e estimativas resumidos em tabelas, tarefas por integrante recolhidas e ocorrências por sprint | Yasmin |
 | 1.1 | 21/11/2026 | Encerramento do planejamento: estimativas da Sprint 4 conforme as issues, Sprint 5 sem tarefas planejadas após o Ponto de Controle 2 e decisão de elaborar o relatório de auditoria de TI | Yasmin |
+| 1.2 | 24/11/2026 | Registro do relatório de auditoria de TI como não concluído na E2 | Yasmin |
